@@ -5,9 +5,8 @@ define('TIME_NOW', time());
 define('DS', DIRECTORY_SEPARATOR);
 define('WEB_DIR', __DIR__);
 define('ROOT_DIR', substr(__DIR__, 0, strrpos(__DIR__, DS)));
-require ROOT_DIR . DS . 'app' . DS . 'core' . DS . 'object.php';
 
-class App extends object
+class App
 {
 	var $config;
 
@@ -28,7 +27,7 @@ class App extends object
 			if (method_exists($ctrl, $act))
 				$ctrl->$act();
 			else {
-				echo $ctrl->view($controller, $action);//zzz
+				$ctrl->view($controller, $action);
 			}
 		} else $this->end('none controller -> 404//zzz');
 	}
@@ -82,6 +81,21 @@ class App extends object
 			$varName = $default;
 		return $varName;
 	}
+
+	function getView($type = DEFAULT_VIEW_TYPE)
+	{
+		static $views = [];
+		if(!isset($views[$type])) {
+			$view_name = $type . 'View';
+			$views[$type] = new $view_name;
+		}
+		return $views[$type];
+	}
+
+	function end($status = 0)
+	{
+		exit($status);
+	}
 }
 
 function & app()
@@ -105,7 +119,7 @@ function __autoload($class_name)
 			} else continue;
 		} else $file = $path . DS . $class_name . '.php';
 		if (file_exists($file)) {
-			include $file;
+			require_once $file;
 			if (class_exists($class_name)) break;
 		}
 	}
