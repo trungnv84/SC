@@ -127,4 +127,6 @@ function __autoload($class_name)
 
 app()->run();
 
-echo '<div>', microtime() - MICRO_TIME_NOW, '</div>';
+echo '<div>Run time: ', microtime() - MICRO_TIME_NOW, '</div>';
+echo '<div>Memory Usage:', Format::byte(memory_get_usage()), ' | ', Format::byte(memory_get_usage(true)), '</div>';
+echo '<div>Memory Peak Usage:', Format::byte(memory_get_peak_usage()), ' | ', Format::byte(memory_get_peak_usage(true)), '</div>';

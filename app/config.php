@@ -1,7 +1,10 @@
 <?php
+defined('ROOT_DIR') || exit;
+
 define('REWRITE_SUFFIX', '.html');
 define('DEFAULT_VIEW_TYPE', 'html');
 define('DEFAULT_TEMPLATE', 'site');
+define('DEFAULT_LAYOUT', 'default');
 
 $config = new stdClass();
 

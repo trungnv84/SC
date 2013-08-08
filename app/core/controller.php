@@ -1,7 +1,10 @@
 <?php
+defined('ROOT_DIR') || exit;
+
 class Controller
 {
 	var $template = DEFAULT_TEMPLATE;
+	var $template_layout = DEFAULT_LAYOUT;
 	var $view_type = DEFAULT_VIEW_TYPE;
 
 	/*function __construct()
@@ -23,10 +26,10 @@ class Controller
 		if (file_exists($file)) {
 			ob_start();
 			require $file;
-			$main = ob_get_contents();
+			$_main = ob_get_contents();
 			ob_end_clean();
 			$view = app()->getView($this->view_type);
-			$view->generate($main);
+			$view->generate($_main, $this->template, $this->template_layout);
 		} else app()->end('none view -> 404//zzz');
 	}
 
@@ -36,6 +39,16 @@ class Controller
 			foreach ($key as $k => &$v)
 				$this->vars[$k] = & $v;
 		} else $this->vars[$key] =& $value;
+	}
+
+	function setTemplate($template)
+	{
+		$this->template = $template;
+	}
+
+	function setTemplateLayout($template_layout)
+	{
+		$this->template_layout = $template_layout;
 	}
 
 	function setViewType($view_type)
