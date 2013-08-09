@@ -5,7 +5,7 @@ class HtmlView extends View
 {
 	var $doc_title = '';
 
-	function generate($_main, $template = DEFAULT_TEMPLATE, $layout = DEFAULT_LAYOUT)
+	function generate($_main, $layout = DEFAULT_LAYOUT, $template = DEFAULT_TEMPLATE)
 	{
 		$file =  ROOT_DIR . DS . 'app' . DS . 'template' . DS . $template . DS . 'layout' . DS . $layout . '.php';
 		if(file_exists($file)) {

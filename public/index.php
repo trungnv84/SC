@@ -3,7 +3,7 @@ date_default_timezone_set('Asia/Bangkok');
 define('MICRO_TIME_NOW', microtime());
 define('TIME_NOW', time());
 define('DS', DIRECTORY_SEPARATOR);
-define('WEB_DIR', __DIR__);
+define('PUBLIC_DIR', __DIR__);
 define('ROOT_DIR', substr(__DIR__, 0, strrpos(__DIR__, DS)));
 
 class App
@@ -27,7 +27,7 @@ class App
 			if (method_exists($ctrl, $act))
 				$ctrl->$act();
 			else {
-				$ctrl->view($controller, $action);
+				$ctrl->view($action, $controller);
 			}
 		} else $this->end('none controller -> 404//zzz');
 	}

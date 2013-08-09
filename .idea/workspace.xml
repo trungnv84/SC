@@ -10,17 +10,17 @@
     <file path="$PROJECT_DIR$/../ci/application/config/constants.bak.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375783401307" ignored="false" />
     <file path="$PROJECT_DIR$/../ci/application/views/site/default/controllers/product/customer.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375785643368" ignored="false" />
     <file path="/customer.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375785636929" ignored="false" />
-    <file path="$PROJECT_DIR$/../Tivitz/trunk/templates/css/main.css" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375874028713" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/templates/css/main.css" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376040635134" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/templates/layout_send_pledge_requestspre_approved.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375841775443" ignored="false" />
     <file path="/layout_send_pledge_requestspre_approved.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375841775443" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/templates/js/main.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375929887657" ignored="false" />
     <file path="/main.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375929887657" ignored="false" />
     <file path="/layout_manually_submit_pledge_pre_approved.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375863812455" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/templates/layout_manually_submit_pledge_pre_approved.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375864047037" ignored="false" />
-    <file path="$PROJECT_DIR$/../Tivitz/trunk/templates/css/main.scss" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375864047037" ignored="false" />
-    <file path="/a.dummy" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375938612788" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/templates/css/main.scss" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376040192441" ignored="false" />
+    <file path="/a.dummy" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376038262308" ignored="false" />
     <file path="/home.controller.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375931703317" ignored="false" />
-    <file path="/controller.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375944497518" ignored="false" />
+    <file path="/controller.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376038117630" ignored="false" />
     <file path="/object.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375851620340" ignored="false" />
     <file path="/layout_profile_info_annual_registration_pre_approved.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375872871629" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/templates/layout_profile_info_annual_registration_pre_approved.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375872871629" ignored="false" />
@@ -34,6 +34,13 @@
     <file path="/html.view.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375944416563" ignored="false" />
     <file path="/format.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375936568508" ignored="false" />
     <file path="/layout.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375938655156" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/forms/ChangePasswordForm.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376040726485" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/auth/signup.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376034969850" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/player/changePassword.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376040785154" ignored="false" />
+    <file path="/changePassword.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376038810197" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/PlayerController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376038348516" ignored="false" />
+    <file path="/PlayerController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376038348516" ignored="false" />
+    <file path="/Controller.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376041380458" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,10 +60,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="0" selection-start="2016" selection-end="2016" vertical-scroll-proportion="0.28076923">
+            <state line="117" column="42" selection-start="2574" selection-end="2579" vertical-scroll-proportion="-6.923077">
               <folding />
             </state>
           </provider>
@@ -80,19 +87,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="html.view.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/html.view.php">
+      <file leaf-file-name="Controller.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/core/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="66" selection-end="66" vertical-scroll-proportion="-2.8461537">
+            <state line="28" column="43" selection-start="795" selection-end="795" vertical-scroll-proportion="-9.333333">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controller.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/core/controller.php">
+      <file leaf-file-name="html.view.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/view/html.view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="53" selection-start="796" selection-end="796" vertical-scroll-proportion="-19.615385">
+            <state line="10" column="32" selection-start="310" selection-end="310" vertical-scroll-proportion="0.31894934">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="View.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/core/View.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="57" selection-start="73" selection-end="103" vertical-scroll-proportion="-3.2692308">
               <folding />
             </state>
           </provider>
@@ -108,7 +124,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/sys/core/object.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/sys/template/site/home/list.php" />
@@ -120,10 +135,11 @@
         <option value="$PROJECT_DIR$/app/template/site/layout.php" />
         <option value="$PROJECT_DIR$/app/template/site/html.php" />
         <option value="$PROJECT_DIR$/app/config.php" />
-        <option value="$PROJECT_DIR$/app/view/html.view.php" />
         <option value="$PROJECT_DIR$/app/lib/format.php" />
-        <option value="$PROJECT_DIR$/app/core/controller.php" />
         <option value="$PROJECT_DIR$/public/index.php" />
+        <option value="$PROJECT_DIR$/app/core/controller.php" />
+        <option value="$PROJECT_DIR$/app/core/Controller.php" />
+        <option value="$PROJECT_DIR$/app/view/html.view.php" />
       </list>
     </option>
   </component>
@@ -395,14 +411,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.261035" sideWeight="0.6700855" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27016744" sideWeight="0.6700855" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -477,6 +493,13 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/core/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="53" selection-start="796" selection-end="796" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0" />
@@ -484,9 +507,7 @@
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_8.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="252" column="9" selection-start="8683" selection-end="8683" vertical-scroll-proportion="0.34896812">
-          <folding />
-        </state>
+        <state line="252" column="9" selection-start="8683" selection-end="8683" vertical-scroll-proportion="0.34896812" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.htaccess">
@@ -501,14 +522,34 @@
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_4.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="243" column="9" selection-start="8355" selection-end="8355" vertical-scroll-proportion="0.34896812">
-          <folding />
-        </state>
+        <state line="243" column="9" selection-start="8355" selection-end="8355" vertical-scroll-proportion="0.34896812" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/template/site/home/list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="35" selection-end="35" vertical-scroll-proportion="0.06378987">
+        <state line="2" column="0" selection-start="35" selection-end="35" vertical-scroll-proportion="0.06378987" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/template/site/layout/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="12" selection-start="47" selection-end="47" vertical-scroll-proportion="0.031894933" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/Format.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="34" selection-start="380" selection-end="380" vertical-scroll-proportion="0.6023622" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="22" selection-start="152" selection-end="166" vertical-scroll-proportion="-3.9230769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="42" selection-start="2574" selection-end="2579" vertical-scroll-proportion="-6.923077">
           <folding />
         </state>
       </provider>
@@ -520,34 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/core/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="57" selection-start="73" selection-end="103" vertical-scroll-proportion="0.15947467">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/template/site/layout/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="12" selection-start="47" selection-end="47" vertical-scroll-proportion="0.031894933">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/format.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="34" selection-start="380" selection-end="380" vertical-scroll-proportion="0.6023622">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="22" selection-start="152" selection-end="166" vertical-scroll-proportion="-3.9230769">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/home.controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="33" selection-start="69" selection-end="69" vertical-scroll-proportion="-1.9615384">
@@ -555,23 +568,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="43" selection-start="795" selection-end="795" vertical-scroll-proportion="-9.333333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/View.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="57" selection-start="73" selection-end="103" vertical-scroll-proportion="-3.2692308">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/html.view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="66" selection-end="66" vertical-scroll-proportion="-2.8461537">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/core/controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="53" selection-start="796" selection-end="796" vertical-scroll-proportion="-19.615385">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="0" selection-start="2016" selection-end="2016" vertical-scroll-proportion="0.28076923">
+        <state line="10" column="32" selection-start="310" selection-end="310" vertical-scroll-proportion="0.31894934">
           <folding />
         </state>
       </provider>
