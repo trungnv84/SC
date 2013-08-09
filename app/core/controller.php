@@ -25,7 +25,7 @@ class Controller
 			require $file;
 			$_main = ob_get_contents();
 			ob_end_clean();
-			$view = app()->getView($view_type);
+			$view =& app()->getView($view_type);
 			$view->generate($_main, $layout, $template);
 		} else app()->end('none view -> 404//zzz');
 	}

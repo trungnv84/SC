@@ -82,14 +82,24 @@ class App
 		return $varName;
 	}
 
-	function getView($type = DEFAULT_VIEW_TYPE)
+	function &getView($type = DEFAULT_VIEW_TYPE)
 	{
 		static $views = [];
-		if(!isset($views[$type])) {
+		if (!isset($views[$type])) {
 			$view_name = $type . 'View';
 			$views[$type] = new $view_name;
 		}
 		return $views[$type];
+	}
+
+	function &getModel($name)
+	{
+		static $models = [];
+		if (!isset($models[$name])) {
+			$model_name = $name . 'Model';
+			$models[$name] = new $model_name;
+		}
+		return $models[$name];
 	}
 
 	function end($status = 0)
