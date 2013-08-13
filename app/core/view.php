@@ -1,7 +1,7 @@
 <?php
 defined('ROOT_DIR') || exit;
 
-class view
+class View
 {
 	function generate($data, $template = DEFAULT_TEMPLATE)
 	{
