@@ -8,12 +8,12 @@ define('DEFAULT_LAYOUT', 'default');
 
 $config = new stdClass();
 
-$config->loadPath = [
-	ROOT_DIR . DS . 'app' . DS . 'core',
-	'Controller' => ROOT_DIR . DS . 'app' . DS . 'controller',
-	'View' => ROOT_DIR . DS . 'app' . DS . 'view',
-	'Model' => ROOT_DIR . DS . 'app' . DS . 'model',
-	ROOT_DIR . DS . 'app' . DS . 'lib'
+$config->autoLoadPath = [
+	APP_DIR . DS . 'core',
+	'Controller' => CONTROLLER_DIR,
+	/*'View' => APP_DIR . DS . 'view',*/
+	'Model' => MODEL_DIR,
+	APP_DIR . DS . 'lib'
 ];
 
 $config->router = [
