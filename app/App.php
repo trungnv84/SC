@@ -3,7 +3,7 @@ defined('ROOT_DIR') || exit;
 class App
 {
 	static $config;
-	static $vars = array();
+	private static $vars = array();
 
 	public static function run()
 	{
@@ -76,6 +76,14 @@ class App
 		return $varName;
 	}
 
+	public static function assign($key, $value = NULL)
+	{
+		if (is_array($key)) {
+			foreach ($key as $k => $v)
+				self::$vars[$k] = $v;
+		} else self::$vars[$key] = $value;
+	}
+
 	public static function view_exists($action, $controller = CURRENT_CONTROLLER, $template = DEFAULT_TEMPLATE, $layout = DEFAULT_LAYOUT, $type = DEFAULT_VIEW_TYPE)
 	{
 		static $results = array();
@@ -86,12 +94,42 @@ class App
 		return $results[$key];
 	}
 
-	public static function view($action, $controller = CURRENT_CONTROLLER, $template = DEFAULT_TEMPLATE, $layout = DEFAULT_LAYOUT, $type = DEFAULT_VIEW_TYPE)
+	public static function layout_exists($layout, $template = DEFAULT_TEMPLATE)
 	{
-		if (self::view_exists($action, $controller, $template, $layout, $type)) {
+		static $results = array();
+		$key = "$template.$layout";
+		if (!isset($results[$key])) {
+			$results[$key] = file_exists(TEMPLATE_DIR . DS . $template . DS . 'layout' . DS . $layout . '.php');
+		}
+		return $results[$key];
+	}
+
+	public static function response_type_exists($type, $template = DEFAULT_TEMPLATE)
+	{
+		static $results = array();
+		$key = "$template.$type";
+		if (!isset($results[$key])) {
+			$results[$key] = file_exists(TEMPLATE_DIR . DS . $template . DS . $type . '.php');
+		}
+		return $results[$key];
+	}
+
+	public static function view($__action, $__controller = CURRENT_CONTROLLER, $__template = DEFAULT_TEMPLATE, $__layout = DEFAULT_LAYOUT, $__type = DEFAULT_VIEW_TYPE)
+	{
+		if (self::view_exists($__action, $__controller, $__template, $__layout, $__type)) {
 			if (isset(self::$vars) && is_array(self::$vars))
-				foreach (self::$vars as $key => &$value) $$key =& $value;
-			require(TEMPLATE_DIR . DS . $template . DS . $controller . DS . $action . '.php');
+				foreach (self::$vars as $__key => &$__val) $$__key =& $__val;
+			ob_start();
+			require(TEMPLATE_DIR . DS . $__template . DS . $__controller . DS . $__action . '.php');
+			if(App::layout_exists($__template, $__layout)) {
+				$__main = ob_get_clean();
+				require(TEMPLATE_DIR . DS . $__template . DS . 'layout' . DS . $__layout . '.php');
+			}
+			if(App::response_type_exists($__type, $__template)) {
+				$__html_layout = ob_get_clean();
+				require(TEMPLATE_DIR . DS . $__template . DS . $__type . '.php');
+			}
+			ob_end_flush();
 			self::end();
 		} else {
 			self::end('none view -> 404//zzz');

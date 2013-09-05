@@ -3,12 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title><?php echo $_doc_title?></title>
-    <?php echo $_doc_header?>
+    <title><?php //echo $__html_title?></title>
+    <?php //echo $__html_header?>
 </head>
 
 <body>
-<?php echo $_layout?>
-<?php echo $_doc_footer?>
+<?php echo $__html_layout?>
+<?php //echo $__html_footer?>
 </body>
 </html>

@@ -3,7 +3,7 @@ defined('ROOT_DIR') || exit;
 
 class Format
 {
-	static function byte($byte, $format = '%01.2lf %s')
+	public static function byte($byte, $format = '%01.2lf %s')
 	{
 		if (($b = round($byte / 1024 / 1024, 2)) > 1) {
 			$units = 'MB';

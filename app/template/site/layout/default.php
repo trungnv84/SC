@@ -1,3 +1,2 @@
 <?php defined('ROOT_DIR') || exit;
-echo $_main;
-?>
+echo $__main;

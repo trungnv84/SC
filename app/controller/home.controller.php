@@ -5,6 +5,6 @@ class HomeController extends Controller
 {
 	function defaultAction()
 	{
-		echo 'default action <br>';
+		//echo 'default action <br>';
 	}
 }
