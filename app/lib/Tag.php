@@ -81,23 +81,16 @@ class Tag
 
 	public static function getHtmlHeader()
 	{
-		$CI =& get_instance();
-		$CI->load->model('user');
-		/*if($CI->user->hasPermit('module_manage')) {
-			$this->addCSS('application/views/admin/css/site.css');
-			$modules = & $this->getModules();
-			$this->addJS('if(!site) var site = {};site.theme = "' . $this->name . '";site.layout = "' . $this->layout . '";site.modules = ' . json_encode($modules) . ';');
-			$this->addJS('application/views/admin/js/site.js');
-		}*/
-		$base_url = $CI->config->base_url();
-		$html = '<base href="' . $base_url . "\">\n";
-		if (isset($this->_meta_tag) && count($this->_meta_tag))
-			foreach ($this->_meta_tag as $metaTag)
+		$html = '<base href="' . BASE_URL . "\">\n";
+		if (sizeof(self::$html_meta)) {
+			foreach (self::$html_meta as $metaTag)
 				$html .= $metaTag . "\n";
-		if (isset($this->_css) && count($this->_css)) {
+			unset($metaTag);
+		}
+		if (sizeof(self::$html_css)) {
 			if (ASSETS_OPTIMIZATION & 3) {
 				$nameMd5 = $cache = '';
-				foreach ($this->_css as $css) {
+				foreach (self::$html_css as $css) {
 					if (strrpos($css, '{') === false) {
 						$nameMd5 .= $css;
 						if (strrpos($css, '/') === false) {

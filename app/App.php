@@ -121,11 +121,11 @@ class App
 				foreach (self::$vars as $__key => &$__val) $$__key =& $__val;
 			ob_start();
 			require(TEMPLATE_DIR . DS . $__template . DS . $__controller . DS . $__action . '.php');
-			if(App::layout_exists($__template, $__layout)) {
+			if (App::layout_exists($__template, $__layout)) {
 				$__main = ob_get_clean();
 				require(TEMPLATE_DIR . DS . $__template . DS . 'layout' . DS . $__layout . '.php');
 			}
-			if(App::response_type_exists($__type, $__template)) {
+			if (App::response_type_exists($__type, $__template)) {
 				$__html_layout = ob_get_clean();
 				require(TEMPLATE_DIR . DS . $__template . DS . $__type . '.php');
 			}
@@ -166,7 +166,11 @@ function __autoload($class_name)
 		} else $file = $path . DS . $class_name . '.php';
 		if (file_exists($file)) {
 			require_once($file);
-			if (class_exists($class_name)) break;
+			if (class_exists($class_name)) {
+				if (method_exists($class_name, 'init'))
+					$class_name::init();
+				break;
+			}
 		}
 	}
 }
