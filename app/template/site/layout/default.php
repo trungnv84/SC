@@ -1,2 +1,3 @@
 <?php defined('ROOT_DIR') || exit;
-echo $__main;
+Tag::unShiftCSS('common.css', 'common', true);
+echo '<div class="main">', $__html__main, '</div>';

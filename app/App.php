@@ -121,15 +121,15 @@ class App
 				foreach (self::$vars as $__key => &$__val) $$__key =& $__val;
 			ob_start();
 			require(TEMPLATE_DIR . DS . $__template . DS . $__controller . DS . $__action . '.php');
-			if (App::layout_exists($__template, $__layout)) {
-				$__main = ob_get_clean();
+			if (App::layout_exists($__layout, $__template)) {
+				$__html__main = ob_get_clean();
 				require(TEMPLATE_DIR . DS . $__template . DS . 'layout' . DS . $__layout . '.php');
 			}
 			if (App::response_type_exists($__type, $__template)) {
 				$__html_layout = ob_get_clean();
 				require(TEMPLATE_DIR . DS . $__template . DS . $__type . '.php');
 			}
-			ob_end_flush();
+			//ob_end_flush();
 			self::end();
 		} else {
 			self::end('none view -> 404//zzz');
@@ -140,8 +140,8 @@ class App
 	{
 		static $models = [];
 		if (!isset($models[$name])) {
-			$model_name = $name . 'Model';
-			$models[$name] = new $model_name;
+			$class_name = $name . 'Model';
+			$models[$name] = new $class_name;
 		}
 		return $models[$name];
 	}
@@ -167,8 +167,8 @@ function __autoload($class_name)
 		if (file_exists($file)) {
 			require_once($file);
 			if (class_exists($class_name)) {
-				if (method_exists($class_name, 'init'))
-					$class_name::init();
+				if (method_exists($class_name, '__init'))
+					$class_name::__init();
 				break;
 			}
 		}

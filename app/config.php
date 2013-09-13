@@ -1,11 +1,12 @@
 <?php
 defined('ROOT_DIR') || exit;
 
+define('ENVIRONMENT', 'Development');
 define('REWRITE_SUFFIX', '.html');
 define('DEFAULT_VIEW_TYPE', 'html');
 define('DEFAULT_TEMPLATE', 'site');
 define('DEFAULT_LAYOUT', 'default');
-define('ASSETS_OPTIMIZATION', '5');
+define('ASSETS_OPTIMIZATION', '15'); //0 || 5 || 15
 define('ASSETS_VERSION', '1.0');
 
 $config = new stdClass();

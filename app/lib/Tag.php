@@ -14,48 +14,53 @@ class Tag
 		self::$html_title = $title;
 	}
 
-	public function addAsset($asset, $type, $key = false, $overwrite = false)
+	public static function getHtmlTitle()
+	{
+		return self::$html_title;
+	}
+
+	public static function addAsset($asset, $type, $key = false, $overwrite = false)
 	{
 		$type = 'html_' . $type;
 		if ($key) {
 			if (isset(self::$$type[$key]) && !$overwrite) return;
 			self::$$type[$key] = $asset;
 		} elseif (!in_array($asset, self::$type)) {
-			self::$$type[] = $asset;
+			self::${$type}[] = $asset;
 		}
 	}
 	
-	public function addMetaTag($tag = '', $key = false, $overwrite = false)
+	public static function addMetaTag($tag = '', $key = false, $overwrite = false)
 	{
 		self::addAsset($tag, 'meta', $key, $overwrite);
 	}
 
-	public function setMetaKeywords($keywords = '')
+	public static function setMetaKeywords($keywords = '')
 	{
 		self::addMetaTag("<meta name=\"keywords\" content=\"$keywords\">", 'MetaKeywords', true);
 	}
 
-	public function setMetaDescription($description = '')
+	public static function setMetaDescription($description = '')
 	{
 		self::addMetaTag("<meta name=\"description\" content=\"$description\">", 'MetaDescription', true);
 	}
 
-	public function addCSS($css, $key = false, $overwrite = false)
+	public static function addCSS($css, $key = false, $overwrite = false)
 	{
-		$this->addAsset($css, 'css', $key, $overwrite);
+		self::addAsset($css, 'css', $key, $overwrite);
 	}
 
-	public function addJS($js, $key = false, $overwrite = false)
+	public static function addJS($js, $key = false, $overwrite = false)
 	{
-		$this->addAsset($js, 'js', $key, $overwrite);
+		self::addAsset($js, 'js', $key, $overwrite);
 	}
 
-	public function addFooterJS($js, $key = false, $overwrite = false)
+	public static function addFooterJS($js, $key = false, $overwrite = false)
 	{
-		$this->addAsset($js, 'footer_js', $key, $overwrite);
+		self::addAsset($js, 'footer_js', $key, $overwrite);
 	}
 
-	public function unShiftCSS($css, $key = false, $overwrite = false)
+	public static function unShiftCSS($css, $key = false, $overwrite = false)
 	{
 		if ($key && isset(self::$html_css[$key]) && !$overwrite) return;
 		if ($key) $css = array($key => $css);
@@ -63,7 +68,7 @@ class Tag
 		self::$html_css = array_merge($css, self::$html_css);
 	}
 
-	public function unShiftJS($js, $key = false, $overwrite = false)
+	public static function unShiftJS($js, $key = false, $overwrite = false)
 	{
 		if ($key && isset(self::$html_js[$key]) && !$overwrite) return;
 		if ($key) $js = array($key => $js);
@@ -71,7 +76,7 @@ class Tag
 		self::$html_js = array_merge($js, self::$html_js);
 	}
 
-	public function unShiftFooterJS($js, $key = false, $overwrite = false)
+	public static function unShiftFooterJS($js, $key = false, $overwrite = false)
 	{
 		if ($key && isset(self::$html_footer_js[$key]) && !$overwrite) return;
 		if ($key) $js = array($key => $js);
@@ -94,49 +99,49 @@ class Tag
 					if (strrpos($css, '{') === false) {
 						$nameMd5 .= $css;
 						if (strrpos($css, '/') === false) {
-							$css = APPPATH . 'views/site/' . $this->name . '/css/' . $css;
+							$css = PUBLIC_DIR . '/css/' . $css;
 							if (file_exists($css)) {
-								if(ASSETS_OPTIMIZATION & 2) $cache .= $this->minAsset($css) . "\n";
+								if(ASSETS_OPTIMIZATION & 2) $cache .= self::minAsset($css) . "\n";
 								else $cache .= @file_get_contents($css) . "\n";
 							}
 						} elseif (preg_match('/https?:\/\//', $css)) {
 							$tmp = @file_get_contents($css);
 							if (preg_match('/:\s*url\s*\(/i', $tmp)) {
-								$html .= "<link href=\"$css?v=" . ASSETS_VERSION . "\" rel=\"stylesheet\" type=\"text/css\" />\n";
+								$html .= "<link href=\"$css?__av=" . ASSETS_VERSION . "\" rel=\"stylesheet\" type=\"text/css\" />\n";
 							} else {
 								$cache .= $tmp;
 							}
 						} elseif (file_exists($css)) {
-							if(ASSETS_OPTIMIZATION & 2) $tmp = $this->minAsset($css);
-							else $tmp = @file_get_contents($css);
-							$cache .= preg_replace('/:\s*url\s*\(\s*([\'"])/i', ': url($1../../../../../' . dirname($css) . '/', $tmp);
+							if(ASSETS_OPTIMIZATION & 2) $cache .= self::minAsset($css);
+							else $cache .= @file_get_contents($css);
+							//$cache .= preg_replace('/:\s*url\s*\(\s*([\'"])/i', ': url($1../../../../../' . dirname($css) . '/', $tmp);
 						}/* else
-							$html .= "<link href=\"$css?v=" . ASSETS_VERSION . "\" rel=\"stylesheet\" type=\"text/css\" />\n";*/
+							$html .= "<link href=\"$css?__av=" . ASSETS_VERSION . "\" rel=\"stylesheet\" type=\"text/css\" />\n";*/
 					} else {
 						$nameMd5 .= $css;
-						$cache .= $css . "\n";
+						$cache .= $css;// . "\n";
 					}
 				}
 				$cache = str_replace('"../', '"../../', $cache);
 				$nameMd5 = md5($nameMd5);
 				$cacheMd5 = md5($cache);
-				$file = APPPATH . 'views/site/' . $this->name . '/css/cache/' . $nameMd5 . '.css';
+				$file = PUBLIC_DIR . '/css/cache/' . $nameMd5 . '.css';
 				if (file_exists($file)) {
 					if (ENVIRONMENT != 'production' && $cacheMd5 != md5_file($file))
 						file_put_contents($file, $cache);
 				} else {
-					$folder = APPPATH . 'views/site/' . $this->name . '/css/cache/';
+					$folder = PUBLIC_DIR . '/css/cache/';
 					if (!is_dir($folder)) mkdir($folder, 0755, true);
 					file_put_contents($file, $cache);
 				}
-				$file = APPFOLDER . "/views/site/$this->name/css/cache/$nameMd5.css?v=$cacheMd5";
+				$file = "css/cache/$nameMd5.css?__av=$cacheMd5"; //BASE_URL
 				$html .= "<link href=\"$file\" rel=\"stylesheet\" type=\"text/css\" />\n";
 			} else {
-				foreach ($this->_css as $css) {
+				foreach (self::$html_css as $css) {
 					if (strrpos($css, '{') === false) {
 						if (strrpos($css, '/') === false)
-							$css = APPFOLDER . "/views/site/$this->name/css/$css";
-						$css .= '?v=' . ASSETS_VERSION;
+							$css = "css/$css"; //BASE_URL
+						$css .= '?__av=' . ASSETS_VERSION;
 						$html .= "<link href=\"$css\" rel=\"stylesheet\" type=\"text/css\" />\n";
 					} else {
 						$html .= "<style type=\"text/css\">\n{$css}\n</style>\n";
@@ -144,21 +149,35 @@ class Tag
 				}
 			}
 		}
-		if (isset($this->_js) && count($this->_js)) {
+		if (sizeof(self::$html_js)) {
+			$html .= self::getJSHtml(self::$html_js);
+		}
+		return $html;
+	}
+
+	public static function getHtmlFooter()
+	{
+		return self::getJSHtml(self::$html_footer_js);
+	}
+
+	private static function getJSHtml(&$jss)
+	{
+		$html = '';
+		if (sizeof($jss)) {
 			if (ASSETS_OPTIMIZATION & 12) {
 				$nameMd5 = $cache = '';
-				foreach ($this->_js as $js) {
+				foreach ($jss as $js) {
 					if (preg_match('/[;\(]/', $js)) {
 						$nameMd5 .= $js;
 						$cache .= $js . "\n";
 					} else {
 						$nameMd5 .= $js;
 						if (strrpos($js, '/') === false)
-							$js = APPPATH . 'views/site/' . $this->name . '/js/' . $js;
+							$js = PUBLIC_DIR . '/js/' . $js;
 						if (preg_match('/https?:\/\//', $js))
 							$cache .= @file_get_contents($js) . "\n";
 						elseif(file_exists($js))
-							if(ASSETS_OPTIMIZATION & 8) $cache .= $this->minAsset($js) . "\n";
+							if(ASSETS_OPTIMIZATION & 8) $cache .= self::minAsset($js) . "\n";
 							else $cache .= @file_get_contents($js) . "\n";
 						/*else
 							$html .= "<script src=\"$js?v=" . ASSETS_VERSION . "\" type=\"text/javascript\" language=\"javascript\"></script>\n";*/
@@ -166,24 +185,24 @@ class Tag
 				}
 				$nameMd5 = md5($nameMd5);
 				$cacheMd5 = md5($cache);
-				$file = APPPATH . 'views/site/' . $this->name . '/js/cache/' . $nameMd5 . '.js';
+				$file = PUBLIC_DIR . '/js/cache/' . $nameMd5 . '.js';
 				if (file_exists($file)) {
 					if (ENVIRONMENT != 'production' && $cacheMd5 != md5_file($file))
 						file_put_contents($file, $cache);
 				} else {
-					$folder = APPPATH . 'views/site/' . $this->name . '/js/cache/';
+					$folder = PUBLIC_DIR . '/js/cache/';
 					if (!is_dir($folder)) mkdir($folder, 0755, true);
 					file_put_contents($file, $cache);
 				}
-				$file = APPFOLDER . "/views/site/$this->name/js/cache/$nameMd5.js?v=$cacheMd5";
+				$file = "/js/cache/$nameMd5.js?v=$cacheMd5"; //BASE_URL
 				$html .= "<script src=\"$file\" type=\"text/javascript\" language=\"javascript\"></script>\n";
 			} else {
-				foreach ($this->_js as $js) {
+				foreach ($jss as $js) {
 					if (preg_match('/[;\(]/', $js)) {
 						$html .= "<script type=\"text/javascript\" language=\"javascript\">\n{$js}\n</script>\n";
 					} else {
 						if (strrpos($js, '/') === false)
-							$js = APPFOLDER . "/views/site/$this->name/js/$js";
+							$js = "js/$js"; //BASE_URL
 						$js .= '?v=' . ASSETS_VERSION;
 						$html .= "<script src=\"$js\" type=\"text/javascript\" language=\"javascript\"></script>\n";
 					}
@@ -191,5 +210,27 @@ class Tag
 			}
 		}
 		return $html;
+	}
+
+	private static function minAsset($file)
+	{
+		$pathInfo = pathinfo($file);
+		if(substr($pathInfo['filename'], -4)=='.min')
+			return @file_get_contents($file);
+		$minFile = "$pathInfo[dirname]/$pathInfo[filename].min.$pathInfo[extension]";
+		if(file_exists($minFile) && filemtime($minFile) > @filemtime($file))
+			return @file_get_contents($minFile);
+		switch(strtolower($pathInfo['extension'])) {
+			case 'css':
+				$minContent = CssMin::minify(@file_get_contents($file));
+				break;
+			case 'js':
+				$minContent = JSMin::minify(@file_get_contents($file));
+				break;
+			default:
+				return @file_get_contents($file);
+		}
+		file_put_contents($minFile, $minContent);
+		return $minContent;
 	}
 }
