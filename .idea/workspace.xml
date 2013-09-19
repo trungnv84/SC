@@ -18,8 +18,8 @@
     <file path="/layout_manually_submit_pledge_pre_approved.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375863812455" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/templates/layout_manually_submit_pledge_pre_approved.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375864047037" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/templates/css/main.scss" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376040192441" ignored="false" />
-    <file path="/a.dummy" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379067699494" ignored="false" />
-    <file path="/home.controller.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375931703317" ignored="false" />
+    <file path="/a.dummy" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379294366164" ignored="false" />
+    <file path="/home.controller.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379585050696" ignored="false" />
     <file path="/controller.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376038117630" ignored="false" />
     <file path="/object.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375851620340" ignored="false" />
     <file path="/layout_profile_info_annual_registration_pre_approved.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375872871629" ignored="false" />
@@ -38,7 +38,7 @@
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/auth/signup.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376034969850" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/player/changePassword.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376040785154" ignored="false" />
     <file path="/changePassword.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376038810197" ignored="false" />
-    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/PlayerController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379043952501" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/PlayerController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379579293844" ignored="false" />
     <file path="/PlayerController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376038348516" ignored="false" />
     <file path="/Controller.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1378344318693" ignored="false" />
     <file path="/valid.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376045179092" ignored="false" />
@@ -50,7 +50,7 @@
     <file path="/View.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376270231120" ignored="false" />
     <file path="$PROJECT_DIR$/../bc/system/core/View.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376270233857" ignored="false" />
     <file path="$PROJECT_DIR$/../bc/system/core/Model.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376285911587" ignored="false" />
-    <file path="/Model.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379068729981" ignored="false" />
+    <file path="/Model.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379586595731" ignored="false" />
     <file path="$PROJECT_DIR$/../bc/public/index.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376305500376" ignored="false" />
     <file path="$PROJECT_DIR$/../bc/system/core/apps/Web.App.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376301302216" ignored="false" />
     <file path="/Web.App.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376301181912" ignored="false" />
@@ -82,7 +82,7 @@
     <file path="$PROJECT_DIR$/../bc/apps/web/frontend/views/layouts/default.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376306485641" ignored="false" />
     <file path="$PROJECT_DIR$/../bc/apps/web/frontend/views/html.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376306504153" ignored="false" />
     <file path="/html.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379043355674" ignored="false" />
-    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/index.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1377678668226" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/index.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379585409883" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/player/collect.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1378174927278" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/player/registSponsorPledge.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1378174952790" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/js/pledge_summary.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379066226813" ignored="false" />
@@ -97,8 +97,8 @@
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/player/memberShip.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1378182582336" ignored="false" />
     <file path="/Format.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1378346265452" ignored="false" />
     <file path="/Tag.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379044702705" ignored="false" />
-    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/AdminController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379043968035" ignored="false" />
-    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/admin/matchSponsor.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379062902507" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/AdminController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379583994698" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/admin/matchSponsor.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379585894408" ignored="false" />
     <file path="/matchSponsor.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1378980955531" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/css/main.css" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379061791289" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/css/main.scss" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379061791289" ignored="false" />
@@ -120,6 +120,20 @@
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/js/pledge_sent.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379068299045" ignored="false" />
     <file path="/pledge_sent.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379068172254" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/config/constants.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379068422149" ignored="false" />
+    <file path="/MySql.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379293931070" ignored="false" />
+    <file path="/User.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379294338957" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/layouts/html.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379582980349" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/AdminBaseController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379585409883" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/PlayerBaseController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379579926547" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/libs/htmlHelper.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379579293844" ignored="false" />
+    <file path="/AdminBaseController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379583384090" ignored="false" />
+    <file path="/PlayerBaseController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379579924933" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/layouts/admin.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379585409883" ignored="false" />
+    <file path="/html.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379582979069" ignored="false" />
+    <file path="/AdminController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379583986349" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/js/validation.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379585574403" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/js/match_sponsor.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379586238933" ignored="false" />
+    <file path="/match_sponsor.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379586235825" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +156,7 @@
       <file leaf-file-name="App.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/App.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="169" column="54" selection-start="4865" selection-end="4871" vertical-scroll-proportion="-12.153846">
+            <state line="156" column="19" selection-start="4353" selection-end="4363" vertical-scroll-proportion="-3.6538463">
               <folding />
             </state>
           </provider>
@@ -151,7 +165,25 @@
       <file leaf-file-name="Model.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/core/Model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="5" selection-start="525" selection-end="525" vertical-scroll-proportion="0.7335835">
+            <state line="7" column="0" selection-start="76" selection-end="76" vertical-scroll-proportion="0.22326455">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="0" selection-start="832" selection-end="832" vertical-scroll-proportion="-12.807693">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.model.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/model/user.model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="16" selection-start="252" selection-end="252" vertical-scroll-proportion="-9.807693">
               <folding />
             </state>
           </provider>
@@ -160,7 +192,7 @@
       <file leaf-file-name="home.controller.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controller/home.controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="1" selection-start="143" selection-end="143" vertical-scroll-proportion="0.0">
+            <state line="11" column="25" selection-start="240" selection-end="240" vertical-scroll-proportion="-7.1923075">
               <folding />
             </state>
           </provider>
@@ -176,21 +208,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/core/controller.php" />
-        <option value="$PROJECT_DIR$/app/view/html.view.php" />
-        <option value="$PROJECT_DIR$/app/core/View.php" />
         <option value="$PROJECT_DIR$/app/core/App.php" />
         <option value="$PROJECT_DIR$/app/template/site/home/list.php" />
-        <option value="$PROJECT_DIR$/app/controller/home.controller.php" />
         <option value="$PROJECT_DIR$/app/core/Controller.php" />
         <option value="$PROJECT_DIR$/app/lib/Format.php" />
-        <option value="$PROJECT_DIR$/public/index.php" />
         <option value="$PROJECT_DIR$/public/css/common.css" />
         <option value="$PROJECT_DIR$/app/template/site/html.php" />
         <option value="$PROJECT_DIR$/app/lib/Tag.php" />
         <option value="$PROJECT_DIR$/app/template/site/layout/default.php" />
         <option value="$PROJECT_DIR$/app/config.php" />
+        <option value="$PROJECT_DIR$/app/core/MySql.php" />
+        <option value="$PROJECT_DIR$/app/model/User.php" />
         <option value="$PROJECT_DIR$/app/App.php" />
+        <option value="$PROJECT_DIR$/app/model/user.model.php" />
+        <option value="$PROJECT_DIR$/public/index.php" />
+        <option value="$PROJECT_DIR$/app/controller/home.controller.php" />
         <option value="$PROJECT_DIR$/app/core/Model.php" />
       </list>
     </option>
@@ -228,7 +260,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -403,6 +434,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -445,6 +494,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -495,10 +545,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3280061" sideWeight="0.6700855" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33866057" sideWeight="0.6700855" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -571,16 +621,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="11" selection-start="123" selection-end="123" vertical-scroll-proportion="0.18579236" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/core/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="5" selection-start="274" selection-end="274" vertical-scroll-proportion="0.478424" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/Format.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="11" selection-start="59" selection-end="59" vertical-scroll-proportion="0.15947467" />
@@ -621,42 +661,54 @@
         <state line="6" column="31" selection-start="368" selection-end="368" vertical-scroll-proportion="0.19615385" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="24" selection-start="497" selection-end="497" vertical-scroll-proportion="0.57410884">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/Tag.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="27" selection-start="417" selection-end="417" vertical-scroll-proportion="-1.9575758" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
+    <entry file="file://$PROJECT_DIR$/app/core/MySql.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="7" selection-start="158" selection-end="158" vertical-scroll-proportion="0.16346154">
-          <folding />
-        </state>
+        <state line="2" column="0" selection-start="35" selection-end="35" vertical-scroll-proportion="0.06378987" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/home.controller.php">
+    <entry file="file://$PROJECT_DIR$/app/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="1" selection-start="143" selection-end="143" vertical-scroll-proportion="0.0">
+        <state line="17" column="22" selection-start="472" selection-end="472" vertical-scroll-proportion="0.54221386">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/App.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="54" selection-start="4865" selection-end="4871" vertical-scroll-proportion="-12.153846">
+        <state line="156" column="19" selection-start="4353" selection-end="4363" vertical-scroll-proportion="-3.6538463">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="832" selection-end="832" vertical-scroll-proportion="-12.807693">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/model/user.model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="16" selection-start="252" selection-end="252" vertical-scroll-proportion="-9.807693">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controller/home.controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="25" selection-start="240" selection-end="240" vertical-scroll-proportion="-7.1923075">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/core/Model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="5" selection-start="525" selection-end="525" vertical-scroll-proportion="0.7335835">
+        <state line="7" column="0" selection-start="76" selection-end="76" vertical-scroll-proportion="0.22326455">
           <folding />
         </state>
       </provider>

@@ -161,7 +161,7 @@ function __autoload($class_name)
 			$len = strlen($type);
 			if (substr($class_name, -$len) == $type) {
 				$file = substr($class_name, 0, strlen($class_name) - $len);
-				$file = $path . DS . $file . '.' . strtolower($type) . '.php';
+				$file = $path . DS . strtolower($file) . '.' . strtolower($type) . '.php';
 			} else continue;
 		} else $file = $path . DS . $class_name . '.php';
 		if (file_exists($file)) {
