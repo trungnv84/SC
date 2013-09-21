@@ -18,8 +18,8 @@
     <file path="/layout_manually_submit_pledge_pre_approved.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375863812455" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/templates/layout_manually_submit_pledge_pre_approved.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375864047037" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/templates/css/main.scss" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376040192441" ignored="false" />
-    <file path="/a.dummy" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379294366164" ignored="false" />
-    <file path="/home.controller.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379585050696" ignored="false" />
+    <file path="/a.dummy" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379647420139" ignored="false" />
+    <file path="/home.controller.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379666994459" ignored="false" />
     <file path="/controller.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376038117630" ignored="false" />
     <file path="/object.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375851620340" ignored="false" />
     <file path="/layout_profile_info_annual_registration_pre_approved.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1375872871629" ignored="false" />
@@ -50,7 +50,7 @@
     <file path="/View.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376270231120" ignored="false" />
     <file path="$PROJECT_DIR$/../bc/system/core/View.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376270233857" ignored="false" />
     <file path="$PROJECT_DIR$/../bc/system/core/Model.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376285911587" ignored="false" />
-    <file path="/Model.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379586595731" ignored="false" />
+    <file path="/Model.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379667708341" ignored="false" />
     <file path="$PROJECT_DIR$/../bc/public/index.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376305500376" ignored="false" />
     <file path="$PROJECT_DIR$/../bc/system/core/apps/Web.App.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376301302216" ignored="false" />
     <file path="/Web.App.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376301181912" ignored="false" />
@@ -82,7 +82,7 @@
     <file path="$PROJECT_DIR$/../bc/apps/web/frontend/views/layouts/default.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376306485641" ignored="false" />
     <file path="$PROJECT_DIR$/../bc/apps/web/frontend/views/html.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1376306504153" ignored="false" />
     <file path="/html.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379043355674" ignored="false" />
-    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/index.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379585409883" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/index.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379647531205" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/player/collect.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1378174927278" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/player/registSponsorPledge.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1378174952790" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/js/pledge_summary.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379066226813" ignored="false" />
@@ -97,11 +97,11 @@
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/player/memberShip.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1378182582336" ignored="false" />
     <file path="/Format.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1378346265452" ignored="false" />
     <file path="/Tag.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379044702705" ignored="false" />
-    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/AdminController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379583994698" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/AdminController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379642024673" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/admin/matchSponsor.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379585894408" ignored="false" />
     <file path="/matchSponsor.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1378980955531" ignored="false" />
-    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/css/main.css" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379061791289" ignored="false" />
-    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/css/main.scss" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379061791289" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/css/main.css" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671232466" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/css/main.scss" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671232466" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/css/trungnv.scss" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1378982140552" ignored="false" />
     <file path="/common.css" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379040593722" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/js/main.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379066129055" ignored="false" />
@@ -119,21 +119,44 @@
     <file path="/pledgeRequest.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379067464373" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/js/pledge_sent.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379068299045" ignored="false" />
     <file path="/pledge_sent.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379068172254" ignored="false" />
-    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/config/constants.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379068422149" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/config/constants.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671232466" ignored="false" />
     <file path="/MySql.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379293931070" ignored="false" />
     <file path="/User.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379294338957" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/layouts/html.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379582980349" ignored="false" />
-    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/AdminBaseController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379585409883" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/AdminBaseController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671243071" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/PlayerBaseController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379579926547" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/libs/htmlHelper.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379579293844" ignored="false" />
     <file path="/AdminBaseController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379583384090" ignored="false" />
     <file path="/PlayerBaseController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379579924933" ignored="false" />
-    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/layouts/admin.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379585409883" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/layouts/admin.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379640854487" ignored="false" />
     <file path="/html.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379582979069" ignored="false" />
     <file path="/AdminController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379583986349" ignored="false" />
     <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/js/validation.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379585574403" ignored="false" />
-    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/js/match_sponsor.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379586238933" ignored="false" />
-    <file path="/match_sponsor.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379586235825" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/js/match_sponsor.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379659922396" ignored="false" />
+    <file path="/match_sponsor.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379659006228" ignored="false" />
+    <file path="/admin.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379640204783" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/layouts/non.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379641531862" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/adminMatchSponsor.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379646692853" ignored="false" />
+    <file path="/adminMatchSponsor.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379646549985" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/adminMatchSponsor/index.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379659953294" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/player/proof.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671232466" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/soliciting_email_template.html" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671232466" ignored="false" />
+    <file path="/index.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379659161291" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/AdminMatchSponsorController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671636650" ignored="false" />
+    <file path="/AdminMatchSponsorController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379670754060" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/adminMatchSponsor/form.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671883905" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/js/match_sponsor_new.js" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379667975542" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/pledge_thank_email_template.html" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379664008982" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/views/admin/matchSponsorNew.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379664008982" ignored="false" />
+    <file path="/form.phtml" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379670817446" ignored="false" />
+    <file path="$USER_HOME$/Desktop/ThanhToan_Finish.asp" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379670107565" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/css/hungdd.scss" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671232466" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/AdminFinancialInstitutionController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671232466" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/css/hungdd.css" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671232466" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/controllers/AdminFundraiserController.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671232466" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/public/css/admin.scss" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671232466" ignored="false" />
+    <file path="$PROJECT_DIR$/../Tivitz/trunk/source/app/forms/MatchSponsorForm.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671793309" ignored="false" />
+    <file path="/MatchSponsorForm.php" changelist="24c990f8-a302-447d-877c-2abc21ccfcd9" time="1379671730834" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +179,7 @@
       <file leaf-file-name="App.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/App.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="19" selection-start="4353" selection-end="4363" vertical-scroll-proportion="-3.6538463">
+            <state line="156" column="19" selection-start="4353" selection-end="4363" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -165,7 +188,7 @@
       <file leaf-file-name="Model.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/core/Model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="76" selection-end="76" vertical-scroll-proportion="0.22326455">
+            <state line="82" column="32" selection-start="1925" selection-end="1925" vertical-scroll-proportion="2.6397638">
               <folding />
             </state>
           </provider>
@@ -192,7 +215,7 @@
       <file leaf-file-name="home.controller.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controller/home.controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="25" selection-start="240" selection-end="240" vertical-scroll-proportion="-7.1923075">
+            <state line="12" column="0" selection-start="237" selection-end="237" vertical-scroll-proportion="-7.8461537">
               <folding />
             </state>
           </provider>
@@ -503,8 +526,8 @@
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../bc" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -545,7 +568,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33866057" sideWeight="0.6700855" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34398782" sideWeight="0.6700855" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -673,14 +696,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="22" selection-start="472" selection-end="472" vertical-scroll-proportion="0.54221386">
-          <folding />
-        </state>
+        <state line="17" column="22" selection-start="472" selection-end="472" vertical-scroll-proportion="0.54221386" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/App.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="19" selection-start="4353" selection-end="4363" vertical-scroll-proportion="-3.6538463">
+        <state line="156" column="19" selection-start="4353" selection-end="4363" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controller/home.controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="237" selection-end="237" vertical-scroll-proportion="-7.8461537">
           <folding />
         </state>
       </provider>
@@ -699,16 +727,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/home.controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="25" selection-start="240" selection-end="240" vertical-scroll-proportion="-7.1923075">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/core/Model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="76" selection-end="76" vertical-scroll-proportion="0.22326455">
+        <state line="82" column="32" selection-start="1925" selection-end="1925" vertical-scroll-proportion="2.6397638">
           <folding />
         </state>
       </provider>
