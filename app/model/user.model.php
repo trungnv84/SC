@@ -3,16 +3,16 @@ defined('ROOT_DIR') || exit;
 
 class UserModel extends Model
 {
-	/*private $driver = 'MySql';
-	private $target = 'user';*/
+	public $username;
+	public $password;
 
-	public function __construct()
+	public function __construct($target = 'user', $driver = DB_DRIVER, $pk = null)
 	{
-		parent::__construct('user', 'MySql');
+		parent::__construct($target, $driver, $pk);
 	}
 
-	public static function __init()
+	public static function __init($target = 'user', $driver = DB_DRIVER, $pk = null)
 	{
-		parent::init('user', 'MySql');
+		parent::init($target, $driver, $pk);
 	}
 }
