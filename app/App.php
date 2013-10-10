@@ -2,7 +2,7 @@
 defined('ROOT_DIR') || exit;
 class App
 {
-	static $config;
+	public static $config;
 	private static $vars = array();
 
 	public static function run()

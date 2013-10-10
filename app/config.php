@@ -88,14 +88,14 @@ $config->db['MySql'] = array(
 	'database' => 'sc',
 	'dbprefix' => 'tb_',
 	'pconnect' => TRUE,
-//$config->db['MySql']['db_debug'] = TRUE;
-//$config->db['MySql']['cache_on'] = FALSE;
-//$config->db['MySql']['cachedir'] = '';
+	//$config->db['MySql']['db_debug'] = TRUE;
+	//$config->db['MySql']['cache_on'] = FALSE;
+	//$config->db['MySql']['cachedir'] = '';
 	'char_set' => 'utf8',
 	'dbcollat' => 'utf8_general_ci',
-//$config->db['MySql']['swap_pre'] = '';
-//$config->db['MySql']['autoinit'] = TRUE;
-//$config->db['MySql']['stricton'] = FALSE;
+	//$config->db['MySql']['swap_pre'] = '';
+	//$config->db['MySql']['autoinit'] = TRUE;
+	//$config->db['MySql']['stricton'] = FALSE;
 );
 
 /*##########################################################*/
