@@ -6,13 +6,18 @@ class UserModel extends Model
 	public $username;
 	public $password;
 
-	public function __construct($target = 'user', $driver = DB_DRIVER, $pk = null)
+	public function __construct($target = 'user')
 	{
-		parent::__construct($target, $driver, $pk);
+		parent::__construct($target);
 	}
 
-	public static function __init($target = 'user', $driver = DB_DRIVER, $pk = null)
+	public static function __init($target = 'user')
 	{
-		parent::init($target, $driver, $pk);
+		parent::init($target);
+	}
+
+	public static function getSource()
+	{
+		return 'user';
 	}
 }

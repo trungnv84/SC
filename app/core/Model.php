@@ -3,8 +3,8 @@ defined('ROOT_DIR') || exit;
 
 abstract class Model
 {
-	protected static $_driver;
-	protected static $_target;
+	protected static $_driver = DB_DRIVER;
+	protected static $_target = null;
 	protected static $_pk = DB_OBJECT_KEY;
 
 	private $_reflect;
@@ -13,15 +13,12 @@ abstract class Model
 	public $id;
 
 	/*###################################################*/
-	public function __construct($target, $driver = DB_DRIVER, $pk = null)
+	public function __construct($target = null, $driver = DB_DRIVER, $pk = DB_OBJECT_KEY)
 	{
 		$this->_reflect = new ReflectionClass($this);
 		$this->_driver = $driver;
-		$this->_target = $target;
-		if(is_null($pk))
-			$this->_pk = DB_OBJECT_KEY;
-		else
-			$this->_pk = $pk;
+		$this->_target = (is_null($target)?static::getSource():$target);
+		$this->_pk = $pk;
 	}
 
 	public function properties($name, $value = null)
@@ -92,12 +89,14 @@ abstract class Model
 	}
 
 	/*###################################################*/
-	protected static function init($target, $driver = DB_DRIVER, $pk = null)
+	protected static function init($target = null, $driver = DB_DRIVER, $pk = DB_OBJECT_KEY)
 	{
-		self::$_driver = $driver;
-		self::$_target = $target;
-		if(!is_null($pk)) self::$_pk = $pk;
+		static::$_driver = $driver;
+		static::$_target = (is_null($target)?static::getSource():$target);
+		static::$_pk = $pk;
 	}
+
+	public abstract static function getSource();
 
 	public static function attributes($name, $value = null)
 	{
@@ -113,6 +112,6 @@ abstract class Model
 
 	public static function __callStatic($name, $arguments = array())
 	{
-		return call_user_func(array(self::$_driver, $name), $arguments);
+		return call_user_func(array(static::$_driver, $name), $arguments);
 	}
 }
