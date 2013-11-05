@@ -16,7 +16,7 @@ class UserModel extends Model
 		parent::init($target);
 	}
 
-	public static function getSource()
+	public function getSource()
 	{
 		return 'user';
 	}

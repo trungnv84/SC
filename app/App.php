@@ -4,23 +4,26 @@ class App
 {
 	public static $config;
 	private static $vars = array();
+	private static $template = DEFAULT_TEMPLATE;
+	private static $view_type = DEFAULT_VIEW_TYPE;
+	private static $layout = DEFAULT_LAYOUT;
 
 	public static function run()
 	{
 		if (isset($_GET['_url'])) self::parseUrl($_GET['_url']);
 		$controller = strtolower(self::getVarName('controller', self::$config->defaultController));
 		$action = strtolower(self::getVarName('action', 'default'));
-		$ctrl = $controller . 'Controller';
+		$ctrl = ucfirst($controller) . 'Controller';
 		if (class_exists($ctrl)) {
+			define('CURRENT_CONTROLLER', $controller);
 			$ctrl = new $ctrl;
 			$act = $action . 'Action';
-			define('CURRENT_CONTROLLER', $controller);
 			if (method_exists($ctrl, $act))
 				$ctrl->$act();
 			unset($ctrl);
-			self::view($action, $controller);
+			self::view($action);
 		} elseif (self::view_exists($action, $controller)) {
-			self::view($action, $controller);
+			self::view($action);
 		} else {
 			self::end('none controller -> 404//zzz');
 		}
@@ -84,9 +87,12 @@ class App
 		} else self::$vars[$key] = $value;
 	}
 
-	public static function view_exists($action, $controller = CURRENT_CONTROLLER, $template = DEFAULT_TEMPLATE, $layout = DEFAULT_LAYOUT, $type = DEFAULT_VIEW_TYPE)
+	public static function view_exists($action, $controller = CURRENT_CONTROLLER, $template = null, $layout = null, $type = null)
 	{
 		static $results = array();
+		if(is_null($template)) $template =& self::$template;
+		if(is_null($type)) $type =& self::$view_type;
+		if(is_null($layout)) $layout =& self::$layout;
 		$key = "$template.$type.$layout.$controller.$action";
 		if (!isset($results[$key])) {
 			$results[$key] = file_exists(TEMPLATE_DIR . DS . $template . DS . $controller . DS . $action . '.php');
@@ -94,9 +100,10 @@ class App
 		return $results[$key];
 	}
 
-	public static function layout_exists($layout, $template = DEFAULT_TEMPLATE)
+	public static function layout_exists($layout, $template = null)
 	{
 		static $results = array();
+		if(is_null($template)) $template =& self::$template;
 		$key = "$template.$layout";
 		if (!isset($results[$key])) {
 			$results[$key] = file_exists(TEMPLATE_DIR . DS . $template . DS . 'layout' . DS . $layout . '.php');
@@ -104,9 +111,10 @@ class App
 		return $results[$key];
 	}
 
-	public static function response_type_exists($type, $template = DEFAULT_TEMPLATE)
+	public static function response_type_exists($type, $template = null)
 	{
 		static $results = array();
+		if(is_null($template)) $template =& self::$template;
 		$key = "$template.$type";
 		if (!isset($results[$key])) {
 			$results[$key] = file_exists(TEMPLATE_DIR . DS . $template . DS . $type . '.php');
@@ -114,8 +122,12 @@ class App
 		return $results[$key];
 	}
 
-	public static function view($__action, $__controller = CURRENT_CONTROLLER, $__template = DEFAULT_TEMPLATE, $__layout = DEFAULT_LAYOUT, $__type = DEFAULT_VIEW_TYPE)
+	public static function view($__action, $__controller = CURRENT_CONTROLLER, $__template = null, $__layout = null, $__type = null)
 	{
+		if(is_null($__template)) $__template =& self::$template;
+		if(is_null($__layout)) $__layout =& self::$view_type;
+		if(is_null($__type)) $__type =& self::$layout;
+
 		if (self::view_exists($__action, $__controller, $__template, $__layout, $__type)) {
 			if (isset(self::$vars) && is_array(self::$vars))
 				foreach (self::$vars as $__key => &$__val) $$__key =& $__val;

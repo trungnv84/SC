@@ -21,6 +21,12 @@ abstract class Model
 		$this->_pk = $pk;
 	}
 
+	public function &setTarget($target)
+	{
+		$this->_target = $target;
+		return $this;
+	}
+
 	public function properties($name, $value = null)
 	{
 		static $props = array();
@@ -96,7 +102,7 @@ abstract class Model
 		static::$_pk = $pk;
 	}
 
-	public abstract static function getSource();
+	public abstract function getSource();
 
 	public static function attributes($name, $value = null)
 	{

@@ -22,4 +22,9 @@ class MySql
 		}
 		return $db_select;
 	}
+
+	public static function find()
+	{
+
+	}
 }
