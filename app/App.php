@@ -34,8 +34,8 @@ class App
 	private static function parseUrl(&$url)
 	{
 		if (isset(self::$config->modules) && is_array(self::$config->modules)) {
-			foreach(self::$config->modules as $name) {
-				if(strpos($url, "/$name/") === 0 || $url == "/$name") {
+			foreach (self::$config->modules as $name) {
+				if (strpos($url, "/$name/") === 0 || $url == "/$name") {
 					self::$module = $name;
 					break;
 				}
@@ -59,14 +59,14 @@ class App
 			}
 		}
 
-		if(!$routed) {
+		if (!$routed) {
 			self::end('none controller -> 404//zzz');
 		}
 	}
 
 	private static function autoSetTemplate()
 	{
-		if(isset(self::$config->moduleTemplates[self::$module])) {
+		if (isset(self::$config->moduleTemplates[self::$module])) {
 			self::$template = self::$config->moduleTemplates[self::$module];
 		}
 	}
@@ -87,6 +87,9 @@ class App
 			return $default;
 	}
 
+	//Using $_REQUEST is strongly discouraged.
+	//s inputThis super global is not recommended since it includes not only POST and GET data, but also the cookies sent by the request.
+	//This can lead to confusion and makes your code prone to mistakes, which could lead to security problems.
 	public static function REQUEST($key, $default = NULL)
 	{
 		if (isset($_REQUEST[$key]))
@@ -101,6 +104,14 @@ class App
 		if (!is_string($varName) || preg_match('/^[^a-zA-z]|[^a-zA-Z0-9_]/', $varName))
 			$varName = $default;
 		return $varName;
+	}
+
+	public static function is_ajax_request()
+	{
+		static $result;
+		if(!isset($result))
+			$result = (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest');
+		return $result;
 	}
 
 	public static function assign($key, $value = NULL)
@@ -184,6 +195,12 @@ class App
 
 	public static function end($status = 0)
 	{
+		if (ENVIRONMENT == 'Development' && !self::is_ajax_request()) {
+			echo '<div>Run time: ', microtime() - MICRO_TIME_NOW, '</div>';
+			echo '<div>Memory Usage: ', Format::byte(memory_get_usage()), ' | ', Format::byte(memory_get_usage(true)), '</div>';
+			echo '<div>Memory Peak Usage: ', Format::byte(memory_get_peak_usage()), ' | ', Format::byte(memory_get_peak_usage(true)), '</div>';
+		}
+
 		exit($status);
 	}
 }
