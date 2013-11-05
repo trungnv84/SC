@@ -15,8 +15,8 @@ class Controller
 		App::assign($key, $value);
 	}
 
-	protected function view($view, $controller = CURRENT_CONTROLLER)
+	protected function view($view, $controller = CURRENT_CONTROLLER, $template = null, $layout = null, $type = null)
 	{
-		App::view($view, $controller);
+		App::view($view, $controller, $template, $layout, $type);
 	}
 }

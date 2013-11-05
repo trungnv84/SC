@@ -2,10 +2,16 @@
 defined('ROOT_DIR') || exit;
 
 define('ENVIRONMENT', 'Development');
+
+define('DEFAULT_MODULE', 'site');
+define('DEFAULT_CONTROLLER', 'home');
+define('DEFAULT_ACTION', 'default');
+define('DEFAULT_LAYOUT', 'default');
+
 define('REWRITE_SUFFIX', '.html');
 define('DEFAULT_TEMPLATE', 'site');
 define('DEFAULT_VIEW_TYPE', 'html');
-define('DEFAULT_LAYOUT', 'default');
+
 define('ASSETS_OPTIMIZATION', '15'); //0 || 5 || 15
 define('ASSETS_VERSION', '1.0');
 
@@ -18,8 +24,6 @@ define('DB_OBJECT_KEY', 'id');
 
 $config = new stdClass();
 
-$config->modules = array('admin');
-
 $config->autoLoadPath = array(
 	APP_DIR . DS . 'core',
 	'Controller' => CONTROLLER_DIR,
@@ -30,13 +34,29 @@ $config->autoLoadPath = array(
 
 $config->router = array(
 	array(
-		'^admin/([^/]+)(/([^/\.]+))(/|/\\'. REWRITE_SUFFIX. ')?',
+		'^/admin(/|[^/]+)?(/|/([^/\.]+))?(/|\\'. REWRITE_SUFFIX. ')?',
 		array('controller' => 1, 'action' => 3)
 	),
 	array(
-		'^/([^/]+)(/([^/\.]+))(/|/\\'. REWRITE_SUFFIX. ')?',
+		'^/([^/]+)(/|/([^/\.]+))?(/|\\'. REWRITE_SUFFIX. ')?',
 		array('controller' => 1, 'action' => 3)
 	)
+);
+
+$config->modules = array('site', 'admin');
+
+$config->modulePaths = array(
+	'site' => array(
+		'Controller' => $config->autoLoadPath['Controller'] . DS . 'site'   //CONTROLLER_DIR . DS . 'site'
+	),
+	'admin' => array(
+		'Controller' => $config->autoLoadPath['Controller'] . DS . 'admin'   //CONTROLLER_DIR . DS . 'admin'
+	)
+);
+
+$config->moduleTemplates = array(
+	'site' => 'site',
+	'admin' => 'admin'
 );
 
 /*##########################################################*/
@@ -106,6 +126,8 @@ $config->db['MySql'] = array(
 
 /*##########################################################*/
 
-$config->defaultController = 'home';
+$config->defaultModule = DEFAULT_MODULE;
+$config->defaultController = DEFAULT_CONTROLLER;
+$config->defaultAction = DEFAULT_ACTION;
 
 return $config;

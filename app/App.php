@@ -3,6 +3,7 @@ defined('ROOT_DIR') || exit;
 class App
 {
 	public static $config;
+	public static $module = DEFAULT_MODULE;
 	private static $vars = array();
 	private static $template = DEFAULT_TEMPLATE;
 	private static $view_type = DEFAULT_VIEW_TYPE;
@@ -11,8 +12,9 @@ class App
 	public static function run()
 	{
 		if (isset($_GET['_url'])) self::parseUrl($_GET['_url']);
+		else self::autoSetTemplate();
 		$controller = strtolower(self::getVarName('controller', self::$config->defaultController));
-		$action = strtolower(self::getVarName('action', 'default'));
+		$action = strtolower(self::getVarName('action', self::$config->defaultAction));
 		$ctrl = ucfirst($controller) . 'Controller';
 		if (class_exists($ctrl)) {
 			define('CURRENT_CONTROLLER', $controller);
@@ -23,7 +25,7 @@ class App
 			unset($ctrl);
 			self::view($action);
 		} elseif (self::view_exists($action, $controller)) {
-			self::view($action);
+			self::view($action, $controller);
 		} else {
 			self::end('none controller -> 404//zzz');
 		}
@@ -31,9 +33,20 @@ class App
 
 	private static function parseUrl(&$url)
 	{
+		if (isset(self::$config->modules) && is_array(self::$config->modules)) {
+			foreach(self::$config->modules as $name) {
+				if(strpos($url, "/$name/") === 0 || $url == "/$name") {
+					self::$module = $name;
+					break;
+				}
+			}
+		}
+
+		$routed = false;
+		self::autoSetTemplate();
 		if (isset(self::$config->router) && is_array(self::$config->router)) {
 			foreach (self::$config->router as $router) {
-				if (preg_match('#^' . $router[0] . '$#', $url, $matches)) {
+				if ($routed = preg_match('#^' . $router[0] . '$#', $url, $matches)) {
 					foreach ($router[1] as $name => $index) {
 						if (isset($matches[$index])) {
 							$_GET[$name] = $matches[$index];
@@ -44,6 +57,17 @@ class App
 					break;
 				}
 			}
+		}
+
+		if(!$routed) {
+			self::end('none controller -> 404//zzz');
+		}
+	}
+
+	private static function autoSetTemplate()
+	{
+		if(isset(self::$config->moduleTemplates[self::$module])) {
+			self::$template = self::$config->moduleTemplates[self::$module];
 		}
 	}
 
@@ -90,9 +114,9 @@ class App
 	public static function view_exists($action, $controller = CURRENT_CONTROLLER, $template = null, $layout = null, $type = null)
 	{
 		static $results = array();
-		if(is_null($template)) $template =& self::$template;
-		if(is_null($type)) $type =& self::$view_type;
-		if(is_null($layout)) $layout =& self::$layout;
+		if (is_null($template)) $template =& self::$template;
+		if (is_null($type)) $type =& self::$view_type;
+		if (is_null($layout)) $layout =& self::$layout;
 		$key = "$template.$type.$layout.$controller.$action";
 		if (!isset($results[$key])) {
 			$results[$key] = file_exists(TEMPLATE_DIR . DS . $template . DS . $controller . DS . $action . '.php');
@@ -103,7 +127,7 @@ class App
 	public static function layout_exists($layout, $template = null)
 	{
 		static $results = array();
-		if(is_null($template)) $template =& self::$template;
+		if (is_null($template)) $template =& self::$template;
 		$key = "$template.$layout";
 		if (!isset($results[$key])) {
 			$results[$key] = file_exists(TEMPLATE_DIR . DS . $template . DS . 'layout' . DS . $layout . '.php');
@@ -114,7 +138,7 @@ class App
 	public static function response_type_exists($type, $template = null)
 	{
 		static $results = array();
-		if(is_null($template)) $template =& self::$template;
+		if (is_null($template)) $template =& self::$template;
 		$key = "$template.$type";
 		if (!isset($results[$key])) {
 			$results[$key] = file_exists(TEMPLATE_DIR . DS . $template . DS . $type . '.php');
@@ -124,9 +148,9 @@ class App
 
 	public static function view($__action, $__controller = CURRENT_CONTROLLER, $__template = null, $__layout = null, $__type = null)
 	{
-		if(is_null($__template)) $__template =& self::$template;
-		if(is_null($__layout)) $__layout =& self::$view_type;
-		if(is_null($__type)) $__type =& self::$layout;
+		if (is_null($__template)) $__template =& self::$template;
+		if (is_null($__layout)) $__layout =& self::$view_type;
+		if (is_null($__type)) $__type =& self::$layout;
 
 		if (self::view_exists($__action, $__controller, $__template, $__layout, $__type)) {
 			if (isset(self::$vars) && is_array(self::$vars))
@@ -172,6 +196,9 @@ function __autoload($class_name)
 		if (!is_numeric($type)) {
 			$len = strlen($type);
 			if (substr($class_name, -$len) == $type) {
+				if (App::$module && isset(App::$config->modulePaths[App::$module][$type])) {
+					$path = App::$config->modulePaths[App::$module][$type];
+				}
 				$file = substr($class_name, 0, strlen($class_name) - $len);
 				$file = $path . DS . strtolower($file) . '.' . strtolower($type) . '.php';
 			} else continue;
