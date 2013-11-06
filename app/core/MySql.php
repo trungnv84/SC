@@ -7,7 +7,7 @@ class MySql extends DBDriver
 
 	private static function &collect($instance = null)
 	{
-		if (!$instance) $instance = self::$instance;
+		if (!$instance) $instance = self::$instance; //yyy
 		$config = self::dbConfig($instance, 'MySql');
 		$instance = "$config[hostname].$config[username].$config[password]";
 		if (!isset(self::$connections[$instance])) {
@@ -18,15 +18,21 @@ class MySql extends DBDriver
 			}
 			if (false === self::$connections[$instance]) {
 				App::end("Could not connect: " . mysql_error() . " -> ???//zzz");
-			} elseif (!mysql_select_db($config['database'], self::$connections[$instance]))
-				App::end("Database [$config[database]] not exists -> ???//zzz");
+			} else {
+				App::addEndEvents(array(
+					'function' => array('MySql', 'closeAll')
+				));
+				if (!mysql_select_db($config['database'], self::$connections[$instance])) {
+					App::end("Database [$config[database]] not exists -> ???//zzz");
+				}
+			}
 		}
 		return self::$connections[$instance];
 	}
 
 	public static function close($instance = null)
 	{
-		if (!$instance) $instance = self::$instance;
+		if (!$instance) $instance = self::$instance; //yyy
 		if (isset(self::$connections[$instance])) {
 			mysql_close(self::$connections[$instance]);
 			unset(self::$connections[$instance]);
@@ -49,9 +55,7 @@ class MySql extends DBDriver
 
 	public static function find()
 	{
-		//$db =& self::db_select();
 		$connection =& self::collect();
-		self::close();
 	}
 
 }

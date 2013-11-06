@@ -8,6 +8,7 @@ class App
 	private static $template = DEFAULT_TEMPLATE;
 	private static $view_type = DEFAULT_VIEW_TYPE;
 	private static $layout = DEFAULT_LAYOUT;
+	private static $endEvents = array();
 
 	public static function run()
 	{
@@ -194,8 +195,23 @@ class App
 		return $models[$key];
 	}
 
+	public static function addEndEvents($event)
+	{
+		self::$endEvents[] = $event;
+	}
+
+	private static function afterEnd()
+	{
+		foreach(self::$endEvents as $event) {
+			if(!isset($event['arguments']) || !is_array($event['arguments'])) $event['arguments'] = array();
+			call_user_func_array($event['function'], $event['arguments']);
+		}
+	}
+
 	public static function end($status = 0)
 	{
+		self::afterEnd();
+
 		if (ENVIRONMENT == 'Development' && !self::is_ajax_request()) {
 			echo '<div>Run time: ', microtime() - MICRO_TIME_NOW, '</div>';
 			echo '<div>Memory Usage: ', Format::byte(memory_get_usage()), ' | ', Format::byte(memory_get_usage(true)), '</div>';

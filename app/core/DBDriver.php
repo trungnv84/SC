@@ -5,7 +5,7 @@ abstract class DBDriver
 {
 	protected static $instance;
 
-	public static function setInstanceName($instance)
+	public static function setInstanceName($instance) //yyy
 	{
 		static::$instance = $instance;
 	}
