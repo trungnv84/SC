@@ -183,14 +183,15 @@ class App
 		}
 	}
 
-	public static function &getModel($name)
+	public static function &getModel($name, $target = null, $driver = DB_DRIVER, $pk = DB_OBJECT_KEY)
 	{
 		static $models = [];
-		if (!isset($models[$name])) {
+		$key = "$name.$target.$driver.$pk";
+		if (!isset($models[$key])) {
 			$class_name = $name . 'Model';
-			$models[$name] = new $class_name;
+			$models[$key] = new $class_name($target, $driver, $pk);
 		}
-		return $models[$name];
+		return $models[$key];
 	}
 
 	public static function end($status = 0)

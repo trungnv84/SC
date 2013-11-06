@@ -7,8 +7,8 @@ abstract class Model
 	protected static $_target = null;
 	protected static $_pk = DB_OBJECT_KEY;
 
-	private $_reflect;
-	private $_properties = array();
+	protected $_reflect;
+	protected $_properties = array();
 
 	public $id;
 
@@ -60,7 +60,8 @@ abstract class Model
 
 	public function __call($name, $arguments = array())
 	{
-		return call_user_func(array($this->_driver, $name), $arguments);
+		call_user_func(array($this->_driver, 'setInstanceName'), $this->_target);
+		return call_user_func_array(array($this->_driver, $name), $arguments);
 	}
 
 	public function __set($name, $value)
@@ -118,6 +119,7 @@ abstract class Model
 
 	public static function __callStatic($name, $arguments = array())
 	{
-		return call_user_func(array(static::$_driver, $name), $arguments);
+		call_user_func(array(static::$_driver, 'setInstanceName'), self::$_target);
+		return call_user_func_array(array(static::$_driver, $name), $arguments);
 	}
 }

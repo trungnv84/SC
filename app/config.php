@@ -17,6 +17,7 @@ define('ASSETS_VERSION', '1.0');
 
 /*##########################################################*/
 
+define('DB_INSTANCE', 'default');
 define('DB_DRIVER', 'MySql');
 define('DB_OBJECT_KEY', 'id');
 
@@ -111,9 +112,9 @@ $config->db['MySql'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'sc',
-	'dbprefix' => 'tb_',
-	'pconnect' => TRUE,
+	'database' => 'cs',
+	'dbprefix' => '',
+	'pconnect' => true,
 	//$config->db['MySql']['db_debug'] = TRUE;
 	//$config->db['MySql']['cache_on'] = FALSE;
 	//$config->db['MySql']['cachedir'] = '';
@@ -123,6 +124,29 @@ $config->db['MySql'] = array(
 	//$config->db['MySql']['autoinit'] = TRUE;
 	//$config->db['MySql']['stricton'] = FALSE;
 );
+
+if (DB_INSTANCE) {
+	$config->db = array(
+		DB_INSTANCE => $config->db
+	);
+
+	$config->db['user'] = array(
+		'MySql' => array(
+			'hostname' => 'localhost',
+			'username' => 'root',
+			'password' => '',
+			'database' => 'ci_shopping',
+			'dbprefix' => 'sp_',
+			'pconnect' => false,
+			'char_set' => 'utf8',
+			'dbcollat' => 'utf8_general_ci'
+		)
+	);
+
+	$config->db['session'] = array(
+		'MySql' => 'user.sc_session'
+	);
+}
 
 /*##########################################################*/
 

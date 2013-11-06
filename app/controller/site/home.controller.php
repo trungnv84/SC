@@ -5,6 +5,8 @@ class HomeController extends Controller
 {
 	function defaultAction()
 	{
+		echo '<div>Start Action: ', microtime() - MICRO_TIME_NOW, '</div>';
+
 		echo '<pre>';
 		/*$user = new UserModel;
 		$user->id = 99;
@@ -17,8 +19,12 @@ class HomeController extends Controller
 		$data = $user->getData('both');
 		var_dump($data->id, $data['id'], json_encode($data));*/
 
-		UserModel::find();
+		$rs = UserModel::query('SELECT * FROM sp_users');
+
+		var_dump($rs);
 
 		echo '</pre>';
+
+		echo '<div>End Action: ', microtime() - MICRO_TIME_NOW, '</div>';
 	}
 }

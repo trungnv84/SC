@@ -5,6 +5,8 @@ class UserModel extends Model
 {
 	public $username;
 	public $password;
+	public $status = 1;
+	public $role;
 
 	public function __construct($target = 'user')
 	{
