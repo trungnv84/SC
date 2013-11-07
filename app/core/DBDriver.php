@@ -3,20 +3,46 @@ defined('ROOT_DIR') || exit;
 
 abstract class DBDriver
 {
-	protected static $instance;
+	protected $instance;
 
-	public static function setInstanceName($instance) //yyy
+	public function __construct($instance = DB_INSTANCE)
 	{
-		static::$instance = $instance;
+		$this->instance = $instance;
 	}
 
-	protected static function dbConfig($instance, $driver)
+	public static function getDbKey($instance = DB_INSTANCE, $driver = DB_DRIVER)
+	{
+		static $keys;
+		if(!$instance) $instance = 'default';
+		if(!isset($keys[$instance])) {
+			if (DB_INSTANCE) {
+				if (isset(App::$config->db[$instance][$driver])) {
+					$config = App::$config->db[$instance][$driver];
+					if (!is_array($config)) {
+						$config = explode('.', $config);
+						if (isset(App::$config->db[$config[0]][$driver])) {
+							$config = App::$config->db[$config[0]][$driver];
+						} else {
+							$config = App::$config->db[DB_INSTANCE][$driver];
+						}
+					}
+				} else {
+					$config = App::$config->db[DB_INSTANCE][$driver];
+				}
+			} else {
+				$config = App::$config->db[$driver];
+			}
+			unset($config['database']);
+			$keys[$instance] = implode('.', $config);
+		}
+		return $keys[$instance];
+	}
+
+	protected static function getDbConfig($instance, $driver)
 	{
 		static $configs;
 		if (!isset($configs[$instance][$driver])) {
-			if (!isset($configs[$instance])) {
-				$configs[$instance] = array();
-			}
+			if (!isset($configs[$instance])) $configs[$instance] = array();
 			if (DB_INSTANCE) {
 				if (isset(App::$config->db[$instance][$driver])) {
 					$config = App::$config->db[$instance][$driver];

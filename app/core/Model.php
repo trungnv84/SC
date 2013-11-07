@@ -60,8 +60,8 @@ abstract class Model
 
 	public function __call($name, $arguments = array())
 	{
-		call_user_func(array($this->_driver, 'setInstanceName'), $this->_target); //yyy
-		return call_user_func_array(array($this->_driver, $name), $arguments);
+		$db =& App::db($this->_target, $this->_driver);
+		call_user_func_array(array($db, $name), $arguments);
 	}
 
 	public function __set($name, $value)
@@ -119,7 +119,7 @@ abstract class Model
 
 	public static function __callStatic($name, $arguments = array())
 	{
-		call_user_func(array(static::$_driver, 'setInstanceName'), self::$_target); //yyy
-		return call_user_func_array(array(static::$_driver, $name), $arguments);
+		$db =& App::db(self::$_target, static::$_driver);
+		call_user_func_array(array($db, $name), $arguments);
 	}
 }

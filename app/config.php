@@ -112,8 +112,8 @@ $config->db['MySql'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'cs',
-	'dbprefix' => '',
+	'database' => 'sc',
+	'dbprefix' => 'tbl_',
 	'pconnect' => true,
 	//$config->db['MySql']['db_debug'] = TRUE;
 	//$config->db['MySql']['cache_on'] = FALSE;
@@ -132,11 +132,11 @@ if (DB_INSTANCE) {
 
 	$config->db['user'] = array(
 		'MySql' => array(
-			'hostname' => 'localhost',
-			'username' => 'root',
-			'password' => '',
-			'database' => 'ci_shopping',
-			'dbprefix' => 'sp_',
+			'hostname' => '172.16.90.26',
+			'username' => 'admin',
+			'password' => 'admin',
+			'database' => 'tivitz',
+			'dbprefix' => '',
 			'pconnect' => false,
 			'char_set' => 'utf8',
 			'dbcollat' => 'utf8_general_ci'

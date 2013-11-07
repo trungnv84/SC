@@ -110,7 +110,7 @@ class App
 	public static function is_ajax_request()
 	{
 		static $result;
-		if(!isset($result))
+		if (!isset($result))
 			$result = (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest');
 		return $result;
 	}
@@ -161,8 +161,8 @@ class App
 	public static function view($__action, $__controller = CURRENT_CONTROLLER, $__template = null, $__layout = null, $__type = null)
 	{
 		if (is_null($__template)) $__template =& self::$template;
-		if (is_null($__layout)) $__layout =& self::$view_type;
-		if (is_null($__type)) $__type =& self::$layout;
+		if (is_null($__layout)) $__layout =& self::$layout;
+		if (is_null($__type)) $__type =& self::$view_type;
 
 		if (self::view_exists($__action, $__controller, $__template, $__layout, $__type)) {
 			if (isset(self::$vars) && is_array(self::$vars))
@@ -184,9 +184,24 @@ class App
 		}
 	}
 
+	public static function &db($instance = DB_INSTANCE, $driver = DB_DRIVER)
+	{
+		static $dbs;
+		if(!$instance) $instance = 'default';
+		if (!isset($dbs[$instance][$driver])) {
+			if (!isset($dbs[$instance])) $dbs[$instance] = array();
+			$key = call_user_func(array($driver, 'getDbKey'), $instance, $driver);
+			if(!isset($dbs[$key])) {
+				$dbs[$key] = new $driver($instance);
+			}
+			$dbs[$instance][$driver] =& $dbs[$key];
+		}
+		return $dbs[$instance][$driver];
+	}
+
 	public static function &getModel($name, $target = null, $driver = DB_DRIVER, $pk = DB_OBJECT_KEY)
 	{
-		static $models = [];
+		static $models;
 		$key = "$name.$target.$driver.$pk";
 		if (!isset($models[$key])) {
 			$class_name = $name . 'Model';
@@ -202,27 +217,37 @@ class App
 
 	private static function afterEnd()
 	{
-		foreach(self::$endEvents as $event) {
-			if(!isset($event['arguments']) || !is_array($event['arguments'])) $event['arguments'] = array();
+		foreach (self::$endEvents as $event) {
+			if (!isset($event['arguments']) || !is_array($event['arguments'])) $event['arguments'] = array();
 			call_user_func_array($event['function'], $event['arguments']);
 		}
 	}
 
 	public static function end($status = 0)
 	{
-		self::afterEnd();
+		static $ended;
+		if (!isset($ended)) {
+			$ended = true;
+			self::afterEnd();
 
-		if (ENVIRONMENT == 'Development' && !self::is_ajax_request()) {
-			echo '<div>Run time: ', microtime() - MICRO_TIME_NOW, '</div>';
-			echo '<div>Memory Usage: ', Format::byte(memory_get_usage()), ' | ', Format::byte(memory_get_usage(true)), '</div>';
-			echo '<div>Memory Peak Usage: ', Format::byte(memory_get_peak_usage()), ' | ', Format::byte(memory_get_peak_usage(true)), '</div>';
+			if (ENVIRONMENT == 'Development' && !self::is_ajax_request()) {
+				echo '<div>Run time: ', microtime() - MICRO_TIME_NOW, '</div>';
+				echo '<div>Memory Usage: ', Format::byte(memory_get_usage()), ' | ', Format::byte(memory_get_usage(true)), '</div>';
+				echo '<div>Memory Peak Usage: ', Format::byte(memory_get_peak_usage()), ' | ', Format::byte(memory_get_peak_usage(true)), '</div>';
+			}
+
+			die($status);
 		}
-
-		exit($status);
 	}
 }
 
+/*################################################*/
+
 App::$config = require(APP_DIR . DS . 'config.php');
+
+register_shutdown_function('App::end');
+
+/*################################################*/
 
 function __autoload($class_name)
 {
