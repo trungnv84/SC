@@ -61,7 +61,7 @@ abstract class Model
 	public function __call($name, $arguments = array())
 	{
 		$db =& App::db($this->_target, $this->_driver);
-		call_user_func_array(array($db, $name), $arguments);
+		return call_user_func_array(array($db, $name), $arguments);
 	}
 
 	public function __set($name, $value)
@@ -120,6 +120,6 @@ abstract class Model
 	public static function __callStatic($name, $arguments = array())
 	{
 		$db =& App::db(self::$_target, static::$_driver);
-		call_user_func_array(array($db, $name), $arguments);
+		return call_user_func_array(array($db, $name), $arguments);
 	}
 }

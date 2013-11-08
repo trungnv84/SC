@@ -17,8 +17,10 @@ define('ASSETS_VERSION', '1.0');
 
 /*##########################################################*/
 
-define('DB_INSTANCE', 'default');
-define('DB_DRIVER', 'MySql');
+define('MYSQL_DRIVER_NAME', 'MySql');
+
+define('DB_INSTANCE', '');
+define('DB_DRIVER', MYSQL_DRIVER_NAME);
 define('DB_OBJECT_KEY', 'id');
 
 /*##########################################################*/
@@ -108,21 +110,21 @@ $config->moduleTemplates = array(
 | the active record class
 */
 
-$config->db['MySql'] = array(
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'sc',
+$config->db[MYSQL_DRIVER_NAME] = array(
+	'hostname' => '172.16.90.26',
+	'username' => 'admin',
+	'password' => 'admin',
+	'database' => 'tivitz',
 	'dbprefix' => 'tbl_',
 	'pconnect' => true,
-	//$config->db['MySql']['db_debug'] = TRUE;
-	//$config->db['MySql']['cache_on'] = FALSE;
-	//$config->db['MySql']['cachedir'] = '';
+	//'db_debug' => TRUE;
+	//'cache_on' => FALSE;
+	//'cachedir' => '';
 	'char_set' => 'utf8',
 	'dbcollat' => 'utf8_general_ci',
-	//$config->db['MySql']['swap_pre'] = '';
-	//$config->db['MySql']['autoinit'] = TRUE;
-	//$config->db['MySql']['stricton'] = FALSE;
+	//'swap_pre' => '';
+	//'autoinit' => TRUE;
+	//'stricton' => FALSE;
 );
 
 if (DB_INSTANCE) {
@@ -131,7 +133,7 @@ if (DB_INSTANCE) {
 	);
 
 	$config->db['user'] = array(
-		'MySql' => array(
+		MYSQL_DRIVER_NAME => array(
 			'hostname' => '172.16.90.26',
 			'username' => 'admin',
 			'password' => 'admin',
@@ -144,9 +146,15 @@ if (DB_INSTANCE) {
 	);
 
 	$config->db['session'] = array(
-		'MySql' => 'user.sc_session'
+		MYSQL_DRIVER_NAME => 'user.sc_session'
 	);
 }
+
+/*##########################################################*/
+
+$config->dbKeyIgnores = array(
+	MYSQL_DRIVER_NAME => array('database', 'dbprefix')
+);
 
 /*##########################################################*/
 

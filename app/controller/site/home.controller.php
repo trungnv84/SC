@@ -17,8 +17,8 @@ class HomeController extends Controller
 		$data = $user->getData('both');
 		var_dump($data->id, $data['id'], json_encode($data));*/
 
-		$rs = UserModel::query('SELECT * FROM users');
-		var_dump($rs);
+		/*$rs = UserModel::query('SELECT * FROM users');
+		var_dump(mysql_fetch_row ( $rs ));*/
 		/*$rs = UserModel::query('SELECT * FROM users');
 		var_dump($rs);*/
 

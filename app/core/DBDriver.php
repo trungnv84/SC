@@ -32,7 +32,9 @@ abstract class DBDriver
 			} else {
 				$config = App::$config->db[$driver];
 			}
-			unset($config['database']);
+			if(isset(App::$config->dbKeyIgnores[$driver])) {
+				$config = array_diff_key($config, array_flip(App::$config->dbKeyIgnores[$driver]));
+			}
 			$keys[$instance] = implode('.', $config);
 		}
 		return $keys[$instance];
