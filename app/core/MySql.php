@@ -6,6 +6,9 @@ class MySql extends DBDriver
 	private static $connections = array();
 	private static $currentDatabase = '';
 
+	private $resource = null;
+	private $last_query = null;
+
 	private static function db_set_charset($instance, $charset, $collation)
 	{
 		$use_set_names = (version_compare(PHP_VERSION, '5.2.3', '>=') && version_compare(mysql_get_server_info(self::$connections[$instance]), '5.0.7', '>=')) ? FALSE : TRUE;
@@ -74,8 +77,10 @@ class MySql extends DBDriver
 
 	public function query($sql)
 	{
+		$this->last_query = $sql;
 		$connection =& self::collect($this->instance);
-		return mysql_query($sql, $connection);
+		$this->resource = mysql_query($sql, $connection);
+		return ($this->resource ? true : false);
 	}
 
 	/*public function find()

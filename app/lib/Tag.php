@@ -30,7 +30,7 @@ class Tag
 			self::${$type}[] = $asset;
 		}
 	}
-	
+
 	public static function addMetaTag($tag = '', $key = false, $overwrite = false)
 	{
 		self::addAsset($tag, 'meta', $key, $overwrite);
@@ -102,7 +102,7 @@ class Tag
 							$nameMd5 .= $css;
 							$css = PUBLIC_DIR . '/css/' . $css;
 							if (file_exists($css)) {
-								if(ASSETS_OPTIMIZATION & 2) $cache .= self::minAsset($css) . "\n";
+								if (ASSETS_OPTIMIZATION & 2) $cache .= self::minAsset($css) . "\n";
 								else $cache .= @file_get_contents($css) . "\n";
 							}
 						} elseif (preg_match('/https?:\/\//', $css)) {
@@ -123,11 +123,12 @@ class Tag
 							}
 						} elseif (file_exists($css)) {
 							$nameMd5 .= $css;
-							if(ASSETS_OPTIMIZATION & 2) $tmp = self::minAsset($css);
+							if (ASSETS_OPTIMIZATION & 2) $tmp = self::minAsset($css);
 							else $tmp = @file_get_contents($css);
 							$cache .= preg_replace('/url\s*\(\s*([\'"])/i', 'url($1../' . dirname($css) . '/', $tmp);
-						}/* else
-							$html .= "<link href=\"$css?__av=" . ASSETS_VERSION . "\" rel=\"stylesheet\" type=\"text/css\" />\n";*/
+						}
+						/* else
+													$html .= "<link href=\"$css?__av=" . ASSETS_VERSION . "\" rel=\"stylesheet\" type=\"text/css\" />\n";*/
 					} else {
 						$nameMd5 .= $css;
 						$cache .= $css . "\n";
@@ -196,8 +197,8 @@ class Tag
 								file_put_contents($cf, $tmp);
 							}
 							$cache .= $tmp . "\n";
-						} elseif(file_exists($js))
-							if(ASSETS_OPTIMIZATION & 8) $cache .= self::minAsset($js) . "\n";
+						} elseif (file_exists($js))
+							if (ASSETS_OPTIMIZATION & 8) $cache .= self::minAsset($js) . "\n";
 							else $cache .= @file_get_contents($js) . "\n";
 						/*else
 							$html .= "<script src=\"$js?v=" . ASSETS_VERSION . "\" type=\"text/javascript\" language=\"javascript\"></script>\n";*/
@@ -235,12 +236,12 @@ class Tag
 	private static function minAsset($file)
 	{
 		$pathInfo = pathinfo($file);
-		if(substr($pathInfo['filename'], -4)=='.min')
+		if (substr($pathInfo['filename'], -4) == '.min')
 			return @file_get_contents($file);
 		$minFile = "$pathInfo[dirname]/$pathInfo[filename].min.$pathInfo[extension]";
-		if(file_exists($minFile) && filemtime($minFile) > @filemtime($file))
+		if (file_exists($minFile) && (ENVIRONMENT == 'Product' || filemtime($minFile) > @filemtime($file)))
 			return @file_get_contents($minFile);
-		switch(strtolower($pathInfo['extension'])) {
+		switch (strtolower($pathInfo['extension'])) {
 			case 'css':
 				$minContent = CssMin::minify(@file_get_contents($file));
 				break;
