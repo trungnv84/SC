@@ -39,25 +39,6 @@ abstract class Model
 		}
 	}
 
-	public function getData($result = 'array')
-	{
-		$fields = $this->_reflect->getProperties(ReflectionProperty::IS_PUBLIC);
-		if ($isArray = ($result == 'array'))
-			$data = array();
-		else
-			$data = new stdClass();
-		foreach ($fields as $field) {
-			$name = $field->getName();
-			if ($isArray)
-				$data[$name] = $this->$name;
-			else
-				$data->$name = $this->$name;
-		}
-		if (in_array($result, array('both', 'ArrayObject')))
-			$data = new ArrayObject($data, ArrayObject::ARRAY_AS_PROPS);
-		return $data;
-	}
-
 	public function __call($name, $arguments = array())
 	{
 		$db =& App::db($this->_target, $this->_driver);
@@ -93,6 +74,25 @@ abstract class Model
 				return isset($this->_properties[$name]);
 			}
 		return isset($this->$name);
+	}
+
+	public function getData($result = 'array')
+	{
+		$fields = $this->_reflect->getProperties(ReflectionProperty::IS_PUBLIC);
+		if ($isArray = ($result == 'array'))
+			$data = array();
+		else
+			$data = new stdClass();
+		foreach ($fields as $field) {
+			$name = $field->getName();
+			if ($isArray)
+				$data[$name] = $this->$name;
+			else
+				$data->$name = $this->$name;
+		}
+		if (in_array($result, array('both', 'ArrayObject')))
+			$data = new ArrayObject($data, ArrayObject::ARRAY_AS_PROPS);
+		return $data;
 	}
 
 	/*###################################################*/
