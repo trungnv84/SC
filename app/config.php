@@ -12,8 +12,15 @@ define('REWRITE_SUFFIX', '.html');
 define('DEFAULT_TEMPLATE', 'site');
 define('DEFAULT_VIEW_TYPE', 'html');
 
+/*##########################################################*/
+
 define('ASSETS_OPTIMIZATION', '15'); //0 || 5 || 15
 define('ASSETS_VERSION', '1.0');
+
+/*##########################################################*/
+
+define('DIR_WRITE_MODE', 0755);
+define('FILE_WRITE_MODE', 0644);
 
 /*##########################################################*/
 
