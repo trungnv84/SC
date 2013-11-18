@@ -1,21 +1,81 @@
 <?php
 defined('ROOT_DIR') || exit;
+
 class App
 {
 	public static $config;
 	public static $module = DEFAULT_MODULE;
+	public static $phpCacheFile;
 	private static $vars = array();
 	private static $template = DEFAULT_TEMPLATE;
 	private static $view_type = DEFAULT_VIEW_TYPE;
 	private static $layout = DEFAULT_LAYOUT;
 	private static $endEvents = array();
 
-	public static function run()
+	public static function autoLoad($class_name)
+	{
+		foreach (self::$config->autoLoadPath as $type => & $path) {
+			if (!is_numeric($type)) {
+				$len = strlen($type);
+				if (substr($class_name, -$len) == $type) {
+					if (self::$module && isset(self::$config->modulePaths[self::$module][$type])) {
+						$path = self::$config->modulePaths[self::$module][$type];
+					}
+					$file = substr($class_name, 0, strlen($class_name) - $len);
+					$file = $path . DS . strtolower($file) . '.' . strtolower($type) . '.php';
+				} else continue;
+			} else $file = $path . DS . $class_name . '.php';
+			if (file_exists($file)) {
+				require_once $file;
+				if (class_exists($class_name)) {
+					if (method_exists($class_name, '__init')) $class_name::__init();
+					if (PHP_CACHE) self::phpCache($file);
+					break;
+				}
+			}
+		}
+	}
+
+	public static function phpCache($file)
+	{
+		if (isset(self::$phpCacheFile)) {
+			$file = @file_get_contents($file);
+			if (file_exists(self::$phpCacheFile)) {
+				$file = preg_replace('/^\s*<\?php/', '', $file);
+				$file = preg_replace('/defined\(\'ROOT_DIR\'\)\s*\|\|\s*exit\s*;/', '', $file);
+			}
+			@file_put_contents(self::$phpCacheFile, $file, FILE_APPEND);
+		}
+	}
+
+	public static function delCache($type)
+	{
+		switch($type) {
+			case 'php':
+				$folder = PHP_CACHE_DIR;
+				break;
+			case 'css':
+				$folder = PUBLIC_DIR . DS . 'css' . DS . 'cache';
+				break;
+			case 'js':
+				$folder = PUBLIC_DIR . DS . 'js' . DS . 'cache';
+				break;
+			default:
+				return;
+		}
+	}
+
+	public static function run($controller = null, $action = null)
 	{
 		if (isset($_GET['_url'])) self::parseUrl($_GET['_url']);
-		else self::autoSetTemplate();
-		$controller = strtolower(self::getVarName('controller', self::$config->defaultController));
-		$action = strtolower(self::getVarName('action', self::$config->defaultAction));
+
+		self::autoSetTemplate();
+
+		if (is_null($controller))
+			$controller = strtolower(self::getVarName('controller', self::$config->defaultController));
+		if (is_null($action))
+			$action = strtolower(self::getVarName('action', self::$config->defaultAction));
+
 		$ctrl = ucfirst($controller) . 'Controller';
 		if (class_exists($ctrl)) {
 			define('CURRENT_CONTROLLER', $controller);
@@ -32,8 +92,12 @@ class App
 		}
 	}
 
-	private static function parseUrl(&$url)
+	public static function parseUrl(&$url)
 	{
+		static $parsed;
+		if (isset($parsed)) return;
+		$parsed = true;
+
 		if (isset(self::$config->modules) && is_array(self::$config->modules)) {
 			foreach (self::$config->modules as $name) {
 				if (strpos($url, "/$name/") === 0 || $url == "/$name") {
@@ -44,12 +108,11 @@ class App
 		}
 
 		$routed = false;
-		self::autoSetTemplate();
 		if (isset(self::$config->router) && is_array(self::$config->router)) {
 			foreach (self::$config->router as $router) {
 				if ($routed = preg_match('#^' . $router[0] . '$#', $url, $matches)) {
 					foreach ($router[1] as $name => $index) {
-						if (isset($matches[$index])) {
+						if (isset($matches[$index]) && $matches[$index]) {
 							$_GET[$name] = $matches[$index];
 							if (!isset($_POST[$name]))
 								$_REQUEST[$name] = $matches[$index];
@@ -65,7 +128,7 @@ class App
 		}
 	}
 
-	private static function autoSetTemplate()
+	public static function autoSetTemplate()
 	{
 		if (isset(self::$config->moduleTemplates[self::$module])) {
 			self::$template = self::$config->moduleTemplates[self::$module];
@@ -89,7 +152,7 @@ class App
 	}
 
 	//Using $_REQUEST is strongly discouraged.
-	//s inputThis super global is not recommended since it includes not only POST and GET data, but also the cookies sent by the request.
+	//This super global is not recommended since it includes not only POST and GET data, but also the cookies sent by the request.
 	//This can lead to confusion and makes your code prone to mistakes, which could lead to security problems.
 	public static function REQUEST($key, $default = NULL)
 	{
@@ -187,11 +250,11 @@ class App
 	public static function &db($instance = DB_INSTANCE, $driver = DB_DRIVER)
 	{
 		static $dbs;
-		if(!$instance) $instance = 'default';
+		if (!$instance) $instance = 'default';
 		if (!isset($dbs[$instance][$driver])) {
 			if (!isset($dbs[$instance])) $dbs[$instance] = array();
 			$key = call_user_func(array($driver, 'getDbKey'), $instance, $driver);
-			if(!isset($dbs[$key])) {
+			if (!isset($dbs[$key])) {
 				$dbs[$key] = new $driver($instance);
 			}
 			$dbs[$instance][$driver] =& $dbs[$key];
@@ -226,49 +289,33 @@ class App
 	public static function end($status = 0)
 	{
 		static $ended;
-		if (!isset($ended)) {
-			$ended = true;
-			self::afterEnd();
+		if (isset($ended)) return;
+		$ended = true;
 
-			if (ENVIRONMENT == 'Development' && !self::is_ajax_request()) {
-				echo '<div>Run time: ', microtime() - MICRO_TIME_NOW, '</div>';
-				echo '<div>Memory Usage: ', Format::byte(memory_get_usage()), ' | ', Format::byte(memory_get_usage(true)), '</div>';
-				echo '<div>Memory Peak Usage: ', Format::byte(memory_get_peak_usage()), ' | ', Format::byte(memory_get_peak_usage(true)), '</div>';
-			}
+		self::afterEnd();
 
-			die($status);
+		if (ENVIRONMENT == 'Development' && !self::is_ajax_request()) {
+			echo '<div>Run time: ', microtime() - MICRO_TIME_NOW, '</div>';
+			echo '<div>Memory Usage: ', Format::byte(memory_get_usage()), ' | ', Format::byte(memory_get_usage(true)), '</div>';
+			echo '<div>Memory Peak Usage: ', Format::byte(memory_get_peak_usage()), ' | ', Format::byte(memory_get_peak_usage(true)), '</div>';
 		}
+
+		die($status);
 	}
 }
-
-/*################################################*/
-
-App::$config = require(APP_DIR . DS . 'config.php');
-
-register_shutdown_function('App::end');
 
 /*################################################*/
 
 function __autoload($class_name)
 {
-	foreach (App::$config->autoLoadPath as $type => & $path) {
-		if (!is_numeric($type)) {
-			$len = strlen($type);
-			if (substr($class_name, -$len) == $type) {
-				if (App::$module && isset(App::$config->modulePaths[App::$module][$type])) {
-					$path = App::$config->modulePaths[App::$module][$type];
-				}
-				$file = substr($class_name, 0, strlen($class_name) - $len);
-				$file = $path . DS . strtolower($file) . '.' . strtolower($type) . '.php';
-			} else continue;
-		} else $file = $path . DS . $class_name . '.php';
-		if (file_exists($file)) {
-			require_once($file);
-			if (class_exists($class_name)) {
-				if (method_exists($class_name, '__init'))
-					$class_name::__init();
-				break;
-			}
-		}
-	}
+	App::autoLoad($class_name);
 }
+
+/*################################################*/
+
+register_shutdown_function('App::end');
+
+/*################################################*/
+
+App::$config = $_config;
+

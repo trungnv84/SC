@@ -17,7 +17,7 @@ class HomeController extends Controller
 		$data = $user->getData('both');
 		var_dump($data->id, $data['id'], json_encode($data));*/
 
-		UserModel::find();
+		//UserModel::find();
 
 		echo '</pre>';
 	}

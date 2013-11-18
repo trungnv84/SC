@@ -1,7 +1,37 @@
 <?php
-defined('ROOT_DIR') || exit;
+date_default_timezone_set('Asia/Bangkok');
+define('MICRO_TIME_NOW', microtime());
+define('TIME_NOW', time());
+
+define('APP_DIR', __DIR__);
+define('DS', DIRECTORY_SEPARATOR);
+define('ROOT_DIR', substr(APP_DIR, 0, strrpos(APP_DIR, DS)));
+
+if (isset($_SERVER['HTTP_HOST'])) {
+	$_base_url = isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off' ? 'https' : 'http';
+	$_base_url .= '://' . $_SERVER['HTTP_HOST'];
+	$_base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+} else {
+	$_base_url = 'http://localhost/';
+}
+define('BASE_URL', $_base_url);
+
+define('PUBLIC_DIR', ROOT_DIR . DS . 'public');
+define('CONTROLLER_DIR', APP_DIR . DS . 'controller');
+define('MODEL_DIR', APP_DIR . DS . 'model');
+define('TEMPLATE_DIR', APP_DIR . DS . 'template');
+
+define('CACHE_DIR', APP_DIR . DS . 'cache');
+define('PHP_CACHE_DIR', CACHE_DIR . DS . 'php');
+define('DB_CACHE_DIR', CACHE_DIR . DS . 'db');
+
+/*##########################################################*/
 
 define('ENVIRONMENT', 'Development');
+
+define('PHP_CACHE', true);
+
+/*##########################################################*/
 
 define('DEFAULT_MODULE', 'site');
 define('DEFAULT_CONTROLLER', 'home');
@@ -44,11 +74,11 @@ $config->autoLoadPath = array(
 
 $config->router = array(
 	array(
-		'^/admin(/|[^/]+)?(/|/([^/\.]+))?(/|\\'. REWRITE_SUFFIX. ')?',
-		array('controller' => 1, 'action' => 3)
+		'^/admin(/|/([^/\.]+))?(/|/([^/\.]+))?(/|\\' . REWRITE_SUFFIX . ')?',
+		array('controller' => 2, 'action' => 4)
 	),
 	array(
-		'^/([^/]+)(/|/([^/\.]+))?(/|\\'. REWRITE_SUFFIX. ')?',
+		'^/([^/\.]+)(/|/([^/\.]+))?(/|\\' . REWRITE_SUFFIX . ')?',
 		array('controller' => 1, 'action' => 3)
 	)
 );
@@ -57,10 +87,10 @@ $config->modules = array('site', 'admin');
 
 $config->modulePaths = array(
 	'site' => array(
-		'Controller' => $config->autoLoadPath['Controller'] . DS . 'site'   //CONTROLLER_DIR . DS . 'site'
+		'Controller' => $config->autoLoadPath['Controller'] . DS . 'site' //CONTROLLER_DIR . DS . 'site'
 	),
 	'admin' => array(
-		'Controller' => $config->autoLoadPath['Controller'] . DS . 'admin'   //CONTROLLER_DIR . DS . 'admin'
+		'Controller' => $config->autoLoadPath['Controller'] . DS . 'admin' //CONTROLLER_DIR . DS . 'admin'
 	)
 );
 
