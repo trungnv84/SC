@@ -50,18 +50,36 @@ class App
 
 	public static function delCache($type)
 	{
-		switch($type) {
+		switch ($type) {
 			case 'php':
-				$folder = PHP_CACHE_DIR;
+				$folders = array(PHP_CACHE_DIR);
 				break;
 			case 'css':
-				$folder = PUBLIC_DIR . DS . 'css' . DS . 'cache';
+				$folders = array(CSS_CACHE_DIR);
 				break;
 			case 'js':
-				$folder = PUBLIC_DIR . DS . 'js' . DS . 'cache';
+				$folders = array(JS_CACHE_DIR);
+				break;
+			case 'all':
+				$folders = array(
+					PHP_CACHE_DIR,
+					CSS_CACHE_DIR,
+					JS_CACHE_DIR
+				);
 				break;
 			default:
 				return;
+		}
+		foreach ($folders as $folder) {
+			if (is_dir($folder)) {
+				foreach (new DirectoryIterator($folder) as $fileInfo) {
+					if ($fileInfo->isFile()) {
+						unlink($fileInfo->getPathname());
+					} elseif (!$fileInfo->isDot() && $fileInfo->isDir()) {
+						rmdir($fileInfo->getPathname());
+					}
+				}
+			}
 		}
 	}
 
@@ -194,7 +212,7 @@ class App
 		if (is_null($layout)) $layout =& self::$layout;
 		$key = "$template.$type.$layout.$controller.$action";
 		if (!isset($results[$key])) {
-			$results[$key] = file_exists(TEMPLATE_DIR . DS . $template . DS . $controller . DS . $action . '.php');
+			$results[$key] = file_exists(TEMPLATE_DIR . $template . DS . $controller . DS . $action . '.php');
 		}
 		return $results[$key];
 	}
@@ -205,7 +223,7 @@ class App
 		if (is_null($template)) $template =& self::$template;
 		$key = "$template.$layout";
 		if (!isset($results[$key])) {
-			$results[$key] = file_exists(TEMPLATE_DIR . DS . $template . DS . 'layout' . DS . $layout . '.php');
+			$results[$key] = file_exists(TEMPLATE_DIR . $template . DS . 'layout' . DS . $layout . '.php');
 		}
 		return $results[$key];
 	}
@@ -216,7 +234,7 @@ class App
 		if (is_null($template)) $template =& self::$template;
 		$key = "$template.$type";
 		if (!isset($results[$key])) {
-			$results[$key] = file_exists(TEMPLATE_DIR . DS . $template . DS . $type . '.php');
+			$results[$key] = file_exists(TEMPLATE_DIR . $template . DS . $type . '.php');
 		}
 		return $results[$key];
 	}
@@ -231,14 +249,14 @@ class App
 			if (isset(self::$vars) && is_array(self::$vars))
 				foreach (self::$vars as $__key => &$__val) $$__key =& $__val;
 			ob_start();
-			require(TEMPLATE_DIR . DS . $__template . DS . $__controller . DS . $__action . '.php');
+			require(TEMPLATE_DIR . $__template . DS . $__controller . DS . $__action . '.php');
 			if (App::layout_exists($__layout, $__template)) {
 				$__html__main = ob_get_clean();
-				require(TEMPLATE_DIR . DS . $__template . DS . 'layout' . DS . $__layout . '.php');
+				require(TEMPLATE_DIR . $__template . DS . 'layout' . DS . $__layout . '.php');
 			}
 			if (App::response_type_exists($__type, $__template)) {
 				$__html_layout = ob_get_clean();
-				require(TEMPLATE_DIR . DS . $__template . DS . $__type . '.php');
+				require(TEMPLATE_DIR . $__template . DS . $__type . '.php');
 			}
 			//ob_end_flush();
 			self::end();

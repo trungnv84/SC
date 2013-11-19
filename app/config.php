@@ -3,33 +3,40 @@ date_default_timezone_set('Asia/Bangkok');
 define('MICRO_TIME_NOW', microtime());
 define('TIME_NOW', time());
 
-define('APP_DIR', __DIR__);
 define('DS', DIRECTORY_SEPARATOR);
-define('ROOT_DIR', substr(APP_DIR, 0, strrpos(APP_DIR, DS)));
+define('APP_DIR', __DIR__ . DS);
+define('ROOT_DIR', substr(APP_DIR, 0, 1 + strrpos(APP_DIR, DS, -2)));
 
 if (isset($_SERVER['HTTP_HOST'])) {
 	$_base_url = isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off' ? 'https' : 'http';
+	define('SCHEME', $_base_url);
 	$_base_url .= '://' . $_SERVER['HTTP_HOST'];
 	$_base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
 } else {
+	define('SCHEME', 'http');
 	$_base_url = 'http://localhost/';
 }
 define('BASE_URL', $_base_url);
 
-define('PUBLIC_DIR', ROOT_DIR . DS . 'public');
-define('CONTROLLER_DIR', APP_DIR . DS . 'controller');
-define('MODEL_DIR', APP_DIR . DS . 'model');
-define('TEMPLATE_DIR', APP_DIR . DS . 'template');
+define('PUBLIC_DIR', ROOT_DIR . 'public' . DS);
+define('CONTROLLER_DIR', APP_DIR . 'controller' . DS);
+define('MODEL_DIR', APP_DIR . 'model' . DS);
+define('TEMPLATE_DIR', APP_DIR . 'template' . DS);
 
-define('CACHE_DIR', APP_DIR . DS . 'cache');
-define('PHP_CACHE_DIR', CACHE_DIR . DS . 'php');
-define('DB_CACHE_DIR', CACHE_DIR . DS . 'db');
+define('CACHE_DIR', APP_DIR . 'cache' . DS);
+define('PHP_CACHE_DIR', CACHE_DIR . 'php' . DS);
+define('DB_CACHE_DIR', CACHE_DIR . 'db' . DS);
+
+define('DEFAULT_CSS_DIR', PUBLIC_DIR . 'css' . DS);
+define('CSS_CACHE_DIR', DEFAULT_CSS_DIR . 'cache' . DS);
+define('DEFAULT_JS_DIR', PUBLIC_DIR . 'js' . DS);
+define('JS_CACHE_DIR', DEFAULT_JS_DIR . 'cache' . DS);
 
 /*##########################################################*/
 
 define('ENVIRONMENT', 'Development');
 
-define('PHP_CACHE', true);
+define('PHP_CACHE', false);
 
 /*##########################################################*/
 
@@ -52,6 +59,9 @@ define('ASSETS_VERSION', '1.0');
 define('DIR_WRITE_MODE', 0755);
 define('FILE_WRITE_MODE', 0644);
 
+define('DIR_SAFE_MODE', 0500);
+define('FILE_SAFE_MODE', 0400);
+
 /*##########################################################*/
 
 define('MYSQL_DRIVER_NAME', 'MySql');
@@ -65,11 +75,11 @@ define('DB_OBJECT_KEY', 'id');
 $config = new stdClass();
 
 $config->autoLoadPath = array(
-	APP_DIR . DS . 'core',
+	APP_DIR . 'core',
 	'Controller' => CONTROLLER_DIR,
 	/*'View' => APP_DIR . DS . 'view',*/
 	'Model' => MODEL_DIR,
-	APP_DIR . DS . 'lib'
+	APP_DIR . 'lib'
 );
 
 $config->router = array(

@@ -1,7 +1,7 @@
 <?php
 $_config = require '../app/config.php';
 
-require APP_DIR . DS . 'App.php';
+require APP_DIR . 'App.php';
 
 App::delCache(App::GET('_del_cache', null));
 
@@ -12,7 +12,7 @@ $_action = strtolower(App::getVarName('action', App::$config->defaultAction));
 
 if (PHP_CACHE) {
 	$_module = App::$module;
-	App::$phpCacheFile = PHP_CACHE_DIR . DS . "$_module.$_controller.$_action.php";
+	App::$phpCacheFile = PHP_CACHE_DIR . "$_module.$_controller.$_action.php";
 	if (file_exists(App::$phpCacheFile)) require App::$phpCacheFile;
 }
 

@@ -116,27 +116,28 @@ class Tag
 					$nameMd5 .= $css;
 					if (strrpos($css, '{') === false) {
 						if (strrpos($css, '/') === false) {
-							$css = PUBLIC_DIR . DS . 'css' . DS . $css;
+							$css = DEFAULT_CSS_DIR . $css;
 							if (file_exists($css)) {
 								$mTime = filemtime($css);
 								if ($maxTime < $mTime) $maxTime = $mTime;
 							}
-						} elseif (preg_match('/https?:\/\//i', $css)) {
-							$folder = PUBLIC_DIR . DS . 'css' . DS . 'cache' . DS;
-							$file = $folder . preg_replace('/[^a-z0-9\.]+/i', '-', $css);
+						} elseif (preg_match('/^https?:\/\/|\/\/([\da-z\.-]+)\.([a-z\.]{2,6})/i', $css)) {
+							$file = CSS_CACHE_DIR . preg_replace('/[^a-z0-9\.]+/i', '-', $css);
 							if (file_exists($file)) {
 								$tmp = @file_get_contents($file);
 							} else {
+								if (!preg_match('/^http/i', $css)) $css = SCHEME . ':' . $css;
 								$tmp = @file_get_contents($css);
 								$tmp = CssMin::minify($tmp);
-								if (!is_dir($folder)) mkdir($folder, DIR_WRITE_MODE, true);
+								//if (!is_dir(CSS_CACHE_DIR)) mkdir(CSS_CACHE_DIR, DIR_WRITE_MODE, true);
+								File::mkDir(CSS_CACHE_DIR);
 								@file_put_contents($file, $tmp);
 							}
 							if (preg_match('/:\s*url\s*\(/i', $tmp)) {
 								$html .= "<link href=\"$css?__av=" . ASSETS_VERSION . "\" rel=\"stylesheet\" type=\"text/css\" />\n";
 							}
 						} else {
-							$css = PUBLIC_DIR . DS . $css;
+							$css = PUBLIC_DIR . $css;
 							if (file_exists($css)) {
 								$mTime = filemtime($css);
 								if ($maxTime < $mTime) $maxTime = $mTime;
@@ -146,27 +147,28 @@ class Tag
 				}
 
 				$nameMd5 = md5($nameMd5);
-				$file = PUBLIC_DIR . DS . 'css' . DS . 'cache' . DS . $nameMd5 . '.css';
+				$file = CSS_CACHE_DIR . $nameMd5 . '.css';
 				if (!file_exists($file) || (ENVIRONMENT != 'Production' && $maxTime > filemtime($file))) {
 					$cache = '';
 					foreach (self::$html_css as $css) {
 						if (strrpos($css, '{') !== false) {
 							$cache .= $css;
 						} elseif (strrpos($css, '/') === false) {
-							$css = PUBLIC_DIR . DS . 'css' . DS . $css;
+							$css = DEFAULT_CSS_DIR . $css;
 							if (file_exists($css)) {
 								if (ASSETS_OPTIMIZATION & 2) $cache .= self::minAsset($css, true) . "\n";
 								else $cache .= @file_get_contents($css) . "\n";
 							}
-						} elseif (preg_match('/https?:\/\//i', $css)) {
-							$folder = PUBLIC_DIR . DS . 'css' . DS . 'cache' . DS;
-							$file = $folder . preg_replace('/[^a-z0-9\.]+/i', '-', $css);
+						} elseif (preg_match('/^https?:\/\/|\/\/([\da-z\.-]+)\.([a-z\.]{2,6})/i', $css)) {
+							$file = CSS_CACHE_DIR . preg_replace('/[^a-z0-9\.]+/i', '-', $css);
 							if (file_exists($file)) {
 								$css = @file_get_contents($file);
 							} else {
+								if (!preg_match('/^http/i', $css)) $css = SCHEME . ':' . $css;
 								$css = @file_get_contents($css);
 								if (ASSETS_OPTIMIZATION & 2) $css = CssMin::minify($css);
-								if (!is_dir($folder)) mkdir($folder, DIR_WRITE_MODE, true);
+								//if (!is_dir(CSS_CACHE_DIR)) mkdir(CSS_CACHE_DIR, DIR_WRITE_MODE, true);
+								File::mkDir(CSS_CACHE_DIR);
 								@file_put_contents($file, $css);
 							}
 							if (!preg_match('/:\s*url\s*\(/i', $css)) {
@@ -179,9 +181,9 @@ class Tag
 						}
 					}
 					$cache = str_replace(array('"../', '\'../'), array('"../../', '\'../../'), $cache);
-					$folder = PUBLIC_DIR . DS . 'css' . DS . 'cache' . DS;
-					if (!is_dir($folder)) mkdir($folder, DIR_WRITE_MODE, true);
-					$file = $folder . $nameMd5 . '.css';
+					//if (!is_dir(CSS_CACHE_DIR)) mkdir(CSS_CACHE_DIR, DIR_WRITE_MODE, true);
+					File::mkDir(CSS_CACHE_DIR);
+					$file = CSS_CACHE_DIR . $nameMd5 . '.css';
 					@file_put_contents($file, $cache);
 				}
 
@@ -191,7 +193,7 @@ class Tag
 				foreach (self::$html_css as $css) {
 					if (strrpos($css, '{') === false) {
 						if (strrpos($css, '/') === false) $css = "css/$css";
-						if (ASSETS_OPTIMIZATION & 2 && !preg_match('/https?:\/\//i', $css)) $css = self::minAsset($css);
+						if (ASSETS_OPTIMIZATION & 2 && !preg_match('/^https?:\/\/|\/\/([\da-z\.-]+)\.([a-z\.]{2,6})/i', $css)) $css = self::minAsset($css);
 						$css .= '?__av=' . ASSETS_VERSION;
 						$html .= "<link href=\"$css\" rel=\"stylesheet\" type=\"text/css\" />\n";
 					} else {
@@ -222,22 +224,23 @@ class Tag
 					$nameMd5 .= $js;
 					if (!preg_match('/[;\(]/', $js)) {
 						if (strrpos($js, '/') === false) {
-							$js = PUBLIC_DIR . DS . 'js' . DS . $js;
+							$js = DEFAULT_JS_DIR . $js;
 							if (file_exists($js)) {
 								$mTime = filemtime($js);
 								if ($maxTime < $mTime) $maxTime = $mTime;
 							}
-						} elseif (preg_match('/https?:\/\//i', $js)) {
-							$folder = PUBLIC_DIR . DS . 'js' . DS . 'cache' . DS;
-							$file = $folder . preg_replace('/[^a-z0-9\.]+/i', '-', $js);
+						} elseif (preg_match('/^https?:\/\/|\/\/([\da-z\.-]+)\.([a-z\.]{2,6})/i', $js)) {
+							$file = JS_CACHE_DIR . preg_replace('/[^a-z0-9\.]+/i', '-', $js);
 							if (!file_exists($file)) {
+								if (!preg_match('/^http/i', $js)) $js = SCHEME . ':' . $js;
 								$js = @file_get_contents($js);
 								$js = JSMin::minify($js);
-								if (!is_dir($folder)) mkdir($folder, DIR_WRITE_MODE, true);
+								//if (!is_dir(JS_CACHE_DIR)) mkdir(JS_CACHE_DIR, DIR_WRITE_MODE, true);
+								File::mkDir(JS_CACHE_DIR);
 								@file_put_contents($file, $js);
 							}
 						} else {
-							$js = PUBLIC_DIR . DS . $js;
+							$js = PUBLIC_DIR . $js;
 							if (file_exists($js)) {
 								$mTime = filemtime($js);
 								if ($maxTime < $mTime) $maxTime = $mTime;
@@ -247,27 +250,28 @@ class Tag
 				}
 
 				$nameMd5 = md5($nameMd5);
-				$file = PUBLIC_DIR . DS . 'js' . DS . 'cache' . DS . $nameMd5 . '.js';
+				$file = JS_CACHE_DIR . $nameMd5 . '.js';
 				if (!file_exists($file) || (ENVIRONMENT != 'Production' && $maxTime > filemtime($file))) {
 					$cache = '';
 					foreach ($jss as $js) {
 						if (preg_match('/[;\(]/', $js)) {
 							$cache .= $js . "\n";
 						} elseif (strrpos($js, '/') === false) {
-							$js = PUBLIC_DIR . DS . 'js' . DS . $js;
+							$js = DEFAULT_JS_DIR . $js;
 							if (file_exists($js)) {
 								if (ASSETS_OPTIMIZATION & 8) $cache .= self::minAsset($js, true) . "\n";
 								else $cache .= @file_get_contents($js) . "\n";
 							}
-						} elseif (preg_match('/https?:\/\//i', $js)) {
-							$folder = PUBLIC_DIR . DS . 'js' . DS . 'cache' . DS;
-							$file = $folder . preg_replace('/[^a-z0-9\.]+/i', '-', $js);
+						} elseif (preg_match('/^https?:\/\/|\/\/([\da-z\.-]+)\.([a-z\.]{2,6})/i', $js)) {
+							$file = JS_CACHE_DIR . preg_replace('/[^a-z0-9\.]+/i', '-', $js);
 							if (file_exists($file)) {
 								$js = @file_get_contents($file);
 							} else {
+								if (!preg_match('/^http/i', $js)) $js = SCHEME . ':' . $js;
 								$js = @file_get_contents($js);
 								$js = JSMin::minify($js);
-								if (!is_dir($folder)) mkdir($folder, DIR_WRITE_MODE, true);
+								//if (!is_dir(JS_CACHE_DIR)) mkdir(JS_CACHE_DIR, DIR_WRITE_MODE, true);
+								File::mkDir(JS_CACHE_DIR);
 								@file_put_contents($file, $js);
 							}
 							$cache .= $js . "\n";
@@ -277,9 +281,9 @@ class Tag
 						}
 					}
 
-					$folder = PUBLIC_DIR . DS . 'js' . DS . 'cache' . DS;
-					if (!is_dir($folder)) mkdir($folder, DIR_WRITE_MODE, true);
-					$file = $folder . $nameMd5 . '.js';
+					//if (!is_dir(JS_CACHE_DIR)) mkdir(JS_CACHE_DIR, DIR_WRITE_MODE, true);
+					File::mkDir(JS_CACHE_DIR);
+					$file = JS_CACHE_DIR . $nameMd5 . '.js';
 					@file_put_contents($file, $cache);
 				}
 
@@ -291,7 +295,7 @@ class Tag
 						$html .= "<script type=\"text/javascript\" language=\"javascript\">\n{$js}\n</script>\n";
 					} else {
 						if (strrpos($js, '/') === false) $js = "js/$js";
-						if (ASSETS_OPTIMIZATION & 2 && !preg_match('/https?:\/\//i', $js)) $js = self::minAsset($js);
+						if (ASSETS_OPTIMIZATION & 2 && !preg_match('/^https?:\/\/|\/\/([\da-z\.-]+)\.([a-z\.]{2,6})/i', $js)) $js = self::minAsset($js);
 						$js .= '?v=' . ASSETS_VERSION;
 						$html .= "<script src=\"$js\" type=\"text/javascript\" language=\"javascript\"></script>\n";
 					}
