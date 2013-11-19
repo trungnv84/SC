@@ -72,13 +72,7 @@ class App
 		}
 		foreach ($folders as $folder) {
 			if (is_dir($folder)) {
-				foreach (new DirectoryIterator($folder) as $fileInfo) {
-					if ($fileInfo->isFile()) {
-						unlink($fileInfo->getPathname());
-					} elseif (!$fileInfo->isDot() && $fileInfo->isDir()) {
-						rmdir($fileInfo->getPathname());
-					}
-				}
+				File::delete($folder);
 			}
 		}
 	}

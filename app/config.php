@@ -51,7 +51,7 @@ define('DEFAULT_VIEW_TYPE', 'html');
 
 /*##########################################################*/
 
-define('ASSETS_OPTIMIZATION', '15'); //0 || 5 || 15
+define('ASSETS_OPTIMIZATION', 15); //0 || 5 || 15
 define('ASSETS_VERSION', '1.0');
 
 /*##########################################################*/
