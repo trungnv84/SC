@@ -19,8 +19,12 @@ class HomeController extends Controller
 
 		/*$rs = UserModel::query('SELECT * FROM users');
 		var_dump(mysql_fetch_row ( $rs ));*/
-		$rs = UserModel::query('SELECT * FROM users');
-		var_dump($rs);
+		/*$rs = UserModel::query('SELECT * FROM users');
+		var_dump($rs);*/
+
+		$filterInput = Joomla\JFilterInput::getInstance();
+		echo $filterInput->clean('<script>alert("abc");</script>');
+		echo $filterInput->clean('alert');
 
 		echo '</pre>';
 	}

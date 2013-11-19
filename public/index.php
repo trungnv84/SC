@@ -1,5 +1,5 @@
 <?php
-$_config = require '../app/config.php';
+require '../app/constant.php';
 
 require APP_DIR . 'App.php';
 

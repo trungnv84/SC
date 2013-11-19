@@ -14,6 +14,8 @@ class App
 
 	public static function autoLoad($class_name)
 	{
+		require_once APP_DIR . 'lib' . DS . 'joomla' . DS . 'adapter.php';
+		//echo $class_name;
 		foreach (self::$config->autoLoadPath as $type => & $path) {
 			if (!is_numeric($type)) {
 				$len = strlen($type);
@@ -25,6 +27,7 @@ class App
 					$file = $path . DS . strtolower($file) . '.' . strtolower($type) . '.php';
 				} else continue;
 			} else $file = $path . DS . $class_name . '.php';
+
 			if (file_exists($file)) {
 				require_once $file;
 				if (class_exists($class_name)) {
@@ -145,6 +148,18 @@ class App
 		if (isset(self::$config->moduleTemplates[self::$module])) {
 			self::$template = self::$config->moduleTemplates[self::$module];
 		}
+	}
+
+	public static function getMethod()
+	{
+		static $method;
+		if (!isset($method)) {
+			if (isset($_SERVER['REQUEST_METHOD']))
+				$method = strtoupper($_SERVER['REQUEST_METHOD']);
+			else
+				$method = null;
+		}
+		return $method;
 	}
 
 	public static function GET($key, $default = NULL)
@@ -304,7 +319,11 @@ class App
 		if (isset($ended)) return;
 		$ended = true;
 
-		self::afterEnd();
+		$lastError = error_get_last();
+		if (is_null($lastError))
+			self::afterEnd();
+		else
+			self::errorLog($lastError);
 
 		if (ENVIRONMENT == 'Development' && !self::is_ajax_request()) {
 			echo '<div>Run time: ', microtime() - MICRO_TIME_NOW, '</div>';
@@ -318,6 +337,10 @@ class App
 
 /*################################################*/
 
+App::$config = require APP_DIR . 'config.php';
+
+/*################################################*/
+
 function __autoload($class_name)
 {
 	App::autoLoad($class_name);
@@ -327,7 +350,5 @@ function __autoload($class_name)
 
 register_shutdown_function('App::end');
 
-/*################################################*/
 
-App::$config = $_config;
 
