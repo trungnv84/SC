@@ -191,28 +191,28 @@ class App
 		return $method;
 	}
 
-	public static function GET($key, $default = null)
+	public static function GET($name, $default = null)
 	{
-		if (isset($_GET[$key]))
-			return $_GET[$key];
+		if (isset($_GET[$name]))
+			return $_GET[$name];
 		else
 			return $default;
 	}
 
-	public static function POST($key, $default = null)
+	public static function POST($name, $default = null)
 	{
-		if (isset($_POST[$key]))
-			return $_POST[$key];
+		if (isset($_POST[$name]))
+			return $_POST[$name];
 		else
 			return $default;
 	}
 
-	public static function POST_GET($key, $default = null)
+	public static function POST_GET($name, $default = null)
 	{
-		if (isset($_POST[$key]))
-			return $_POST[$key];
-		elseif (isset($_GET[$key]))
-			return $_GET[$key];
+		if (isset($_POST[$name]))
+			return $_POST[$name];
+		elseif (isset($_GET[$name]))
+			return $_GET[$name];
 		else
 			return $default;
 	}
@@ -220,18 +220,32 @@ class App
 	//Using $_REQUEST is strongly discouraged.
 	//This super global is not recommended since it includes not only POST and GET data, but also the cookies sent by the request.
 	//This can lead to confusion and makes your code prone to mistakes, which could lead to security problems.
-	public static function REQUEST($key, $default = null)
+	public static function REQUEST($name, $default = null)
 	{
-		if (isset($_REQUEST[$key]))
-			return $_REQUEST[$key];
+		if (isset($_REQUEST[$name]))
+			return $_REQUEST[$name];
 		else
 			return $default;
 	}
 
-	public static function getVar($key, $default = null, $type = null)
+	public static function getVar($name, $default = null, $type = null, $hash = null)
 	{
-		$var = self::POST_GET($key, $default);
-		if ($type == 'html')
+		if ('METHOD' === strtoupper($hash))
+			$hash = $_SERVER['REQUEST_METHOD'];
+		switch (strtoupper($hash)) {
+			case 'GET':
+				$var = self::GET($name, $default);
+				break;
+			case 'POST':
+				$var = self::POST($name, $default);
+				break;
+			case 'REQUEST':
+				$var = self::REQUEST($name, $default);
+				break;
+			default:
+				$var = self::POST_GET($name, $default);
+		}
+		if ('HTML' === strtoupper($type))
 			$filter = Joomla\JFilterInput::getInstance(null, null, 1, 1);
 		else
 			$filter = Joomla\JFilterInput::getInstance();
@@ -239,45 +253,95 @@ class App
 		return $var;
 	}
 
-	public static function getVarString($key, $default = null)
+	public static function getVarString($name, $default = null, $hash = null)
 	{
-		$var = self::getVar($key, $default, 'string');
+		$var = self::getVar($name, $default, 'string', $hash);
 		return $var;
 	}
 
-	public static function getVarInt($key, $default = 0)
+	public static function getVarInt($name, $default = 0, $hash = null)
 	{
-		$var = self::getVar($key, $default, 'int');
+		$var = self::getVar($name, $default, 'INT', $hash);
 		return $var;
 	}
 
-	public static function getVarUInt($key, $default = 0)
+	public static function getVarUInt($name, $default = 0, $hash = null)
 	{
-		$var = self::getVar($key, $default, 'uint');
+		$var = self::getVar($name, $default, 'UINT', $hash);
 		return $var;
 	}
 
-	public static function getVarFloat($key, $default = 0.0)
+	public static function getVarFloat($name, $default = 0.0, $hash = null)
 	{
-		$var = self::getVar($key, $default, 'float');
+		$var = self::getVar($name, $default, 'FLOAT', $hash);
 		return $var;
 	}
 
-	public static function getVarBool($key, $default = false)
+	public static function getVarBool($name, $default = false, $hash = null)
 	{
-		$var = self::getVar($key, $default, 'bool');
+		$var = self::getVar($name, $default, 'BOOL', $hash);
 		return $var;
 	}
 
-	public static function getVarWord($key, $default = '')
+	public static function getVarWord($name, $default = '', $hash = null)
 	{
-		$var = self::getVar($key, $default, 'word');
+		$var = self::getVar($name, $default, 'WORD', $hash);
 		return $var;
 	}
 
-	public static function getVarCmd($key, $default = '')
+	public static function getVarCmd($name, $default = '', $hash = null)
 	{
-		$var = self::getVar($key, $default, 'cmd');
+		$var = self::getVar($name, $default, 'CMD', $hash);
+		return $var;
+	}
+
+	public static function getVarAlNum($name, $default = '', $hash = null)
+	{
+		$var = self::getVar($name, $default, 'ALNUM', $hash);
+		return $var;
+	}
+
+	public static function getVarBase64($name, $default = '', $hash = null)
+	{
+		$var = self::getVar($name, $default, 'BASE64', $hash);
+		return $var;
+	}
+
+	public static function getVarHTML($name, $default = '', $hash = null)
+	{
+		$var = self::getVar($name, $default, 'HTML', $hash);
+		return $var;
+	}
+
+	public static function getVarArray($name, $default = '', $hash = null)
+	{
+		$var = self::getVar($name, $default, 'ARRAY', $hash);
+		return $var;
+	}
+
+	public static function getVarPath($name, $default = '', $hash = null)
+	{
+		$var = self::getVar($name, $default, 'PATH', $hash);
+		return $var;
+	}
+
+	public static function getVarUsername($name, $default = '', $hash = null)
+	{
+		$var = self::getVar($name, $default, 'USERNAME', $hash);
+		return $var;
+	}
+
+	public static function getVarRaw($name, $default = '', $hash = null)
+	{
+		$var = self::getVar($name, $default, 'RAW', $hash);
+		return $var;
+	}
+
+	public static function getVarName($name, $default = null)
+	{
+		$var = self::getVar($name);
+		if (!is_string($var) || preg_match('/^[^a-zA-z]|[^a-zA-Z0-9_]/', $var))
+			$var = $default;
 		return $var;
 	}
 
@@ -300,14 +364,6 @@ class App
 		}
 		$filter = Joomla\JFilterInput::getInstance();
 		$var = $filter->clean($var, null);
-		return $var;
-	}
-
-	public static function getVarName($key, $default = null)
-	{
-		$var = self::getVar($key);
-		if (!is_string($var) || preg_match('/^[^a-zA-z]|[^a-zA-Z0-9_]/', $var))
-			$var = $default;
 		return $var;
 	}
 
