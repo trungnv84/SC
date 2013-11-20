@@ -1,9 +1,13 @@
 <?php
+ob_start();
+
 require '../app/constant.php';
 
 require APP_DIR . 'App.php';
 
-App::delCache(App::GET('_del_cache', null));
+App::showError((int)App::GET('_show_error', 0));
+
+App::delCache(App::getVarAlNum('_del_cache'));
 
 if (isset($_GET['_url'])) App::parseUrl($_GET['_url']);
 

@@ -12,103 +12,6 @@ class App
 	private static $layout = DEFAULT_LAYOUT;
 	private static $endEvents = array();
 
-	public static function autoLoad($class_name)
-	{
-		$slat = strrpos($class_name, '\\');
-		if ($slat > 0) {
-			$pos = strpos($class_name, '\\', 1);
-			$adapter_name = substr($class_name, 0, $pos);
-			$adapter = strtolower(str_replace('\\', '', $adapter_name)) . DS . 'adapter.php';
-		}
-
-		foreach (self::$config->autoLoadPath as $type => $path) {
-			if ($slat > 0) {
-				$adapter_path = $path . $adapter;
-				if (file_exists($adapter_path)) {
-					$adapter_namespace = $adapter_name . '\\';
-					require_once $adapter_path;
-				} else {
-					$adapter_namespace = '';
-				}
-				$file = $adapter_namespace . 'getFileNameAutoLoad';
-				$file = $path . $file($class_name) . '.php';
-			} else {
-				if (is_numeric($type)) {
-					$file = $path . $class_name . '.php';
-				} else {
-					$len = strlen($type);
-					if (substr($class_name, -$len) == $type) {
-						if (self::$module && isset(self::$config->modulePaths[self::$module][$type])) {
-							$path = self::$config->modulePaths[self::$module][$type];
-						}
-						$file = substr($class_name, 0, strlen($class_name) - $len);
-						if ($slat === 0) $file = substr($file, 1);
-						$file = $path . strtolower($file) . '.' . strtolower($type) . '.php';
-					} else continue;
-				}
-			}
-
-			if (file_exists($file)) {
-				require_once $file;
-				if (($slat = $slat > 0) && $adapter_namespace) {
-					$adapter_namespace = $adapter_namespace . 'getClassNameAutoLoad';
-					$class_name = $adapter_namespace($class_name);
-				}
-
-				if (class_exists($class_name)) {
-					if (method_exists($class_name, '__init')) $class_name::__init();
-					if (PHP_CACHE) self::phpCache($file, !$slat);
-					break;
-				}
-			}
-		}
-	}
-
-	public static function phpCache($file, $globalSpace = true)
-	{
-		if (isset(self::$phpCacheFile)) {
-			$file = file_get_contents($file);
-			if (file_exists(self::$phpCacheFile)) {
-				$file = preg_replace('/^\s*<\?php/', '', $file, 1);
-				$file = preg_replace('/defined\(\'ROOT_DIR\'\)\s*\|\|\s*(exit|die)\s*(\(\s*\))?\s*;/', '', $file);
-				if ($globalSpace) $file = "\nnamespace {" . $file . "\n}\n";
-			} elseif ($globalSpace) {
-				$file = preg_replace('/^\s*<\?php/', "<?php\nnamespace {", $file, 1) . "\n}\n";
-			}
-			file_put_contents(self::$phpCacheFile, $file, FILE_APPEND);
-		}
-	}
-
-	public static function delCache($type)
-	{
-		switch ($type) {
-			case 'php':
-				$folders = array(PHP_CACHE_DIR);
-				break;
-			case 'css':
-				$folders = array(CSS_CACHE_DIR);
-				break;
-			case 'js':
-				$folders = array(JS_CACHE_DIR);
-				break;
-			case 'all':
-				$folders = array(
-					PHP_CACHE_DIR,
-					CSS_CACHE_DIR,
-					JS_CACHE_DIR
-				);
-				break;
-			default:
-				return;
-		}
-
-		foreach ($folders as $folder) {
-			if (is_dir($folder)) {
-				File::delete($folder);
-			}
-		}
-	}
-
 	public static function run($controller = null, $action = null)
 	{
 		if (isset($_GET['_url'])) self::parseUrl($_GET['_url']);
@@ -427,17 +330,22 @@ class App
 		if (self::view_exists($__action, $__controller, $__template, $__layout, $__type)) {
 			if (isset(self::$vars) && is_array(self::$vars))
 				foreach (self::$vars as $__key => &$__val) $$__key =& $__val;
-			ob_start();
+
+			if (!ob_get_level()) ob_start();
 			require(TEMPLATE_DIR . $__template . DS . $__controller . DS . $__action . '.php');
+
 			if (App::layout_exists($__layout, $__template)) {
 				$__html__main = ob_get_clean();
+				if (!ob_get_level()) ob_start();
 				require(TEMPLATE_DIR . $__template . DS . 'layout' . DS . $__layout . '.php');
 			}
+
 			if (App::response_type_exists($__type, $__template)) {
 				$__html_layout = ob_get_clean();
+				if (!ob_get_level()) ob_start();
 				require(TEMPLATE_DIR . $__template . DS . $__type . '.php');
 			}
-			//ob_end_flush();
+
 			self::end();
 		} else {
 			self::end('none view -> 404//zzz');
@@ -483,25 +391,231 @@ class App
 		}
 	}
 
-	private static function errorLog($errors)
+	/*################################################*/
+	public static function autoLoad($class_name)
 	{
+		$slat = strrpos($class_name, '\\');
+		if ($slat > 0) {
+			$pos = strpos($class_name, '\\', 1);
+			$adapter_name = substr($class_name, 0, $pos);
+			$adapter = strtolower(str_replace('\\', '', $adapter_name)) . DS . 'adapter.php';
+		}
 
+		foreach (self::$config->autoLoadPath as $type => $path) {
+			if ($slat > 0) {
+				$adapter_path = $path . $adapter;
+				if (file_exists($adapter_path)) {
+					$adapter_namespace = $adapter_name . '\\';
+					require_once $adapter_path;
+				} else {
+					$adapter_namespace = '';
+				}
+				$file = $adapter_namespace . 'getFileNameAutoLoad';
+				$file = $path . $file($class_name) . '.php';
+			} else {
+				if (is_numeric($type)) {
+					$file = $path . $class_name . '.php';
+				} else {
+					$len = strlen($type);
+					if (substr($class_name, -$len) == $type) {
+						if (self::$module && isset(self::$config->modulePaths[self::$module][$type])) {
+							$path = self::$config->modulePaths[self::$module][$type];
+						}
+						$file = substr($class_name, 0, strlen($class_name) - $len);
+						if ($slat === 0) $file = substr($file, 1);
+						$file = $path . strtolower($file) . '.' . strtolower($type) . '.php';
+					} else continue;
+				}
+			}
+
+			if (file_exists($file)) {
+				require_once $file;
+				if (($slat = $slat > 0) && $adapter_namespace) {
+					$adapter_namespace = $adapter_namespace . 'getClassNameAutoLoad';
+					$class_name = $adapter_namespace($class_name);
+				}
+
+				if (class_exists($class_name)) {
+					if (method_exists($class_name, '__init')) $class_name::__init();
+					if (PHP_CACHE) self::phpCache($file, !$slat);
+					break;
+				}
+			}
+		}
 	}
 
+	/*################################################*/
+	public static function phpCache($file, $globalSpace = true)
+	{
+		if (isset(self::$phpCacheFile)) {
+			$file = file_get_contents($file);
+			if (file_exists(self::$phpCacheFile)) {
+				$file = preg_replace('/^\s*<\?php/', '', $file, 1);
+				$file = preg_replace('/defined\(\'ROOT_DIR\'\)\s*\|\|\s*(exit|die)\s*(\(\s*\))?\s*;/', '', $file);
+				if ($globalSpace) $file = "\nnamespace {" . $file . "\n}\n";
+			} elseif ($globalSpace) {
+				$file = preg_replace('/^\s*<\?php/', "<?php\nnamespace {", $file, 1) . "\n}\n";
+			}
+			file_put_contents(self::$phpCacheFile, $file, FILE_APPEND);
+		}
+	}
+
+	public static function delCache($type)
+	{
+		switch ($type) {
+			case 'php':
+				$folders = array(PHP_CACHE_DIR);
+				break;
+			case 'css':
+				$folders = array(CSS_CACHE_DIR);
+				break;
+			case 'js':
+				$folders = array(JS_CACHE_DIR);
+				break;
+			case 'all':
+				$folders = array(
+					PHP_CACHE_DIR,
+					CSS_CACHE_DIR,
+					JS_CACHE_DIR
+				);
+				break;
+			default:
+				return;
+		}
+
+		foreach ($folders as $folder) {
+			if (is_dir($folder)) {
+				File::delete($folder);
+			}
+		}
+	}
+
+	/*################################################*/
+	private static function errorLog($errors)
+	{
+		$file = date('Y-m-d-h', TIME_NOW);
+
+		if (!is_dir(ERROR_LOG_DIR)) {
+			mkdir(ERROR_LOG_DIR, DIR_WRITE_MODE, true);
+		} else {
+			chmod(ERROR_LOG_DIR, DIR_WRITE_MODE);
+		}
+
+
+		$errors['type'] .= ' (' . self::friendlyErrorType($errors['type']) . ')';
+		echo "<pre>Last error:\n";
+		print_r($errors);
+		echo '</pre>';
+
+		$time = TIME_NOW;
+		$time = "\n[[$time]]\n";
+		$content = $time . ob_get_clean() . $time;
+		if (!ob_get_level()) ob_start();
+
+		file_put_contents(ERROR_LOG_DIR . "error-$file.txt", $content, FILE_APPEND);
+
+		echo(ENVIRONMENT == 'Development' ? '<div>' : '<div style="display: none;">'),
+		'<a target="_blank" href="', BASE_URL, '?_show_error=1&time=', TIME_NOW, '">Show html error</a> |
+		<a target="_blank" href="', BASE_URL, '?_show_error=2&time=', TIME_NOW, '">Show raw error</a></div>';
+	}
+
+	public static function showError($type)
+	{
+		if (!$type) return;
+
+		if ('POST' === App::getMethod()) {
+			if (ERROR_LOG_PASS === App::POST('pass')) {
+				$time = (int)App::GET('time', 0);
+				$file = date('Y-m-d-h', $time);
+				$file = ERROR_LOG_DIR . "error-$file.txt";
+
+				if (file_exists($file)) {
+					$time = "[[$time]]";
+					$file = file_get_contents($file);
+					$file = explode($time, $file);
+					if (isset($file[1])) $file = $file[1];
+					else $file = '';
+				}
+
+				switch ($type) {
+					case 1:
+						echo $file;
+						break;
+					case 2:
+						echo '<pre>', htmlspecialchars($file, ENT_COMPAT, 'UTF-8'), '</pre>';
+				}
+
+				App::end();
+			}
+		}
+
+		require APP_LOG_DIR . 'form.html';
+
+		App::end();
+	}
+
+	public static function friendlyErrorType($type)
+	{
+		switch ($type) {
+			case E_ERROR: // 1 //
+				return 'E_ERROR';
+			case E_WARNING: // 2 //
+				return 'E_WARNING';
+			case E_PARSE: // 4 //
+				return 'E_PARSE';
+			case E_NOTICE: // 8 //
+				return 'E_NOTICE';
+			case E_CORE_ERROR: // 16 //
+				return 'E_CORE_ERROR';
+			case E_CORE_WARNING: // 32 //
+				return 'E_CORE_WARNING';
+			case E_CORE_ERROR: // 64 //
+				return 'E_COMPILE_ERROR';
+			case E_CORE_WARNING: // 128 //
+				return 'E_COMPILE_WARNING';
+			case E_USER_ERROR: // 256 //
+				return 'E_USER_ERROR';
+			case E_USER_WARNING: // 512 //
+				return 'E_USER_WARNING';
+			case E_USER_NOTICE: // 1024 //
+				return 'E_USER_NOTICE';
+			case E_STRICT: // 2048 //
+				return 'E_STRICT';
+			case E_RECOVERABLE_ERROR: // 4096 //
+				return 'E_RECOVERABLE_ERROR';
+			case E_DEPRECATED: // 8192 //
+				return 'E_DEPRECATED';
+			case E_USER_DEPRECATED: // 16384 //
+				return 'E_USER_DEPRECATED';
+		}
+		return "";
+	}
+
+	/*################################################*/
 	public static function end($status = 0)
 	{
 		static $ended;
 		if (isset($ended)) return;
 		$ended = true;
 
-		$lastError = error_get_last();
-		if (is_null($lastError))
+		$error = error_get_last();
+		if (is_null($error))
 			self::afterEnd();
-		else
-			self::errorLog($lastError);
+		else {
+			self::errorLog($error);
+			if (!$status) $status = 500;
+		}
+
+		if ($status) {
+			$error = TEMPLATE_DIR . DEFAULT_TEMPLATE . DS . 'error.php';
+			if (file_exists($error)) {
+				$__error_header = ob_get_clean();
+				require $error;
+			}
+		}
 
 		if (ENVIRONMENT == 'Development' && !self::is_ajax_request()) {
-			echo '<div>Run time: ', microtime() - MICRO_TIME_NOW, '</div>';
+			echo '<hr/><div>Run time: ', microtime() - MICRO_TIME_NOW, '</div>';
 			echo '<div>Memory Usage: ', Format::byte(memory_get_usage()), ' | ', Format::byte(memory_get_usage(true)), '</div>';
 			echo '<div>Memory Peak Usage: ', Format::byte(memory_get_peak_usage()), ' | ', Format::byte(memory_get_peak_usage(true)), '</div>';
 		}
@@ -534,6 +648,3 @@ function __autoload($class_name)
 /*################################################*/
 
 register_shutdown_function('App::end');
-
-
-

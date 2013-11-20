@@ -6,6 +6,8 @@ define('TIME_NOW', time());
 define('DS', DIRECTORY_SEPARATOR);
 define('APP_DIR', __DIR__ . DS);
 define('ROOT_DIR', substr(APP_DIR, 0, 1 + strrpos(APP_DIR, DS, -2)));
+define('APP_LOG_DIR', APP_DIR . 'logs' . DS);
+define('ERROR_LOG_DIR', APP_LOG_DIR . 'errors' . DS);
 
 if (isset($_SERVER['HTTP_HOST'])) {
 	$_base_url = isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off' ? 'https' : 'http';
@@ -35,6 +37,8 @@ define('JS_CACHE_DIR', DEFAULT_JS_DIR . 'cache' . DS);
 /*##########################################################*/
 
 define('ENVIRONMENT', 'Development');
+
+define('ERROR_LOG_PASS', '123456');
 
 define('PHP_CACHE', false);
 

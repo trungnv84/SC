@@ -20,8 +20,11 @@ class HomeController extends Controller
 
 		/*$rs = UserModel::query('SELECT * FROM users');
 		var_dump(mysql_fetch_row ( $rs ));*/
-		/*$rs = UserModel::query('SELECT * FROM users');
-		var_dump($rs);*/
+
+		//8/0;a
+
+		$rs = UserModel::query('SELECT * FROM users');
+		var_dump($rs);
 
 		$_GET['a'] = '<script>alert("abc");</script>';
 
