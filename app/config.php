@@ -2,11 +2,11 @@
 $config = new stdClass();
 
 $config->autoLoadPath = array(
-	APP_DIR . 'core',
+	APP_DIR . 'core' . DS,
 	'Controller' => CONTROLLER_DIR,
-	/*'View' => APP_DIR . DS . 'view',*/
+	/*'View' => APP_DIR . DS . 'view' . DS,*/
 	'Model' => MODEL_DIR,
-	APP_DIR . 'lib'
+	APP_DIR . 'lib' . DS
 );
 
 $config->router = array(
@@ -24,10 +24,10 @@ $config->modules = array('site', 'admin');
 
 $config->modulePaths = array(
 	'site' => array(
-		'Controller' => $config->autoLoadPath['Controller'] . DS . 'site' //CONTROLLER_DIR . DS . 'site'
+		'Controller' => $config->autoLoadPath['Controller'] . 'site' . DS //CONTROLLER_DIR
 	),
 	'admin' => array(
-		'Controller' => $config->autoLoadPath['Controller'] . DS . 'admin' //CONTROLLER_DIR . DS . 'admin'
+		'Controller' => $config->autoLoadPath['Controller'] . 'admin' . DS //CONTROLLER_DIR
 	)
 );
 

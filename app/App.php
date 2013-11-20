@@ -14,40 +14,68 @@ class App
 
 	public static function autoLoad($class_name)
 	{
-		require_once APP_DIR . 'lib' . DS . 'joomla' . DS . 'adapter.php';
-		//echo $class_name;
-		foreach (self::$config->autoLoadPath as $type => & $path) {
-			if (!is_numeric($type)) {
-				$len = strlen($type);
-				if (substr($class_name, -$len) == $type) {
-					if (self::$module && isset(self::$config->modulePaths[self::$module][$type])) {
-						$path = self::$config->modulePaths[self::$module][$type];
-					}
-					$file = substr($class_name, 0, strlen($class_name) - $len);
-					$file = $path . DS . strtolower($file) . '.' . strtolower($type) . '.php';
-				} else continue;
-			} else $file = $path . DS . $class_name . '.php';
+		$slat = strrpos($class_name, '\\');
+		if ($slat > 0) {
+			$pos = strpos($class_name, '\\', 1);
+			$adapter_name = substr($class_name, 0, $pos);
+			$adapter = strtolower(str_replace('\\', '', $adapter_name)) . DS . 'adapter.php';
+		}
+
+		foreach (self::$config->autoLoadPath as $type => $path) {
+			if ($slat > 0) {
+				$adapter_path = $path . $adapter;
+				if (file_exists($adapter_path)) {
+					$adapter_namespace = $adapter_name . '\\';
+					require_once $adapter_path;
+				} else {
+					$adapter_namespace = '';
+				}
+				$file = $adapter_namespace . 'getFileNameAutoLoad';
+				$file = $path . $file($class_name) . '.php';
+			} else {
+				if (is_numeric($type)) {
+					$file = $path . $class_name . '.php';
+				} else {
+					$len = strlen($type);
+					if (substr($class_name, -$len) == $type) {
+						if (self::$module && isset(self::$config->modulePaths[self::$module][$type])) {
+							$path = self::$config->modulePaths[self::$module][$type];
+						}
+						$file = substr($class_name, 0, strlen($class_name) - $len);
+						if ($slat === 0) $file = substr($file, 1);
+						$file = $path . strtolower($file) . '.' . strtolower($type) . '.php';
+					} else continue;
+				}
+			}
 
 			if (file_exists($file)) {
 				require_once $file;
+				if (($slat = $slat > 0) && $adapter_namespace) {
+					$adapter_namespace = $adapter_namespace . 'getClassNameAutoLoad';
+					$class_name = $adapter_namespace($class_name);
+				}
+
 				if (class_exists($class_name)) {
 					if (method_exists($class_name, '__init')) $class_name::__init();
-					if (PHP_CACHE) self::phpCache($file);
+					if (PHP_CACHE) self::phpCache($file, !$slat);
 					break;
 				}
 			}
 		}
 	}
 
-	public static function phpCache($file)
+	public static function phpCache($file, $globalSpace = true)
 	{
 		if (isset(self::$phpCacheFile)) {
-			$file = @file_get_contents($file);
+			$file = file_get_contents($file);
 			if (file_exists(self::$phpCacheFile)) {
-				$file = preg_replace('/^\s*<\?php/', '', $file);
-				$file = preg_replace('/defined\(\'ROOT_DIR\'\)\s*\|\|\s*exit\s*;/', '', $file);
+				$file = preg_replace('/^\s*<\?php/', '', $file, 1);
+				$file = preg_replace('/defined\(\'ROOT_DIR\'\)\s*\|\|\s*(exit|die)\s*(\(\s*\))?\s*;/', '', $file);
+				if($globalSpace) $file = "\nnamespace {" . $file . "\n}\n";
+			} elseif($globalSpace) {
+				$file = preg_replace('/^\s*<\?php/', "<?php\nnamespace {", $file, 1) . "\n}\n";
 			}
-			@file_put_contents(self::$phpCacheFile, $file, FILE_APPEND);
+			file_put_contents(self::$phpCacheFile, $file, FILE_APPEND);
 		}
 	}
 
@@ -73,6 +101,7 @@ class App
 			default:
 				return;
 		}
+
 		foreach ($folders as $folder) {
 			if (is_dir($folder)) {
 				File::delete($folder);
@@ -313,6 +342,11 @@ class App
 		}
 	}
 
+	private static function errorLog($errors)
+	{
+
+	}
+
 	public static function end($status = 0)
 	{
 		static $ended;
@@ -340,6 +374,16 @@ class App
 App::$config = require APP_DIR . 'config.php';
 
 /*################################################*/
+
+function getFileNameAutoLoad($class_name)
+{
+	static $names;
+	if (strpos($class_name, '\\') === 0) $class_name = substr($class_name, 1);
+	if (!isset($names[$class_name])) {
+		$names[$class_name] = str_replace('\\', DS, $class_name);
+	}
+	return $names[$class_name];
+}
 
 function __autoload($class_name)
 {

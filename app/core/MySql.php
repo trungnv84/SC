@@ -13,9 +13,9 @@ class MySql extends DBDriver
 	{
 		$use_set_names = (version_compare(PHP_VERSION, '5.2.3', '>=') && version_compare(mysql_get_server_info(self::$connections[$instance]), '5.0.7', '>=')) ? FALSE : TRUE;
 		if ($use_set_names === TRUE) {
-			return @mysql_query("SET NAMES '" . $charset . "' COLLATE '" . $collation . "'", self::$connections[$instance]);
+			return mysql_query("SET NAMES '" . $charset . "' COLLATE '" . $collation . "'", self::$connections[$instance]);
 		} else {
-			return @mysql_set_charset($charset, self::$connections[$instance]);
+			return mysql_set_charset($charset, self::$connections[$instance]);
 		}
 	}
 

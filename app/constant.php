@@ -36,7 +36,7 @@ define('JS_CACHE_DIR', DEFAULT_JS_DIR . 'cache' . DS);
 
 define('ENVIRONMENT', 'Development');
 
-define('PHP_CACHE', false);
+define('PHP_CACHE', true);
 
 /*##########################################################*/
 

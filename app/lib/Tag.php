@@ -124,14 +124,14 @@ class Tag
 						} elseif (preg_match('/^https?:\/\/|\/\/([\da-z\.-]+)\.([a-z\.]{2,6})/i', $css)) {
 							$file = CSS_CACHE_DIR . preg_replace('/[^a-z0-9\.]+/i', '-', $css);
 							if (file_exists($file)) {
-								$tmp = @file_get_contents($file);
+								$tmp = file_get_contents($file);
 							} else {
 								if (!preg_match('/^http/i', $css)) $css = SCHEME . ':' . $css;
 								$tmp = @file_get_contents($css);
 								$tmp = CssMin::minify($tmp);
 								//if (!is_dir(CSS_CACHE_DIR)) mkdir(CSS_CACHE_DIR, DIR_WRITE_MODE, true);
 								File::mkDir(CSS_CACHE_DIR);
-								@file_put_contents($file, $tmp);
+								file_put_contents($file, $tmp);
 							}
 							if (preg_match('/:\s*url\s*\(/i', $tmp)) {
 								$html .= "<link href=\"$css?__av=" . ASSETS_VERSION . "\" rel=\"stylesheet\" type=\"text/css\" />\n";
@@ -157,26 +157,26 @@ class Tag
 							$css = DEFAULT_CSS_DIR . $css;
 							if (file_exists($css)) {
 								if (ASSETS_OPTIMIZATION & 2) $cache .= self::minAsset($css, true) . "\n";
-								else $cache .= @file_get_contents($css) . "\n";
+								else $cache .= file_get_contents($css) . "\n";
 							}
 						} elseif (preg_match('/^https?:\/\/|\/\/([\da-z\.-]+)\.([a-z\.]{2,6})/i', $css)) {
 							$file = CSS_CACHE_DIR . preg_replace('/[^a-z0-9\.]+/i', '-', $css);
 							if (file_exists($file)) {
-								$css = @file_get_contents($file);
+								$css = file_get_contents($file);
 							} else {
 								if (!preg_match('/^http/i', $css)) $css = SCHEME . ':' . $css;
 								$css = @file_get_contents($css);
 								if (ASSETS_OPTIMIZATION & 2) $css = CssMin::minify($css);
 								//if (!is_dir(CSS_CACHE_DIR)) mkdir(CSS_CACHE_DIR, DIR_WRITE_MODE, true);
 								File::mkDir(CSS_CACHE_DIR);
-								@file_put_contents($file, $css);
+								file_put_contents($file, $css);
 							}
 							if (!preg_match('/:\s*url\s*\(/i', $css)) {
 								$cache .= $css;
 							}
 						} elseif (file_exists($css)) {
 							if (ASSETS_OPTIMIZATION & 2) $tmp = self::minAsset($css, true);
-							else $tmp = @file_get_contents($css);
+							else $tmp = file_get_contents($css);
 							$cache .= preg_replace('/url\s*\(\s*([\'"])/i', 'url($1../' . dirname($css) . '/', $tmp);
 						}
 					}
@@ -184,7 +184,7 @@ class Tag
 					//if (!is_dir(CSS_CACHE_DIR)) mkdir(CSS_CACHE_DIR, DIR_WRITE_MODE, true);
 					File::mkDir(CSS_CACHE_DIR);
 					$file = CSS_CACHE_DIR . $nameMd5 . '.css';
-					@file_put_contents($file, $cache);
+					file_put_contents($file, $cache);
 				}
 
 				$file = "css/cache/$nameMd5.css?__av=" . ASSETS_VERSION;
@@ -237,7 +237,7 @@ class Tag
 								$js = JSMin::minify($js);
 								//if (!is_dir(JS_CACHE_DIR)) mkdir(JS_CACHE_DIR, DIR_WRITE_MODE, true);
 								File::mkDir(JS_CACHE_DIR);
-								@file_put_contents($file, $js);
+								file_put_contents($file, $js);
 							}
 						} else {
 							$js = PUBLIC_DIR . $js;
@@ -260,31 +260,31 @@ class Tag
 							$js = DEFAULT_JS_DIR . $js;
 							if (file_exists($js)) {
 								if (ASSETS_OPTIMIZATION & 8) $cache .= self::minAsset($js, true) . "\n";
-								else $cache .= @file_get_contents($js) . "\n";
+								else $cache .= file_get_contents($js) . "\n";
 							}
 						} elseif (preg_match('/^https?:\/\/|\/\/([\da-z\.-]+)\.([a-z\.]{2,6})/i', $js)) {
 							$file = JS_CACHE_DIR . preg_replace('/[^a-z0-9\.]+/i', '-', $js);
 							if (file_exists($file)) {
-								$js = @file_get_contents($file);
+								$js = file_get_contents($file);
 							} else {
 								if (!preg_match('/^http/i', $js)) $js = SCHEME . ':' . $js;
 								$js = @file_get_contents($js);
 								$js = JSMin::minify($js);
 								//if (!is_dir(JS_CACHE_DIR)) mkdir(JS_CACHE_DIR, DIR_WRITE_MODE, true);
 								File::mkDir(JS_CACHE_DIR);
-								@file_put_contents($file, $js);
+								file_put_contents($file, $js);
 							}
 							$cache .= $js . "\n";
 						} elseif (file_exists($js)) {
 							if (ASSETS_OPTIMIZATION & 8) $cache .= self::minAsset($js, true) . "\n";
-							else $cache .= @file_get_contents($js) . "\n";
+							else $cache .= file_get_contents($js) . "\n";
 						}
 					}
 
 					//if (!is_dir(JS_CACHE_DIR)) mkdir(JS_CACHE_DIR, DIR_WRITE_MODE, true);
 					File::mkDir(JS_CACHE_DIR);
 					$file = JS_CACHE_DIR . $nameMd5 . '.js';
-					@file_put_contents($file, $cache);
+					file_put_contents($file, $cache);
 				}
 
 				$file = "js/cache/$nameMd5.js?__av=" . ASSETS_VERSION;
@@ -309,21 +309,21 @@ class Tag
 	{
 		$pathInfo = pathinfo($file);
 		if (substr($pathInfo['filename'], -4) == '.min')
-			return ($returnContent ? @file_get_contents($file) : $file);
+			return ($returnContent ? file_get_contents($file) : $file);
 		$minFile = "$pathInfo[dirname]/$pathInfo[filename].min.$pathInfo[extension]";
-		if (file_exists($minFile) && (ENVIRONMENT == 'Product' || filemtime($minFile) > @filemtime($file)))
-			return ($returnContent ? @file_get_contents($minFile) : $minFile);
+		if (file_exists($minFile) && (ENVIRONMENT == 'Product' || filemtime($minFile) > filemtime($file)))
+			return ($returnContent ? file_get_contents($minFile) : $minFile);
 		switch (strtolower($pathInfo['extension'])) {
 			case 'css':
-				$minContent = CssMin::minify(@file_get_contents($file));
+				$minContent = CssMin::minify(file_get_contents($file));
 				break;
 			case 'js':
-				$minContent = JSMin::minify(@file_get_contents($file));
+				$minContent = JSMin::minify(file_get_contents($file));
 				break;
 			default:
-				return ($returnContent ? @file_get_contents($file) : $file);
+				return ($returnContent ? file_get_contents($file) : $file);
 		}
-		@file_put_contents($minFile, $minContent);
+		file_put_contents($minFile, $minContent);
 		return ($returnContent ? $minContent : $minFile);
 	}
 }
