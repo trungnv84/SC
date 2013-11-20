@@ -71,8 +71,8 @@ class App
 			if (file_exists(self::$phpCacheFile)) {
 				$file = preg_replace('/^\s*<\?php/', '', $file, 1);
 				$file = preg_replace('/defined\(\'ROOT_DIR\'\)\s*\|\|\s*(exit|die)\s*(\(\s*\))?\s*;/', '', $file);
-				if($globalSpace) $file = "\nnamespace {" . $file . "\n}\n";
-			} elseif($globalSpace) {
+				if ($globalSpace) $file = "\nnamespace {" . $file . "\n}\n";
+			} elseif ($globalSpace) {
 				$file = preg_replace('/^\s*<\?php/', "<?php\nnamespace {", $file, 1) . "\n}\n";
 			}
 			file_put_contents(self::$phpCacheFile, $file, FILE_APPEND);
@@ -191,7 +191,7 @@ class App
 		return $method;
 	}
 
-	public static function GET($key, $default = NULL)
+	public static function GET($key, $default = null)
 	{
 		if (isset($_GET[$key]))
 			return $_GET[$key];
@@ -199,7 +199,7 @@ class App
 			return $default;
 	}
 
-	public static function POST($key, $default = NULL)
+	public static function POST($key, $default = null)
 	{
 		if (isset($_POST[$key]))
 			return $_POST[$key];
@@ -207,10 +207,20 @@ class App
 			return $default;
 	}
 
+	public static function POST_GET($key, $default = null)
+	{
+		if (isset($_POST[$key]))
+			return $_POST[$key];
+		elseif (isset($_GET[$key]))
+			return $_GET[$key];
+		else
+			return $default;
+	}
+
 	//Using $_REQUEST is strongly discouraged.
 	//This super global is not recommended since it includes not only POST and GET data, but also the cookies sent by the request.
 	//This can lead to confusion and makes your code prone to mistakes, which could lead to security problems.
-	public static function REQUEST($key, $default = NULL)
+	public static function REQUEST($key, $default = null)
 	{
 		if (isset($_REQUEST[$key]))
 			return $_REQUEST[$key];
@@ -218,12 +228,87 @@ class App
 			return $default;
 	}
 
-	public static function getVarName($key, $default = NULL)
+	public static function getVar($key, $default = null, $type = null)
 	{
-		$varName = self::REQUEST($key);
-		if (!is_string($varName) || preg_match('/^[^a-zA-z]|[^a-zA-Z0-9_]/', $varName))
-			$varName = $default;
-		return $varName;
+		$var = self::POST_GET($key, $default);
+		if ($type == 'html')
+			$filter = Joomla\JFilterInput::getInstance(null, null, 1, 1);
+		else
+			$filter = Joomla\JFilterInput::getInstance();
+		$var = $filter->clean($var, $type);
+		return $var;
+	}
+
+	public static function getVarString($key, $default = null)
+	{
+		$var = self::getVar($key, $default, 'string');
+		return $var;
+	}
+
+	public static function getVarInt($key, $default = 0)
+	{
+		$var = self::getVar($key, $default, 'int');
+		return $var;
+	}
+
+	public static function getVarUInt($key, $default = 0)
+	{
+		$var = self::getVar($key, $default, 'uint');
+		return $var;
+	}
+
+	public static function getVarFloat($key, $default = 0.0)
+	{
+		$var = self::getVar($key, $default, 'float');
+		return $var;
+	}
+
+	public static function getVarBool($key, $default = false)
+	{
+		$var = self::getVar($key, $default, 'bool');
+		return $var;
+	}
+
+	public static function getVarWord($key, $default = '')
+	{
+		$var = self::getVar($key, $default, 'word');
+		return $var;
+	}
+
+	public static function getVarCmd($key, $default = '')
+	{
+		$var = self::getVar($key, $default, 'cmd');
+		return $var;
+	}
+
+	public static function getAllVar($hash = null, $default = array())
+	{
+		if ($hash === 'METHOD')
+			$hash = $_SERVER['REQUEST_METHOD'];
+		switch (strtoupper($hash)) {
+			case 'GET':
+				if (isset($_GET)) $var = $_GET;
+				else $var = $default;
+				break;
+			case 'POST':
+				if (isset($_POST)) $var = $_POST;
+				else $var = $default;
+				break;
+			default:
+				if (isset($_REQUEST)) $var = $_REQUEST;
+				else $var = $default;
+		}
+		$filter = Joomla\JFilterInput::getInstance();
+		$var = $filter->clean($var, null);
+		return $var;
+	}
+
+	public static function getVarName($key, $default = null)
+	{
+		$var = self::getVar($key);
+		if (!is_string($var) || preg_match('/^[^a-zA-z]|[^a-zA-Z0-9_]/', $var))
+			$var = $default;
+		return $var;
 	}
 
 	public static function is_ajax_request()
@@ -234,7 +319,7 @@ class App
 		return $result;
 	}
 
-	public static function assign($key, $value = NULL)
+	public static function assign($key, $value = null)
 	{
 		if (is_array($key)) {
 			foreach ($key as $k => $v)

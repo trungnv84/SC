@@ -25,7 +25,9 @@ class HomeController extends Controller
 
 		$filterInput = Joomla\JFilterInput::getInstance();
 		echo $filterInput->clean('<script>alert("abc");</script>');
-		echo $filterInput->clean('alert');
+		echo '<br />';
+
+		print_r(App::getAllVar('get'));
 
 		echo '</pre>';
 	}
