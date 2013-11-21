@@ -311,7 +311,7 @@ class Tag
 		if (substr($pathInfo['filename'], -4) == '.min')
 			return ($returnContent ? file_get_contents($file) : $file);
 		$minFile = "$pathInfo[dirname]/$pathInfo[filename].min.$pathInfo[extension]";
-		if (file_exists($minFile) && (ENVIRONMENT == 'Product' || filemtime($minFile) > filemtime($file)))
+		if (file_exists($minFile) && (ENVIRONMENT == 'Production' || filemtime($minFile) > filemtime($file)))
 			return ($returnContent ? file_get_contents($minFile) : $minFile);
 		switch (strtolower($pathInfo['extension'])) {
 			case 'css':

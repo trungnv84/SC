@@ -1,4 +1,5 @@
 <?php
+if (!ob_get_level()) ob_start();
 date_default_timezone_set('Asia/Bangkok');
 define('MICRO_TIME_NOW', microtime());
 define('TIME_NOW', time());
@@ -36,10 +37,16 @@ define('JS_CACHE_DIR', DEFAULT_JS_DIR . 'cache' . DS);
 
 /*##########################################################*/
 
-define('ENVIRONMENT', 'Development');
+/*
+ *     Development
+ *     Testing
+ *     Production
+ * */
 
+define('ENVIRONMENT', 'Development');
 define('ERROR_LOG_PASS', '123456');
 
+define('ADAPTER_FILE_EXT', '.adt');
 define('PHP_CACHE', false);
 
 /*##########################################################*/

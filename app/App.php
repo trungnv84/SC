@@ -1,5 +1,6 @@
 <?php
 defined('ROOT_DIR') || exit;
+if (!ob_get_level()) ob_start();
 
 class App
 {
@@ -12,16 +13,28 @@ class App
 	private static $layout = DEFAULT_LAYOUT;
 	private static $endEvents = array();
 
-	public static function run($controller = null, $action = null)
+	public static function run($controller = null, $action = null, $module = null)
 	{
-		if (isset($_GET['_url'])) self::parseUrl($_GET['_url']);
+		self::showError((int)self::GET('_show_error', 0));
 
-		self::autoSetTemplate();
+		if (self::delCache(self::getVarName('_del_cache'))) self::redirect();
+
+		if (isset($_GET['_url'])) self::parseUrl($_GET['_url']);
 
 		if (is_null($controller))
 			$controller = strtolower(self::getVarName('controller', self::$config->defaultController));
 		if (is_null($action))
 			$action = strtolower(self::getVarName('action', self::$config->defaultAction));
+
+		if (is_null($module))
+			self::autoSetTemplate();
+		else
+			self::$module = $module;
+
+		if (PHP_CACHE) {
+			self::$phpCacheFile = PHP_CACHE_DIR . self::$module . ".$controller.$action.php";
+			if (file_exists(self::$phpCacheFile)) require self::$phpCacheFile;
+		}
 
 		$ctrl = ucfirst($controller) . 'Controller';
 		if (class_exists($ctrl)) {
@@ -242,8 +255,8 @@ class App
 
 	public static function getVarName($name, $default = null)
 	{
-		$var = self::getVar($name);
-		if (!is_string($var) || preg_match('/^[^a-zA-z]|[^a-zA-Z0-9_]/', $var))
+		$var = self::POST_GET($name);
+		if (!is_string($var) || preg_match('/^[^a-z]|[^a-z0-9_]/i', $var))
 			$var = $default;
 		return $var;
 	}
@@ -378,19 +391,6 @@ class App
 		return $models[$key];
 	}
 
-	public static function addEndEvents($event)
-	{
-		self::$endEvents[] = $event;
-	}
-
-	private static function afterEnd()
-	{
-		foreach (self::$endEvents as $event) {
-			if (!isset($event['arguments']) || !is_array($event['arguments'])) $event['arguments'] = array();
-			call_user_func_array($event['function'], $event['arguments']);
-		}
-	}
-
 	/*################################################*/
 	public static function autoLoad($class_name)
 	{
@@ -405,13 +405,19 @@ class App
 			if ($slat > 0) {
 				$adapter_path = $path . $adapter;
 				if (file_exists($adapter_path)) {
-					$adapter_namespace = $adapter_name . '\\';
 					require_once $adapter_path;
-				} else {
-					$adapter_namespace = '';
+
+					$adapter_namespace = $adapter_name . '\\';
+					$file = $adapter_namespace . 'getFileNameAutoLoad';
+					if (function_exists($file))
+						$file = $file($class_name);
+					else
+						unset($file);
 				}
-				$file = $adapter_namespace . 'getFileNameAutoLoad';
-				$file = $path . $file($class_name) . '.php';
+
+				if (!isset($file)) $file = self::getFileNameAutoLoad($class_name);
+
+				$file = $path . $file . '.php';
 			} else {
 				if (is_numeric($type)) {
 					$file = $path . $class_name . '.php';
@@ -421,6 +427,7 @@ class App
 						if (self::$module && isset(self::$config->modulePaths[self::$module][$type])) {
 							$path = self::$config->modulePaths[self::$module][$type];
 						}
+
 						$file = substr($class_name, 0, strlen($class_name) - $len);
 						if ($slat === 0) $file = substr($file, 1);
 						$file = $path . strtolower($file) . '.' . strtolower($type) . '.php';
@@ -430,9 +437,10 @@ class App
 
 			if (file_exists($file)) {
 				require_once $file;
-				if (($slat = $slat > 0) && $adapter_namespace) {
+				if (($slat = ($slat > 0)) && isset($adapter_namespace)) {
 					$adapter_namespace = $adapter_namespace . 'getClassNameAutoLoad';
-					$class_name = $adapter_namespace($class_name);
+					if (function_exists($adapter_namespace))
+						$class_name = $adapter_namespace($class_name);
 				}
 
 				if (class_exists($class_name)) {
@@ -444,14 +452,24 @@ class App
 		}
 	}
 
+	private static function getFileNameAutoLoad($class_name)
+	{
+		static $names;
+		if (strpos($class_name, '\\') === 0) $class_name = substr($class_name, 1);
+		if (!isset($names[$class_name])) {
+			$names[$class_name] = str_replace('\\', DS, $class_name);
+		}
+		return $names[$class_name];
+	}
+
 	/*################################################*/
-	public static function phpCache($file, $globalSpace = true)
+	private static function phpCache($file, $globalSpace = true)
 	{
 		if (isset(self::$phpCacheFile)) {
 			$file = file_get_contents($file);
 			if (file_exists(self::$phpCacheFile)) {
 				$file = preg_replace('/^\s*<\?php/', '', $file, 1);
-				$file = preg_replace('/defined\(\'ROOT_DIR\'\)\s*\|\|\s*(exit|die)\s*(\(\s*\))?\s*;/', '', $file);
+				$file = preg_replace('/defined\(\'\w+\'\)\s*(\|\||or)\s*(exit|die)\s*(\(\s*\))?\s*;/', '', $file);
 				if ($globalSpace) $file = "\nnamespace {" . $file . "\n}\n";
 			} elseif ($globalSpace) {
 				$file = preg_replace('/^\s*<\?php/', "<?php\nnamespace {", $file, 1) . "\n}\n";
@@ -460,7 +478,7 @@ class App
 		}
 	}
 
-	public static function delCache($type)
+	private static function delCache($type)
 	{
 		switch ($type) {
 			case 'php':
@@ -472,22 +490,34 @@ class App
 			case 'js':
 				$folders = array(JS_CACHE_DIR);
 				break;
+			case 'asset':
+				$folders = array(
+					CSS_CACHE_DIR,
+					JS_CACHE_DIR
+				);
+				break;
 			case 'all':
 				$folders = array(
 					PHP_CACHE_DIR,
 					CSS_CACHE_DIR,
 					JS_CACHE_DIR
 				);
+			case 'adt':
+				$files = File::find(ROOT_DIR, '*' . ADAPTER_FILE_EXT . '.php');
+				if (isset($folders)) {
+					if ($files) $folders = array_merge($folders, $files);
+				} else $folders = array();
 				break;
 			default:
-				return;
+				return false;
+				break;
 		}
 
 		foreach ($folders as $folder) {
-			if (is_dir($folder)) {
-				File::delete($folder);
-			}
+			File::delete($folder);
 		}
+
+		return true;
 	}
 
 	/*################################################*/
@@ -503,7 +533,7 @@ class App
 
 
 		$errors['type'] .= ' (' . self::friendlyErrorType($errors['type']) . ')';
-		echo "<pre>Last error:\n";
+		echo "\n<pre>Last error:\n";
 		print_r($errors);
 		echo '</pre>';
 
@@ -519,7 +549,7 @@ class App
 		<a target="_blank" href="', BASE_URL, '?_show_error=2&time=', TIME_NOW, '">Show raw error</a></div>';
 	}
 
-	public static function showError($type)
+	private static function showError($type)
 	{
 		if (!$type) return;
 
@@ -592,6 +622,42 @@ class App
 	}
 
 	/*################################################*/
+	public static function redirect($uri = '', $http_response_code = 302, $method = 'location')
+	{
+		self::afterEnd();
+
+		if ($uri) {
+			if (!preg_match('#^https?://#i', $uri)) {
+				if (substr($uri, 0, 1) == '/') $uri = substr($uri, 1);
+				$uri = BASE_URL . $uri;
+			}
+		} else $uri = BASE_URL;
+
+		switch ($method) {
+			case 'refresh':
+				header("Refresh:0;url=" . $uri);
+				break;
+			default:
+				header("Location: " . $uri, TRUE, $http_response_code);
+				break;
+		}
+		exit;
+	}
+
+	/*################################################*/
+	public static function addEndEvents($event)
+	{
+		self::$endEvents[] = $event;
+	}
+
+	private static function afterEnd()
+	{
+		foreach (self::$endEvents as $event) {
+			if (!isset($event['arguments']) || !is_array($event['arguments'])) $event['arguments'] = array();
+			call_user_func_array($event['function'], $event['arguments']);
+		}
+	}
+
 	public static function end($status = 0)
 	{
 		static $ended;
@@ -607,7 +673,7 @@ class App
 		}
 
 		if ($status) {
-			$error = TEMPLATE_DIR . DEFAULT_TEMPLATE . DS . 'error.php';
+			$error = TEMPLATE_DIR . self::$template . DS . 'error.php';
 			if (file_exists($error)) {
 				$__error_header = ob_get_clean();
 				require $error;
@@ -630,20 +696,7 @@ App::$config = require APP_DIR . 'config.php';
 
 /*################################################*/
 
-function getFileNameAutoLoad($class_name)
-{
-	static $names;
-	if (strpos($class_name, '\\') === 0) $class_name = substr($class_name, 1);
-	if (!isset($names[$class_name])) {
-		$names[$class_name] = str_replace('\\', DS, $class_name);
-	}
-	return $names[$class_name];
-}
-
-function __autoload($class_name)
-{
-	App::autoLoad($class_name);
-}
+spl_autoload_register('App::autoLoad');
 
 /*################################################*/
 

@@ -45,6 +45,7 @@ class File
 			chmod($path, FILE_WRITE_MODE);
 			return unlink($path);
 		}
+		return false;
 	}
 
 	public static function destroy($path)
@@ -57,5 +58,33 @@ class File
 			return unlink($path);
 		}
 		return false;
+	}
+
+	public static function find($path, $pattern)
+	{
+		$result = array();
+		if (is_dir($path)) {
+			if (substr($path, -1) != DS) $path .= DS;
+
+			$rs = glob($path.$pattern);
+			if($rs && is_array($rs))
+				$result = array_merge($result, $rs);
+
+			$dir_handle = opendir($path);
+			if (false !== $dir_handle) {
+				while ($file = readdir($dir_handle)) {
+					if ($file != "." && $file != "..") {
+						$file = $path . $file;
+						if(is_dir($file)) {
+							$rs = self::find($file, $pattern);
+							if($rs && is_array($rs))
+								$result = array_merge($result, $rs);
+						}
+					}
+				}
+				closedir($dir_handle);
+			}
+		}
+		return $result;
 	}
 }

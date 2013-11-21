@@ -7,7 +7,7 @@
 <body>
 
 <?php echo $__error_header;?>
-##########################################<br/>
+<div align="center" style="padding: 50px;font-size: 100px;font-weight: bold">404</div>
 
 </body>
 </html>
