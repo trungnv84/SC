@@ -35,11 +35,19 @@
       <file leaf-file-name="App.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/App.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="520" selection-end="520" vertical-scroll-proportion="0.1550152" vertical-offset="255" max-vertical-offset="12053">
+            <state line="532" column="0" selection-start="14756" selection-end="14756" vertical-scroll-proportion="-1.4967105" vertical-offset="9499" max-vertical-offset="11152">
               <folding>
-                <marker date="1385008857674" expanded="true" signature="15120:15134" placeholder="..." />
-                <marker date="1385008857674" expanded="true" signature="15135:15167" placeholder="..." />
+                <marker date="1385029857934" expanded="true" signature="16683:16697" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="error.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/template/site/error.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="30" selection-start="297" selection-end="312" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="357">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -47,26 +55,10 @@
       <file leaf-file-name="Log.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/lib/Log.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="170">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="File.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/lib/File.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="25" selection-start="1964" selection-end="1964" vertical-scroll-proportion="-9.884615" vertical-offset="1120" max-vertical-offset="1615">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="adapter.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/lib/joomla/adapter.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="36" selection-start="485" selection-end="485" vertical-scroll-proportion="-2.3921568" vertical-offset="82" max-vertical-offset="646">
-              <folding />
+            <state line="33" column="35" selection-start="1031" selection-end="1031" vertical-scroll-proportion="-6.0" vertical-offset="255" max-vertical-offset="1275">
+              <folding>
+                <marker date="1385024124022" expanded="true" signature="775:789" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,7 +66,7 @@
       <file leaf-file-name="home.controller.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controller/site/home.controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="895" selection-end="895" vertical-scroll-proportion="-8.807693" vertical-offset="400" max-vertical-offset="765">
+            <state line="23" column="15" selection-start="596" selection-end="596" vertical-scroll-proportion="-4.8846154" vertical-offset="264" max-vertical-offset="850">
               <folding />
             </state>
           </provider>
@@ -83,7 +75,7 @@
       <file leaf-file-name="constant.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/constant.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="7" selection-start="1567" selection-end="1567" vertical-scroll-proportion="-4.3846154" vertical-offset="702" max-vertical-offset="1530">
+            <state line="60" column="22" selection-start="1932" selection-end="1946" vertical-scroll-proportion="-2.0" vertical-offset="918" max-vertical-offset="1564">
               <folding />
             </state>
           </provider>
@@ -99,22 +91,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/template/site/home/default.php" />
         <option value="$PROJECT_DIR$/app/controller/admin/home.controller.php" />
         <option value="$PROJECT_DIR$/app/template/site/layout/default.php" />
-        <option value="$PROJECT_DIR$/app/config.php" />
         <option value="$PROJECT_DIR$/app/core/MySql.php" />
         <option value="$PROJECT_DIR$/app/logs/errors/error-2013-11-20.txt" />
         <option value="$PROJECT_DIR$/app/logs/form.html" />
-        <option value="$PROJECT_DIR$/app/template/site/error.php" />
         <option value="$PROJECT_DIR$/app/lib/Tag.php" />
         <option value="$PROJECT_DIR$/public/index.php" />
-        <option value="$PROJECT_DIR$/app/constant.php" />
         <option value="$PROJECT_DIR$/app/lib/joomla/adapter.php" />
-        <option value="$PROJECT_DIR$/app/controller/site/home.controller.php" />
         <option value="$PROJECT_DIR$/app/lib/File.php" />
+        <option value="$PROJECT_DIR$/app/template/site/error.php" />
+        <option value="$PROJECT_DIR$/app/constant.php" />
+        <option value="$PROJECT_DIR$/app/config.php" />
         <option value="$PROJECT_DIR$/app/lib/Log.php" />
+        <option value="$PROJECT_DIR$/app/logs/errors/error-2013-11-21.txt" />
         <option value="$PROJECT_DIR$/app/App.php" />
+        <option value="$PROJECT_DIR$/app/controller/site/home.controller.php" />
       </list>
     </option>
   </component>
@@ -496,24 +488,14 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_8.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="269" column="9" selection-start="9301" selection-end="9301" vertical-scroll-proportion="0.35019454" vertical-offset="4393" max-vertical-offset="18734">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/template/site/layout/default.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/logs/errors/error-2013-11-20-05.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/joomla/filter/output.php">
@@ -531,19 +513,6 @@
         <state line="14" column="0" selection-start="255" selection-end="255" vertical-scroll-proportion="0.4448598" vertical-offset="0" max-vertical-offset="535" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/template/site/error.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="75" selection-start="387" selection-end="387" vertical-scroll-proportion="0.2859813" vertical-offset="0" max-vertical-offset="535" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/logs/errors/error-2013-11-21-09.txt">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.3078394" vertical-offset="684" max-vertical-offset="1207" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/Tag.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="73" column="37" selection-start="1865" selection-end="1876" vertical-scroll-proportion="0.41033435" vertical-offset="1106" max-vertical-offset="5678">
@@ -551,23 +520,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/site/home.controller.php">
+    <entry file="file://$PROJECT_DIR$/app/lib/File.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="895" selection-end="895" vertical-scroll-proportion="-8.807693" vertical-offset="400" max-vertical-offset="765">
+        <state line="81" column="25" selection-start="1964" selection-end="1964" vertical-scroll-proportion="0.751462" vertical-offset="1120" max-vertical-offset="1615">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/joomla/adapter.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="36" selection-start="485" selection-end="485" vertical-scroll-proportion="-2.3921568" vertical-offset="82" max-vertical-offset="646">
+        <state line="12" column="36" selection-start="485" selection-end="485" vertical-scroll-proportion="0.38485804" vertical-offset="82" max-vertical-offset="646">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/File.php">
+    <entry file="file://$PROJECT_DIR$/app/lib/joomla/filter/input.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="25" selection-start="1964" selection-end="1964" vertical-scroll-proportion="-9.884615" vertical-offset="1120" max-vertical-offset="1615">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13821">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="12" selection-start="73" selection-end="73" vertical-scroll-proportion="0.19883041" vertical-offset="0" max-vertical-offset="2448">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/constant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="22" selection-start="1932" selection-end="1946" vertical-scroll-proportion="-2.0" vertical-offset="918" max-vertical-offset="1564">
           <folding />
         </state>
       </provider>
@@ -579,26 +562,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/constant.php">
+    <entry file="file://$PROJECT_DIR$/app/template/site/error.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="7" selection-start="1567" selection-end="1567" vertical-scroll-proportion="-4.3846154" vertical-offset="702" max-vertical-offset="1530">
+        <state line="8" column="30" selection-start="297" selection-end="312" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="357">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/Log.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="170">
+        <state line="33" column="35" selection-start="1031" selection-end="1031" vertical-scroll-proportion="-6.0" vertical-offset="255" max-vertical-offset="1275">
+          <folding>
+            <marker date="1385024124022" expanded="true" signature="775:789" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/logs/errors/error-2013-11-21.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="452" selection-end="452" vertical-scroll-proportion="0.7183099" vertical-offset="0" max-vertical-offset="357">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controller/site/home.controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="15" selection-start="596" selection-end="596" vertical-scroll-proportion="-4.8846154" vertical-offset="264" max-vertical-offset="850">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/App.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="520" selection-end="520" vertical-scroll-proportion="0.1550152" vertical-offset="255" max-vertical-offset="12053">
+        <state line="532" column="0" selection-start="14756" selection-end="14756" vertical-scroll-proportion="-1.4967105" vertical-offset="9499" max-vertical-offset="11152">
           <folding>
-            <marker date="1385008857674" expanded="true" signature="15120:15134" placeholder="..." />
-            <marker date="1385008857674" expanded="true" signature="15135:15167" placeholder="..." />
+            <marker date="1385029857934" expanded="true" signature="16683:16697" placeholder="..." />
           </folding>
         </state>
       </provider>

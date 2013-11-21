@@ -32,8 +32,13 @@ class HomeController extends Controller
 		echo '<br />';
 		*/
 
-		$_GET['a'] = '<script>alert("abc");</script>';
-		print_r(App::getVarHTML('a'));
+		/*$_GET['a'] = '<script>alert("abc");</script>';
+		print_r(App::getVarHTML('a'));*/
+
+		$time = explode(' ', MICRO_TIME_NOW);
+		$time = date('Y-m-d h:m:s', TIME_NOW) . ' ' . substr($time[0], 2, 6) . rand();
+		var_dump($time);
+		var_dump(date('Y-m-d h:m:s', strtotime($time)));
 
 		echo '</pre>';
 	}

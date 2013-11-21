@@ -6,8 +6,11 @@
 </head>
 <body>
 
-<?php echo $__error_header;?>
+<?php if(isset($__error_header)) echo $__error_header;?>
+
 <div align="center" style="padding: 50px;font-size: 100px;font-weight: bold">404</div>
+
+<?php if(isset($__error_footer)) echo $__error_footer;?>
 
 </body>
 </html>

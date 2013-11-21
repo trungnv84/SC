@@ -2,11 +2,11 @@
 $config = new stdClass();
 
 $config->autoLoadPath = array(
-	APP_DIR . 'core' . DS,
+	CORE_DIR,
 	'Controller' => CONTROLLER_DIR,
 	/*'View' => APP_DIR . DS . 'view' . DS,*/
 	'Model' => MODEL_DIR,
-	APP_DIR . 'lib' . DS
+	LIBRARY_DIR
 );
 
 $config->router = array(

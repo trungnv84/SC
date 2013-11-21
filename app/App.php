@@ -33,7 +33,7 @@ class App
 
 		if (PHP_CACHE) {
 			self::$phpCacheFile = PHP_CACHE_DIR . self::$module . ".$controller.$action.php";
-			if (file_exists(self::$phpCacheFile)) require self::$phpCacheFile;
+			if (file_exists(self::$phpCacheFile)) require_once self::$phpCacheFile;
 		}
 
 		$ctrl = ucfirst($controller) . 'Controller';
@@ -256,8 +256,8 @@ class App
 	public static function getVarName($name, $default = null)
 	{
 		$var = self::POST_GET($name);
-		if (!is_string($var) || preg_match('/^[^a-z]|[^a-z0-9_]/i', $var))
-			$var = $default;
+		if (is_string($var)) $var = preg_replace('/\W+/i', '', $var);
+		else $var = $default;
 		return $var;
 	}
 
@@ -521,42 +521,14 @@ class App
 	}
 
 	/*################################################*/
-	private static function errorLog($errors)
-	{
-		$file = date('Y-m-d-h', TIME_NOW);
-
-		if (!is_dir(ERROR_LOG_DIR)) {
-			mkdir(ERROR_LOG_DIR, DIR_WRITE_MODE, true);
-		} else {
-			chmod(ERROR_LOG_DIR, DIR_WRITE_MODE);
-		}
-
-
-		$errors['type'] .= ' (' . self::friendlyErrorType($errors['type']) . ')';
-		echo "\n<pre>Last error:\n";
-		print_r($errors);
-		echo '</pre>';
-
-		$time = TIME_NOW;
-		$time = "\n[[$time]]\n";
-		$content = $time . ob_get_clean() . $time;
-		if (!ob_get_level()) ob_start();
-
-		file_put_contents(ERROR_LOG_DIR . "error-$file.txt", $content, FILE_APPEND);
-
-		echo(ENVIRONMENT == 'Development' ? '<div>' : '<div style="display: none;">'),
-		'<a target="_blank" href="', BASE_URL, '?_show_error=1&time=', TIME_NOW, '">Show html error</a> |
-		<a target="_blank" href="', BASE_URL, '?_show_error=2&time=', TIME_NOW, '">Show raw error</a></div>';
-	}
-
 	private static function showError($type)
 	{
 		if (!$type) return;
 
 		if ('POST' === App::getMethod()) {
 			if (ERROR_LOG_PASS === App::POST('pass')) {
-				$time = (int)App::GET('time', 0);
-				$file = date('Y-m-d-h', $time);
+				$time = App::GET('time', '');
+				$file = substr($time, 0, 10);
 				$file = ERROR_LOG_DIR . "error-$file.txt";
 
 				if (file_exists($file)) {
@@ -582,43 +554,6 @@ class App
 		require APP_LOG_DIR . 'form.html';
 
 		App::end();
-	}
-
-	public static function friendlyErrorType($type)
-	{
-		switch ($type) {
-			case E_ERROR: // 1 //
-				return 'E_ERROR';
-			case E_WARNING: // 2 //
-				return 'E_WARNING';
-			case E_PARSE: // 4 //
-				return 'E_PARSE';
-			case E_NOTICE: // 8 //
-				return 'E_NOTICE';
-			case E_CORE_ERROR: // 16 //
-				return 'E_CORE_ERROR';
-			case E_CORE_WARNING: // 32 //
-				return 'E_CORE_WARNING';
-			case E_CORE_ERROR: // 64 //
-				return 'E_COMPILE_ERROR';
-			case E_CORE_WARNING: // 128 //
-				return 'E_COMPILE_WARNING';
-			case E_USER_ERROR: // 256 //
-				return 'E_USER_ERROR';
-			case E_USER_WARNING: // 512 //
-				return 'E_USER_WARNING';
-			case E_USER_NOTICE: // 1024 //
-				return 'E_USER_NOTICE';
-			case E_STRICT: // 2048 //
-				return 'E_STRICT';
-			case E_RECOVERABLE_ERROR: // 4096 //
-				return 'E_RECOVERABLE_ERROR';
-			case E_DEPRECATED: // 8192 //
-				return 'E_DEPRECATED';
-			case E_USER_DEPRECATED: // 16384 //
-				return 'E_USER_DEPRECATED';
-		}
-		return "";
 	}
 
 	/*################################################*/
@@ -668,25 +603,37 @@ class App
 		if (is_null($error))
 			self::afterEnd();
 		else {
-			self::errorLog($error);
-			if (!$status) $status = 500;
+			require_once LIBRARY_DIR . 'Log.php';
+			$error = Log::error($error);
+			$error = (self::$module != DEFAULT_MODULE ? self::$module . '/' : '') . '404' . REWRITE_SUFFIX . '?time=' . $error;
+			self::redirect($error);
 		}
 
 		if ($status) {
+			if($error = self::GET('time', false)) {
+				$__error_header = (ENVIRONMENT == 'Development' ? '<div>' : '<div style="display: none;">') .
+					'<a target="_blank" href="' . BASE_URL . '?_show_error=1&time=' . $error . '">Show html error</a> |
+					<a target="_blank" href="' . BASE_URL . '?_show_error=2&time=' . $error . '">Show raw error</a></div>';
+			}
 			$error = TEMPLATE_DIR . self::$template . DS . 'error.php';
 			if (file_exists($error)) {
-				$__error_header = ob_get_clean();
 				require $error;
-			}
+			} else echo $__error_header;
 		}
 
 		if (ENVIRONMENT == 'Development' && !self::is_ajax_request()) {
-			echo '<hr/><div>Run time: ', microtime() - MICRO_TIME_NOW, '</div>';
+			$times = explode(' ', MICRO_TIME_NOW);
+			foreach ($times as $key => $time) $times[$key] = '-' . $time;
+			$times = array_merge($times, explode(' ', microtime()));
+			//foreach ($times as $key => $time) $times[$key] = floatval($time);
+			//var_dump($times);
+
+			echo '<hr/><div>Run time: ', array_sum($times), '</div>';
 			echo '<div>Memory Usage: ', Format::byte(memory_get_usage()), ' | ', Format::byte(memory_get_usage(true)), '</div>';
 			echo '<div>Memory Peak Usage: ', Format::byte(memory_get_peak_usage()), ' | ', Format::byte(memory_get_peak_usage(true)), '</div>';
 		}
 
-		die($status);
+		exit($status);
 	}
 }
 

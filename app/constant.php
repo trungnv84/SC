@@ -22,6 +22,8 @@ if (isset($_SERVER['HTTP_HOST'])) {
 define('BASE_URL', $_base_url);
 
 define('PUBLIC_DIR', ROOT_DIR . 'public' . DS);
+define('CORE_DIR', APP_DIR . 'core' . DS);
+define('LIBRARY_DIR', APP_DIR . 'lib' . DS);
 define('CONTROLLER_DIR', APP_DIR . 'controller' . DS);
 define('MODEL_DIR', APP_DIR . 'model' . DS);
 define('TEMPLATE_DIR', APP_DIR . 'template' . DS);
