@@ -524,7 +524,7 @@ class App
 				$files = File::find(ROOT_DIR, '*' . ADAPTER_FILE_EXT . '.php');
 				if (isset($folders)) {
 					if ($files) $folders = array_merge($folders, $files);
-				} else $folders = array();
+				} else $folders = $files;
 				break;
 			default:
 				return false;
