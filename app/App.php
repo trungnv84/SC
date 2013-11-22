@@ -15,11 +15,14 @@ class App
 
 	public static function run($controller = null, $action = null, $module = null)
 	{
-		self::showError((int)self::GET('_show_error', 0));
+		if (self::showError((int)self::GET('_show_error', 0))) self::end();
 
 		if (self::delCache(self::getVarName('_del_cache'))) self::redirect();
 
-		if (isset($_GET['_url'])) self::parseUrl($_GET['_url']);
+		if (isset($_GET['_url'])) {
+			if (404 == substr($_GET['_url'], 1, 3)) self::end(404);
+			self::parseUrl($_GET['_url']);
+		}
 
 		if (is_null($controller))
 			$controller = strtolower(self::getVarName('controller', self::$config->defaultController));
@@ -95,6 +98,7 @@ class App
 		}
 	}
 
+	/*################################################*/
 	public static function getMethod()
 	{
 		static $method;
@@ -264,7 +268,7 @@ class App
 	public static function getAllVar($hash = null, $default = array())
 	{
 		if ($hash === 'METHOD')
-			$hash = $_SERVER['REQUEST_METHOD'];
+			$hash = self::getMethod();
 		switch (strtoupper($hash)) {
 			case 'GET':
 				if (isset($_GET)) $var = $_GET;
@@ -283,6 +287,7 @@ class App
 		return $var;
 	}
 
+	/*################################################*/
 	public static function is_ajax_request()
 	{
 		static $result;
@@ -291,6 +296,19 @@ class App
 		return $result;
 	}
 
+	public static function contentType($default = null)
+	{
+		$headers = headers_list();
+		foreach ($headers as $header) {
+			if (is_string($header) && preg_match('/^\s*Content-Type\s*:\s*([\w\/]+)/i', $header, $header)) {
+				$default = strtolower($header[1]);
+				break;
+			}
+		}
+		return $default;
+	}
+
+	/*################################################*/
 	public static function assign($key, $value = null)
 	{
 		if (is_array($key)) {
@@ -347,13 +365,13 @@ class App
 			if (!ob_get_level()) ob_start();
 			require(TEMPLATE_DIR . $__template . DS . $__controller . DS . $__action . '.php');
 
-			if (App::layout_exists($__layout, $__template)) {
+			if (self::layout_exists($__layout, $__template)) {
 				$__html__main = ob_get_clean();
 				if (!ob_get_level()) ob_start();
 				require(TEMPLATE_DIR . $__template . DS . 'layout' . DS . $__layout . '.php');
 			}
 
-			if (App::response_type_exists($__type, $__template)) {
+			if (self::response_type_exists($__type, $__template)) {
 				$__html_layout = ob_get_clean();
 				if (!ob_get_level()) ob_start();
 				require(TEMPLATE_DIR . $__template . DS . $__type . '.php');
@@ -513,9 +531,7 @@ class App
 				break;
 		}
 
-		foreach ($folders as $folder) {
-			File::delete($folder);
-		}
+		foreach ($folders as $folder) File::delete($folder);
 
 		return true;
 	}
@@ -523,11 +539,11 @@ class App
 	/*################################################*/
 	private static function showError($type)
 	{
-		if (!$type) return;
+		if (!$type) return false;
 
-		if ('POST' === App::getMethod()) {
-			if (ERROR_LOG_PASS === App::POST('pass')) {
-				$time = App::GET('time', '');
+		if ('POST' === self::getMethod()) {
+			if (ERROR_LOG_PASS === md5(self::POST('pass'))) {
+				$time = self::GET('time', '');
 				$file = substr($time, 0, 10);
 				$file = ERROR_LOG_DIR . "error-$file.txt";
 
@@ -547,13 +563,13 @@ class App
 						echo '<pre>', htmlspecialchars($file, ENT_COMPAT, 'UTF-8'), '</pre>';
 				}
 
-				App::end();
+				self::end();
 			}
 		}
 
 		require APP_LOG_DIR . 'form.html';
 
-		App::end();
+		self::end();
 	}
 
 	/*################################################*/
@@ -562,19 +578,25 @@ class App
 		self::afterEnd();
 
 		if ($uri) {
-			if (!preg_match('#^https?://#i', $uri)) {
+			if (!preg_match('#^[a-z]+\://#i', $uri)) {
 				if (substr($uri, 0, 1) == '/') $uri = substr($uri, 1);
 				$uri = BASE_URL . $uri;
 			}
 		} else $uri = BASE_URL;
 
-		switch ($method) {
-			case 'refresh':
-				header("Refresh:0;url=" . $uri);
-				break;
-			default:
-				header("Location: " . $uri, TRUE, $http_response_code);
-				break;
+		if (headers_sent()) {
+			echo "<script>document.location.href='" . str_replace("'", "&apos;", $uri) . "';</script>\n";
+		} else {
+			switch ($method) {
+				case 'refresh':
+					header("Refresh:0;url=" . $uri);
+					break;
+				default:
+					//header($http_response_code == 301 ? 'HTTP/1.1 301 Moved Permanently' : 'HTTP/1.1 303 See other');
+					header("Location: " . $uri, true, $http_response_code);
+					break;
+			}
+			//header('Content-Type: text/html; charset=utf-8'); //$this->charSet
 		}
 		exit;
 	}
@@ -610,25 +632,22 @@ class App
 		}
 
 		if ($status) {
-			if($error = self::GET('time', false)) {
+			if ($error = self::GET('time', false)) {
 				$__error_header = (ENVIRONMENT == 'Development' ? '<div>' : '<div style="display: none;">') .
 					'<a target="_blank" href="' . BASE_URL . '?_show_error=1&time=' . $error . '">Show html error</a> |
 					<a target="_blank" href="' . BASE_URL . '?_show_error=2&time=' . $error . '">Show raw error</a></div>';
 			}
 			$error = TEMPLATE_DIR . self::$template . DS . 'error.php';
-			if (file_exists($error)) {
-				require $error;
-			} else echo $__error_header;
+			if (file_exists($error)) require $error;
+			else echo $__error_header;
 		}
 
-		if (ENVIRONMENT == 'Development' && !self::is_ajax_request()) {
-			$times = explode(' ', MICRO_TIME_NOW);
-			foreach ($times as $key => $time) $times[$key] = '-' . $time;
-			$times = array_merge($times, explode(' ', microtime()));
-			//foreach ($times as $key => $time) $times[$key] = floatval($time);
-			//var_dump($times);
 
-			echo '<hr/><div>Run time: ', array_sum($times), '</div>';
+		if (ENVIRONMENT == 'Development' && !self::is_ajax_request() && self::contentType('text/html') == 'text/html') {
+			$time[] = explode(' ', microtime());
+			$time[] = explode(' ', MICRO_TIME_NOW);
+			$time = ($time[0][0] - $time[1][0]) + (@$time[0][1] - @$time[1][1]);
+			echo '<hr/><div>Run time: ', $time, '</div>';
 			echo '<div>Memory Usage: ', Format::byte(memory_get_usage()), ' | ', Format::byte(memory_get_usage(true)), '</div>';
 			echo '<div>Memory Peak Usage: ', Format::byte(memory_get_peak_usage()), ' | ', Format::byte(memory_get_peak_usage(true)), '</div>';
 		}

@@ -3,15 +3,15 @@ class Log
 {
 	public static function error($errors)
 	{
-		$file = date('Y-m-d', TIME_NOW);
-
+		chmod(APP_LOG_DIR, DIR_WRITE_MODE);
 		if (!is_dir(ERROR_LOG_DIR)) {
 			mkdir(ERROR_LOG_DIR, DIR_WRITE_MODE, true);
 		} else {
 			chmod(ERROR_LOG_DIR, DIR_WRITE_MODE);
 		}
 
-		$errors['type'] .= ' (' . self::friendlyErrorType($errors['type']) . ')';
+		if (is_array($errors) && isset($errors['type']))
+			$errors['type'] .= ' (' . self::friendlyErrorType($errors['type']) . ')';
 		echo "\n<pre>Last error:\n";
 		print_r($errors);
 		echo '</pre>';
@@ -22,7 +22,10 @@ class Log
 		$content = $wrapper . ob_get_clean() . $wrapper;
 		if (!ob_get_level()) ob_start();
 
-		file_put_contents(ERROR_LOG_DIR . "error-$file.txt", $content, FILE_APPEND);
+		$file = date('Y-m-d', TIME_NOW);
+		$file = ERROR_LOG_DIR . "error-$file.txt";
+		if (file_exists($file)) chmod($file, FILE_WRITE_MODE);
+		file_put_contents($file, $content, FILE_APPEND);
 
 		return $time;
 

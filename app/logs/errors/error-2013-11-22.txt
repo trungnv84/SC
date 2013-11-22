@@ -1,0 +1,153 @@
+
+[[1970-01-01 07:01:00 00000014669]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/public/">
+<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css?__av=1.0" rel="stylesheet" type="text/css" />
+<link href="css/cache/57a008b0f4de6aa71091c6c9fdb30c8c.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script src="js/cache/d7c5e75a6046e3ce48507e2a83975531.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre>0.90138000 1385087004<br/><br />
+<b>Notice</b>:  A non well formed numeric value encountered in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>38</b><br />
+1970-01-01 07:01:00 00000028900</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => A non well formed numeric value encountered
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 38
+)
+</pre><br />
+<b>Notice</b>:  A non well formed numeric value encountered in <b>D:\xampp\htdocs\sc\app\lib\Log.php</b> on line <b>19</b><br />
+
+[[1970-01-01 07:01:00 00000014669]]
+
+[[1970-01-01 07:01:00 00000026899]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/public/">
+<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css?__av=1.0" rel="stylesheet" type="text/css" />
+<link href="css/cache/57a008b0f4de6aa71091c6c9fdb30c8c.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script src="js/cache/d7c5e75a6046e3ce48507e2a83975531.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre>0.81283300 1385087012<br/><br />
+<b>Notice</b>:  A non well formed numeric value encountered in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>38</b><br />
+1970-01-01 07:01:00 0000003074</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => A non well formed numeric value encountered
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 38
+)
+</pre><br />
+<b>Notice</b>:  A non well formed numeric value encountered in <b>D:\xampp\htdocs\sc\app\lib\Log.php</b> on line <b>19</b><br />
+
+[[1970-01-01 07:01:00 00000026899]]
+
+[[2013-11-22 09:11:11 072453879]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/public/">
+<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css?__av=1.0" rel="stylesheet" type="text/css" />
+<link href="css/cache/57a008b0f4de6aa71091c6c9fdb30c8c.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script src="js/cache/d7c5e75a6046e3ce48507e2a83975531.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre>0.07245300 1385087111<br/><br />
+<b>Notice</b>:  A non well formed numeric value encountered in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>38</b><br />
+1970-01-01 07:01:00 00000026190</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => A non well formed numeric value encountered
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 38
+)
+</pre>
+[[2013-11-22 09:11:11 072453879]]
+
+[[2013-11-22 11:11:11 19507215876]]
+<br />
+<b>Parse error</b>:  syntax error, unexpected 'echo' (T_ECHO) in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>44</b><br />
+
+<pre>Last error:
+Array
+(
+    [type] => 4 (E_PARSE)
+    [message] => syntax error, unexpected 'echo' (T_ECHO)
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 44
+)
+</pre>
+[[2013-11-22 11:11:11 19507215876]]
+
+[[2013-11-22 11:11:21 40711130844]]
+
+<pre><br />
+<b>Fatal error</b>:  Class 'Joomla\JFilterInput' not found in <b>D:\xampp\htdocs\sc\app\App.php</b> on line <b>166</b><br />
+
+<pre>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Class 'Joomla\JFilterInput' not found
+    [file] => D:\xampp\htdocs\sc\app\App.php
+    [line] => 166
+)
+</pre>
+[[2013-11-22 11:11:21 40711130844]]
+
+[[2013-11-22 11:11:48 00849617669]]
+
+<pre><br />
+<b>Fatal error</b>:  Class 'Joomla\JFilterInput' not found in <b>D:\xampp\htdocs\sc\app\App.php</b> on line <b>166</b><br />
+
+<pre>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Class 'Joomla\JFilterInput' not found
+    [file] => D:\xampp\htdocs\sc\app\App.php
+    [line] => 166
+)
+</pre>
+[[2013-11-22 11:11:48 00849617669]]

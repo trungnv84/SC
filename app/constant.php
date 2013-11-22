@@ -7,8 +7,8 @@ define('TIME_NOW', time());
 define('DS', DIRECTORY_SEPARATOR);
 define('APP_DIR', __DIR__ . DS);
 define('ROOT_DIR', substr(APP_DIR, 0, 1 + strrpos(APP_DIR, DS, -2)));
-define('APP_LOG_DIR', APP_DIR . 'logs' . DS);
-define('ERROR_LOG_DIR', APP_LOG_DIR . 'errors' . DS);
+define('APP_LOG_DIR', APP_DIR . 'logs' . DS); //need write permission
+define('ERROR_LOG_DIR', APP_LOG_DIR . 'errors' . DS); //need write permission
 
 if (isset($_SERVER['HTTP_HOST'])) {
 	$_base_url = isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off' ? 'https' : 'http';
@@ -29,13 +29,13 @@ define('MODEL_DIR', APP_DIR . 'model' . DS);
 define('TEMPLATE_DIR', APP_DIR . 'template' . DS);
 
 define('CACHE_DIR', APP_DIR . 'cache' . DS);
-define('PHP_CACHE_DIR', CACHE_DIR . 'php' . DS);
-define('DB_CACHE_DIR', CACHE_DIR . 'db' . DS);
+define('PHP_CACHE_DIR', CACHE_DIR . 'php' . DS); //need write permission
+define('DB_CACHE_DIR', CACHE_DIR . 'db' . DS); //need write permission
 
-define('DEFAULT_CSS_DIR', PUBLIC_DIR . 'css' . DS);
-define('CSS_CACHE_DIR', DEFAULT_CSS_DIR . 'cache' . DS);
-define('DEFAULT_JS_DIR', PUBLIC_DIR . 'js' . DS);
-define('JS_CACHE_DIR', DEFAULT_JS_DIR . 'cache' . DS);
+define('DEFAULT_CSS_DIR', PUBLIC_DIR . 'css' . DS); //need write permission
+define('CSS_CACHE_DIR', DEFAULT_CSS_DIR . 'cache' . DS); //need write permission
+define('DEFAULT_JS_DIR', PUBLIC_DIR . 'js' . DS); //need write permission
+define('JS_CACHE_DIR', DEFAULT_JS_DIR . 'cache' . DS); //need write permission
 
 /*##########################################################*/
 
@@ -46,7 +46,7 @@ define('JS_CACHE_DIR', DEFAULT_JS_DIR . 'cache' . DS);
  * */
 
 define('ENVIRONMENT', 'Development');
-define('ERROR_LOG_PASS', '123456');
+define('ERROR_LOG_PASS', 'e10adc3949ba59abbe56e057f20f883e');
 
 define('ADAPTER_FILE_EXT', '.adt');
 define('PHP_CACHE', false);

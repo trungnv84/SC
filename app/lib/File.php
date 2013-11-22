@@ -66,8 +66,8 @@ class File
 		if (is_dir($path)) {
 			if (substr($path, -1) != DS) $path .= DS;
 
-			$rs = glob($path.$pattern);
-			if($rs && is_array($rs))
+			$rs = glob($path . $pattern);
+			if ($rs && is_array($rs))
 				$result = array_merge($result, $rs);
 
 			$dir_handle = opendir($path);
@@ -75,9 +75,9 @@ class File
 				while ($file = readdir($dir_handle)) {
 					if ($file != "." && $file != "..") {
 						$file = $path . $file;
-						if(is_dir($file)) {
+						if (is_dir($file)) {
 							$rs = self::find($file, $pattern);
-							if($rs && is_array($rs))
+							if ($rs && is_array($rs))
 								$result = array_merge($result, $rs);
 						}
 					}
