@@ -6,6 +6,8 @@ class App
 {
 	public static $config;
 	public static $module = DEFAULT_MODULE;
+	public static $controllerRuning;
+	public static $actionRuning;
 	public static $phpCacheFile;
 	private static $vars = array();
 	private static $template = DEFAULT_TEMPLATE;
@@ -29,6 +31,9 @@ class App
 		if (is_null($action))
 			$action = strtolower(self::getVarName('action', self::$config->defaultAction));
 
+		self::$controllerRuning = $controller;
+		self::$actionRuning = $action;
+
 		if (is_null($module))
 			self::autoSetTemplate();
 		else
@@ -44,8 +49,10 @@ class App
 			define('CURRENT_CONTROLLER', $controller);
 			$ctrl = new $ctrl;
 			$act = $action . 'Action';
-			if (method_exists($ctrl, $act))
+			if (method_exists($ctrl, $act)) {
+				define('CURRENT_ACTION', $action);
 				$ctrl->$act();
+			}
 			unset($ctrl);
 			self::view($action);
 		} elseif (self::view_exists($action, $controller)) {
@@ -99,6 +106,12 @@ class App
 	}
 
 	/*################################################*/
+	public static function getCurrentUrl()
+	{
+		$url = BASE_URL . CURRENT_URI;
+		return $url;
+	}
+
 	public static function getMethod()
 	{
 		static $method;
@@ -464,6 +477,11 @@ class App
 				if (class_exists($class_name)) {
 					if (method_exists($class_name, '__init')) $class_name::__init();
 					if (PHP_CACHE) self::phpCache($file, !$slat);
+					if (ACTION_LIB_LOG) Log::lib(array(
+						self::$module,
+						self::$controllerRuning,
+						self::$actionRuning
+					), $file);
 					break;
 				}
 			}
@@ -633,7 +651,7 @@ class App
 
 		if ($status) {
 			if ($error = self::GET('time', false)) {
-				$__error_header = (ENVIRONMENT == 'Development' ? '<div>' : '<div style="display: none;">') .
+				$__error_header = (ENVIRONMENT == 'Development' ? '<div>' : '<div id="__error_link" style="display: none;">') .
 					'<a target="_blank" href="' . BASE_URL . '?_show_error=1&time=' . $error . '">Show html error</a> |
 					<a target="_blank" href="' . BASE_URL . '?_show_error=2&time=' . $error . '">Show raw error</a></div>';
 			}
@@ -642,14 +660,38 @@ class App
 			else echo $__error_header;
 		}
 
+		if (ENVIRONMENT != 'Production' && !self::is_ajax_request() && self::contentType('text/html') == 'text/html') {
+			$hidden_debug = ENVIRONMENT != 'Development';
+			if ($hidden_debug) echo '<div id="__debug" style="display: none">';
 
-		if (ENVIRONMENT == 'Development' && !self::is_ajax_request() && self::contentType('text/html') == 'text/html') {
 			$time[] = explode(' ', microtime());
 			$time[] = explode(' ', MICRO_TIME_NOW);
 			$time = ($time[0][0] - $time[1][0]) + (@$time[0][1] - @$time[1][1]);
 			echo '<hr/><div>Run time: ', $time, '</div>';
 			echo '<div>Memory Usage: ', Format::byte(memory_get_usage()), ' | ', Format::byte(memory_get_usage(true)), '</div>';
 			echo '<div>Memory Peak Usage: ', Format::byte(memory_get_peak_usage()), ' | ', Format::byte(memory_get_peak_usage(true)), '</div>';
+
+			if ($hidden_debug) echo '<script>
+				document.__dbclick = 0;
+				function __show_debug(){
+					document.__dbclick++;
+					if (3 == document.__dbclick) {
+						document.getElementById("__debug").style.display = "block";
+						var __error_link = document.getElementById("__error_link");
+						if(__error_link) __error_link.style.display = "block";
+					} else if(1 == document.__dbclick) {
+						setTimeout(function(){
+							if(document.__dbclick < 3)
+								document.__dbclick = 0;
+						}, 5000);
+					}
+				}
+
+				if(document.attachEvent)
+					document.attachEvent("ondblclick", __show_debug);
+				else if(document.addEventListener)
+					document.addEventListener("dblclick", __show_debug);
+				</script></div>';
 		}
 
 		exit($status);

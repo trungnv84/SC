@@ -1,0 +1,6 @@
+list -> lib: actionname|list lib
+	-> action: libname|list action
+		-> url: actionname|list url
+
+
+Chuyen delCache sang module tools

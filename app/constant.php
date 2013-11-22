@@ -7,19 +7,21 @@ define('TIME_NOW', time());
 define('DS', DIRECTORY_SEPARATOR);
 define('APP_DIR', __DIR__ . DS);
 define('ROOT_DIR', substr(APP_DIR, 0, 1 + strrpos(APP_DIR, DS, -2)));
-define('APP_LOG_DIR', APP_DIR . 'logs' . DS); //need write permission
-define('ERROR_LOG_DIR', APP_LOG_DIR . 'errors' . DS); //need write permission
 
 if (isset($_SERVER['HTTP_HOST'])) {
 	$_base_url = isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off' ? 'https' : 'http';
 	define('SCHEME', $_base_url);
 	$_base_url .= '://' . $_SERVER['HTTP_HOST'];
-	$_base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+	$_current_uri = str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+	$_base_url .= $_current_uri;
+	$_current_uri = str_replace($_current_uri, '', $_SERVER['REQUEST_URI']);
 } else {
 	define('SCHEME', 'http');
 	$_base_url = 'http://localhost/';
+	$_current_uri = substr($_SERVER["REQUEST_URI"], 1);
 }
 define('BASE_URL', $_base_url);
+define('CURRENT_URI', $_current_uri);
 
 define('PUBLIC_DIR', ROOT_DIR . 'public' . DS);
 define('CORE_DIR', APP_DIR . 'core' . DS);
@@ -45,11 +47,18 @@ define('JS_CACHE_DIR', DEFAULT_JS_DIR . 'cache' . DS); //need write permission
  *     Production
  * */
 
-define('ENVIRONMENT', 'Development');
+define('PHP_CACHE', false);
+
+define('ENVIRONMENT', 'Testing');
+
 define('ERROR_LOG_PASS', 'e10adc3949ba59abbe56e057f20f883e');
 
-define('ADAPTER_FILE_EXT', '.adt');
-define('PHP_CACHE', false);
+define('ACTION_LIB_LOG', true);
+
+define('APP_LOG_DIR', APP_DIR . 'logs' . DS); //need write permission
+define('ERROR_LOG_DIR', APP_LOG_DIR . 'errors' . DS); //need write permission
+define('ACTION_LOG_DIR', APP_LOG_DIR . 'actions' . DS); //need write permission
+define('LIB_LOG_DIR', APP_LOG_DIR . 'libs' . DS); //need write permission
 
 /*##########################################################*/
 
@@ -59,6 +68,7 @@ define('DEFAULT_ACTION', 'default');
 define('DEFAULT_LAYOUT', 'default');
 
 define('REWRITE_SUFFIX', '.html');
+define('ADAPTER_FILE_EXT', '.adt');
 define('DEFAULT_TEMPLATE', 'site');
 define('DEFAULT_VIEW_TYPE', 'html');
 

@@ -17,7 +17,7 @@ class Log
 		echo '</pre>';
 
 		$time = explode(' ', MICRO_TIME_NOW);
-		$time = date('Y-m-d h:m:s', TIME_NOW) . ' ' . substr($time[0], 2, 6) . rand();
+		$time = date('Y-m-d H:i:s', TIME_NOW) . ' ' . substr($time[0], 2, 6) . rand();
 		$wrapper = "\n[[$time]]\n";
 		$content = $wrapper . ob_get_clean() . $wrapper;
 		if (!ob_get_level()) ob_start();
@@ -69,5 +69,27 @@ class Log
 				return 'E_USER_DEPRECATED';
 		}
 		return "";
+	}
+
+	public static function lib($action, $lib)
+	{
+		$time = date('Y-m-d H:i:s', filemtime($lib));
+		$lib = str_replace(ROOT_DIR, '', $lib);
+		$fileLib = str_replace(array('\\', '/'), '-', $lib);
+		if (is_array($action)) $action = implode('.', $action);
+
+		File::mkDir(LIB_LOG_DIR);
+		File::mkDir(ACTION_LOG_DIR);
+
+		self::updateLog(LIB_LOG_DIR . $fileLib . '.txt', $action);
+
+		self::updateLog(ACTION_LOG_DIR . $action . '.libs.txt', "[$time] $lib");
+		self::updateLog(ACTION_LOG_DIR . $action . '.urls.txt', CURRENT_URI?CURRENT_URI:'/');
+	}
+
+	private static function updateLog($file, $log)
+	{
+		//zzz
+		file_put_contents($file, "$log\n", FILE_APPEND);
 	}
 }
