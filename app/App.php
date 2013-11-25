@@ -10,6 +10,7 @@ class App
 	public static $phpCacheFile;
 
 	private static $vars = array();
+	private static $params = array();
 	private static $template = DEFAULT_TEMPLATE;
 	private static $view_type = DEFAULT_VIEW_TYPE;
 	private static $layout = DEFAULT_LAYOUT;
@@ -56,10 +57,10 @@ class App
 			$act = $action . 'Action';
 			if (method_exists($ctrl, $act)) {
 				define('CURRENT_ACTION', $action);
-				$ctrl->$act();
+				call_user_func_array(array($ctrl, $act), self::$params);
 			}
-			unset($ctrl);
-			self::view($action);
+			unset($ctrl, $act);
+			self::view($action, $controller);
 		} elseif (self::view_exists($action, $controller)) {
 			self::view($action, $controller);
 		} else {
@@ -91,13 +92,23 @@ class App
 					if ($routed = preg_match('#^' . $router[0] . '$#', $url, $matches)) {
 						foreach ($router[1] as $name => $index) {
 							if (isset($matches[$index]) && $matches[$index]) {
-								$_GET[$name] = $matches[$index];
-								if (!isset($_POST[$name]))
-									$_REQUEST[$name] = $matches[$index];
+								if (!isset($_GET[$name])) {
+									$_GET[$name] = $matches[$index];
+									if (!isset($_POST[$name]))
+										$_REQUEST[$name] = $matches[$index];
+								}
 							}
 						}
 						break;
 					}
+				}
+			}
+
+			if (!$routed) {
+				if ($routed = preg_match('#^/([^\/.]+)/([^\/.]+)/([^.]+)(\\' . REWRITE_SUFFIX . ')?$#', $url, $matches)) {
+					$_GET['controller'] = $matches[1];
+					$_GET['action'] = $matches[2];
+					self::$params = explode('/', $matches[3]);
 				}
 			}
 

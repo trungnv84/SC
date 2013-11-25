@@ -3,8 +3,9 @@ defined('ROOT_DIR') || exit;
 
 class CacheController extends Controller
 {
-	function defaultAction()
+	function defaultAction($a = null)
 	{
+		echo $a;
 	}
 
 	function delete()

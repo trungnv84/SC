@@ -86,3 +86,107 @@ Array
 )
 </pre>
 [[2013-11-25 10:20:08 6698879301]]
+
+[[2013-11-25 15:23:22 63152210202]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/public/">
+</head>
+
+<body>
+<div class="main"><br />
+<b>Notice</b>:  Array to string conversion in <b>D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php</b> on line <b>8</b><br />
+Array</div></body>
+</html>
+<pre>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Array to string conversion
+    [file] => D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php
+    [line] => 8
+)
+</pre>
+[[2013-11-25 15:23:22 63152210202]]
+
+[[2013-11-25 15:24:49 6454995131]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/public/">
+</head>
+
+<body>
+<div class="main"><br />
+<b>Notice</b>:  Array to string conversion in <b>D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php</b> on line <b>8</b><br />
+Array</div></body>
+</html>
+<pre>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Array to string conversion
+    [file] => D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php
+    [line] => 8
+)
+</pre>
+[[2013-11-25 15:24:49 6454995131]]
+
+[[2013-11-25 15:28:37 1655129451]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/public/">
+</head>
+
+<body>
+<div class="main"><br />
+<b>Warning</b>:  Missing argument 1 for CacheController::defaultAction(), called in D:\xampp\htdocs\sc\app\App.php on line 63 and defined in <b>D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php</b> on line <b>6</b><br />
+<br />
+<b>Notice</b>:  Undefined variable: a in <b>D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php</b> on line <b>8</b><br />
+</div></body>
+</html>
+<pre>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Undefined variable: a
+    [file] => D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php
+    [line] => 8
+)
+</pre>
+[[2013-11-25 15:28:37 1655129451]]
+
+[[2013-11-25 15:29:44 337354584]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/public/">
+</head>
+
+<body>
+<div class="main"><br />
+<b>Warning</b>:  Missing argument 1 for CacheController::defaultAction() in <b>D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php</b> on line <b>6</b><br />
+<br />
+<b>Notice</b>:  Undefined variable: a in <b>D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php</b> on line <b>8</b><br />
+</div></body>
+</html>
+<pre>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Undefined variable: a
+    [file] => D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php
+    [line] => 8
+)
+</pre>
+[[2013-11-25 15:29:44 337354584]]

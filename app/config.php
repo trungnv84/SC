@@ -11,20 +11,16 @@ $config->autoLoadPath = array(
 
 $config->router = array(
 	/*array(
-		'^/admin(/|/([^/\.]+))?(/|/([^/\.]+))?(/|\\' . REWRITE_SUFFIX . ')?',
+		'/admin(/|/([^/\.]+))?(/|/([^/\.]+))?(/|\\' . REWRITE_SUFFIX . ')?',
 		array('controller' => 2, 'action' => 4)
 	),
 	array(
-		'^/_tools(/|/([^/\.]+))?(/|/([^/\.]+))?(/|\\' . REWRITE_SUFFIX . ')?',
+		'/_tools(/|/([^/\.]+))?(/|/([^/\.]+))?(/|\\' . REWRITE_SUFFIX . ')?',
 		array('controller' => 2, 'action' => 4)
 	),*/
 	array(
-		'^/([^/\.]+)(/|/([^/\.]+))?(/|\\' . REWRITE_SUFFIX . ')?',
+		'/([^/\.]+)(/|/([^/\.]+))?(/|\\' . REWRITE_SUFFIX . ')?',
 		array('controller' => 1, 'action' => 3)
-	),
-	array(
-		'^/([^\/.]+)/([^\/.]+)/([^.]+)(\\' . REWRITE_SUFFIX . ')?',
-		array('controller' => 1, 'action' => 2, '__params' => 3)
 	)
 );
 
