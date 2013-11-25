@@ -1005,7 +1005,7 @@ class CssMin
     public static function autoload($class)
     {
         if (isset(self::$classIndex[$class])) {
-            require(self::$classIndex[$class]);
+            require self::$classIndex[$class];
         }
     }
 

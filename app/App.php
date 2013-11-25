@@ -1,6 +1,5 @@
 <?php
 defined('ROOT_DIR') || exit;
-if (!ob_get_level()) ob_start();
 
 class App
 {
@@ -9,6 +8,7 @@ class App
 	public static $controllerRuning;
 	public static $actionRuning;
 	public static $phpCacheFile;
+
 	private static $vars = array();
 	private static $template = DEFAULT_TEMPLATE;
 	private static $view_type = DEFAULT_VIEW_TYPE;
@@ -44,6 +44,11 @@ class App
 			if (file_exists(self::$phpCacheFile)) require_once self::$phpCacheFile;
 		}
 
+		if (ACTION_URL_LOG) {
+			File::mkDir(ACTION_LOG_DIR);
+			Log::updateLog(ACTION_LOG_DIR . self::$module . ".$controller.$action.urls.txt", CURRENT_URI ? CURRENT_URI : '/');
+		}
+
 		$ctrl = ucfirst($controller) . 'Controller';
 		if (class_exists($ctrl)) {
 			define('CURRENT_CONTROLLER', $controller);
@@ -62,7 +67,7 @@ class App
 		}
 	}
 
-	public static function parseUrl(&$url)
+	public static function parseUrl($url)
 	{
 		static $parsed;
 		if (isset($parsed)) return;
@@ -71,30 +76,34 @@ class App
 		if (isset(self::$config->modules) && is_array(self::$config->modules)) {
 			foreach (self::$config->modules as $name) {
 				if (strpos($url, "/$name/") === 0 || $url == "/$name") {
+					$url = substr($url, strlen($name) + 1);
 					self::$module = $name;
 					break;
 				}
 			}
 		}
 
-		$routed = false;
-		if (isset(self::$config->router) && is_array(self::$config->router)) {
-			foreach (self::$config->router as $router) {
-				if ($routed = preg_match('#^' . $router[0] . '$#', $url, $matches)) {
-					foreach ($router[1] as $name => $index) {
-						if (isset($matches[$index]) && $matches[$index]) {
-							$_GET[$name] = $matches[$index];
-							if (!isset($_POST[$name]))
-								$_REQUEST[$name] = $matches[$index];
+		if ($url && $url != '/') {
+			$routed = false;
+
+			if (isset(self::$config->router) && is_array(self::$config->router)) {
+				foreach (self::$config->router as $router) {
+					if ($routed = preg_match('#^' . $router[0] . '$#', $url, $matches)) {
+						foreach ($router[1] as $name => $index) {
+							if (isset($matches[$index]) && $matches[$index]) {
+								$_GET[$name] = $matches[$index];
+								if (!isset($_POST[$name]))
+									$_REQUEST[$name] = $matches[$index];
+							}
 						}
+						break;
 					}
-					break;
 				}
 			}
-		}
 
-		if (!$routed) {
-			self::end('none controller -> 404//zzz');
+			if (!$routed) {
+				self::end('none controller -> 404//zzz');
+			}
 		}
 	}
 
@@ -330,17 +339,10 @@ class App
 		} else self::$vars[$key] = $value;
 	}
 
-	public static function view_exists($action, $controller = CURRENT_CONTROLLER, $template = null, $layout = null, $type = null)
+	public static function view_exists($action, $controller = CURRENT_CONTROLLER, $template = null)
 	{
-		static $results = array();
 		if (is_null($template)) $template =& self::$template;
-		if (is_null($type)) $type =& self::$view_type;
-		if (is_null($layout)) $layout =& self::$layout;
-		$key = "$template.$type.$layout.$controller.$action";
-		if (!isset($results[$key])) {
-			$results[$key] = file_exists(TEMPLATE_DIR . $template . DS . $controller . DS . $action . '.php');
-		}
-		return $results[$key];
+		return file_exists(TEMPLATE_DIR . $template . DS . $controller . DS . $action . '.php');
 	}
 
 	public static function layout_exists($layout, $template = null)
@@ -371,29 +373,28 @@ class App
 		if (is_null($__layout)) $__layout =& self::$layout;
 		if (is_null($__type)) $__type =& self::$view_type;
 
-		if (self::view_exists($__action, $__controller, $__template, $__layout, $__type)) {
+		if (self::view_exists($__action, $__controller, $__template)) {
 			if (isset(self::$vars) && is_array(self::$vars))
 				foreach (self::$vars as $__key => &$__val) $$__key =& $__val;
 
-			if (!ob_get_level()) ob_start();
-			require(TEMPLATE_DIR . $__template . DS . $__controller . DS . $__action . '.php');
-
-			if (self::layout_exists($__layout, $__template)) {
-				$__html__main = ob_get_clean();
-				if (!ob_get_level()) ob_start();
-				require(TEMPLATE_DIR . $__template . DS . 'layout' . DS . $__layout . '.php');
-			}
-
-			if (self::response_type_exists($__type, $__template)) {
-				$__html_layout = ob_get_clean();
-				if (!ob_get_level()) ob_start();
-				require(TEMPLATE_DIR . $__template . DS . $__type . '.php');
-			}
-
-			self::end();
-		} else {
+			require TEMPLATE_DIR . $__template . DS . $__controller . DS . $__action . '.php';
+		} elseif (!defined('CURRENT_ACTION')) {
 			self::end('none view -> 404//zzz');
 		}
+
+		if (self::layout_exists($__layout, $__template)) {
+			$__main_html = ob_get_contents();
+			ob_clean();
+			require TEMPLATE_DIR . $__template . DS . 'layout' . DS . $__layout . '.php';
+		}
+
+		if (self::response_type_exists($__type, $__template)) {
+			$__main_html = ob_get_contents();
+			ob_clean();
+			require TEMPLATE_DIR . $__template . DS . $__type . '.php';
+		}
+
+		self::end();
 	}
 
 	public static function &db($instance = DB_INSTANCE, $driver = DB_DRIVER)
@@ -477,7 +478,7 @@ class App
 				if (class_exists($class_name)) {
 					if (method_exists($class_name, '__init')) $class_name::__init();
 					if (PHP_CACHE) self::phpCache($file, !$slat);
-					if (ACTION_LIB_LOG) Log::lib(array(
+					if (ACTION_LIB_LOG && self::$controllerRuning) Log::lib(array(
 						self::$module,
 						self::$controllerRuning,
 						self::$actionRuning
@@ -687,10 +688,10 @@ class App
 					}
 				}
 
-				if(document.attachEvent)
-					document.attachEvent("ondblclick", __show_debug);
-				else if(document.addEventListener)
+				if(document.addEventListener)
 					document.addEventListener("dblclick", __show_debug);
+				else if(document.attachEvent)
+					document.attachEvent("ondblclick", __show_debug);
 				</script></div>';
 		}
 
@@ -700,7 +701,7 @@ class App
 
 /*################################################*/
 
-App::$config = require APP_DIR . 'config.php';
+App::$config = require(APP_DIR . 'config.php');
 
 /*################################################*/
 

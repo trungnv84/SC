@@ -9,4 +9,4 @@ Tag::unShiftJS('http://getbootstrap.com/2.3.2/assets/js/bootstrap-alert.js');
 Tag::unShiftJS('bootstrap/js/bootstrap.min.js', 'bootstrap', true);
 Tag::unShiftJS('//code.jquery.com/jquery-1.10.2.min.js', 'jquery', true);
 
-echo '<div class="main">', $__html__main, '</div>';
+echo '<div class="main">', $__main_html, '</div>';

@@ -17,6 +17,8 @@ class Controller
 
 	protected function view($view, $controller = CURRENT_CONTROLLER, $template = null, $layout = null, $type = null)
 	{
-		App::view($view, $controller, $template, $layout, $type);
+		if (App::view_exists($view, $controller, $template)) {
+			App::view($view, $controller, $template, $layout, $type);
+		} App::end('none view -> 404//zzz');
 	}
 }

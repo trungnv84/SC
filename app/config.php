@@ -10,17 +10,25 @@ $config->autoLoadPath = array(
 );
 
 $config->router = array(
-	array(
+	/*array(
 		'^/admin(/|/([^/\.]+))?(/|/([^/\.]+))?(/|\\' . REWRITE_SUFFIX . ')?',
 		array('controller' => 2, 'action' => 4)
 	),
 	array(
+		'^/_tools(/|/([^/\.]+))?(/|/([^/\.]+))?(/|\\' . REWRITE_SUFFIX . ')?',
+		array('controller' => 2, 'action' => 4)
+	),*/
+	array(
 		'^/([^/\.]+)(/|/([^/\.]+))?(/|\\' . REWRITE_SUFFIX . ')?',
 		array('controller' => 1, 'action' => 3)
+	),
+	array(
+		'^/([^\/.]+)/([^\/.]+)/([^.]+)(\\' . REWRITE_SUFFIX . ')?',
+		array('controller' => 1, 'action' => 2, '__params' => 3)
 	)
 );
 
-$config->modules = array('site', 'admin');
+$config->modules = array('site', 'admin', '_tools');
 
 $config->modulePaths = array(
 	'site' => array(
@@ -28,12 +36,16 @@ $config->modulePaths = array(
 	),
 	'admin' => array(
 		'Controller' => $config->autoLoadPath['Controller'] . 'admin' . DS //CONTROLLER_DIR
+	),
+	'_tools' => array(
+		'Controller' => $config->autoLoadPath['Controller'] . '_tools' . DS //CONTROLLER_DIR
 	)
 );
 
 $config->moduleTemplates = array(
 	'site' => 'site',
-	'admin' => 'admin'
+	'admin' => 'admin',
+	'_tools' => '_tools'
 );
 
 /*##########################################################*/

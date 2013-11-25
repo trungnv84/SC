@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<?php echo $__html_layout;?>
+<?php echo $__main_html;?>
 <?php echo Tag::getHtmlFooter();?>
 </body>
 </html>

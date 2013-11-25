@@ -1,5 +1,5 @@
 <?php
-if (!ob_get_level()) ob_start();
+ob_start();
 date_default_timezone_set('Asia/Bangkok');
 define('MICRO_TIME_NOW', microtime());
 define('TIME_NOW', time());
@@ -41,6 +41,8 @@ define('JS_CACHE_DIR', DEFAULT_JS_DIR . 'cache' . DS); //need write permission
 
 /*##########################################################*/
 
+define('ERROR_LOG_PASS', 'e10adc3949ba59abbe56e057f20f883e');
+
 /*
  *     Development
  *     Testing
@@ -49,11 +51,10 @@ define('JS_CACHE_DIR', DEFAULT_JS_DIR . 'cache' . DS); //need write permission
 
 define('PHP_CACHE', false);
 
-define('ENVIRONMENT', 'Testing');
-
-define('ERROR_LOG_PASS', 'e10adc3949ba59abbe56e057f20f883e');
+define('ENVIRONMENT', 'Development');
 
 define('ACTION_LIB_LOG', true);
+define('ACTION_URL_LOG', true);
 
 define('APP_LOG_DIR', APP_DIR . 'logs' . DS); //need write permission
 define('ERROR_LOG_DIR', APP_LOG_DIR . 'errors' . DS); //need write permission

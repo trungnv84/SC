@@ -19,8 +19,8 @@ class Log
 		$time = explode(' ', MICRO_TIME_NOW);
 		$time = date('Y-m-d H:i:s', TIME_NOW) . ' ' . substr($time[0], 2, 6) . rand();
 		$wrapper = "\n[[$time]]\n";
-		$content = $wrapper . ob_get_clean() . $wrapper;
-		if (!ob_get_level()) ob_start();
+		$content = $wrapper . ob_get_contents() . $wrapper;
+		ob_clean();
 
 		$file = date('Y-m-d', TIME_NOW);
 		$file = ERROR_LOG_DIR . "error-$file.txt";
@@ -73,7 +73,7 @@ class Log
 
 	public static function lib($action, $lib)
 	{
-		$time = date('Y-m-d H:i:s', filemtime($lib));
+		//$time = date('Y-m-d H:i:s', filemtime($lib));
 		$lib = str_replace(ROOT_DIR, '', $lib);
 		$fileLib = str_replace(array('\\', '/'), '-', $lib);
 		if (is_array($action)) $action = implode('.', $action);
@@ -82,14 +82,15 @@ class Log
 		File::mkDir(ACTION_LOG_DIR);
 
 		self::updateLog(LIB_LOG_DIR . $fileLib . '.txt', $action);
-
-		self::updateLog(ACTION_LOG_DIR . $action . '.libs.txt', "[$time] $lib");
-		self::updateLog(ACTION_LOG_DIR . $action . '.urls.txt', CURRENT_URI?CURRENT_URI:'/');
+		self::updateLog(ACTION_LOG_DIR . $action . '.libs.txt', $lib);
 	}
 
-	private static function updateLog($file, $log)
+	public static function updateLog($file, $log)
 	{
-		//zzz
-		file_put_contents($file, "$log\n", FILE_APPEND);
+		if (file_exists($file)) {
+			$logs = explode("\n", file_get_contents($file));
+			if (in_array($log, $logs)) return true;
+		}
+		return (false !== file_put_contents($file, "$log\n", FILE_APPEND));
 	}
 }
