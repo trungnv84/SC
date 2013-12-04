@@ -12,7 +12,7 @@ class Log
 
 		if (is_array($errors) && isset($errors['type']))
 			$errors['type'] .= ' (' . self::friendlyErrorType($errors['type']) . ')';
-		echo "\n<pre>Last error:\n";
+		echo "\n<pre><hr/>Last error:\n";
 		print_r($errors);
 		echo '</pre>';
 
@@ -22,7 +22,7 @@ class Log
 		$content = $wrapper . ob_get_contents() . $wrapper;
 		ob_clean();
 
-		$file = date('Y-m-d', TIME_NOW);
+		$file = date(ERROR_LOG_FILE_SUFFIX, TIME_NOW);
 		$file = ERROR_LOG_DIR . "error-$file.txt";
 		if (file_exists($file)) chmod($file, FILE_WRITE_MODE);
 		file_put_contents($file, $content, FILE_APPEND);

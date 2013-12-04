@@ -11,3 +11,4 @@ _tools/cache/default
 _tools/cache/default/
 _tools/cache/default/a/bkjdshfsd-fdsf-sd-f-sf-ds-fd-f
 _tools/cache/
+_tools/cache

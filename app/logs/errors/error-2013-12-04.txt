@@ -1,0 +1,165 @@
+
+[[2013-12-04 08:31:57 6044535968]]
+<br />
+<b>Parse error</b>:  syntax error, unexpected '$_GET' (T_VARIABLE) in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>35</b><br />
+
+<pre>Last error:
+Array
+(
+    [type] => 4 (E_PARSE)
+    [message] => syntax error, unexpected '$_GET' (T_VARIABLE)
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 35
+)
+</pre>
+[[2013-12-04 08:31:57 6044535968]]
+
+[[2013-12-04 08:41:29 75305830384]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/public/">
+</head>
+
+<body>
+<div class="main"><br />
+<b>Notice</b>:  Undefined variable: a in <b>D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php</b> on line <b>8</b><br />
+</div></body>
+</html>
+<pre>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Undefined variable: a
+    [file] => D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php
+    [line] => 8
+)
+</pre>
+[[2013-12-04 08:41:29 75305830384]]
+
+[[2013-12-04 08:41:39 41761122825]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/public/">
+</head>
+
+<body>
+<div class="main"><br />
+<b>Notice</b>:  Undefined variable: a in <b>D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php</b> on line <b>8</b><br />
+</div></body>
+</html>
+<pre>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Undefined variable: a
+    [file] => D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php
+    [line] => 8
+)
+</pre>
+[[2013-12-04 08:41:39 41761122825]]
+
+[[2013-12-04 08:44:55 1288059390]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/public/">
+</head>
+
+<body>
+<div class="main"><br />
+<b>Notice</b>:  Undefined variable: a in <b>D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php</b> on line <b>8</b><br />
+</div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Undefined variable: a
+    [file] => D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php
+    [line] => 8
+)
+</pre>
+[[2013-12-04 08:44:55 1288059390]]
+
+[[2013-12-04 08:47:06 77633521071]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/public/">
+</head>
+
+<body>
+<div class="main"><br />
+<b>Notice</b>:  Undefined variable: a in <b>D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php</b> on line <b>9</b><br />
+</div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Undefined variable: a
+    [file] => D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php
+    [line] => 9
+)
+</pre>
+[[2013-12-04 08:47:06 77633521071]]
+
+[[2013-12-04 08:50:35 54427519932]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/public/">
+</head>
+
+<body>
+<div class="main"><br />
+<b>Notice</b>:  Undefined variable: a in <b>D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php</b> on line <b>9</b><br />
+</div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Undefined variable: a
+    [file] => D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php
+    [line] => 9
+)
+</pre>
+[[2013-12-04 08:50:35 54427519932]]
+
+[[2013-12-04 08:51:53 04070824293]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/public/">
+</head>
+
+<body>
+<div class="main"><br />
+<b>Notice</b>:  Undefined variable: a in <b>D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php</b> on line <b>14</b><br />
+</div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Undefined variable: a
+    [file] => D:\xampp\htdocs\sc\app\controller\_tools\cache.controller.php
+    [line] => 14
+)
+</pre>
+[[2013-12-04 08:51:53 04070824293]]

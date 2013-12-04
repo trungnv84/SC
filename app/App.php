@@ -5,8 +5,8 @@ class App
 {
 	public static $config;
 	public static $module = DEFAULT_MODULE;
-	public static $controllerRuning;
-	public static $actionRuning;
+	public static $controllerRunning;
+	public static $actionRunning;
 	public static $phpCacheFile;
 
 	private static $vars = array();
@@ -20,8 +20,6 @@ class App
 	{
 		if (self::showError((int)self::GET('_show_error', 0))) self::end();
 
-		if (self::delCache(self::getVarName('_del_cache'))) self::redirect();
-
 		if (isset($_GET['_url'])) {
 			if (404 == substr($_GET['_url'], 1, 3)) self::end(404);
 			self::parseUrl($_GET['_url']);
@@ -32,8 +30,8 @@ class App
 		if (is_null($action))
 			$action = strtolower(self::getVarName('action', self::$config->defaultAction));
 
-		self::$controllerRuning = $controller;
-		self::$actionRuning = $action;
+		self::$controllerRunning = $controller;
+		self::$actionRunning = $action;
 
 		if (is_null($module))
 			self::autoSetTemplate();
@@ -489,10 +487,10 @@ class App
 				if (class_exists($class_name)) {
 					if (method_exists($class_name, '__init')) $class_name::__init();
 					if (PHP_CACHE) self::phpCache($file, !$slat);
-					if (ACTION_LIB_LOG && self::$controllerRuning) Log::lib(array(
+					if (ACTION_LIB_LOG && self::$controllerRunning) Log::lib(array(
 						self::$module,
-						self::$controllerRuning,
-						self::$actionRuning
+						self::$controllerRunning,
+						self::$actionRunning
 					), $file);
 					break;
 				}
@@ -526,75 +524,33 @@ class App
 		}
 	}
 
-	private static function delCache($type)
-	{
-		switch ($type) {
-			case 'php':
-				$folders = array(PHP_CACHE_DIR);
-				break;
-			case 'css':
-				$folders = array(CSS_CACHE_DIR);
-				break;
-			case 'js':
-				$folders = array(JS_CACHE_DIR);
-				break;
-			case 'asset':
-				$folders = array(
-					CSS_CACHE_DIR,
-					JS_CACHE_DIR
-				);
-				break;
-			case 'all':
-				$folders = array(
-					PHP_CACHE_DIR,
-					CSS_CACHE_DIR,
-					JS_CACHE_DIR
-				);
-			case 'adt':
-				$files = File::find(ROOT_DIR, '*' . ADAPTER_FILE_EXT . '.php');
-				if (isset($folders)) {
-					if ($files) $folders = array_merge($folders, $files);
-				} else $folders = $files;
-				break;
-			default:
-				return false;
-				break;
-		}
-
-		foreach ($folders as $folder) File::delete($folder);
-
-		return true;
-	}
-
 	/*################################################*/
 	private static function showError($type)
 	{
 		if (!$type) return false;
 
-		if ('POST' === self::getMethod()) {
-			if (ERROR_LOG_PASS === md5(self::POST('pass'))) {
-				$time = self::GET('time', '');
-				$file = substr($time, 0, 10);
-				$file = ERROR_LOG_DIR . "error-$file.txt";
+		if (ENVIRONMENT == 'Development' || ('POST' === self::getMethod() && ERROR_LOG_PASS === md5(self::POST('pass')))) {
+			$time = self::GET('time', '');
+			$file = substr($time, 0, 10);
+			$file = ERROR_LOG_DIR . "error-$file.txt";
 
-				if (file_exists($file)) {
-					$time = "[[$time]]";
-					$file = file_get_contents($file);
-					$file = explode($time, $file);
-					if (isset($file[1])) $file = $file[1];
-					else $file = '';
-				}
-
-				switch ($type) {
-					case 1:
-						echo $file;
-						break;
-					case 2:
-						echo '<pre>', htmlspecialchars($file, ENT_COMPAT, 'UTF-8'), '</pre>';
-				}
-
-				self::end();
+			if (file_exists($file)) {
+				$time = "[[$time]]";
+				$file = file_get_contents($file);
+				$file = explode($time, $file);
+				if (isset($file[1])) $file = $file[1];
+				else $file = '';
 			}
+
+			switch ($type) {
+				case 1:
+					echo $file;
+					break;
+				case 2:
+					echo '<pre>', htmlspecialchars($file, ENT_COMPAT, 'UTF-8'), '</pre>';
+			}
+
+			self::end();
 		}
 
 		require APP_LOG_DIR . 'form.html';
@@ -664,7 +620,8 @@ class App
 		if ($status) {
 			if ($error = self::GET('time', false)) {
 				$__error_header = (ENVIRONMENT == 'Development' ? '<div>' : '<div id="__error_link" style="display: none;">') .
-					'<a target="_blank" href="' . BASE_URL . '?_show_error=1&time=' . $error . '">Show html error</a> |
+					'<a href="' . BASE_URL . '">Home</a> | <a href="javascript:history.back();">Back</a> |
+					<a target="_blank" href="' . BASE_URL . '?_show_error=1&time=' . $error . '">Show html error</a> |
 					<a target="_blank" href="' . BASE_URL . '?_show_error=2&time=' . $error . '">Show raw error</a></div>';
 			}
 			$error = TEMPLATE_DIR . self::$template . DS . 'error.php';

@@ -1,0 +1,8 @@
+app\lib\Log.php
+app\lib\File.php
+app\core\Controller.php
+app\controller\site\home.controller.php
+app\lib\joomla\filter\input.adt.php
+app\lib\Tag.php
+app\lib\Format.php
+app\lib\JSMin.php

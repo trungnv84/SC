@@ -1,2 +1,5 @@
 _tools.cache.default
 _tools.home.default
+site.home.default
+_tools.cache.delete
+admin.home.default

@@ -1,7 +1,7 @@
 <?php
 defined('ROOT_DIR') || exit;
 
-class Controller
+abstract class Controller
 {
 	public function indexAction()
 	{

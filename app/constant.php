@@ -41,6 +41,7 @@ define('JS_CACHE_DIR', DEFAULT_JS_DIR . 'cache' . DS); //need write permission
 
 /*##########################################################*/
 
+define('ERROR_LOG_FILE_SUFFIX', 'Y-m-d');
 define('ERROR_LOG_PASS', 'e10adc3949ba59abbe56e057f20f883e');
 
 /*
@@ -49,9 +50,9 @@ define('ERROR_LOG_PASS', 'e10adc3949ba59abbe56e057f20f883e');
  *     Production
  * */
 
-define('PHP_CACHE', false);
-
 define('ENVIRONMENT', 'Development');
+
+define('PHP_CACHE', false);
 
 define('ACTION_LIB_LOG', true);
 define('ACTION_URL_LOG', true);
