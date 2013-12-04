@@ -4,10 +4,14 @@ defined('ROOT_DIR') || exit;
 class MySql extends DBDriver
 {
 	private static $connections = array();
-	private static $currentDatabase = '';
+	private static $currentDatabase = array();
+
+	private $active_class = null;
 
 	private $resource = null;
 	private $last_query = null;
+	private $fetch_mode = null;
+	private $current_query = null;
 
 	private static function db_set_charset($instance, $charset, $collation)
 	{
@@ -44,13 +48,24 @@ class MySql extends DBDriver
 			}
 			self::$connections[$instance] =& self::$connections[$key];
 		}
-		if (self::$currentDatabase != $config['database']) {
+		if (!isset(self::$currentDatabase[$instance]) || self::$currentDatabase[$instance] != $config['database']) {
 			if (!mysql_select_db($config['database'], self::$connections[$instance])) {
 				App::end("Database [$config[database]] not exists -> ???//zzz");
 			}
-			self::$currentDatabase = $config['database'];
+			self::$currentDatabase[$instance] = $config['database'];
 		}
 		return self::$connections[$instance];
+	}
+
+	public static function select_db($database, $instance = DB_INSTANCE)
+	{
+		if (!$instance) $instance = 'default';
+		if (self::$currentDatabase[$instance] != $database) {
+			if (!mysql_select_db($database, self::$connections[$instance])) {
+				App::end("Database [$database] not exists -> ???//zzz");
+			}
+			self::$currentDatabase[$instance] = $database;
+		}
 	}
 
 	public static function close($instance = DB_INSTANCE)
@@ -81,6 +96,50 @@ class MySql extends DBDriver
 		$connection =& self::collect($this->instance);
 		$this->resource = mysql_query($sql, $connection);
 		return ($this->resource ? true : false);
+	}
+
+	public function setFetchMode($mode)
+	{
+		$this->fetch_mode = $mode;
+	}
+
+	public function fetch()
+	{
+		if (is_null($this->resource) || $this->resource === false) {
+			return false;
+		}
+
+		switch ($this->fetch_mode) {
+			case self::FETCH_ASSOC:
+			default:
+				$result = mysql_fetch_assoc($this->resource);
+				break;
+			case self::FETCH_OBJ:
+				$result = mysql_fetch_object($this->resource);
+				break;
+			case self::FETCH_NUM:
+				$result = mysql_fetch_row($this->resource);
+				break;
+			case self::FETCH_BOTH:
+				$result = mysql_fetch_array($this->resource, MYSQL_BOTH);
+				break;
+			case self::FETCH_ARR_OBJ:
+				$result = mysql_fetch_assoc($this->resource);
+				$result = new ArrayObject($result, ArrayObject::ARRAY_AS_PROPS);
+				break;
+			case self::FETCH_ACT_OBJ:
+				if (is_null($this->active_class))
+					$result = mysql_fetch_object($this->resource);
+				else//zzz
+					$result = mysql_fetch_object($this->resource, $this->active_class, array($this->instance));
+				break;
+		}
+		return $result;
+	}
+
+	public function result()
+	{
+		//return $this
 	}
 
 	/*public function find()

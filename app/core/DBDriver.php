@@ -3,6 +3,13 @@ defined('ROOT_DIR') || exit;
 
 abstract class DBDriver
 {
+	const FETCH_ASSOC = MYSQL_ASSOC;
+	const FETCH_NUM = MYSQL_NUM;
+	const FETCH_BOTH = MYSQL_BOTH;
+	const FETCH_OBJ = 4; // MYSQL_OBJ
+	const FETCH_ARR_OBJ = 5; // MYSQL_AOB_OBJ
+	const FETCH_ACT_OBJ = 6; // MYSQL_ACT_OBJ
+
 	protected $instance;
 
 	public function __construct($instance = DB_INSTANCE)
