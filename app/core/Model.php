@@ -3,7 +3,7 @@ defined('ROOT_DIR') || exit;
 
 abstract class Model
 {
-	protected static $_driver = DB_DRIVER;
+	protected static $_driver = DB_DRIVER_NAME;
 	protected static $_target = null;
 	protected static $_pk = DB_OBJECT_KEY;
 
@@ -13,11 +13,11 @@ abstract class Model
 	public $id;
 
 	/*###################################################*/
-	public function __construct($target = null, $driver = DB_DRIVER, $pk = DB_OBJECT_KEY)
+	public function __construct($target = null, $driver = DB_DRIVER_NAME, $pk = DB_OBJECT_KEY)
 	{
 		$this->_reflect = new ReflectionClass($this);
 		$this->_driver = $driver;
-		$this->_target = (is_null($target)?static::getSource():$target);
+		$this->_target = (is_null($target) ? static::getSource() : $target);
 		$this->_pk = $pk;
 	}
 
@@ -41,7 +41,7 @@ abstract class Model
 
 	public function __call($name, $arguments = array())
 	{
-		$db =& App::db($this->_target, $this->_driver);
+		$db =& App::db($this->_target, $this->_driver, $this->_pk);
 		return call_user_func_array(array($db, $name), $arguments);
 	}
 
@@ -96,10 +96,10 @@ abstract class Model
 	}
 
 	/*###################################################*/
-	protected static function init($target = null, $driver = DB_DRIVER, $pk = DB_OBJECT_KEY)
+	protected static function init($target = null, $driver = DB_DRIVER_NAME, $pk = DB_OBJECT_KEY)
 	{
 		static::$_driver = $driver;
-		static::$_target = (is_null($target)?static::getSource():$target);
+		static::$_target = (is_null($target) ? static::getSource() : $target);
 		static::$_pk = $pk;
 	}
 
@@ -119,7 +119,7 @@ abstract class Model
 
 	public static function __callStatic($name, $arguments = array())
 	{
-		$db =& App::db(self::$_target, static::$_driver);
+		$db =& App::db(self::$_target, static::$_driver, self::$_pk);
 		return call_user_func_array(array($db, $name), $arguments);
 	}
 }

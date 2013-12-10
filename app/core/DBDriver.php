@@ -11,13 +11,14 @@ abstract class DBDriver
 	const FETCH_ACT_OBJ = 6; // MYSQL_ACT_OBJ
 
 	protected $instance;
+	protected $_pk = null;
 
 	public function __construct($instance = DB_INSTANCE)
 	{
 		$this->instance = $instance;
 	}
 
-	public static function getDbKey($instance = DB_INSTANCE, $driver = DB_DRIVER)
+	public static function getDbKey($instance = DB_INSTANCE, $driver = DB_DRIVER_NAME)
 	{
 		static $keys;
 		if(!$instance) $instance = 'default';
@@ -77,4 +78,11 @@ abstract class DBDriver
 		}
 		return $configs[$instance][$driver];
 	}
+
+	public function set_pk($pk)
+	{
+		$this->_pk = $pk;
+	}
+
+	public abstract function fetch();
 }

@@ -6,11 +6,10 @@ class MySql extends DBDriver
 	private static $connections = array();
 	private static $currentDatabase = array();
 
-	private $active_class = null;
-
 	private $resource = null;
 	private $last_query = null;
 	private $fetch_mode = null;
+	private $active_class = null;
 	private $current_query = null;
 
 	private static function db_set_charset($instance, $charset, $collation)
@@ -98,9 +97,10 @@ class MySql extends DBDriver
 		return ($this->resource ? true : false);
 	}
 
-	public function setFetchMode($mode)
+	public function setFetchMode($mode, $class = null)
 	{
 		$this->fetch_mode = $mode;
+		$this->active_class = $class;
 	}
 
 	public function fetch()
@@ -130,8 +130,8 @@ class MySql extends DBDriver
 			case self::FETCH_ACT_OBJ:
 				if (is_null($this->active_class))
 					$result = mysql_fetch_object($this->resource);
-				else//zzz
-					$result = mysql_fetch_object($this->resource, $this->active_class, array($this->instance));
+				else
+					$result = mysql_fetch_object($this->resource, $this->active_class, array($this->instance, MYSQL_DRIVER_NAME, $this->_pk));
 				break;
 		}
 		return $result;

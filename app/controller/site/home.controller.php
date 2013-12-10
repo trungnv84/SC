@@ -23,8 +23,10 @@ class HomeController extends Controller
 
 		//8/0;a
 
-		/*$rs = UserModel::query('SELECT * FROM users');
-		var_dump($rs);*/
+		$user =& App::getModel('User');
+		$user->query('SELECT * FROM users');
+		$user->setFetchMode(DBDriver::FETCH_ACT_OBJ, 'UserModel');
+		var_dump($user->fetch());
 
 		/*
 		$filterInput = Joomla\JFilterInput::getInstance();
@@ -32,8 +34,8 @@ class HomeController extends Controller
 		echo '<br />';
 		*/
 
-		$_GET['a'] = '<script>alert("abc");</script>';
-		print_r(App::getVarHTML('a'));
+		/*$_GET['a'] = '<script>alert("abc");</script>';
+		print_r(App::getVarHTML('a'));*/
 
 		/*header('Content-Type:image/jpeg');
 		print_r(apache_response_headers());

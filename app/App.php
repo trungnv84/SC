@@ -406,7 +406,7 @@ class App
 		self::end();
 	}
 
-	public static function &db($instance = DB_INSTANCE, $driver = DB_DRIVER)
+	public static function &db($instance = DB_INSTANCE, $driver = DB_DRIVER_NAME, $pk = DB_OBJECT_KEY)
 	{
 		static $dbs;
 		if (!$instance) $instance = 'default';
@@ -418,10 +418,11 @@ class App
 			}
 			$dbs[$instance][$driver] =& $dbs[$key];
 		}
+		$dbs[$instance][$driver]->set_pk($pk);
 		return $dbs[$instance][$driver];
 	}
 
-	public static function &getModel($name, $target = null, $driver = DB_DRIVER, $pk = DB_OBJECT_KEY)
+	public static function &getModel($name, $target = null, $driver = DB_DRIVER_NAME, $pk = DB_OBJECT_KEY)
 	{
 		static $models;
 		$key = "$name.$target.$driver.$pk";

@@ -15,6 +15,7 @@ if (isset($_SERVER['HTTP_HOST'])) {
 	$_current_uri = str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
 	$_base_url .= $_current_uri;
 	$_current_uri = str_replace($_current_uri, '', $_SERVER['REQUEST_URI']);
+	if ('public/' == substr($_base_url, -7)) $_base_url = substr($_base_url, 0, -7);
 } else {
 	define('SCHEME', 'http');
 	$_base_url = 'http://localhost/';
@@ -90,9 +91,10 @@ define('FILE_SAFE_MODE', 0400);
 /*##########################################################*/
 
 define('MYSQL_DRIVER_NAME', 'MySql');
+define('MONGO_DRIVER_NAME', 'Mongo');
 
 define('DB_INSTANCE', '');
-define('DB_DRIVER', MYSQL_DRIVER_NAME);
+define('DB_DRIVER_NAME', MYSQL_DRIVER_NAME);
 define('DB_OBJECT_KEY', 'id');
 
 /*##########################################################*/
