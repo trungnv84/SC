@@ -1,0 +1,718 @@
+
+[[2013-12-11 10:02:51 94848715288]]
+
+<pre><br />
+<b>Fatal error</b>:  Call to a member function getProperties() on a non-object in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>50</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to a member function getProperties() on a non-object
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 50
+)
+</pre>
+[[2013-12-11 10:02:51 94848715288]]
+
+[[2013-12-11 12:39:04 95059215946]]
+
+<pre><br />
+<b>Fatal error</b>:  Call to a member function getProperties() on a non-object in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>55</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to a member function getProperties() on a non-object
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 55
+)
+</pre>
+[[2013-12-11 12:39:04 95059215946]]
+
+[[2013-12-11 12:42:36 52169416827]]
+
+<pre><br />
+<b>Fatal error</b>:  Call to a member function getProperties() on a non-object in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>55</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to a member function getProperties() on a non-object
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 55
+)
+</pre>
+[[2013-12-11 12:42:36 52169416827]]
+
+[[2013-12-11 12:49:33 3675369944]]
+
+<pre><br />
+<b>Fatal error</b>:  Cannot access parent:: when current class scope has no parent in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>113</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Cannot access parent:: when current class scope has no parent
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 113
+)
+</pre>
+[[2013-12-11 12:49:33 3675369944]]
+
+[[2013-12-11 12:58:02 9386821132]]
+
+<pre><br />
+<b>Warning</b>:  Creating default object from empty value in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>29</b><br />
+<br />
+<b>Fatal error</b>:  Call to undefined method stdClass::fetch() in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>30</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to undefined method stdClass::fetch()
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 30
+)
+</pre>
+[[2013-12-11 12:58:02 9386821132]]
+
+[[2013-12-11 13:05:47 49225331285]]
+
+<pre>array(5) {
+  ["id"]=>
+  string(1) "2"
+  ["username"]=>
+  string(7) "player1"
+  ["password"]=>
+  string(60) "$2a$08$LtrlcxzTu4aAVQJjNzfrzuag90Rk7ekIaqQ1KJALNxJCkrwdF51hq"
+  ["status"]=>
+  int(1)
+  ["role"]=>
+  string(6) "player"
+}
+<br />
+<b>Strict Standards</b>:  Non-static method Model::setFetchMode() should not be called statically, assuming $this from incompatible context in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>34</b><br />
+<br />
+<b>Fatal error</b>:  Call to undefined method HomeController::_reflect() in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>112</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to undefined method HomeController::_reflect()
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 112
+)
+</pre>
+[[2013-12-11 13:05:47 49225331285]]
+
+[[2013-12-11 13:10:11 7273662609]]
+
+<pre><br />
+<b>Strict Standards</b>:  Non-static method Model::setFetchMode() should not be called statically, assuming $this from incompatible context in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>34</b><br />
+<br />
+<b>Fatal error</b>:  Call to undefined method HomeController::_reflect() in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>112</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to undefined method HomeController::_reflect()
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 112
+)
+</pre>
+[[2013-12-11 13:10:11 7273662609]]
+
+[[2013-12-11 13:11:55 67931229974]]
+
+<pre><br />
+<b>Strict Standards</b>:  Non-static method Model::setFetchMode() should not be called statically, assuming $this from incompatible context in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>34</b><br />
+<br />
+<b>Fatal error</b>:  Call to undefined method HomeController::_reflect() in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>113</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to undefined method HomeController::_reflect()
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 113
+)
+</pre>
+[[2013-12-11 13:11:55 67931229974]]
+
+[[2013-12-11 13:13:06 25134816023]]
+
+<pre><br />
+<b>Strict Standards</b>:  Non-static method Model::setFetchMode() should not be called statically, assuming $this from incompatible context in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>34</b><br />
+<br />
+<b>Fatal error</b>:  Access to undeclared static property: HomeController::$_driver in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>144</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Access to undeclared static property: HomeController::$_driver
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 144
+)
+</pre>
+[[2013-12-11 13:13:06 25134816023]]
+
+[[2013-12-11 13:14:30 42316322660]]
+
+<pre><br />
+<b>Strict Standards</b>:  Non-static method Model::setFetchMode() should not be called statically, assuming $this from incompatible context in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>34</b><br />
+<br />
+<b>Fatal error</b>:  Access to undeclared static property: HomeController::$_target in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>144</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Access to undeclared static property: HomeController::$_target
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 144
+)
+</pre>
+[[2013-12-11 13:14:30 42316322660]]
+
+[[2013-12-11 13:15:20 9030506253]]
+
+<pre><br />
+<b>Strict Standards</b>:  Non-static method Model::setFetchMode() should not be called statically, assuming $this from incompatible context in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>34</b><br />
+<br />
+<b>Fatal error</b>:  Call to undefined method HomeController::__callStatic() in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>116</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to undefined method HomeController::__callStatic()
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 116
+)
+</pre>
+[[2013-12-11 13:15:20 9030506253]]
+
+[[2013-12-11 13:16:06 64166619618]]
+
+<pre><br />
+<b>Strict Standards</b>:  Non-static method Model::setFetchMode() should not be called statically, assuming $this from incompatible context in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>34</b><br />
+<br />
+<b>Fatal error</b>:  Call to undefined method HomeController::__callStatic() in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>116</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to undefined method HomeController::__callStatic()
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 116
+)
+</pre>
+[[2013-12-11 13:16:06 64166619618]]
+
+[[2013-12-11 13:17:24 67712924266]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Non-static method Model::setFetchMode() should not be called statically, assuming $this from incompatible context in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>34</b><br />
+object(stdClass)#4 (107) {
+  ["id"]=>
+  string(1) "2"
+  ["gameAccountId"]=>
+  string(5) "16590"
+  ["username"]=>
+  string(7) "player1"
+  ["email"]=>
+  string(26) "hungdd6374@setacinq.com.vn"
+  ["password"]=>
+  string(60) "$2a$08$LtrlcxzTu4aAVQJjNzfrzuag90Rk7ekIaqQ1KJALNxJCkrwdF51hq"
+  ["fullname"]=>
+  string(10) "CHRIS Jonb"
+  ["firstname"]=>
+  string(5) "CHRIS"
+  ["lastname"]=>
+  string(4) "Jonb"
+  ["role"]=>
+  string(6) "player"
+  ["suffix"]=>
+  string(3) "Mr."
+  ["gender"]=>
+  string(4) "Male"
+  ["age"]=>
+  string(2) "14"
+  ["t_shirt_size_1"]=>
+  string(1) "2"
+  ["t_shirt_size_2"]=>
+  string(1) "3"
+  ["grade_level"]=>
+  string(1) "7"
+  ["parental_firstname"]=>
+  string(5) "Terry"
+  ["parental_lastname"]=>
+  string(7) "SHERMAN"
+  ["parental_zip"]=>
+  string(5) "50002"
+  ["parental_zipcode"]=>
+  string(5) "50002"
+  ["parental_address1"]=>
+  string(16) "4534 main street"
+  ["parental_address2"]=>
+  string(0) ""
+  ["parental_state_id"]=>
+  string(1) "8"
+  ["parental_state"]=>
+  string(11) "Connecticut"
+  ["parental_county_id"]=>
+  string(3) "321"
+  ["parental_county"]=>
+  string(12) "Contra Costa"
+  ["parental_city_id"]=>
+  string(5) "12189"
+  ["parental_city"]=>
+  string(7) "Concord"
+  ["parental_phone"]=>
+  string(14) "1 345 277 4551"
+  ["parental_phone_ext"]=>
+  string(1) "5"
+  ["parental_mobile"]=>
+  NULL
+  ["parental_email"]=>
+  string(14) "mike@email.com"
+  ["fundraiser_id"]=>
+  string(2) "71"
+  ["c_fundraiser_name"]=>
+  string(36) "Tram - Califonia Credit Union League"
+  ["financial_institution_id"]=>
+  string(3) "207"
+  ["c_financial_institution_name"]=>
+  string(35) "Cam - Califonia Credit Union League"
+  ["financial_institution_routing_number"]=>
+  NULL
+  ["financial_institution_account_number"]=>
+  NULL
+  ["profile_avatar"]=>
+  string(14) "Penguins_2.jpg"
+  ["newsletter"]=>
+  string(1) "1"
+  ["license_end_date"]=>
+  NULL
+  ["license_active"]=>
+  NULL
+  ["active_date"]=>
+  string(10) "1385083789"
+  ["created_date"]=>
+  NULL
+  ["account_status"]=>
+  string(1) "1"
+  ["billing_cardname"]=>
+  string(0) ""
+  ["billing_cardnumber"]=>
+  string(0) ""
+  ["billing_cardexpiresmonth"]=>
+  string(2) "12"
+  ["billing_cardexpiresyear"]=>
+  NULL
+  ["billing_cardsecurity"]=>
+  NULL
+  ["billing_address"]=>
+  string(16) "4534 main street"
+  ["billing_address_2"]=>
+  string(0) ""
+  ["billing_city"]=>
+  string(5) "Cocoa"
+  ["billing_state"]=>
+  string(2) "11"
+  ["billing_zip_code"]=>
+  string(5) "50002"
+  ["billing_cardname2"]=>
+  string(0) ""
+  ["billing_cardnumber2"]=>
+  string(0) ""
+  ["billing_cardexpiresmonth2"]=>
+  NULL
+  ["billing_cardexpiresyear2"]=>
+  NULL
+  ["billing_cardsecurity2"]=>
+  NULL
+  ["billing_address2"]=>
+  string(16) "4534 main street"
+  ["billing_address_2_2"]=>
+  string(0) ""
+  ["billing_city2"]=>
+  string(9) "cantelope"
+  ["billing_state2"]=>
+  string(1) "6"
+  ["billing_zip_code2"]=>
+  string(5) "12345"
+  ["billing_cardname3"]=>
+  string(4) "Mike"
+  ["billing_cardnumber3"]=>
+  string(0) ""
+  ["billing_cardexpiresmonth3"]=>
+  NULL
+  ["billing_cardexpiresyear3"]=>
+  NULL
+  ["billing_cardsecurity3"]=>
+  NULL
+  ["billing_address3"]=>
+  string(16) "4534 main street"
+  ["billing_address_3_2"]=>
+  string(0) ""
+  ["billing_city3"]=>
+  string(9) "cantelope"
+  ["billing_state3"]=>
+  string(2) "12"
+  ["billing_zip_code3"]=>
+  string(5) "12345"
+  ["shipping_address"]=>
+  string(16) "4534 main street"
+  ["shipping_address2"]=>
+  string(0) ""
+  ["shipping_city"]=>
+  string(5) "Cocoa"
+  ["shipping_state"]=>
+  string(2) "11"
+  ["shipping_state_id"]=>
+  string(1) "0"
+  ["shipping_zip_code"]=>
+  string(5) "50002"
+  ["organization_id"]=>
+  string(2) "10"
+  ["c_organization_name"]=>
+  string(21) "Boy Scouts of America"
+  ["adult_supervisor"]=>
+  string(11) "Steve Sculy"
+  ["supervisor_phone_number"]=>
+  string(12) "321-690-3386"
+  ["supervisor_email"]=>
+  string(18) "johndoes@email.com"
+  ["auto_renewel_arf"]=>
+  string(1) "1"
+  ["ripken_baseball_tiv"]=>
+  string(1) "1"
+  ["pay_this_year_fee"]=>
+  string(1) "0"
+  ["pledge_raised"]=>
+  NULL
+  ["total_score"]=>
+  string(1) "0"
+  ["games_played"]=>
+  string(1) "0"
+  ["games_played_at_level"]=>
+  string(1) "0"
+  ["games_played_above_level"]=>
+  string(1) "0"
+  ["average_score"]=>
+  NULL
+  ["user_hashing"]=>
+  string(40) "2f6088f91135e0c463f548bc7700710e9cf46ede"
+  ["user_auth_sess"]=>
+  string(40) "0090b4846af6a7dc2b93abb104f406901008aa66"
+  ["is_dummy_data"]=>
+  string(1) "1"
+  ["total_score_percent"]=>
+  string(9) "0.0000000"
+  ["average_score_percent"]=>
+  NULL
+  ["average_score_percent_rank"]=>
+  string(1) "6"
+  ["latest_payment_amt"]=>
+  string(5) "34.94"
+  ["payflow_pnref"]=>
+  string(12) "A10A5D9C55F1"
+  ["payflow_origprofileid"]=>
+  NULL
+  ["payflow_transinfo"]=>
+  string(1371) "a:4:{s:12:""1385083789"";a:14:{s:6:"RESULT";s:1:"0";s:5:"PNREF";s:12:"A10A5D9C55F1";s:7:"RESPMSG";s:8:"Approved";s:8:"AUTHCODE";s:6:"188PNI";s:7:"AVSADDR";s:1:"N";s:6:"AVSZIP";s:1:"N";s:9:"CVV2MATCH";s:1:"Y";s:8:"HOSTCODE";s:1:"A";s:7:"PROCAVS";s:1:"N";s:8:"PROCCVV2";s:1:"M";s:13:"VISACARDLEVEL";s:2:"12";s:4:"IAVS";s:1:"N";s:9:"PREFPSMSG";s:18:"No Rules Triggered";s:10:"POSTFPSMSG";s:18:"No Rules Triggered";}s:12:""1384835582"";a:14:{s:6:"RESULT";s:1:"0";s:5:"PNREF";s:12:"A70A5C2EAA20";s:7:"RESPMSG";s:8:"Approved";s:8:"AUTHCODE";s:6:"320PNI";s:7:"AVSADDR";s:1:"N";s:6:"AVSZIP";s:1:"Y";s:9:"CVV2MATCH";s:1:"Y";s:8:"HOSTCODE";s:1:"A";s:7:"PROCAVS";s:1:"Z";s:8:"PROCCVV2";s:1:"M";s:13:"VISACARDLEVEL";s:2:"12";s:4:"IAVS";s:1:"N";s:9:"PREFPSMSG";s:18:"No Rules Triggered";s:10:"POSTFPSMSG";s:18:"No Rules Triggered";}s:12:""1384830469"";a:4:{s:6:"RESULT";s:1:"0";s:5:"RPREF";s:12:"R1055D772F0F";s:9:"PROFILEID";s:12:"RT0000000048";s:7:"RESPMSG";s:8:"Approved";}s:12:""1384829915"";a:14:{s:6:"RESULT";s:1:"0";s:5:"PNREF";s:12:"A10A5D771C17";s:7:"RESPMSG";s:8:"Approved";s:8:"AUTHCODE";s:6:"893PNI";s:7:"AVSADDR";s:1:"N";s:6:"AVSZIP";s:1:"Y";s:9:"CVV2MATCH";s:1:"Y";s:8:"HOSTCODE";s:1:"A";s:7:"PROCAVS";s:1:"Z";s:8:"PROCCVV2";s:1:"M";s:13:"VISACARDLEVEL";s:2:"12";s:4:"IAVS";s:1:"N";s:9:"PREFPSMSG";s:18:"No Rules Triggered";s:10:"POSTFPSMSG";s:18:"No Rules Triggered";}}"
+  ["payflow_date_established"]=>
+  string(10) "1385083789"
+  ["payflow_start_date"]=>
+  string(10) "1384830469"
+  ["payflow_next_payment_date"]=>
+  string(10) "1484819200"
+}
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2048 (E_STRICT)
+    [message] => Non-static method Model::setFetchMode() should not be called statically, assuming $this from incompatible context
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 34
+)
+</pre>
+[[2013-12-11 13:17:24 67712924266]]
+
+[[2013-12-11 13:33:09 80718811571]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Non-static method Model::setFetchMode() should not be called statically, assuming $this from incompatible context in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>34</b><br />
+object(stdClass)#4 (107) {
+  ["id"]=>
+  string(1) "2"
+  ["gameAccountId"]=>
+  string(5) "16590"
+  ["username"]=>
+  string(7) "player1"
+  ["email"]=>
+  string(26) "hungdd6374@setacinq.com.vn"
+  ["password"]=>
+  string(60) "$2a$08$LtrlcxzTu4aAVQJjNzfrzuag90Rk7ekIaqQ1KJALNxJCkrwdF51hq"
+  ["fullname"]=>
+  string(10) "CHRIS Jonb"
+  ["firstname"]=>
+  string(5) "CHRIS"
+  ["lastname"]=>
+  string(4) "Jonb"
+  ["role"]=>
+  string(6) "player"
+  ["suffix"]=>
+  string(3) "Mr."
+  ["gender"]=>
+  string(4) "Male"
+  ["age"]=>
+  string(2) "14"
+  ["t_shirt_size_1"]=>
+  string(1) "2"
+  ["t_shirt_size_2"]=>
+  string(1) "3"
+  ["grade_level"]=>
+  string(1) "7"
+  ["parental_firstname"]=>
+  string(5) "Terry"
+  ["parental_lastname"]=>
+  string(7) "SHERMAN"
+  ["parental_zip"]=>
+  string(5) "50002"
+  ["parental_zipcode"]=>
+  string(5) "50002"
+  ["parental_address1"]=>
+  string(16) "4534 main street"
+  ["parental_address2"]=>
+  string(0) ""
+  ["parental_state_id"]=>
+  string(1) "8"
+  ["parental_state"]=>
+  string(11) "Connecticut"
+  ["parental_county_id"]=>
+  string(3) "321"
+  ["parental_county"]=>
+  string(12) "Contra Costa"
+  ["parental_city_id"]=>
+  string(5) "12189"
+  ["parental_city"]=>
+  string(7) "Concord"
+  ["parental_phone"]=>
+  string(14) "1 345 277 4551"
+  ["parental_phone_ext"]=>
+  string(1) "5"
+  ["parental_mobile"]=>
+  NULL
+  ["parental_email"]=>
+  string(14) "mike@email.com"
+  ["fundraiser_id"]=>
+  string(2) "71"
+  ["c_fundraiser_name"]=>
+  string(36) "Tram - Califonia Credit Union League"
+  ["financial_institution_id"]=>
+  string(3) "207"
+  ["c_financial_institution_name"]=>
+  string(35) "Cam - Califonia Credit Union League"
+  ["financial_institution_routing_number"]=>
+  NULL
+  ["financial_institution_account_number"]=>
+  NULL
+  ["profile_avatar"]=>
+  string(14) "Penguins_2.jpg"
+  ["newsletter"]=>
+  string(1) "1"
+  ["license_end_date"]=>
+  NULL
+  ["license_active"]=>
+  NULL
+  ["active_date"]=>
+  string(10) "1385083789"
+  ["created_date"]=>
+  NULL
+  ["account_status"]=>
+  string(1) "1"
+  ["billing_cardname"]=>
+  string(0) ""
+  ["billing_cardnumber"]=>
+  string(0) ""
+  ["billing_cardexpiresmonth"]=>
+  string(2) "12"
+  ["billing_cardexpiresyear"]=>
+  NULL
+  ["billing_cardsecurity"]=>
+  NULL
+  ["billing_address"]=>
+  string(16) "4534 main street"
+  ["billing_address_2"]=>
+  string(0) ""
+  ["billing_city"]=>
+  string(5) "Cocoa"
+  ["billing_state"]=>
+  string(2) "11"
+  ["billing_zip_code"]=>
+  string(5) "50002"
+  ["billing_cardname2"]=>
+  string(0) ""
+  ["billing_cardnumber2"]=>
+  string(0) ""
+  ["billing_cardexpiresmonth2"]=>
+  NULL
+  ["billing_cardexpiresyear2"]=>
+  NULL
+  ["billing_cardsecurity2"]=>
+  NULL
+  ["billing_address2"]=>
+  string(16) "4534 main street"
+  ["billing_address_2_2"]=>
+  string(0) ""
+  ["billing_city2"]=>
+  string(9) "cantelope"
+  ["billing_state2"]=>
+  string(1) "6"
+  ["billing_zip_code2"]=>
+  string(5) "12345"
+  ["billing_cardname3"]=>
+  string(4) "Mike"
+  ["billing_cardnumber3"]=>
+  string(0) ""
+  ["billing_cardexpiresmonth3"]=>
+  NULL
+  ["billing_cardexpiresyear3"]=>
+  NULL
+  ["billing_cardsecurity3"]=>
+  NULL
+  ["billing_address3"]=>
+  string(16) "4534 main street"
+  ["billing_address_3_2"]=>
+  string(0) ""
+  ["billing_city3"]=>
+  string(9) "cantelope"
+  ["billing_state3"]=>
+  string(2) "12"
+  ["billing_zip_code3"]=>
+  string(5) "12345"
+  ["shipping_address"]=>
+  string(16) "4534 main street"
+  ["shipping_address2"]=>
+  string(0) ""
+  ["shipping_city"]=>
+  string(5) "Cocoa"
+  ["shipping_state"]=>
+  string(2) "11"
+  ["shipping_state_id"]=>
+  string(1) "0"
+  ["shipping_zip_code"]=>
+  string(5) "50002"
+  ["organization_id"]=>
+  string(2) "10"
+  ["c_organization_name"]=>
+  string(21) "Boy Scouts of America"
+  ["adult_supervisor"]=>
+  string(11) "Steve Sculy"
+  ["supervisor_phone_number"]=>
+  string(12) "321-690-3386"
+  ["supervisor_email"]=>
+  string(18) "johndoes@email.com"
+  ["auto_renewel_arf"]=>
+  string(1) "1"
+  ["ripken_baseball_tiv"]=>
+  string(1) "1"
+  ["pay_this_year_fee"]=>
+  string(1) "0"
+  ["pledge_raised"]=>
+  NULL
+  ["total_score"]=>
+  string(1) "0"
+  ["games_played"]=>
+  string(1) "0"
+  ["games_played_at_level"]=>
+  string(1) "0"
+  ["games_played_above_level"]=>
+  string(1) "0"
+  ["average_score"]=>
+  NULL
+  ["user_hashing"]=>
+  string(40) "2f6088f91135e0c463f548bc7700710e9cf46ede"
+  ["user_auth_sess"]=>
+  string(40) "0090b4846af6a7dc2b93abb104f406901008aa66"
+  ["is_dummy_data"]=>
+  string(1) "1"
+  ["total_score_percent"]=>
+  string(9) "0.0000000"
+  ["average_score_percent"]=>
+  NULL
+  ["average_score_percent_rank"]=>
+  string(1) "6"
+  ["latest_payment_amt"]=>
+  string(5) "34.94"
+  ["payflow_pnref"]=>
+  string(12) "A10A5D9C55F1"
+  ["payflow_origprofileid"]=>
+  NULL
+  ["payflow_transinfo"]=>
+  string(1371) "a:4:{s:12:""1385083789"";a:14:{s:6:"RESULT";s:1:"0";s:5:"PNREF";s:12:"A10A5D9C55F1";s:7:"RESPMSG";s:8:"Approved";s:8:"AUTHCODE";s:6:"188PNI";s:7:"AVSADDR";s:1:"N";s:6:"AVSZIP";s:1:"N";s:9:"CVV2MATCH";s:1:"Y";s:8:"HOSTCODE";s:1:"A";s:7:"PROCAVS";s:1:"N";s:8:"PROCCVV2";s:1:"M";s:13:"VISACARDLEVEL";s:2:"12";s:4:"IAVS";s:1:"N";s:9:"PREFPSMSG";s:18:"No Rules Triggered";s:10:"POSTFPSMSG";s:18:"No Rules Triggered";}s:12:""1384835582"";a:14:{s:6:"RESULT";s:1:"0";s:5:"PNREF";s:12:"A70A5C2EAA20";s:7:"RESPMSG";s:8:"Approved";s:8:"AUTHCODE";s:6:"320PNI";s:7:"AVSADDR";s:1:"N";s:6:"AVSZIP";s:1:"Y";s:9:"CVV2MATCH";s:1:"Y";s:8:"HOSTCODE";s:1:"A";s:7:"PROCAVS";s:1:"Z";s:8:"PROCCVV2";s:1:"M";s:13:"VISACARDLEVEL";s:2:"12";s:4:"IAVS";s:1:"N";s:9:"PREFPSMSG";s:18:"No Rules Triggered";s:10:"POSTFPSMSG";s:18:"No Rules Triggered";}s:12:""1384830469"";a:4:{s:6:"RESULT";s:1:"0";s:5:"RPREF";s:12:"R1055D772F0F";s:9:"PROFILEID";s:12:"RT0000000048";s:7:"RESPMSG";s:8:"Approved";}s:12:""1384829915"";a:14:{s:6:"RESULT";s:1:"0";s:5:"PNREF";s:12:"A10A5D771C17";s:7:"RESPMSG";s:8:"Approved";s:8:"AUTHCODE";s:6:"893PNI";s:7:"AVSADDR";s:1:"N";s:6:"AVSZIP";s:1:"Y";s:9:"CVV2MATCH";s:1:"Y";s:8:"HOSTCODE";s:1:"A";s:7:"PROCAVS";s:1:"Z";s:8:"PROCCVV2";s:1:"M";s:13:"VISACARDLEVEL";s:2:"12";s:4:"IAVS";s:1:"N";s:9:"PREFPSMSG";s:18:"No Rules Triggered";s:10:"POSTFPSMSG";s:18:"No Rules Triggered";}}"
+  ["payflow_date_established"]=>
+  string(10) "1385083789"
+  ["payflow_start_date"]=>
+  string(10) "1384830469"
+  ["payflow_next_payment_date"]=>
+  string(10) "1484819200"
+}
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2048 (E_STRICT)
+    [message] => Non-static method Model::setFetchMode() should not be called statically, assuming $this from incompatible context
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 34
+)
+</pre>
+[[2013-12-11 13:33:09 80718811571]]

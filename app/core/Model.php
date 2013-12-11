@@ -21,6 +21,13 @@ abstract class Model
 		$this->_pk = $pk;
 	}
 
+	private function &_reflect()
+	{
+		if (!isset($this->_reflect))
+			$this->_reflect = new ReflectionClass($this);
+		return $this->_reflect;
+	}
+
 	public function &setTarget($target)
 	{
 		$this->_target = $target;
@@ -47,7 +54,7 @@ abstract class Model
 
 	public function __set($name, $value)
 	{
-		$properties = $this->_reflect->getProperties(ReflectionProperty::IS_STATIC);
+		$properties = $this->_reflect()->getProperties(ReflectionProperty::IS_STATIC);
 		foreach ($properties as &$property)
 			if ($property->getName() == $name) {
 				$this->_properties[$name] = $value;
@@ -58,7 +65,7 @@ abstract class Model
 
 	public function __get($name)
 	{
-		$properties = $this->_reflect->getProperties(ReflectionProperty::IS_STATIC);
+		$properties = $this->_reflect()->getProperties(ReflectionProperty::IS_STATIC);
 		foreach ($properties as &$property)
 			if ($property->getName() == $name) {
 				return $this->_properties[$name];
@@ -68,7 +75,7 @@ abstract class Model
 
 	public function __isset($name)
 	{
-		$properties = $this->_reflect->getProperties(ReflectionProperty::IS_STATIC);
+		$properties = $this->_reflect()->getProperties(ReflectionProperty::IS_STATIC);
 		foreach ($properties as &$property)
 			if ($property->getName() == $name) {
 				return isset($this->_properties[$name]);
@@ -78,7 +85,7 @@ abstract class Model
 
 	public function getData($result = 'array')
 	{
-		$fields = $this->_reflect->getProperties(ReflectionProperty::IS_PUBLIC);
+		$fields = $this->_reflect()->getProperties(ReflectionProperty::IS_PUBLIC);
 		if ($isArray = ($result == 'array'))
 			$data = array();
 		else
@@ -93,6 +100,22 @@ abstract class Model
 		if (in_array($result, array('both', 'ArrayObject')))
 			$data = new ArrayObject($data, ArrayObject::ARRAY_AS_PROPS);
 		return $data;
+	}
+
+	public function toArray()
+	{
+		return $this->getData();
+	}
+
+	//Can tao 1 function call non static and static
+	public function setFetchMode($mode, $class = null)
+	{
+		if (isset($this) && method_exists($this, '_reflect')) {
+			if (is_null($class)) $class = $this->_reflect()->name;
+			$this->__call('setFetchMode', array($mode, $class));
+		} else {
+			self::__callStatic('setFetchMode', array($mode, $class));
+		}
 	}
 
 	/*###################################################*/
@@ -119,7 +142,7 @@ abstract class Model
 
 	public static function __callStatic($name, $arguments = array())
 	{
-		$db =& App::db(self::$_target, static::$_driver, self::$_pk);
+		$db =& App::db(self::$_target, self::$_driver, self::$_pk);
 		return call_user_func_array(array($db, $name), $arguments);
 	}
 }

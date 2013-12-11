@@ -8,8 +8,6 @@ class MySql extends DBDriver
 
 	private $resource = null;
 	private $last_query = null;
-	private $fetch_mode = null;
-	private $active_class = null;
 	private $current_query = null;
 
 	private static function db_set_charset($instance, $charset, $collation)
@@ -95,12 +93,6 @@ class MySql extends DBDriver
 		$connection =& self::collect($this->instance);
 		$this->resource = mysql_query($sql, $connection);
 		return ($this->resource ? true : false);
-	}
-
-	public function setFetchMode($mode, $class = null)
-	{
-		$this->fetch_mode = $mode;
-		$this->active_class = $class;
 	}
 
 	public function fetch()

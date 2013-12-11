@@ -3,6 +3,7 @@ defined('ROOT_DIR') || exit;
 
 class UserModel extends Model
 {
+	public $id;
 	public $username;
 	public $password;
 	public $status = 1;

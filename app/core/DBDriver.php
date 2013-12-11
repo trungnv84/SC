@@ -13,6 +13,9 @@ abstract class DBDriver
 	protected $instance;
 	protected $_pk = null;
 
+	protected $fetch_mode = null;
+	protected $active_class = null;
+
 	public function __construct($instance = DB_INSTANCE)
 	{
 		$this->instance = $instance;
@@ -82,6 +85,12 @@ abstract class DBDriver
 	public function set_pk($pk)
 	{
 		$this->_pk = $pk;
+	}
+
+	public function setFetchMode($mode, $class = null)
+	{
+		$this->fetch_mode = $mode;
+		$this->active_class = $class;
 	}
 
 	public abstract function fetch();
