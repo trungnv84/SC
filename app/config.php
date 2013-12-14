@@ -93,10 +93,10 @@ $config->moduleTemplates = array(
 */
 
 $config->db[MYSQL_DRIVER_NAME] = array(
-	'hostname' => '172.16.90.26',
-	'username' => 'admin',
-	'password' => 'admin',
-	'database' => 'tivitz',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'sc',
 	'dbprefix' => 'tbl_',
 	'pconnect' => true,
 	//'db_debug' => TRUE;
@@ -114,13 +114,13 @@ if (DB_INSTANCE) {
 		DB_INSTANCE => $config->db
 	);
 
-	$config->db['user'] = array(
+	$config->db['users'] = array(
 		MYSQL_DRIVER_NAME => array(
-			'hostname' => '172.16.90.26',
-			'username' => 'admin',
-			'password' => 'admin',
-			'database' => 'tivitz',
-			'dbprefix' => '',
+            'hostname' => 'localhost',
+            'username' => 'root',
+            'password' => '',
+            'database' => 'sc',
+			'dbprefix' => 'tbl_',
 			'pconnect' => false,
 			'char_set' => 'utf8',
 			'dbcollat' => 'utf8_general_ci'
@@ -128,7 +128,7 @@ if (DB_INSTANCE) {
 	);
 
 	$config->db['session'] = array(
-		MYSQL_DRIVER_NAME => 'user.sc_session'
+		MYSQL_DRIVER_NAME => 'users.sc_session'
 	);
 }
 

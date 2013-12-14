@@ -90,7 +90,7 @@ abstract class DBDriver
 	public function setFetchMode($mode, $class = null)
 	{
 		$this->fetch_mode = $mode;
-		$this->active_class = $class;
+        $this->active_class = $class;
 	}
 
 	public abstract function fetch();
