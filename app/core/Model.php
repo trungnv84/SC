@@ -16,7 +16,7 @@ abstract class Model
     /*###################################################*/
     public function __construct($target = null, $driver = DB_DRIVER_NAME, $pk = DB_OBJECT_KEY)
     {
-        //$this->_reflect = new ReflectionClass($this);
+        //var_dump($this); kiểm tra việc update các field mới...
         $this->_driver = $driver;
         $this->_target = (is_null($target) ? static::getSource() : $target);
         $this->_pk = $pk;

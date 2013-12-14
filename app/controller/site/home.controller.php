@@ -33,8 +33,8 @@ class HomeController extends Controller
 		UserModel::query('SELECT * FROM users');
 		UserModel::setFetchMode(DBDriver::FETCH_ACT_OBJ);
 		$user = UserModel::fetch();
-        $user->properties('filer', 'A');
-		var_dump($user);
+        //$user->properties('filer', 'A');
+		//var_dump($user);
 
 		/*
 		$filterInput = Joomla\JFilterInput::getInstance();
