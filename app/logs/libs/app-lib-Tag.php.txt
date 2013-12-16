@@ -3,3 +3,4 @@ _tools.home.default
 site.home.default
 _tools.cache.delete
 admin.home.default
+site.home.default

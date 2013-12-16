@@ -6,3 +6,4 @@ site.home.default
 _tools.cache.delete
 admin.home.default
 site.public.default
+site.home.default

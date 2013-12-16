@@ -1,0 +1,96 @@
+
+[[2013-12-15 00:19:34 07812525974]]
+
+<pre><br />
+<b>Fatal error</b>:  Call to a member function properties() on a non-object in <b>D:\Trung\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>36</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to a member function properties() on a non-object
+    [file] => D:\Trung\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 36
+)
+</pre>
+[[2013-12-15 00:19:34 07812525974]]
+
+[[2013-12-15 00:20:15 42187522391]]
+
+<pre><br />
+<b>Fatal error</b>:  Call to a member function toArray() on a non-object in <b>D:\Trung\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>37</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to a member function toArray() on a non-object
+    [file] => D:\Trung\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 37
+)
+</pre>
+[[2013-12-15 00:20:15 42187522391]]
+
+[[2013-12-15 00:20:52 90625012260]]
+
+<pre><br />
+<b>Fatal error</b>:  Call to a member function properties() on a non-object in <b>D:\Trung\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>36</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to a member function properties() on a non-object
+    [file] => D:\Trung\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 36
+)
+</pre>
+[[2013-12-15 00:20:52 90625012260]]
+
+[[2013-12-15 00:21:36 3750003149]]
+
+<pre><br />
+<b>Fatal error</b>:  Call to a member function properties() on a non-object in <b>D:\Trung\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>36</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to a member function properties() on a non-object
+    [file] => D:\Trung\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 36
+)
+</pre>
+[[2013-12-15 00:21:36 3750003149]]
+
+[[2013-12-15 00:22:14 81250025346]]
+
+<pre><br />
+<b>Fatal error</b>:  Call to a member function properties() on a non-object in <b>D:\Trung\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>36</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to a member function properties() on a non-object
+    [file] => D:\Trung\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 36
+)
+</pre>
+[[2013-12-15 00:22:14 81250025346]]
+
+[[2013-12-15 00:24:51 48437528256]]
+
+<pre><br />
+<b>Fatal error</b>:  Call to a member function properties() on a non-object in <b>D:\Trung\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>36</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to a member function properties() on a non-object
+    [file] => D:\Trung\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 36
+)
+</pre>
+[[2013-12-15 00:24:51 48437528256]]
