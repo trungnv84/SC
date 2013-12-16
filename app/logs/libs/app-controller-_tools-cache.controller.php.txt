@@ -1,3 +1,0 @@
-_tools.cache.default
-_tools.cache.defau
-_tools.cache.delete

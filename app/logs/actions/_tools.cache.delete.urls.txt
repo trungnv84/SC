@@ -1,6 +1,0 @@
-_tools/cache/delete
-_tools/cache/delete/css
-_tools/cache/delete/all
-_tools/cache/delete/s
-_tools/cache/delete/
-_tools/cache/delete/js
