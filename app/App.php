@@ -418,7 +418,7 @@ class App
 			}
 			$dbs[$instance][$driver] =& $dbs[$key];
 		}
-		//zzzZZZ xem lai ham nay
+		//zzz xem lai ham nay co cach nao tot hon khong???
 		$dbs[$instance][$driver]->init();
 		return $dbs[$instance][$driver];
 	}

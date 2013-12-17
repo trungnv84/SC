@@ -120,7 +120,7 @@ abstract class Model
 
 	public abstract function getSource();
 
-	public static function getParamsForInit()
+	public static function getParamsOfInit()
 	{
 		return array(self::$_target, self::$_driver, self::$_pk);
 	}

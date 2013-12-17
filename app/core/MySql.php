@@ -87,6 +87,33 @@ class MySql extends DBDriver
 		self::$connections = array();
 	}
 
+	/**
+	 * Method to escape a string for usage in an SQL statement.
+	 *
+	 * @param   string  $text  The string to be escaped.
+	 * @param   boolean $extra Optional parameter to provide extra escaping.
+	 *
+	 * @return  string  The escaped string.
+	 *
+	 * @since   12.1
+	 */
+	public function escape($text, $extra = false)
+	{
+		if (is_string($text)) {
+			$result = mysql_real_escape_string($text, self::collect($this->instance));
+
+			if ($extra) {
+				$result = addcslashes($result, '%_');
+			}
+		} elseif (is_bool($text)) {
+			$result = ($text === FALSE) ? 0 : 1;
+		} elseif (is_null($text)) {
+			$result = 'NULL';
+		} else $result = $text;
+
+		return $result;
+	}
+
 	public function query($sql)
 	{
 		$this->last_query = $sql;
@@ -95,7 +122,7 @@ class MySql extends DBDriver
 		return ($this->resource ? true : false);
 	}
 
-	public function fetch()
+	public function fetch($cursor = null)
 	{
 		if (is_null($this->resource) || $this->resource === false) return false;
 
@@ -124,7 +151,7 @@ class MySql extends DBDriver
 					if (!is_null($this->active_object)) {
 						$params = array(@$this->active_object->_target, @$this->active_object->_driver, @$this->active_object->_pk);
 					} else {
-						$params = call_user_func(array($this->active_class, 'getParamsForInit'));
+						$params = call_user_func(array($this->active_class, 'getParamsOfInit'));
 					}
 					$result = mysql_fetch_object($this->resource, $this->active_class, $params);
 				}
@@ -135,8 +162,15 @@ class MySql extends DBDriver
 
 	public function load($key)
 	{
-		echo $this->instance;
-		return false;
+		if (is_null($this->active_class)) return false;
+		if (!is_null($this->active_object)) {
+			$params = array(@$this->active_object->_target, @$this->active_object->_driver, @$this->active_object->_pk);
+		} else {
+			$params = call_user_func(array($this->active_class, 'getParamsOfInit'));
+		}
+		$this->query('SELECT * FROM ' . $params[0] . ' WHERE ' . $params[2] . ' = ' . $this->quote($key) . ' LIMIT 1');
+
+		return mysql_fetch_object($this->resource, $this->active_class, $params);
 	}
 
 	/*public function find()
