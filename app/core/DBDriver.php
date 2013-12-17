@@ -11,10 +11,10 @@ abstract class DBDriver
 	const FETCH_ACT_OBJ = 6; // MYSQL_ACT_OBJ
 
 	protected $instance;
-	protected $_pk = null;
 
 	protected $fetch_mode = null;
 	protected $active_class = null;
+	protected $active_object = null;
 
 	public function __construct($instance = DB_INSTANCE)
 	{
@@ -24,8 +24,8 @@ abstract class DBDriver
 	public static function getDbKey($instance = DB_INSTANCE, $driver = DB_DRIVER_NAME)
 	{
 		static $keys;
-		if(!$instance) $instance = 'default';
-		if(!isset($keys[$instance])) {
+		if (!$instance) $instance = 'default';
+		if (!isset($keys[$instance])) {
 			if (DB_INSTANCE) {
 				if (isset(App::$config->db[$instance][$driver])) {
 					$config = App::$config->db[$instance][$driver];
@@ -43,7 +43,7 @@ abstract class DBDriver
 			} else {
 				$config = App::$config->db[$driver];
 			}
-			if(isset(App::$config->dbKeyIgnores[$driver])) {
+			if (isset(App::$config->dbKeyIgnores[$driver])) {
 				$config = array_diff_key($config, array_flip(App::$config->dbKeyIgnores[$driver]));
 			}
 			$keys[$instance] = implode('.', $config);
@@ -82,16 +82,30 @@ abstract class DBDriver
 		return $configs[$instance][$driver];
 	}
 
-	public function set_pk($pk)
+	public function init()
 	{
-		$this->_pk = $pk;
+		$this->active_class = null;
+		$this->active_object = null;
 	}
 
-	public function setFetchMode($mode, $class = null)
+	public function setFetchMode($mode)
 	{
 		$this->fetch_mode = $mode;
-        $this->active_class = $class;
+	}
+
+	public function active_class($class)
+	{
+		$this->active_object = null;
+		$this->active_class = $class;
+	}
+
+	public function active_object(&$object)
+	{
+		$this->active_object = $object;
+		$this->active_class = get_class($object);
 	}
 
 	public abstract function fetch();
+
+	public abstract function load($key);
 }

@@ -406,7 +406,7 @@ class App
 		self::end();
 	}
 
-	public static function &db($instance = DB_INSTANCE, $driver = DB_DRIVER_NAME, $pk = DB_OBJECT_KEY)
+	public static function &db($instance = DB_INSTANCE, $driver = DB_DRIVER_NAME)
 	{
 		static $dbs;
 		if (!$instance) $instance = 'default';
@@ -418,7 +418,8 @@ class App
 			}
 			$dbs[$instance][$driver] =& $dbs[$key];
 		}
-		$dbs[$instance][$driver]->set_pk($pk);
+		//zzzZZZ xem lai ham nay
+		$dbs[$instance][$driver]->init();
 		return $dbs[$instance][$driver];
 	}
 
