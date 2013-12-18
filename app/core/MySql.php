@@ -197,7 +197,7 @@ class MySql extends DBDriver
 			if (is_object($key)) $key = get_object_vars($key);
 			$key['table'] = $params[0];
 
-			$query = new MySqlQuery($key);//zzzZZZ
+			$query = new MySqlQuery($key);
 			$sql = $query->toString();
 			unset($query, $key);
 
