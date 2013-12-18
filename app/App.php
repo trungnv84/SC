@@ -580,7 +580,7 @@ class App
 					header("Refresh:0;url=" . $uri);
 					break;
 				default:
-					//header($http_response_code == 301 ? 'HTTP/1.1 301 Moved Permanently' : 'HTTP/1.1 303 See other');
+					http_response_code($http_response_code);
 					header("Location: " . $uri, true, $http_response_code);
 					break;
 			}
@@ -603,7 +603,7 @@ class App
 		}
 	}
 
-	public static function end($status = 0)
+	public static function end($status = 0, $message = null)
 	{
 		static $ended;
 		if (isset($ended)) return;
@@ -627,8 +627,13 @@ class App
 					<a target="_blank" href="' . BASE_URL . '?_show_error=2&time=' . $error . '">Show raw error</a></div>';
 			}
 			$error = TEMPLATE_DIR . self::$template . DS . 'error.php';
-			if (file_exists($error)) require $error;
-			else echo $__error_header;
+			if (file_exists($error)) {
+				http_response_code(404);
+				require $error;
+			} else {
+				http_response_code($status);
+				echo $__error_header;
+			}
 		}
 
 		if (ENVIRONMENT != 'Production' && !self::is_ajax_request() && self::contentType('text/html') == 'text/html') {

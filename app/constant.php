@@ -93,7 +93,7 @@ define('FILE_SAFE_MODE', 0400);
 define('MYSQL_DRIVER_NAME', 'MySql');
 define('MONGO_DRIVER_NAME', 'Mongo');
 
-define('DB_INSTANCE', '');
+define('DB_INSTANCE', 'default');
 define('DB_DRIVER_NAME', MYSQL_DRIVER_NAME);
 define('DB_OBJECT_KEY', 'id');
 

@@ -51,7 +51,7 @@ abstract class DBDriver
 		return $keys[$instance];
 	}
 
-	protected static function getDbConfig($instance, $driver)
+	protected static function &getDbConfig($instance, $driver, $name = false)
 	{
 		static $configs;
 		if (!isset($configs[$instance][$driver])) {
@@ -79,7 +79,9 @@ abstract class DBDriver
 				$configs[$instance][$driver] =& App::$config->db[$driver];
 			}
 		}
-		return $configs[$instance][$driver];
+
+		if ($name) return $configs[$instance][$driver][$name];
+		else return $configs[$instance][$driver];
 	}
 
 	public function init()
@@ -146,7 +148,7 @@ abstract class DBDriver
 	/**
 	 * Method to fetch a row from the result set cursor
 	 *
-	 * @param   mixed  $cursor  The optional result set cursor from which to fetch the row.
+	 * @param   mixed $cursor The optional result set cursor from which to fetch the row.
 	 *
 	 * @return mixed
 	 *

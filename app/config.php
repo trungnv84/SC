@@ -104,7 +104,7 @@ $config->db[MYSQL_DRIVER_NAME] = array(
 	//'cachedir' => '';
 	'char_set' => 'utf8',
 	'dbcollat' => 'utf8_general_ci',
-	//'swap_pre' => '';
+	'swap_pre' => '#__',
 	//'autoinit' => TRUE;
 	//'stricton' => FALSE;
 );
@@ -120,10 +120,11 @@ if (DB_INSTANCE) {
             'username' => 'root',
             'password' => '',
             'database' => 'sc',
-			'dbprefix' => 'tbl_',
-			'pconnect' => false,
+			'dbprefix' => '',
+			'pconnect' => true,
 			'char_set' => 'utf8',
-			'dbcollat' => 'utf8_general_ci'
+			'dbcollat' => 'utf8_general_ci',
+			'swap_pre' => '#__',
 		)
 	);
 
@@ -135,7 +136,7 @@ if (DB_INSTANCE) {
 /*##########################################################*/
 
 $config->dbKeyIgnores = array(
-	MYSQL_DRIVER_NAME => array('database', 'dbprefix')
+	MYSQL_DRIVER_NAME => array('database', 'dbprefix', 'swap_pre')
 );
 
 /*##########################################################*/

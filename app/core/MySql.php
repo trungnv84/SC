@@ -23,14 +23,14 @@ class MySql extends DBDriver
 	private static function &collect($instance = DB_INSTANCE)
 	{
 		if (!$instance) $instance = 'default';
-		$config = self::getDbConfig($instance, MYSQL_DRIVER_NAME);
+		$config =& self::getDbConfig($instance, MYSQL_DRIVER_NAME);
 		if (!isset(self::$connections[$instance])) {
 			$key = self::getDbKey($instance, MYSQL_DRIVER_NAME);
 			if (!isset(self::$connections[$key])) {
 				if ($config['pconnect']) {
 					self::$connections[$key] = mysql_pconnect($config['hostname'], $config['username'], $config['password']);
 				} else {
-					self::$connections[$key] = mysql_connect($config['hostname'], $config['username'], $config['password']);
+					self::$connections[$key] = mysql_connect($config['hostname'], $config['username'], $config['password'], true);
 				}
 				if (false === self::$connections[$key]) {
 					App::end("Could not connect: " . mysql_error() . " -> ???//zzz");
@@ -116,7 +116,13 @@ class MySql extends DBDriver
 
 	public function query($sql)
 	{
+		$config =& self::getDbConfig($this->instance, MYSQL_DRIVER_NAME);
+		if ($config['swap_pre']) {
+			$sql = str_replace($config['swap_pre'], $config['dbprefix'], $sql);
+		}
+
 		$this->last_query = $sql;
+
 		$connection =& self::collect($this->instance);
 		$this->resource = mysql_query($sql, $connection);
 		return ($this->resource ? true : false);
@@ -168,7 +174,15 @@ class MySql extends DBDriver
 		} else {
 			$params = call_user_func(array($this->active_class, 'getParamsOfInit'));
 		}
-		$this->query('SELECT * FROM ' . $params[0] . ' WHERE ' . $params[2] . ' = ' . $this->quote($key) . ' LIMIT 1');
+		$config =& self::getDbConfig($this->instance, MYSQL_DRIVER_NAME);
+		if (is_scalar($key)) {
+			$sql = 'SELECT * FROM ' . $config['dbprefix'] . $params[0] . ' WHERE ' . $params[2] . ' = ' . $this->quote($key) . ' LIMIT 1';
+			$this->query($sql);
+		} else {
+			if (is_resource($key)) return false;
+			if (is_object($key)) $key = get_object_vars($key);
+			//zzzZZZ
+		}
 
 		return mysql_fetch_object($this->resource, $this->active_class, $params);
 	}
