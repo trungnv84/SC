@@ -16,6 +16,15 @@ class App
 	private static $layout = DEFAULT_LAYOUT;
 	private static $endEvents = array();
 
+	/**
+	 * App::run //ccc
+	 *
+	 * @param string $controller
+	 * @param string $action
+	 * @param string $module
+	 *
+	 * @since   1.0
+	 */
 	public static function run($controller = null, $action = null, $module = null)
 	{
 		if (self::showError((int)self::GET('_show_error', 0))) self::end();

@@ -121,7 +121,7 @@ class MySql extends DBDriver
 			$text = ($text === FALSE) ? 0 : 1;
 		} elseif (is_null($text)) {
 			$text = 'NULL';
-		} else $text = $text;
+		}
 
 		return $text;
 	}
@@ -195,12 +195,15 @@ class MySql extends DBDriver
 		} else {
 			if (is_resource($key)) return false;
 			if (is_object($key)) $key = get_object_vars($key);
-			$key['table'] = $params[0];
+			if (!isset($key['condition']) || !is_string($key['condition'])) return false;
 
-			$query = new MySqlQuery($key);
-			$sql = $query->toString();
-			unset($query, $key);
+			$sql = 'SELECT * FROM ' . $config['dbprefix'] . $params[0] . ' WHERE ' . $key['condition'];
+			if (isset($key['order'])) $sql .= ' ORDER BY ' . $key['order'];
+			if (isset($key['bind'])) //zzzZZZ
 
+			$sql .= ' LIMIT 1';
+
+			unset($key);
 			$this->query($sql);
 		}
 
