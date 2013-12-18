@@ -3,12 +3,20 @@ defined('ROOT_DIR') || exit;
 
 class Tag
 {
+	const BEFORE_HEADER_CSS = 1;
+	const AFTER_HEADER_CSS = 2;
+	const BEFORE_HEADER_JS = 4;
+	const AFTER_HEADER_JS = 8;
+	const BEFORE_FOOTER_JS = 16;
+	const AFTER_FOOTER_JS = 32;
+
 	private static $html_title = '';
 	private static $type = array();
 	private static $html_meta = array();
 	private static $html_css = array();
 	private static $html_js = array();
 	private static $html_footer_js = array();
+	private static $html_dynamic_js = array(4 => '', 8 => '', 16 => '', 32 => '');
 
 	public static function setHtmlTitle($title)
 	{
@@ -59,6 +67,11 @@ class Tag
 	public static function addFooterJS($js, $key = false, $overwrite = false)
 	{
 		self::addAsset($js, 'footer_js', $key, $overwrite);
+	}
+
+	public static function addDynamicJS($js, $pos)
+	{
+		self::$html_dynamic_js[$pos] .= $js;
 	}
 
 	public static function unShiftCSS($css, $key = false, $overwrite = false)
@@ -202,15 +215,39 @@ class Tag
 				}
 			}
 		}
+
+		if (self::$html_dynamic_js[self::BEFORE_HEADER_JS]) {
+			$html .= "<script type=\"text/javascript\" language=\"javascript\">\n"
+				. self::$html_dynamic_js[self::BEFORE_HEADER_JS] . "\n</script>\n";
+		}
+
 		if (sizeof(self::$html_js)) {
 			$html .= self::getJSHtml(self::$html_js);
 		}
+
+		if (self::$html_dynamic_js[self::AFTER_HEADER_JS]) {
+			$html .= "<script type=\"text/javascript\" language=\"javascript\">\n"
+				. self::$html_dynamic_js[self::AFTER_HEADER_JS] . "\n</script>\n";
+		}
+
 		return $html;
 	}
 
 	public static function getHtmlFooter()
 	{
-		return self::getJSHtml(self::$html_footer_js);
+		if (self::$html_dynamic_js[self::BEFORE_FOOTER_JS]) {
+			$html = "<script type=\"text/javascript\" language=\"javascript\">\n"
+				. self::$html_dynamic_js[self::BEFORE_FOOTER_JS] . "\n</script>\n";
+		} else $html = '';
+
+		$html .= self::getJSHtml(self::$html_footer_js);
+
+		if (self::$html_dynamic_js[self::AFTER_FOOTER_JS]) {
+			$html .= "<script type=\"text/javascript\" language=\"javascript\">\n"
+				. self::$html_dynamic_js[self::AFTER_FOOTER_JS] . "\n</script>\n";
+		}
+
+		return $html;
 	}
 
 	private static function getJSHtml(&$jss)
