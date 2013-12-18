@@ -37,6 +37,7 @@ class App
 			self::autoSetTemplate();
 		else
 			self::$module = $module;
+		unset($module);
 
 		if (PHP_CACHE) {
 			self::$phpCacheFile = PHP_CACHE_DIR . self::$module . ".$controller.$action.php";

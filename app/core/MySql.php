@@ -10,6 +10,10 @@ class MySql extends DBDriver
 	private $last_query = null;
 	private $current_query = null;
 
+	public $bind_marker = '?';
+	public $bind_prefix_marker = ':';
+	public $bind_suffix_marker = ':';
+
 	private static function db_set_charset($instance, $charset, $collation)
 	{
 		$use_set_names = (version_compare(PHP_VERSION, '5.2.3', '>=') && version_compare(mysql_get_server_info(self::$connections[$instance]), '5.0.7', '>=')) ? FALSE : TRUE;
@@ -100,18 +104,26 @@ class MySql extends DBDriver
 	public function escape($text, $extra = false)
 	{
 		if (is_string($text)) {
-			$result = mysql_real_escape_string($text, self::collect($this->instance));
+			//$text = mysql_real_escape_string($text, self::collect($this->instance));
+			$connection =& self::collect($this->instance);
+			if (function_exists('mysql_real_escape_string') AND is_resource($connection)) {
+				$text = mysql_real_escape_string($text, $connection);
+			} elseif (function_exists('mysql_escape_string')) {
+				$text = mysql_escape_string($text);
+			} else {
+				$text = addslashes($text);
+			}
 
 			if ($extra) {
-				$result = addcslashes($result, '%_');
+				$text = addcslashes($text, '%_');
 			}
 		} elseif (is_bool($text)) {
-			$result = ($text === FALSE) ? 0 : 1;
+			$text = ($text === FALSE) ? 0 : 1;
 		} elseif (is_null($text)) {
-			$result = 'NULL';
-		} else $result = $text;
+			$text = 'NULL';
+		} else $text = $text;
 
-		return $result;
+		return $text;
 	}
 
 	public function query($sql)
@@ -174,14 +186,22 @@ class MySql extends DBDriver
 		} else {
 			$params = call_user_func(array($this->active_class, 'getParamsOfInit'));
 		}
+
 		$config =& self::getDbConfig($this->instance, MYSQL_DRIVER_NAME);
 		if (is_scalar($key)) {
 			$sql = 'SELECT * FROM ' . $config['dbprefix'] . $params[0] . ' WHERE ' . $params[2] . ' = ' . $this->quote($key) . ' LIMIT 1';
+			unset($key);
 			$this->query($sql);
 		} else {
 			if (is_resource($key)) return false;
 			if (is_object($key)) $key = get_object_vars($key);
-			//zzzZZZ
+			$key['table'] = $params[0];
+
+			$query = new MySqlQuery($key);//zzzZZZ
+			$sql = $query->toString();
+			unset($query, $key);
+
+			$this->query($sql);
 		}
 
 		return mysql_fetch_object($this->resource, $this->active_class, $params);
