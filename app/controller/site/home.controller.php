@@ -31,7 +31,10 @@ class HomeController extends Controller
 
 		UserModel::query('SELECT * FROM users');
 		UserModel::setFetchMode(DBDriver::FETCH_ACT_OBJ);
-		$user = UserModel::load(1);
+		$user = UserModel::load(array(
+			'condition' => 'id = ?0 AND username LIKE :username:',
+			'bind' => array(1, 'username' => 'ad%')
+		));
 		var_dump($user);
 
 		/*

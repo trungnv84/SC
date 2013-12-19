@@ -126,6 +126,20 @@ class MySql extends DBDriver
 		return $text;
 	}
 
+	protected function compile_bind($sql, $bind)
+	{
+		krsort($bind);
+		$search = $replace = array();
+		foreach($bind as $key => $value) {
+			if (is_numeric($key))
+				$search[] = $this->bind_marker . $key;
+			else
+				$search[] = $this->bind_prefix_marker . $key . $this->bind_suffix_marker;
+			$replace[] = $this->quote($value);
+		}
+		return str_replace($search, $replace, $sql);
+	}
+
 	public function query($sql)
 	{
 		$config =& self::getDbConfig($this->instance, MYSQL_DRIVER_NAME);
@@ -199,7 +213,7 @@ class MySql extends DBDriver
 
 			$sql = 'SELECT * FROM ' . $config['dbprefix'] . $params[0] . ' WHERE ' . $key['condition'];
 			if (isset($key['order'])) $sql .= ' ORDER BY ' . $key['order'];
-			if (isset($key['bind'])) //zzzZZZ
+			if (isset($key['bind'])) $sql = $this->compile_bind($sql, $key['bind']);
 
 			$sql .= ' LIMIT 1';
 
