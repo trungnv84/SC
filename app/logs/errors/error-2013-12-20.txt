@@ -1,0 +1,169 @@
+
+[[2013-12-20 09:08:40 97781219590]]
+
+<pre><br />
+<b>Fatal error</b>:  Class 'ABC\zzz' not found in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>32</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Class 'ABC\zzz' not found
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 32
+)
+</pre>
+[[2013-12-20 09:08:40 97781219590]]
+
+[[2013-12-20 09:09:29 7946046471]]
+D:\xampp\htdocs\sc\app\core\File.phpD:\xampp\htdocs\sc\app\lib\File.phpD:\xampp\htdocs\sc\app\core\Log.phpD:\xampp\htdocs\sc\app\lib\Log.phpD:\xampp\htdocs\sc\app\core\HomeController.phpD:\xampp\htdocs\sc\app\controller\site\home.controller.php
+D:\xampp\htdocs\sc\app\core\Controller.php<pre>D:\xampp\htdocs\sc\app\core\ABC\zzz.phpD:\xampp\htdocs\sc\app\controller\D:\xampp\htdocs\sc\app\core\ABC\zzz.php.phpD:\xampp\htdocs\sc\app\model\D:\xampp\htdocs\sc\app\controller\D:\xampp\htdocs\sc\app\core\ABC\zzz.php.php.phpD:\xampp\htdocs\sc\app\lib\D:\xampp\htdocs\sc\app\model\D:\xampp\htdocs\sc\app\controller\D:\xampp\htdocs\sc\app\core\ABC\zzz.php.php.php.php<br />
+<b>Fatal error</b>:  Class 'ABC\zzz' not found in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>32</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Class 'ABC\zzz' not found
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 32
+)
+</pre>
+[[2013-12-20 09:09:29 7946046471]]
+
+[[2013-12-20 09:10:40 6956595492]]
+D:\xampp\htdocs\sc\app\core\File.php<br/>D:\xampp\htdocs\sc\app\lib\File.php<br/>D:\xampp\htdocs\sc\app\core\Log.php<br/>D:\xampp\htdocs\sc\app\lib\Log.php<br/>D:\xampp\htdocs\sc\app\core\HomeController.php<br/>D:\xampp\htdocs\sc\app\controller\site\home.controller.php<br/>
+D:\xampp\htdocs\sc\app\core\Controller.php<br/><pre>D:\xampp\htdocs\sc\app\core\ABC\zzz.php<br/>D:\xampp\htdocs\sc\app\controller\D:\xampp\htdocs\sc\app\core\ABC\zzz.php.php<br/>D:\xampp\htdocs\sc\app\model\D:\xampp\htdocs\sc\app\controller\D:\xampp\htdocs\sc\app\core\ABC\zzz.php.php.php<br/>D:\xampp\htdocs\sc\app\lib\D:\xampp\htdocs\sc\app\model\D:\xampp\htdocs\sc\app\controller\D:\xampp\htdocs\sc\app\core\ABC\zzz.php.php.php.php<br/><br />
+<b>Fatal error</b>:  Class 'ABC\zzz' not found in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>32</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Class 'ABC\zzz' not found
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 32
+)
+</pre>
+[[2013-12-20 09:10:40 6956595492]]
+
+[[2013-12-20 09:13:13 09737610909]]
+
+<pre>D:\xampp\htdocs\sc\app\core\ABC\zzz.php<br/>D:\xampp\htdocs\sc\app\controller\D:\xampp\htdocs\sc\app\core\ABC\zzz.php.php<br/>D:\xampp\htdocs\sc\app\model\D:\xampp\htdocs\sc\app\controller\D:\xampp\htdocs\sc\app\core\ABC\zzz.php.php.php<br/>D:\xampp\htdocs\sc\app\lib\D:\xampp\htdocs\sc\app\model\D:\xampp\htdocs\sc\app\controller\D:\xampp\htdocs\sc\app\core\ABC\zzz.php.php.php.php<br/><br />
+<b>Fatal error</b>:  Class 'ABC\zzz' not found in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>32</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Class 'ABC\zzz' not found
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 32
+)
+</pre>
+[[2013-12-20 09:13:13 09737610909]]
+
+[[2013-12-20 09:19:39 69648811026]]
+
+<pre>D:\xampp\htdocs\sc\app\core\ABC\zzz.php<br/>D:\xampp\htdocs\sc\app\controller\D:\xampp\htdocs\sc\app\core\ABC\zzz.php.php<br/>D:\xampp\htdocs\sc\app\model\D:\xampp\htdocs\sc\app\controller\D:\xampp\htdocs\sc\app\core\ABC\zzz.php.php.php<br/>D:\xampp\htdocs\sc\app\lib\D:\xampp\htdocs\sc\app\model\D:\xampp\htdocs\sc\app\controller\D:\xampp\htdocs\sc\app\core\ABC\zzz.php.php.php.php<br/><br />
+<b>Fatal error</b>:  Class 'ABC\zzz' not found in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>32</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Class 'ABC\zzz' not found
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 32
+)
+</pre>
+[[2013-12-20 09:19:39 69648811026]]
+
+[[2013-12-20 09:23:28 238560739]]
+
+<pre>D:\xampp\htdocs\sc\app\core\ABC\zzz.php<br/>D:\xampp\htdocs\sc\app\controller\ABC\zzz.php<br/>D:\xampp\htdocs\sc\app\model\ABC\zzz.php<br/>D:\xampp\htdocs\sc\app\lib\ABC\zzz.php<br/><br />
+<b>Fatal error</b>:  Class 'ABC\zzz' not found in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>32</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Class 'ABC\zzz' not found
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 32
+)
+</pre>
+[[2013-12-20 09:23:28 238560739]]
+
+[[2013-12-20 09:27:31 4604715344]]
+
+<pre><br />
+<b>Fatal error</b>:  Class 'ABC\zzz' not found in <b>D:\xampp\htdocs\sc\app\controller\site\home.controller.php</b> on line <b>32</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Class 'ABC\zzz' not found
+    [file] => D:\xampp\htdocs\sc\app\controller\site\home.controller.php
+    [line] => 32
+)
+</pre>
+[[2013-12-20 09:27:31 4604715344]]
+
+[[2013-12-20 10:00:25 39437421401]]
+
+<pre><br />
+<b>Parse error</b>:  syntax error, unexpected 'die' (T_EXIT) in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>87</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 4 (E_PARSE)
+    [message] => syntax error, unexpected 'die' (T_EXIT)
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 87
+)
+</pre>
+[[2013-12-20 10:00:25 39437421401]]
+
+[[2013-12-20 10:06:03 69872422348]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1387508763698.7;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Deprecated</b>:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>113</b><br />
+<br />
+<b>Warning</b>:  mysql_query(): 31 is not a valid MySQL-Link resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>154</b><br />
+<br />
+<b>Warning</b>:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>225</b><br />
+bool(false)
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object(): supplied argument is not a valid MySQL result resource
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 225
+)
+</pre>
+[[2013-12-20 10:06:03 69872422348]]

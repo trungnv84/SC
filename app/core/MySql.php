@@ -79,15 +79,17 @@ class MySql extends DBDriver
 		}
 	}
 
+	/**
+	 * Close all connect to data base
+	 *
+	 */
 	public static function closeAll()
 	{
 		foreach (self::$connections as $key => &$instance) {
 			if (is_resource($instance)) {
 				mysql_close(self::$connections[$key]);
 			}
-			unset(self::$connections[$key]);
 		}
-		unset($instance);
 		self::$connections = array();
 	}
 
@@ -130,7 +132,7 @@ class MySql extends DBDriver
 	{
 		krsort($bind);
 		$search = $replace = array();
-		foreach($bind as $key => $value) {
+		foreach ($bind as $key => $value) {
 			if (is_numeric($key))
 				$search[] = $this->bind_marker . $key;
 			else

@@ -46,7 +46,6 @@ class App
 			self::autoSetTemplate();
 		else
 			self::$module = $module;
-		unset($module);
 
 		if (PHP_CACHE) {
 			self::$phpCacheFile = PHP_CACHE_DIR . self::$module . ".$controller.$action.php";
@@ -445,6 +444,11 @@ class App
 	}
 
 	/*################################################*/
+	/**
+	 * Attempt to load undefined class
+	 *
+	 * @param string $class_name Undefined class name
+	 */
 	public static function autoLoad($class_name)
 	{
 		$slat = strrpos($class_name, '\\');
@@ -457,20 +461,20 @@ class App
 		foreach (self::$config->autoLoadPath as $type => $path) {
 			if ($slat > 0) {
 				$adapter_path = $path . $adapter;
-				if (file_exists($adapter_path)) {
+				if (!isset($_file) && file_exists($adapter_path)) {
 					require_once $adapter_path;
-
 					$adapter_namespace = $adapter_name . '\\';
-					$file = $adapter_namespace . 'getFileNameAutoLoad';
-					if (function_exists($file))
-						$file = $file($class_name);
+					$_file = $adapter_namespace . 'getFileNameAutoLoad';
+
+					if (function_exists($_file))
+						$_file = $_file($class_name);
 					else
-						unset($file);
+						unset($_file);
 				}
 
-				if (!isset($file)) $file = self::getFileNameAutoLoad($class_name);
+				if (!isset($_file)) $_file = self::getFileNameAutoLoad($class_name);
 
-				$file = $path . $file . '.php';
+				$file = $path . $_file . '.php';
 			} else {
 				if (is_numeric($type)) {
 					$file = $path . $class_name . '.php';
@@ -493,12 +497,13 @@ class App
 				if (($slat = ($slat > 0)) && isset($adapter_namespace)) {
 					$adapter_namespace = $adapter_namespace . 'getClassNameAutoLoad';
 					if (function_exists($adapter_namespace))
-						$class_name = $adapter_namespace($class_name);
-				}
+						$_class_name = $adapter_namespace($class_name);
+				} else $_class_name =& $class_name;
 
-				if (class_exists($class_name)) {
-					if (method_exists($class_name, '__init')) $class_name::__init();
-					if (PHP_CACHE) self::phpCache($file, !$slat);
+				if (class_exists($_class_name)) {
+					if (method_exists($_class_name, '__init')) $_class_name::__init();
+					if (PHP_CACHE) self::phpCache($file, (!$slat ? $_class_name : false));
+					unset($_class_name);
 					if (ACTION_LIB_LOG && self::$controllerRunning) Log::lib(array(
 						self::$module,
 						self::$controllerRunning,
@@ -521,16 +526,16 @@ class App
 	}
 
 	/*################################################*/
-	private static function phpCache($file, $globalSpace = true)
+	private static function phpCache($file, $global_space_class = false)
 	{
 		if (isset(self::$phpCacheFile)) {
 			$file = file_get_contents($file);
 			if (file_exists(self::$phpCacheFile)) {
 				$file = preg_replace('/^\s*<\?php/', '', $file, 1);
 				$file = preg_replace('/defined\(\'\w+\'\)\s*(\|\||or)\s*(exit|die)\s*(\(\s*\))?\s*;/', '', $file);
-				if ($globalSpace) $file = "\nnamespace {" . $file . "\n}\n";
-			} elseif ($globalSpace) {
-				$file = preg_replace('/^\s*<\?php/', "<?php\nnamespace {", $file, 1) . "\n}\n";
+				if ($global_space_class) $file = "\nnamespace {" . $file . "\nif (method_exists('$global_space_class', '__init')) $global_space_class::__init();\n}\n";
+			} elseif ($global_space_class) {
+				$file = preg_replace('/^\s*<\?php/', "<?php\nnamespace {", $file, 1) . "\nif (method_exists('$global_space_class', '__init')) $global_space_class::__init();\n}\n";
 			}
 			file_put_contents(self::$phpCacheFile, $file, FILE_APPEND);
 		}
