@@ -59,11 +59,9 @@ class App
 
 		$ctrl = ucfirst($controller) . 'Controller';
 		if (class_exists($ctrl)) {
-			define('CURRENT_CONTROLLER', $controller);
 			$ctrl = new $ctrl;
 			$act = $action . 'Action';
 			if (method_exists($ctrl, $act)) {
-				define('CURRENT_ACTION', $action);
 				call_user_func_array(array($ctrl, $act), self::$params);
 			}
 			unset($ctrl, $act);
@@ -357,7 +355,7 @@ class App
 		} else self::$vars[$key] = $value;
 	}
 
-	public static function view_exists($action, $controller = CURRENT_CONTROLLER, $template = null)
+	public static function view_exists($action, $controller, $template = null)
 	{
 		if (is_null($template)) $template =& self::$template;
 		return file_exists(TEMPLATE_DIR . $template . DS . $controller . DS . $action . '.php');
@@ -385,7 +383,7 @@ class App
 		return $results[$key];
 	}
 
-	public static function view($__action, $__controller = CURRENT_CONTROLLER, $__template = null, $__layout = null, $__type = null)
+	public static function view($__action, $__controller, $__template = null, $__layout = null, $__type = null)
 	{
 		if (is_null($__template)) $__template =& self::$template;
 		if (is_null($__layout)) $__layout =& self::$layout;
@@ -396,8 +394,6 @@ class App
 				foreach (self::$vars as $__key => &$__val) $$__key =& $__val;
 
 			require TEMPLATE_DIR . $__template . DS . $__controller . DS . $__action . '.php';
-		} elseif (!defined('CURRENT_ACTION')) {
-			self::end('none view -> 404//zzz');
 		}
 
 		if (self::layout_exists($__layout, $__template)) {
