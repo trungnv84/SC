@@ -8,6 +8,6 @@ $_config = array(
         'pconnect' => true,
         'char_set' => 'utf8',
         'dbcollat' => 'utf8_general_ci',
-        'back_dir' => 'db/'
+        'back_dir' => 'dbs/'
     )
 );
