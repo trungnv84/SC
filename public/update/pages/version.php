@@ -12,7 +12,7 @@ if (!isset($has_data)) {
 	$_version = logToRevision($git_log);
 
 	$branch = launch(GIT_PATH . ' branch -av --no-abbrev');
-	
+
 
 }
 ?>
