@@ -12,8 +12,16 @@ if (!isset($has_data)) {
 	//$_version = logToRevision($git_log);
 
 	$branch = launch(GIT_PATH . ' branch -av --no-abbrev');
-	if (preg_match_all('/(\*\s+)?([\w\/]+|(\([^\)]+\)))\s+\w{40}\s+[^\n]+/i', $branch, $matches)) {
-
+	if (preg_match_all('/(\*\s+)?([\w\/]+|(\([^\)]+\)))\s+(\w{40})\s+([^\n]+)/i', $branch, $matches)) {
+		$branch = array();
+		foreach($matches[2] as $k => $name) {
+			$branch[$name] = array(
+				'current' => (bool)$matches[1][$k],
+				'name' => $name,
+				'revision' => $matches[4][$k],
+				'comment' => $matches[5][$k]
+			);
+		}
 	}
 }
 ?>
@@ -24,7 +32,7 @@ if (!isset($has_data)) {
 </head>
 <body>
 	<pre>
-		<?php print_r($matches);?>
+		<?php print_r($branch);?>
 	</pre>
 </body>
 </html>
