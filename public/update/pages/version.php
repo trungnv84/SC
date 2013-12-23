@@ -7,13 +7,14 @@ if (file_exists('data/versions.php')) {
 }
 
 if (!isset($has_data)) {
-	$git_log = launch(GIT_PATH . ' log --all');
-	file_put_contents('data/git_log.txt', $git_log, LOCK_EX);
-	$_version = logToRevision($git_log);
+	//$git_log = launch(GIT_PATH . ' log --all');
+	//file_put_contents('data/git_log.txt', $git_log, LOCK_EX);
+	//$_version = logToRevision($git_log);
 
 	$branch = launch(GIT_PATH . ' branch -av --no-abbrev');
+	if (preg_match_all('/(\*\s+)?([\w\/]+|(\([^\)]+\)))\s+\w{40}\s+[^\n]+/i', $branch, $matches)) {
 
-
+	}
 }
 ?>
 <!DOCTYPE html>
@@ -23,7 +24,7 @@ if (!isset($has_data)) {
 </head>
 <body>
 	<pre>
-		<?php print_r($branch);?>
+		<?php print_r($matches);?>
 	</pre>
 </body>
 </html>
