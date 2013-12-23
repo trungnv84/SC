@@ -7,7 +7,7 @@ if (file_exists('data/versions.php')) {
 }
 
 if (!isset($has_data)) {
-	$git_log = launch(GIT_PATH . ' log');
+	$git_log = launch(GIT_PATH . ' log --all');
 	file_put_contents('data/git_log.txt', $git_log, LOCK_EX);
 	$_version = logToRevision($git_log);
 
