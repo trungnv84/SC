@@ -10,6 +10,7 @@ if (!isset($has_data)) {
 	$git_log = launch(GIT_PATH . ' log');
 	file_put_contents('data/git_log.txt', $git_log, LOCK_EX);
 	$_version = logToRevision($git_log);
+	$branch = launch(GIT_PATH . ' branch -av --no-abbrev');
 }
 ?>
 <!DOCTYPE html>
@@ -19,7 +20,7 @@ if (!isset($has_data)) {
 </head>
 <body>
 	<pre>
-		<?php print_r($_version);?>
+		<?php print_r($branch);?>
 	</pre>
 </body>
 </html>
