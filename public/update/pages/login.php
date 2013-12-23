@@ -46,7 +46,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
 					<div class="col-sm-8">
 						<input type="text" class="form-control" id="username" name="username"
-						       placeholder="Username">
+						       autocomplete="off" placeholder="Username">
 					</div>
 				</div>
 
@@ -55,7 +55,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
 					<div class="col-sm-8">
 						<input type="password" class="form-control" id="password" name="password"
-						       placeholder="Password">
+						       autocomplete="off" placeholder="Password">
 					</div>
 				</div>
 

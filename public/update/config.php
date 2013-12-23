@@ -15,15 +15,17 @@ if (isset($_SERVER['HTTP_HOST'])) {
 define('BASE_URL', $_base_url);
 define('CURRENT_URI', $_current_uri);
 
+define('GIT_PATH', (substr(PHP_OS, 0, 3) == 'WIN' ? '"C:\\Program Files (x86)\\Git\bin\\git"' : 'git'));
+
 $_config = array(
-    'db' => array(
-        'hostname' => 'localhost',
-        'username' => 'root',
-        'password' => '',
-        'database' => 'sc',
-        'pconnect' => true,
-        'char_set' => 'utf8',
-        'dbcollat' => 'utf8_general_ci',
-        'back_dir' => 'dbs/'
-    )
+	'db' => array(
+		'hostname' => 'localhost',
+		'username' => 'root',
+		'password' => '',
+		'database' => 'sc',
+		'pconnect' => true,
+		'char_set' => 'utf8',
+		'dbcollat' => 'utf8_general_ci',
+		'back_dir' => 'dbs/'
+	)
 );
