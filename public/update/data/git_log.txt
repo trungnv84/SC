@@ -1,0 +1,511 @@
+commit 41e82a1d2b94407c827fc534102a5a58cac94413
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 23 15:51:03 2013 +0700
+
+    Core
+
+commit cf3cb7c59b9bdb3877bcdde9a15208e44fb03e47
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 23 15:50:37 2013 +0700
+
+    Core
+
+commit 20427129a735defb76aeb7042c41ee2bd770f353
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 23 15:49:54 2013 +0700
+
+    Core
+
+commit 91c592160aa38656beea8065b5a3a74caa3d971b
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 23 15:48:48 2013 +0700
+
+    Core
+
+commit 511661faf5aa8747b81c06328da264fed9a02c80
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 23 15:47:50 2013 +0700
+
+    Core
+
+commit 9309cd94c8744f7a7899a61f38188c675ea0ea68
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 23 15:30:58 2013 +0700
+
+    Core
+
+commit 1fb3a4a9c2a0e6f98b962ac1814fe084d59d2861
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 23 14:28:35 2013 +0700
+
+    Core
+
+commit b9dcd1b2f25030dd2d8d2b0a6e5fdca7487b48bc
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 23 11:51:29 2013 +0700
+
+    Core
+
+commit 3862a11a23520a63a190e90c0d4c7127932cc26d
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Sun Dec 22 21:18:46 2013 +0700
+
+    Core
+
+commit 05010547e0172440dc6d6b813f08295a631ac051
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Sat Dec 21 17:20:26 2013 +0700
+
+    Core
+
+commit 9b2d962581cad6d2105c3278d6edbd163da76818
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Dec 20 22:04:36 2013 +0700
+
+    Core
+
+commit 15825e108e6e653b8f3a2300291318237fd9110c
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Dec 20 10:08:19 2013 +0700
+
+    Core
+
+commit d5070c33f70dda0f1d0db60941fee50fa50a5217
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Thu Dec 19 18:05:35 2013 +0700
+
+    Core
+
+commit aac3f8738c29421766339413b107b98500f78de5
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Dec 18 18:06:59 2013 +0700
+
+    Core
+
+commit e726cbe03c5ce906355382eaad9f9728c9d74ebf
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Dec 18 17:06:34 2013 +0700
+
+    Core
+
+commit afb857b6b68dc854466ec6544aa28337ef323bbe
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Dec 18 15:43:46 2013 +0700
+
+    Core
+
+commit 56b28209fd975b4a37d4608c9c96a69660410d70
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Dec 18 14:43:47 2013 +0700
+
+    Core
+
+commit b4fc5644748d92f687dddb482b746903957da0bb
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Dec 18 12:26:23 2013 +0700
+
+    Core
+
+commit 0407d6eb1cf2197ac165e09ef29733e620460b70
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Dec 17 17:18:30 2013 +0700
+
+    Core
+
+commit f9cbed8b42ddcbaab5528b4e104829cf091c46f5
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Dec 17 09:44:15 2013 +0700
+
+    Core
+
+commit 290d491369f4613864b72b79a980b724b0823abb
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 16 22:38:50 2013 +0700
+
+    Core
+
+commit def7d786042ac90691bc952c1f7c86df67d54710
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 16 17:42:16 2013 +0700
+
+    Core
+
+commit 2922ec186671842df168f18e9937adf40ac5a0b5
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 16 17:41:21 2013 +0700
+
+    Core
+
+commit 14dba11d1ba0e1d3d17a4be22d80f2d0c4d67a73
+Merge: 2ac8128 be9cdf7
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 16 11:26:55 2013 +0700
+
+    Core
+
+commit 2ac8128fdb4b7c9994e09644f655bb00338077e0
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 16 11:21:06 2013 +0700
+
+    Core
+
+commit be9cdf7d693f1543dd39097df3052a3c861406ba
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Sun Dec 15 01:01:07 2013 +0700
+
+    Core
+
+commit b20504f8a58d7f926b3fc68c048fdf72f0df881b
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Sun Dec 15 00:50:27 2013 +0700
+
+    Core
+
+commit f8054eaf6e48302af82ab6ed117bcf83f182430f
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Sun Dec 15 00:50:14 2013 +0700
+
+    Core
+
+commit 6513e28f6067823fbb85aa976c897190dc13a48d
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Sun Dec 15 00:41:49 2013 +0700
+
+    Core
+
+commit 843b974710d9acf0de99abf11c1f0251c787b3e4
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Dec 11 14:00:09 2013 +0700
+
+    Core
+
+commit d6e26ae5f2b73abc019a104fb80817ee5ad4b158
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Dec 10 17:48:46 2013 +0700
+
+    Core
+
+commit e4f12d42122a0aaf1da847665edf50d4c9ad3e7f
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Dec 4 17:22:07 2013 +0700
+
+    Core
+
+commit 6e25000c69a4d7b52f701f32f5ab5688b5ccd5e8
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Dec 4 09:16:26 2013 +0700
+
+    Core
+
+commit b056fe7a3ea20c297f2dbca37093177f12ff6bd2
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Dec 4 09:14:02 2013 +0700
+
+    Core
+
+commit 0f4a24be7ffeaea33e1ff527d9b9e4b11530988a
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Nov 25 15:51:01 2013 +0700
+
+    Core
+
+commit 051bcd1a023b4e02c4b30de25d6fca7b642d50f8
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Nov 25 15:49:37 2013 +0700
+
+    Core
+
+commit c6da848a07e8c35183114590059f0e91c0140306
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Nov 25 15:41:49 2013 +0700
+
+    Core
+
+commit c956495cd928a06eb9e8c5246b083480d14d5bc9
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Nov 25 12:35:16 2013 +0700
+
+    Core
+
+commit 227c492d5fd058d39f84a03dfcfefbc3e5ee1d17
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Nov 22 17:43:32 2013 +0700
+
+    Core
+
+commit d30491ed23a736c977f126250376785b4fe20d04
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Nov 22 11:57:37 2013 +0700
+
+    Core
+
+commit c642e3df327a85e04ad1240579360efb5b8c3042
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Nov 22 11:48:29 2013 +0700
+
+    Core
+
+commit 3e5b0fc52f5a669ed12393517b30fdc3c0270f09
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Thu Nov 21 17:47:54 2013 +0700
+
+    Core
+
+commit 964a14b76d88a326648ac4ea2392a6cefab27238
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Thu Nov 21 11:43:28 2013 +0700
+
+    Core
+
+commit 74c04d884c20357a4239e1bc2a4dbfb270bfdde5
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Nov 20 17:56:00 2013 +0700
+
+    Core
+
+commit 38a362b80e11f4d3eafea0eee1854ccb8f501358
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Nov 20 14:56:22 2013 +0700
+
+    Core
+
+commit bd72ed264e0d9c453bed5efe879b281ecb89c98d
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Nov 20 14:30:11 2013 +0700
+
+    Core
+
+commit 6fe06ae31cae5c005a492082d18a0e72205b5d0c
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Nov 20 12:49:11 2013 +0700
+
+    Core
+
+commit bc97d3f5dcbe6acc8114b17117340bcbc57b73fd
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Nov 19 17:34:16 2013 +0700
+
+    Core
+
+commit 3a63b79827a1e76f15e84c0d8cdb190bd312fa5d
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Nov 19 17:32:13 2013 +0700
+
+    Core
+
+commit ea9b1ddede70f49d03da4d3552da3d537558620b
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Nov 19 14:24:12 2013 +0700
+
+    Core
+
+commit 8a99c57ddd78acdc9eb6338e0ad8e8b021946465
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Nov 19 12:01:04 2013 +0700
+
+    Core
+
+commit 195be53d4c55551be79cb49b550325eb88546b72
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Nov 18 17:32:32 2013 +0700
+
+    Core
+
+commit 075852734712e9f2aef30537e9105954f2f56c3d
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Nov 18 11:13:56 2013 +0700
+
+    Core
+
+commit 772f2dcef423b41ab289c13029aedab4ff6503fc
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Nov 15 17:29:47 2013 +0700
+
+    Core
+
+commit b685b8c27c6445c4b70370beeed408b56ee25348
+Merge: a9a4121 2e49465
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Nov 15 17:26:09 2013 +0700
+
+    Core
+
+commit a9a41211e08d154a0e8ccf6a9f5d00e3f370de7e
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Nov 15 17:24:07 2013 +0700
+
+    Core
+
+commit 2e49465a3871138aaeafdb3b1485ab46dc7b1e72
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Nov 15 17:18:37 2013 +0700
+
+    Core
+
+commit 9df33a0d8a18f1b173b86e030268c989b599c9ee
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Nov 15 08:51:00 2013 +0700
+
+    Core
+
+commit 7b6aa8de383a4beb771f3e739b94bd7da055cdd0
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Nov 8 13:21:02 2013 +0700
+
+    Core
+
+commit a955e523f44668c9a416cb39cdfa9cfdd8af96fc
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Nov 8 13:14:12 2013 +0700
+
+    Core
+
+commit 867cd862c8da6982965b14bcd5d1f9aa81450833
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Nov 8 12:53:14 2013 +0700
+
+    Core
+
+commit 4a19f0c990aecd36ed2bc70ac210fe3a8cf9e3ae
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Thu Nov 7 17:37:17 2013 +0700
+
+    Core
+
+commit d3a03bb1dfa1019027c489f2561b2911419d9989
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Nov 6 17:35:13 2013 +0700
+
+    Core
+
+commit a116bbe6973bc2980b30e98fe12b7ad2021a820c
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Nov 6 16:08:40 2013 +0700
+
+    Core
+
+commit 98eaf8c3b327485f6165e57b7f671b26668148df
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Nov 5 16:11:53 2013 +0700
+
+    Core
+
+commit ac35907601301beff0ce813b93d881534906b0d0
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Nov 5 12:10:14 2013 +0700
+
+    Core
+
+commit 7d7c56483eb688368f940153b6041e4a2daee3aa
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Nov 5 08:48:18 2013 +0700
+
+    Core
+
+commit ff2d04a5891caa13a19ef250eeb66cb8fba46e29
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Nov 5 08:46:07 2013 +0700
+
+    Core
+
+commit a3a2809f68c3cc3599330af345df837365405421
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Oct 23 17:37:16 2013 +0700
+
+    Con
+
+commit e9f39197061be9747cf1aaff3a3b5c9979f73e94
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Thu Oct 10 16:15:15 2013 +0700
+
+    DB
+
+commit a20067ad87859102dbb2212c3e1de8afd3695178
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Sep 30 11:06:45 2013 +0700
+
+    add Model
+
+commit 55fdc8c21c594d5dc52751256caf2a1681ff9e8c
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Sat Sep 21 12:09:25 2013 +0700
+
+    Model
+
+commit c64c7e2592b985d02094cce258f9d4023856f58e
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Thu Sep 19 17:32:57 2013 +0700
+
+    Add model
+
+commit ce3d3b3dc0e5c94fd0bb12b71b01dfb1ebfe9414
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Sep 13 17:39:29 2013 +0700
+
+    OK
+
+commit 29dc38f1adc9319a0a17bd082f0e26c926c509ad
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Sep 13 11:17:32 2013 +0700
+
+    OK
+
+commit 783760ddf31518252b7de0a05983d93aa4d17039
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Sep 13 07:57:21 2013 +0700
+
+    OK
+
+commit 56c0bd4c8da4ba7c675adaabc83813d71978ed1f
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Thu Sep 5 09:51:08 2013 +0700
+
+    Tag
+
+commit 781eafeab8c2c97e5887d34a6e432f77f2dae7cf
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Aug 28 16:29:38 2013 +0700
+
+    ok view
+
+commit bb420bff732fd00e205389ce6968e45edf830971
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Aug 13 14:59:36 2013 +0700
+
+    OK
+
+commit 5fe3e37017810ce9c1e490e5d6db01a0c398625d
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Aug 9 17:47:52 2013 +0700
+
+    OK
+
+commit 20b50d9d2be870549346564cc6be62e41ecabf8c
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Fri Aug 9 16:48:09 2013 +0700
+
+    OK
+
+commit 76bc2c3eddb3af36b644e8e567313a7101a32acc
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Thu Aug 8 14:01:30 2013 +0700
+
+    Can xem lai cach xu ly view va template
+
+commit 8c11cea4393bd5f7e6943ba915f19cb86b39259f
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Thu Aug 8 11:02:30 2013 +0700
+
+    Develop 08/08
+
+commit 9c813690d711744dd70dfb77d12d6f60a00ebec9
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Aug 7 18:27:53 2013 +0700
+
+    Tạo mới
+
+commit 899d3c9913413c7dcc5f7234a3dd7cd6cc368dad
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Aug 7 04:28:15 2013 -0700
+
+    Initial commit
