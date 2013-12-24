@@ -14,9 +14,14 @@ if (!isset($has_data)) {
         $versions = array();
         foreach($matches[1] as $k => $name) {
 	        $revision = launch(GIT_PATH . ' show origin/' . GIT_MAIN_BRANCH . ':' . GIT_VERSION_PATH . $matches[0][$k] . 'revision.txt');
-	        var_dump($revision);//zzz
+	        if(preg_match('/\w{40}/', $revision, $revision)) {
+		        $revision = $revision[0];
+	        } else {
+		        //zzz
+	        }
             $versions[$name] = array(
-                'dir' => $matches[0][$k]
+                'dir' => $matches[0][$k],
+	            'revision' => $revision
             );
         }
     }
