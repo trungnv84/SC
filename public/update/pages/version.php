@@ -1,9 +1,7 @@
 <?php
-if (file_exists('data/versions.php')) {
-	require_once 'data/versions.php';
-	if (isset($_versions)) {
-		$has_data = true;
-	}
+$_versions = versions();
+if (isset($_versions)) {
+	$has_data = true;
 }
 
 if (!isset($has_data)) {
@@ -40,10 +38,19 @@ if (!isset($has_data)) {
 <html>
 <head>
 	<title>Update versions</title>
+	<link rel="stylesheet" href="assets/bootstrap3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/bootstrap3/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="assets/css/common.css">
 </head>
 <body>
+	<?php require 'pages/common/navbar.php';?>
 	<pre>
 		<?php print_r($versions);?>
 	</pre>
+
+	<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="assets/bootstrap3/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 </body>
 </html>

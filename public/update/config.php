@@ -15,8 +15,8 @@ if (isset($_SERVER['HTTP_HOST'])) {
 define('BASE_URL', $_base_url);
 define('CURRENT_URI', $_current_uri);
 
-//define('GIT_PATH', (substr(PHP_OS, 0, 3) == 'WIN' ? '"C:\\Program Files (x86)\\Git\bin\\git"' : 'git'));
-define('GIT_PATH', (substr(PHP_OS, 0, 3) == 'WIN' ? '"D:\\Program Files\\Git\\bin\\git"' : 'git'));
+define('GIT_PATH', (substr(PHP_OS, 0, 3) == 'WIN' ? '"C:\\Program Files (x86)\\Git\bin\\git"' : 'git'));
+//define('GIT_PATH', (substr(PHP_OS, 0, 3) == 'WIN' ? '"D:\\Program Files\\Git\\bin\\git"' : 'git'));
 
 define('GIT_MAIN_BRANCH', 'master');
 define('GIT_VERSION_PATH', 'public/update/versions/');

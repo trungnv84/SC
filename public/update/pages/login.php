@@ -3,7 +3,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 	$username = get('username');
 	$password = get('password');
 	if ($username && $password) {
-		require_once 'data/users.php';
+		$_users = require 'data/users.php';
 		$id = base64_encode($username);
 		if (isset($_users[$id])) {
 			$security = explode(':', $_users[$id]['password']);

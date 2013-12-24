@@ -1,4 +1,4 @@
 <?php
-$_updated = array(
+return array(
 
 );

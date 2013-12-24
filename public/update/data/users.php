@@ -1,5 +1,5 @@
 <?php
-$_users = array(
+return array(
     'ZGV2ZWxvcGVy' => array(
         'username' => 'Developer',
         'password' => '49b67bd114b64ed395c40fb9dc998aeb:7cd482785b632eee3f6cb89fe3422952',

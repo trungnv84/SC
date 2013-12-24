@@ -15,6 +15,25 @@ function session($name, $value = null)
 	return $old;
 }
 
+function versions($versions = null) {
+	if (!is_null($versions)) {
+		file_put_contents('data/versions.php', 'return ' . var_export($versions)) . ';';
+	} elseif (file_exists('data/versions.php')) {
+		$versions = require 'data/versions.php';
+	}
+	return $versions;
+}
+
+function updated($updated = null)
+{
+	if (!is_null($updated)) {
+		file_put_contents('data/updated.php', 'return ' . var_export($updated)) . ';';
+	} elseif (file_exists('data/updated.php')) {
+		$updated = require 'data/updated.php';
+	}
+	return $updated;
+}
+
 function launch($command, $background = false)
 {
 	if (function_exists('exec')) {
