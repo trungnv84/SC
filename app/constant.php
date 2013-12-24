@@ -23,6 +23,7 @@ if (isset($_SERVER['HTTP_HOST'])) {
 }
 define('BASE_URL', $_base_url);
 define('CURRENT_URI', $_current_uri);
+define('CURRENT_URL', $_base_url . $_current_uri);
 
 define('PUBLIC_DIR', ROOT_DIR . 'public' . DS);
 define('CORE_DIR', APP_DIR . 'core' . DS);

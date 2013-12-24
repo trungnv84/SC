@@ -13,6 +13,8 @@ if (!isset($has_data)) {
     if (preg_match_all('/(\d+.\d+.\d+)\//i', $versions, $matches)) {
         $versions = array();
         foreach($matches[1] as $k => $name) {
+	        $revision = launch(GIT_PATH . ' show origin/' . GIT_MAIN_BRANCH . ':' . GIT_VERSION_PATH . $matches[0][$k] . 'revision.txt');
+	        var_dump($revision);//zzz
             $versions[$name] = array(
                 'dir' => $matches[0][$k]
             );

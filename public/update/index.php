@@ -33,6 +33,9 @@ if (session('user')) {
 		case 'db':
 			require 'pages/db.php';
 			break;
+		case 'logout':
+			require 'pages/logout.php';
+			break;
 	}
 } else {
 	require 'pages/login.php';

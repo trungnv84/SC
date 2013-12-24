@@ -14,17 +14,15 @@
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
 			<li<?php if (CURRENT_URI == '') echo ' class="active"';?>><a href="<?php echo BASE_URL;?>">Versions</a></li>
-			<li><a href="#">Link</a></li>
+			<!--<li><a href="#">Link</a></li>-->
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Management <b class="caret"></b></a>
 				<ul class="dropdown-menu">
-					<li><a href="#">Action</a></li>
-					<li><a href="#">Another action</a></li>
-					<li><a href="#">Something else here</a></li>
+					<li><a href="#">Commit Log</a></li>
+					<li><a href="#">Updated Log</a></li>
 					<li class="divider"></li>
-					<li><a href="#">Separated link</a></li>
-					<li class="divider"></li>
-					<li><a href="#">One more separated link</a></li>
+					<li><a href="#">List Account</a></li>
+					<li><a href="#">Create Account</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -35,15 +33,14 @@
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#">Link</a></li>
+			<li><a href="<?php echo str_replace('update/', '', BASE_URL);?>" target="_blank">Website</a></li>
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_username = session('user')['username'];?> <b class="caret"></b></a>
 				<ul class="dropdown-menu">
-					<li><a href="#">Action</a></li>
-					<li><a href="#">Another action</a></li>
-					<li><a href="#">Something else here</a></li>
+					<li><a href="?_p=logs&username=<?php echo $_username;?>">My Log</a></li>
+					<li><a href="?_p=change_password">Change Password</a></li>
 					<li class="divider"></li>
-					<li><a href="#">Separated link</a></li>
+					<li><a href="?_p=logout">Logout</a></li>
 				</ul>
 			</li>
 		</ul>

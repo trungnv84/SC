@@ -133,7 +133,9 @@ class App
 	/*################################################*/
 	public static function getCurrentUrl()
 	{
-		$url = BASE_URL . CURRENT_URI;
+		static $url;
+		if (!isset($url))
+			$url = defined('CURRENT_URL') ? CURRENT_URL : BASE_URL . CURRENT_URI;
 		return $url;
 	}
 
