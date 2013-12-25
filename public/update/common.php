@@ -15,7 +15,8 @@ function session($name, $value = null)
 	return $old;
 }
 
-function versions($versions = null) {
+function versions($versions = null)
+{
 	if (!is_null($versions)) {
 		file_put_contents('data/versions.php', 'return ' . var_export($versions)) . ';';
 	} elseif (file_exists('data/versions.php')) {
@@ -73,26 +74,37 @@ function launch($command, $background = false)
 	*/
 }
 
-function logToRevision($log)
+function start_revision($current_revision)
+{
+	if (file_exists('data/start_revision.txt')) {
+		$start_revision = trim(file_get_contents('data/start_revision.txt'));
+		if ($start_revision) return $start_revision;
+	}
+
+	file_put_contents('data/start_revision.txt', $current_revision);
+	return $current_revision;
+}
+
+function logAllToRevision($log)
 {
 	$log = $log;
 	$revisions = array();
 	if ($log != "" && preg_match_all('/commit\s+(\w{40})\n/i', $log, $matches)) {
 		$data = preg_split('/commit\s+\w{40}\n/i', $log);
-		foreach($matches[1] as $k => $match) {
-			preg_match('/Author:\s+([^\n]+)\n/i', $data[$k+1], $author);
+		foreach ($matches[1] as $k => $match) {
+			preg_match('/Author:\s+([^\n]+)\n/i', $data[$k + 1], $author);
 			if (isset($author[1])) {
 				$author = htmlentities($author[1]);
-				$data[$k+1] = preg_replace('/Author:\s+[^\n]+\n/i', '', $data[$k+1]);
+				$data[$k + 1] = preg_replace('/Author:\s+[^\n]+\n/i', '', $data[$k + 1]);
 			} else $author = '';
 
-			preg_match('/Date:\s+([^\n]+)\n/i', $data[$k+1], $date);
+			preg_match('/Date:\s+([^\n]+)\n/i', $data[$k + 1], $date);
 			if (isset($date[1])) {
 				$date = $date[1];
-				$data[$k+1] = preg_replace('/Date:\s+[^\n]+\n/i', '', $data[$k+1]);
+				$data[$k + 1] = preg_replace('/Date:\s+[^\n]+\n/i', '', $data[$k + 1]);
 			} else $date = '';
 
-			$comment = trim($data[$k+1]);
+			$comment = trim($data[$k + 1]);
 
 			$revisions[$match] = array(
 				'hash' => $match,
@@ -103,4 +115,31 @@ function logToRevision($log)
 		}
 	}
 	return $revisions;
+}
+
+function logTagToTag($name, $log)
+{
+	preg_match('/commit\s+(\w{40})\n/i', $log, $hash);
+	if (isset($hash[1])) $hash = $hash[1];
+	else $hash = '';
+
+	preg_match('/Tagger:\s+([^\n]+)\n/i', $log, $author);
+	if (isset($author[1])) $author = htmlentities($author[1]);
+	else $author = '';
+
+	preg_match('/Date:\s+([^\n]+)\n/i', $log, $date);
+	if (isset($date[1])) $date = $date[1];
+	else $date = '';
+
+	$log = preg_split('/Date:\s+([^\n]+)\n|commit\s+(\w{40})\n/i', $log);
+	if (isset($log[1])) $comment = trim($log[1]);
+	else $comment = '';
+
+	return array(
+		'hash' => $hash,
+		'name' => $name,
+		'author' => $author,
+		'date' => $date, //date('Y-m-d H:i:s', strtotime($date))
+		'comment' => htmlentities($comment)
+	);
 }

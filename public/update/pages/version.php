@@ -5,39 +5,38 @@ if (isset($_versions)) {
 }
 
 if (!isset($has_data)) {
-	/*$git_log = launch(GIT_PATH . ' log --all');
-	file_put_contents('data/git_log.txt', $git_log, LOCK_EX);
-	$_version = logToRevision($git_log);*/
+	launch(GIT_PATH . ' fetch --all');
+	launch(GIT_PATH . ' log --all > data/git_log.txt');
+	//file_put_contents('data/git_log.txt', $git_log, LOCK_EX);
+	//$_version = logAllToRevision($git_log);
 
-    $versions = launch(GIT_PATH . ' show origin/' . GIT_MAIN_BRANCH . ':' . GIT_VERSION_PATH);
-    if (preg_match_all('/(\d+.\d+.\d+)\//i', $versions, $matches)) {
-        $versions = array();
-        foreach($matches[1] as $k => $name) {
-	        $revision = launch(GIT_PATH . ' show origin/' . GIT_MAIN_BRANCH . ':' . GIT_VERSION_PATH . $matches[0][$k] . 'revision.txt');
-	        if(preg_match('/\w{40}/', $revision, $revision)) {
-		        $revision = $revision[0];
-	        } else {
-		        //zzz
-	        }
-            $versions[$name] = array(
-                'dir' => $matches[0][$k],
-	            'revision' => $revision
-            );
-        }
-    }
+	$nodes = array();
 
-    $branch = launch(GIT_PATH . ' branch -av --no-abbrev');
-	if (preg_match_all('/(\*\s+)?([\w\/]+|(\([^\)]+\)))\s+(\w{40})\s+([^\n]+)/i', $branch, $matches)) {
+	$tags = launch(GIT_PATH . ' tag -l');
+	if (trim($tags)) {
+		$tagNames = explode("\n", $tags);
+		$tags = array();
+		foreach ($tagNames as $name) {
+			$tags[$name] = logTagToTag($name, launch(GIT_PATH . ' show --pretty=medium ' . $name));
+			$nodes[] = $tags[$name];
+		}
+	} else $tags = array();
+
+	$branch = launch(GIT_PATH . ' branch -av --no-abbrev');
+	if (preg_match_all('/(\*\s+)?([\w\/\-\_]+|(\([^\)]+\)))\s+(\w{40})\s+([^\n]+)/i', $branch, $matches)) {
 		$branch = array();
-		foreach($matches[2] as $k => $name) {
+		foreach ($matches[2] as $k => $name) {
+			if ((bool)$matches[1][$k]) $_start_revision = start_revision($matches[4][$k]);
 			$branch[$name] = array(
 				'current' => (bool)$matches[1][$k],
+				'hash' => $matches[4][$k],
 				'name' => $name,
-				'revision' => $matches[4][$k],
-				'comment' => $matches[5][$k]
+				'comment' => htmlentities($matches[5][$k])
 			);
+			$nodes[] = $branch[$name];
 		}
 	} else $branch = array();
+
 
 }
 ?>
@@ -51,13 +50,13 @@ if (!isset($has_data)) {
 	<link rel="stylesheet" href="assets/css/common.css">
 </head>
 <body>
-	<?php require 'pages/common/navbar.php';?>
-	<pre>
-		<?php print_r($versions);?>
+<?php require 'pages/common/navbar.php'; ?>
+<pre>
+		<?php print_r($nodes); ?>
 	</pre>
 
-	<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script src="assets/bootstrap3/js/bootstrap.min.js"></script>
-	<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="assets/bootstrap3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 </body>
 </html>

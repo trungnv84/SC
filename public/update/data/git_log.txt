@@ -1,3 +1,44 @@
+commit ba5252b969fcfcf34f529c93f7b39413c2ed4550
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Dec 24 17:37:13 2013 +0700
+
+    Core
+
+commit d5e160bdb7fb36e83a375f6831bc5a0faf4c873e
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Dec 24 16:16:34 2013 +0700
+
+    Core
+
+commit 678c50082648255a88e79f3ab451ecb8276db1a1
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Dec 24 12:23:00 2013 +0700
+
+    Core
+
+commit 5310aad38b05690f01c92d003f905d56ee65f149
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Tue Dec 24 10:39:01 2013 +0700
+
+    Core
+
+commit 8700c53a09b90999ef6afce373d55e0d3ce7eea8
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 23 21:28:21 2013 +0700
+
+    Core
+
+commit 5dd97bc932cf9276c9b59bf27d48532a1b8be850
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Mon Dec 23 21:09:44 2013 +0700
+
+    Revert "Core"
+    
+    This reverts commit 422ef263cd385f321b8d5c42f68005d46ab63e9a.
+    
+    Conflicts:
+    	public/update/pages/version.php
+
 commit 46379f67f087b0cd58fecbcdbb102c2fee252ac4
 Author: trungnv84 <trungnv84@ymail.com>
 Date:   Mon Dec 23 17:41:18 2013 +0700
