@@ -1,3 +1,9 @@
+commit e9a85b5d8290c08fdd08d62b5990db4aba37b9db
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Wed Dec 25 10:24:05 2013 +0700
+
+    Core
+
 commit ba5252b969fcfcf34f529c93f7b39413c2ed4550
 Author: trungnv84 <trungnv84@ymail.com>
 Date:   Tue Dec 24 17:37:13 2013 +0700

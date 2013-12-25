@@ -1,3 +1,11 @@
 .login-template h1 {
 	text-align: center;
 }
+
+td.cur {
+	color: red;
+}
+
+td.nodes span.label {
+	font-size: 90%;
+}

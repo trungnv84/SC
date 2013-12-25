@@ -18,7 +18,7 @@ function session($name, $value = null)
 function versions($versions = null)
 {
 	if (!is_null($versions)) {
-		file_put_contents('data/versions.php', 'return ' . var_export($versions)) . ';';
+		file_put_contents('data/versions.php', '<?php return ' . var_export($versions, true) . ';');
 	} elseif (file_exists('data/versions.php')) {
 		$versions = require 'data/versions.php';
 	}
@@ -85,9 +85,19 @@ function start_revision($current_revision)
 	return $current_revision;
 }
 
+function almost_branch($current_branch)
+{
+	if (file_exists('data/almost_branch.txt')) {
+		$almost_branch = trim(file_get_contents('data/almost_branch.txt'));
+		if ($almost_branch) return $almost_branch;
+	}
+
+	file_put_contents('data/almost_branch.txt', $current_branch);
+	return $current_branch;
+}
+
 function logAllToRevision($log)
 {
-	$log = $log;
 	$revisions = array();
 	if ($log != "" && preg_match_all('/commit\s+(\w{40})\n/i', $log, $matches)) {
 		$data = preg_split('/commit\s+\w{40}\n/i', $log);
@@ -136,10 +146,68 @@ function logTagToTag($name, $log)
 	else $comment = '';
 
 	return array(
+		'object' => true,
 		'hash' => $hash,
 		'name' => $name,
 		'author' => $author,
 		'date' => $date, //date('Y-m-d H:i:s', strtotime($date))
 		'comment' => htmlentities($comment)
 	);
+}
+
+function loadRevisionFromFile($nodes, $start_revision)
+{
+	$revisions = array();
+	if (file_exists('data/git_log.txt') && is_readable('data/git_log.txt')) {
+		$handle = fopen('data/git_log.txt', 'r');
+		while (($line = fgets($handle)) !== false) {
+			if (preg_match('/^(commit|Author|Date)\:?\s+/i', $line, $matches)) {
+				switch (strtolower($matches[1])) {
+					case 'commit':
+						if (isset($revision)) {
+							$revision['comment'] = trim($revision['comment']);
+							$revisions[$revision['hash']] = $revision;
+						}
+
+						if (!$nodes && !$start_revision) break 2;
+
+						$hash = trim(preg_replace('/commit\s+/i', '', $line));
+
+						if ($start_revision == $hash) $start_revision = false;
+
+						$revision = array(
+							'hash' => trim(preg_replace('/commit\s+/i', '', $line)),
+							'author' => '',
+							'date' => '',
+							'comment' => '',
+							'nodes' => getNodeByHash($hash, $nodes, true)
+						);
+
+						break;
+					case 'author':
+						$revision['author'] = htmlentities(trim(preg_replace('/Author\:\s+/i', '', $line)));
+						break;
+					case 'date':
+						$revision['date'] = trim(preg_replace('/Date\:\s+/i', '', $line));
+						break;
+				}
+			} else {
+				$revision['comment'] .= "$line\n";
+			}
+		}
+		fclose($handle);
+	}
+	return $revisions;
+}
+
+function getNodeByHash($hash, &$nodes, $remove = false)
+{
+	$result = array();
+	foreach ($nodes as $key => &$node) {
+		if ($node['hash'] == $hash) {
+			$result[] = $node;
+			if ($remove) unset($nodes[$key]);
+		}
+	}
+	return $result;
 }
