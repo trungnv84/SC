@@ -48,7 +48,7 @@
 							class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="?_p=logs&username=<?php echo $_username; ?>">My Access Log</a></li>
-						<li><a href="?_p=change_password">Change Password</a></li>
+						<li><a href="?_p=user&username=<?php echo $_username; ?>">Change Password</a></li>
 						<li class="divider"></li>
 						<li><a href="?_p=logout">Logout</a></li>
 					</ul>
