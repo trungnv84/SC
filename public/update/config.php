@@ -1,4 +1,7 @@
 <?php
+date_default_timezone_set('GMT');
+define('MICRO_TIME_NOW', microtime());
+
 if (isset($_SERVER['HTTP_HOST'])) {
 	$_base_url = isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off' ? 'https' : 'http';
 	define('SCHEME', $_base_url);

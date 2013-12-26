@@ -21,7 +21,8 @@
 						href="<?php echo BASE_URL; ?>">Versions</a></li>
 				<!--<li><a href="#">Link</a></li>-->
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Management <b class="caret"></b></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="500"
+					   data-close-others="true">Management <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">Commit Log</a></li>
 						<li><a href="#">Update Log</a></li>
@@ -42,7 +43,8 @@
 				<li><a href="<?php echo str_replace('update/', '', BASE_URL); ?>" target="_blank">Website</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"
-					   data-toggle="dropdown"><?php echo $_username = session('user')['username']; ?> <b
+					   data-toggle="dropdown" data-hover="dropdown" data-delay="500"
+					   data-close-others="true"><?php echo $_username = session('user')['username']; ?> <b
 							class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="?_p=logs&username=<?php echo $_username; ?>">My Access Log</a></li>

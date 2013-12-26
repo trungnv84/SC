@@ -5,15 +5,17 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 	$username = get('username');
 	$password = get('password');
 	if ($username && $password) {
-		$id = base64_encode($username);
-		if (isset($_users[$id])) {
-			$security = explode(':', $_users[$id]['password']);
-			if ($security[1]) $password .= $security[1];
-			if (md5($password) == $security[0]) {
-				session('user', $_users[$id]);
-				header("Location: " . BASE_URL, false, 302);
-			}
-		}
+		$id = base64_encode(strtolower($username));
+		$security = md5(MICRO_TIME_NOW);
+		$_users = array(
+			$id => array(
+				'username' => $username,
+				'password' => md5($password . $security) . ':' . $security,
+				'root' => true
+			)
+		);
+		users($_users);
+		header("Location: " . BASE_URL, false, 302);
 	}
 	$msg = 'The Username and/or Password is invalid.';
 }
@@ -33,8 +35,12 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 <div class="container">
 
 	<div class="login-template">
-		<h1>Update tools login</h1>
+		<h1>Update tools start</h1>
 		<br />
+
+		<div style="margin-bottom: 10px;text-align: center">
+			(Create root user)
+		</div>
 		<?php if (isset($msg)): ?>
 			<div class="alert alert-danger col-sm-offset-4 col-sm-5">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -63,7 +69,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
-						<button type="submit" class="btn btn-default">Sign in</button>
+						<button type="submit" class="btn btn-default">Create</button>
 					</div>
 				</div>
 			</fieldset>

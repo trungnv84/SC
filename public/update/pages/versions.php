@@ -1,4 +1,6 @@
 <?php
+defined('GIT_PATH') || exit;
+
 $_versions = versions();
 if (isset($_versions) && is_array($_versions)) {
 	$has_data = true;
@@ -51,8 +53,9 @@ if (!isset($has_data)) {
 <head>
 	<title>Update versions</title>
 	<link rel="stylesheet" href="assets/bootstrap3/css/bootstrap.min.css">
+	<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">-->
+	<link rel="stylesheet" href="assets/css/jquery-ui-1.10.3.css">
 	<link rel="stylesheet" href="assets/bootstrap3/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" href="assets/css/common.css">
 </head>
 <body>
@@ -71,7 +74,7 @@ if (!isset($has_data)) {
 		<table class="table table-hover">
 			<thead>
 			<tr>
-				<th class="start">►</th>
+				<th class="start">&nbsp;</th>
 				<th>Version</th>
 				<th>&nbsp;</th>
 				<th>Author</th>
@@ -86,15 +89,40 @@ if (!isset($has_data)) {
 				foreach ($version['nodes'] as $node) {
 					if (isset($node['current']) && $node['current']) $cur = '►';
 					if (!$node['object']) continue;
-					if (isset($node['author']))
-						$nodes .= '<span class="label label-info">';
-					elseif (false !== strpos($node['name'], '/')) {
-						$nodes .= '<span class="label label-primary">';
+					if (true) {
+						if (isset($node['author']))
+							$node_class = 'info';
+						elseif (false !== strpos($node['name'], '/')) {
+							$node_class = 'primary';
+						} else {
+							$node_class = 'success';
+						}
+						$nodes .= '
+							<div class="btn-group">
+								<button type="button" class="btn btn-xs dropdown-toggle btn-' . $node_class . '" data-toggle="dropdown" data-hover="dropdown" data-delay="500" data-close-others="true">
+									' . (isset($node['current']) && $node['current'] ? '► ' : '') .
+									str_replace('remotes/', '', $node['name']) .
+									' &nbsp;<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Separated link</a></li>
+								</ul>
+							</div> ';
 					} else {
-						$nodes .= '<span class="label label-success">';
+						if (isset($node['author']))
+							$nodes .= '<span class="label label-info">';
+						elseif (false !== strpos($node['name'], '/')) {
+							$nodes .= '<span class="label label-primary">';
+						} else {
+							$nodes .= '<span class="label label-success">';
+						}
+						$nodes .= (isset($node['current']) && $node['current'] ? '► ' : '') .
+							str_replace('remotes/', '', $node['name']) . '</span> ';
 					}
-					$nodes .= (isset($node['current']) && $node['current'] ? '► ' : '') .
-						str_replace('remotes/', '', $node['name']) . '</span> ';
 				}
 				$nodes .= explode("\n", $version['comment'])[0];
 				?>
@@ -102,11 +130,11 @@ if (!isset($has_data)) {
 					<td class="cur"><?php echo $cur; ?></td>
 					<td class="nodes"><?php echo $nodes; ?></td>
 					<td>
-						<div class="btn-group btn-group-sm pull-right">
+						<!--<div class="btn-group btn-group-sm pull-right">
 							<button type="button" class="btn btn-success">Pull</button>
 							<button type="button" class="btn btn-info">Checkout</button>
 							<button type="button" class="btn btn-warning">Revert</button>
-						</div>
+						</div>-->
 					</td>
 					<td><?php echo strstr($version['author'], htmlentities(' <'), true); ?></td>
 					<td><?php echo date('H:i:s d/m/Y', strtotime(preg_replace('/(\+|\-)(\d+)/', '', $version['date']))); ?></td>
@@ -120,8 +148,11 @@ if (!isset($has_data)) {
 	</pre>-->
 </div>
 
-<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<!--<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->
+<script src="assets/js/jquery-1.10.2.min.js"></script>
+<script src="assets/js/jquery-ui-1.10.3.js"></script>
 <script src="assets/bootstrap3/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
 </body>
 </html>

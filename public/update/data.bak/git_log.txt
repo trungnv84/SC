@@ -1,9 +1,3 @@
-commit beef1917973e91ffc3b1badfe6d2079a35dbe29b
-Author: trungnv84 <trungnv84@ymail.com>
-Date:   Wed Dec 25 12:43:08 2013 +0700
-
-    Core
-
 commit e9a85b5d8290c08fdd08d62b5990db4aba37b9db
 Author: trungnv84 <trungnv84@ymail.com>
 Date:   Wed Dec 25 10:24:05 2013 +0700

@@ -1,4 +1,6 @@
 <?php
+defined('GIT_PATH') || exit;
+
 function get($name, $default = null)
 {
 	if (isset($_POST[$name])) return $_POST[$name];
@@ -15,10 +17,29 @@ function session($name, $value = null)
 	return $old;
 }
 
+function isDir($filename)
+{
+	if (!is_dir($filename))
+		return mkdir($filename, 755, true);
+	return true;
+}
+
+function users($users = null)
+{
+	if (!is_null($users)) {
+		if (isDir('data'))
+			file_put_contents('data/users.php', '<?php return ' . var_export($users, true) . ';');
+	} elseif (file_exists('data/users.php')) {
+		$users = require 'data/users.php';
+	}
+	return $users;
+}
+
 function versions($versions = null)
 {
 	if (!is_null($versions)) {
-		file_put_contents('data/versions.php', '<?php return ' . var_export($versions, true) . ';');
+		if (isDir('data'))
+			file_put_contents('data/versions.php', '<?php return ' . var_export($versions, true) . ';');
 	} elseif (file_exists('data/versions.php')) {
 		$versions = require 'data/versions.php';
 	}
@@ -28,7 +49,8 @@ function versions($versions = null)
 function updated($updated = null)
 {
 	if (!is_null($updated)) {
-		file_put_contents('data/updated.php', 'return ' . var_export($updated)) . ';';
+		if (isDir('data'))
+			file_put_contents('data/updated.php', 'return ' . var_export($updated)) . ';';
 	} elseif (file_exists('data/updated.php')) {
 		$updated = require 'data/updated.php';
 	}
@@ -96,6 +118,13 @@ function almost_branch($current_branch)
 	return $current_branch;
 }
 
+/**
+ * Hien khong dung ham nay
+ *
+ * @param $log
+ *
+ * @return array
+ */
 function logAllToRevision($log)
 {
 	$revisions = array();

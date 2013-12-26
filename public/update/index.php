@@ -5,9 +5,9 @@ require 'common.php';
 if (session('user')) {
 	$_p = get('_p');
 	switch ($_p) {
-		case 'version':
+		case 'versions':
 		default:
-			require 'pages/version.php';
+			require 'pages/versions.php';
 			break;
 		case 'revision':
 			require 'pages/revision.php';
@@ -38,5 +38,9 @@ if (session('user')) {
 			break;
 	}
 } else {
-	require 'pages/login.php';
+	$_users = users();
+	if ($_users)
+		require 'pages/login.php';
+	else
+		require 'pages/root.php';
 }
