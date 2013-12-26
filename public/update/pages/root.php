@@ -38,9 +38,10 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 		<h1>Update tools start</h1>
 		<br />
 
-		<div style="margin-bottom: 10px;text-align: center">
+		<div class="msg-show">
 			(Create root user)
 		</div>
+
 		<?php if (isset($msg)): ?>
 			<div class="alert alert-danger col-sm-offset-4 col-sm-5">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

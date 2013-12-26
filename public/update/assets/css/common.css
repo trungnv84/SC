@@ -9,3 +9,8 @@ td.cur {
 td.nodes span.label {
 	font-size: 90%;
 }
+
+.msg-show {
+	margin-bottom: 10px;
+	text-align: center;
+}
