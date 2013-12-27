@@ -26,6 +26,8 @@ define('GIT_MAIN_BRANCH', 'master');
 define('GIT_VERSION_PATH', 'public/update/versions/');
 define('GIT_REVISION_PATH', 'public/update/revisions/');
 
+define('');
+
 $_config = array(
 	'db' => array(
 		'hostname' => 'localhost',

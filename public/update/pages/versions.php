@@ -4,6 +4,9 @@ defined('GIT_PATH') || exit;
 $_versions = versions();
 if (isset($_versions) && is_array($_versions)) {
 	$has_data = true;
+} elseif (get('fetch_all')) {
+	versions(array());
+	header('Location: ' . BASE_URL, false, 302);
 }
 
 if (!isset($has_data)) {
@@ -68,7 +71,7 @@ if (!isset($has_data)) {
 		<div class="panel-body">
 			List version and branch of current source code.
 			<div class="btn-group pull-right">
-				<button type="button" class="btn btn-primary">Fetch all</button>
+				<a class="btn btn-sm btn-primary" href="?_p=versions&fetch_all=1">Fetch all</a>
 			</div>
 		</div>
 		<table class="table table-hover">
@@ -101,17 +104,17 @@ if (!isset($has_data)) {
 							<div class="btn-group">
 								<button type="button" class="btn btn-xs dropdown-toggle btn-' . $node_class . '" data-toggle="dropdown" data-hover="dropdown" data-delay="500" data-close-others="true">
 									' . (isset($node['current']) && $node['current'] ? '► ' : '') .
-									str_replace('remotes/', '', $node['name']) .
-									' &nbsp;<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">Action</a></li>
-									<li><a href="#">Another action</a></li>
-									<li><a href="#">Something else here</a></li>
-									<li class="divider"></li>
-									<li><a href="#">Separated link</a></li>
-								</ul>
-							</div> ';
+							str_replace('remotes/', '', $node['name']) .
+							' &nbsp;<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+						</ul>
+					</div> ';
 					} else {
 						if (isset($node['author']))
 							$nodes .= '<span class="label label-info">';

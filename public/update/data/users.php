@@ -8,7 +8,7 @@
   'ZGV2ZWxvcGVy' => 
   array (
     'username' => 'developer',
-    'password' => '52b02d37b26451a40426e0bb24251a0c:9cc81868ef5127a11cd1ef302257669b',
+    'password' => 'e69e4a038421b8eb5a32f7151a3294ed:8241b6b15a6162396e9dcd68c663afc6',
     'root' => false,
   ),
   'cWE=' => 

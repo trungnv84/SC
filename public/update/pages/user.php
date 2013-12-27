@@ -3,7 +3,7 @@ defined('GIT_PATH') || exit;
 
 $editing = isset($_GET['username']);
 if (!($_user['root'] || ($editing && $_GET['username'] == $_user['username'])))
-	header("Location: " . BASE_URL . '?_p=user&username=' . $_user['username'], false, 302);
+	header('Location: ' . BASE_URL . '?_p=user&username=' . $_user['username'], false, 302);
 
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
 	$password = get('password');
@@ -20,7 +20,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 				'root' => $root
 			);
 			users($_users);
-			header("Location: " . ($_user['root'] ? BASE_URL . '?_p=users' : BASE_URL), false, 302);
+			header('Location: ' . ($_user['root'] ? BASE_URL . '?_p=users' : BASE_URL), false, 302);
 		} else
 			$msg = 'The Username has been in use.';
 	} else
@@ -31,7 +31,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 		$_users = users();
 		$id = base64_encode(strtolower($username));
 		if (!isset($_users[$id]))
-			header("Location: " . BASE_URL . '?_p=users', false, 302);
+			header('Location: ' . BASE_URL . '?_p=users', false, 302);
 	}
 }
 
@@ -82,7 +82,8 @@ $title = $editing ? 'Change password' : 'Create user';
 
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
-						<button type="submit" class="btn btn-default">Save</button>
+						<button type="submit" class="btn btn-primary">Save</button>
+						<a class="btn btn-default" href="<?php echo BASE_URL, $_user['root']?'?_p=users':'';?>">Cancel</a>
 					</div>
 				</div>
 			</fieldset>

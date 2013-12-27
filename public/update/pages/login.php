@@ -11,7 +11,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 			if ($security[1]) $password .= $security[1];
 			if (md5($password) == $security[0]) {
 				session('user', $_users[$id]);
-				header("Location: " . BASE_URL, false, 302);
+				header('Location: ' . BASE_URL, false, 302);
 			}
 		}
 	}
@@ -63,7 +63,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
-						<button type="submit" class="btn btn-default">Sign in</button>
+						<button type="submit" class="btn btn-primary">Sign in</button>
 					</div>
 				</div>
 			</fieldset>

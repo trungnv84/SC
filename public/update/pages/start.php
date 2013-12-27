@@ -15,7 +15,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 			)
 		);
 		users($_users);
-		header("Location: " . BASE_URL, false, 302);
+		header('Location: ' . BASE_URL, false, 302);
 	}
 	$msg = 'The Username and/or Password is invalid.';
 }
@@ -70,7 +70,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
-						<button type="submit" class="btn btn-default">Create</button>
+						<button type="submit" class="btn btn-primary">Create</button>
 					</div>
 				</div>
 			</fieldset>

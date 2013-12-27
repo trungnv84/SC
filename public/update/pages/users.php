@@ -1,7 +1,7 @@
 <?php
 defined('GIT_PATH') || exit;
 
-if (!$_user['root']) header("Location: " . BASE_URL, false, 302);
+if (!$_user['root']) header('Location: ' . BASE_URL, false, 302);
 
 $_users = users();
 ?>
@@ -28,25 +28,30 @@ $_users = users();
 				<button type="button" class="btn btn-primary">Fetch all</button>
 			</div>
 		</div>-->
-		<table class="table table-hover">
+		<table class="table table-striped table-hover">
 			<thead>
 			<tr>
 				<th class="start">Root</th>
 				<th>Username</th>
-				<th>&nbsp;</th>
+				<th><a class="btn btn-xs btn-success pull-right" href="?_p=user">Add</a></th>
 			</tr>
 			</thead>
 			<tbody>
 			<?php foreach ($_users as $user): ?>
-				<?php $cur = $user['username'] == $_user['username'];?>
+				<?php $cur = $user['username'] == $_user['username']; ?>
 				<tr<?php if ($cur) echo ' class="success"'; ?>>
-					<td class="cur bold"><?php echo $user['root']?'√':''; ?></td>
+					<td class="cur bold"><?php echo $user['root'] ? '√' : ''; ?></td>
 					<td class="nodes"><?php echo $user['username']; ?></td>
 					<td>
 						<div class="btn-group btn-group-xs pull-right">
-							<button type="button" class="btn btn-success">Pull</button>
-							<button type="button" class="btn btn-info">Checkout</button>
-							<button type="button" class="btn btn-warning">Revert</button>
+							<a class="btn btn-success" href="?_p=user">Add</a>
+							<a class="btn btn-info" href="?_p=user&username=<?php echo $user['username']; ?>">Edit</a>
+							<?php if (!$user['root']): ?>
+								<a class="btn btn-warning" href="?_p=delete&username=<?php echo $user['username']; ?>"
+								   onclick="return confirm('Are you sure to delete this account?')">
+									Delete
+								</a>
+							<?php endif; ?>
 						</div>
 					</td>
 				</tr>

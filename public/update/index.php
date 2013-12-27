@@ -30,14 +30,14 @@ if ($_user = session('user')) {
 		case 'user':
 			require 'pages/user.php';
 			break;
-		case 'db':
-			require 'pages/db.php';
+		case 'delete':
+			require 'pages/delete.php';
 			break;
 		case 'logout':
 			require 'pages/logout.php';
 			break;
 		default:
-			header("Location: " . BASE_URL, false, 302);
+			header('Location: ' . BASE_URL, false, 302);
 	}
 } else {
 	$_users = users();
