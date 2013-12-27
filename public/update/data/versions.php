@@ -1,4 +1,40 @@
 <?php return array (
+  '3ff97bfdbecb9350e523f03bfc32201b06d39310' => 
+  array (
+    'hash' => '3ff97bfdbecb9350e523f03bfc32201b06d39310',
+    'author' => 'trungnv84 &lt;trungnv84@ymail.com&gt;',
+    'date' => 'Fri Dec 27 15:17:28 2013 +0700',
+    'comment' => 'Core',
+    'nodes' => 
+    array (
+      0 => 
+      array (
+        'current' => true,
+        'object' => true,
+        'hash' => '3ff97bfdbecb9350e523f03bfc32201b06d39310',
+        'name' => 'master',
+        'comment' => 'Core',
+      ),
+      1 => 
+      array (
+        'current' => false,
+        'object' => true,
+        'hash' => '3ff97bfdbecb9350e523f03bfc32201b06d39310',
+        'name' => 'remotes/origin/master',
+        'comment' => 'Core',
+      ),
+    ),
+  ),
+  '2b4166ada61c4b1afc005f5b62198601c01b5444' => 
+  array (
+    'hash' => '2b4166ada61c4b1afc005f5b62198601c01b5444',
+    'author' => 'trungnv84 &lt;trungnv84@ymail.com&gt;',
+    'date' => 'Fri Dec 27 15:16:15 2013 +0700',
+    'comment' => 'Core',
+    'nodes' => 
+    array (
+    ),
+  ),
   'e318a6f4b7a0901e7de35847e2db989e14158b21' => 
   array (
     'hash' => 'e318a6f4b7a0901e7de35847e2db989e14158b21',
@@ -7,22 +43,6 @@
     'comment' => 'Core',
     'nodes' => 
     array (
-      0 => 
-      array (
-        'current' => true,
-        'object' => true,
-        'hash' => 'e318a6f4b7a0901e7de35847e2db989e14158b21',
-        'name' => 'master',
-        'comment' => 'Core',
-      ),
-      1 => 
-      array (
-        'current' => false,
-        'object' => true,
-        'hash' => 'e318a6f4b7a0901e7de35847e2db989e14158b21',
-        'name' => 'remotes/origin/master',
-        'comment' => 'Core',
-      ),
     ),
   ),
   'c2e798951e2fc6ded4c8204cd4082c43b113dac7' => 
