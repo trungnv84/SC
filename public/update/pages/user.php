@@ -1,29 +1,46 @@
 <?php
 defined('GIT_PATH') || exit;
 
+$editing = isset($_GET['username']);
+if (!($_user['root'] || ($editing && $_GET['username'] == $_user['username'])))
+	header("Location: " . BASE_URL . '?_p=user&username=' . $_user['username'], false, 302);
+
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
-	$username = get('username');
 	$password = get('password');
+	$username = $editing ? $_GET['username'] : get('username');
 	if ($username && $password) {
+		$_users = users();
 		$id = base64_encode(strtolower($username));
-		$security = md5(MICRO_TIME_NOW);
-		$_users = array(
-			$id => array(
+		if ($editing || !isset($_users[$id])) {
+			$security = md5(MICRO_TIME_NOW);
+			$root = $editing ? $_users[$id]['root'] : false;
+			$_users[$id] = array(
 				'username' => $username,
 				'password' => md5($password . $security) . ':' . $security,
-				'root' => true
-			)
-		);
-		users($_users);
-		header("Location: " . BASE_URL, false, 302);
+				'root' => $root
+			);
+			users($_users);
+			header("Location: " . ($_user['root'] ? BASE_URL . '?_p=users' : BASE_URL), false, 302);
+		} else
+			$msg = 'The Username has been in use.';
+	} else
+		$msg = 'The Username and/or Password is invalid.';
+} else {
+	$username = $editing ? $_GET['username'] : get('username');
+	if ($username) {
+		$_users = users();
+		$id = base64_encode(strtolower($username));
+		if (!isset($_users[$id]))
+			header("Location: " . BASE_URL . '?_p=users', false, 302);
 	}
-	$msg = 'The Username and/or Password is invalid.';
 }
+
+$title = $editing ? 'Change password' : 'Create user';
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Update versions</title>
+	<title><?php echo $title; ?></title>
 	<link rel="stylesheet" href="assets/bootstrap3/css/bootstrap.min.css">
 	<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">-->
 	<link rel="stylesheet" href="assets/css/jquery-ui-1.10.3.css">
@@ -34,7 +51,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 <?php require 'pages/common/navbar.php'; ?>
 <div class="container">
 	<div class="login-template">
-		<h1>Create/Edit User</h1>
+		<h1><?php echo $title; ?></h1>
 		<br />
 		<?php if (isset($msg)): ?>
 			<div class="alert alert-danger col-sm-offset-4 col-sm-5">
@@ -49,7 +66,8 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
 					<div class="col-sm-8">
 						<input type="text" class="form-control" id="username" name="username"
-						       autocomplete="off" placeholder="Username">
+						       autocomplete="off" placeholder="Username"
+						       value="<?php echo $username; ?>"<?php if ($editing) echo ' readonly="readonly"'; ?>>
 					</div>
 				</div>
 

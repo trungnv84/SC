@@ -2,11 +2,11 @@
 session_start();
 require 'config.php';
 require 'common.php';
-if (session('user')) {
+if ($_user = session('user')) {
 	$_p = get('_p');
 	switch ($_p) {
 		case 'versions':
-		default:
+		case '':
 			require 'pages/versions.php';
 			break;
 		case 'revision':
@@ -36,11 +36,13 @@ if (session('user')) {
 		case 'logout':
 			require 'pages/logout.php';
 			break;
+		default:
+			header("Location: " . BASE_URL, false, 302);
 	}
 } else {
 	$_users = users();
 	if ($_users)
 		require 'pages/login.php';
 	else
-		require 'pages/root.php';
+		require 'pages/start.php';
 }

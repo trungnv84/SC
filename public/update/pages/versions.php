@@ -87,7 +87,7 @@ if (!isset($has_data)) {
 				$cur = '';
 				$nodes = '';
 				foreach ($version['nodes'] as $node) {
-					if (isset($node['current']) && $node['current']) $cur = '►';
+					if (isset($node['current']) && $node['current']) $cur = '▐█';
 					if (!$node['object']) continue;
 					if (true) {
 						if (isset($node['author']))

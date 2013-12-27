@@ -23,7 +23,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Update tools login</title>
+	<title>Update tools start</title>
 	<link rel="stylesheet" href="assets/bootstrap3/css/bootstrap.min.css">
 	<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">-->
 	<link rel="stylesheet" href="assets/css/jquery-ui-1.10.3.css">
@@ -55,7 +55,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
 					<div class="col-sm-8">
 						<input type="text" class="form-control" id="username" name="username"
-						       autocomplete="off" placeholder="Username">
+						       autocomplete="off" placeholder="Username" value="<?php echo $username; ?>">
 					</div>
 				</div>
 

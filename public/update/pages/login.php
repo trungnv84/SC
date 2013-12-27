@@ -1,8 +1,8 @@
 <?php
 defined('GIT_PATH') || exit;
 
+$username = get('username');
 if ('POST' == $_SERVER['REQUEST_METHOD']) {
-	$username = get('username');
 	$password = get('password');
 	if ($username && $password) {
 		$id = base64_encode($username);
@@ -48,7 +48,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 
 					<div class="col-sm-8">
 						<input type="text" class="form-control" id="username" name="username"
-						       autocomplete="off" placeholder="Username">
+						       autocomplete="off" placeholder="Username" value="<?php echo $username; ?>">
 					</div>
 				</div>
 

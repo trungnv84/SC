@@ -27,9 +27,11 @@
 						<li><a href="#">Commit Log</a></li>
 						<li><a href="#">Update Log</a></li>
 						<li><a href="#">Access Log</a></li>
-						<li class="divider"></li>
-						<li><a href="#">List Account</a></li>
-						<li><a href="#">Create Account</a></li>
+						<?php if ($_user['root']): ?>
+							<li class="divider"></li>
+							<li><a href="?_p=users">List Account</a></li>
+							<li><a href="?_p=user">Create Account</a></li>
+						<?php endif; ?>
 					</ul>
 				</li>
 			</ul>
@@ -44,10 +46,10 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"
 					   data-toggle="dropdown" data-hover="dropdown" data-delay="500"
-					   data-close-others="true"><?php echo $_username = session('user')['username']; ?> <b
+					   data-close-others="true"><?php echo $_username = $_user['username']; ?> <b
 							class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="?_p=logs&username=<?php echo $_username; ?>">My Access Log</a></li>
+						<li><a href="#?_p=logs&username=<?php echo $_username; ?>">My Access Log</a></li>
 						<li><a href="?_p=user&username=<?php echo $_username; ?>">Change Password</a></li>
 						<li class="divider"></li>
 						<li><a href="?_p=logout">Logout</a></li>
