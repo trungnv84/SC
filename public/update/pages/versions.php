@@ -4,12 +4,14 @@ defined('GIT_PATH') || exit;
 $_versions = versions();
 if (isset($_versions) && is_array($_versions)) {
 	$has_data = true;
-} elseif (get('fetch_all')) {
-	versions(array());
-	header('Location: ' . BASE_URL, false, 302);
 }
 
-if (!isset($has_data)) {
+if (isset($has_data)) {
+	if (get('fetch_all')) {
+		versions(false);
+		header('Location: ' . BASE_URL, false, 302);
+	}
+} else {
 	launch(GIT_PATH . ' fetch --all');
 	launch(GIT_PATH . ' log --all > data/git_log.txt');
 	//file_put_contents('data/git_log.txt', $git_log, LOCK_EX);

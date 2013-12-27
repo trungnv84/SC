@@ -103,7 +103,8 @@ function start_revision($current_revision)
 		if ($start_revision) return $start_revision;
 	}
 
-	file_put_contents('data/start_revision.txt', $current_revision);
+	if (isDir('data'))
+		file_put_contents('data/start_revision.txt', $current_revision);
 	return $current_revision;
 }
 

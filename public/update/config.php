@@ -26,7 +26,15 @@ define('GIT_MAIN_BRANCH', 'master');
 define('GIT_VERSION_PATH', 'public/update/versions/');
 define('GIT_REVISION_PATH', 'public/update/revisions/');
 
-define('');
+define('VERSION_STATUS_AVAILABLE', 1);
+define('VERSION_STATUS_UPDATE', 2);
+define('VERSION_STATUS_REVERT', 4);
+define('VERSION_STATUS_DOING', 8);
+define('VERSION_STATUS_COMPLETE', 16);
+define('VERSION_STATUS_SCRIPT', 32);
+define('VERSION_STATUS_DATABASE', 64);
+define('VERSION_STATUS_UN_SCRIPT', 128);
+define('VERSION_STATUS_UN_DATABASE', 256);
 
 $_config = array(
 	'db' => array(
