@@ -18,7 +18,7 @@ if ('POST' == $_SERVER['REQUEST_METHOD']) {
 		header('Location: ' . BASE_URL, false, 302);
 	}
 	$msg = 'The Username and/or Password is invalid.';
-}
+} else $username = '';
 ?>
 <!DOCTYPE html>
 <html>

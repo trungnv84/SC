@@ -18,6 +18,7 @@ if (isset($has_data)) {
 	//$_version = logAllToRevision($git_log);
 
 	$_nodes = array();
+    $_start_revision = false;
 
 	$tags = launch(GIT_PATH . ' tag -l');
 	if (trim($tags)) {
