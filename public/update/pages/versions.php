@@ -30,8 +30,6 @@ if (isset($has_data)) {
 		}
 	} else $tags = array();
 
-    echo '<pre>';print_r($tags);die;
-
 	$branch = launch(GIT_PATH . ' branch -av --no-abbrev');
 	if (preg_match_all('/(\*\s+)?(([\w\/\-\_]+)|(\([^\)]+\)))\s+(\w{40})\s+([^\n]+)/i', $branch, $matches)) {
 		$branch = array();

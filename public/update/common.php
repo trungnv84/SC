@@ -187,8 +187,7 @@ function logTagToTag($name, $log)
         if (trim($explorer)) {
             if (false !== strpos($explorer, 'note.txt')) {
                 $status += VERSION_STATUS_AVAILABLE;
-                $note = launch(GIT_PATH . ' show :' . GIT_VERSION_PATH . "$name/note.txt");
-                echo '<pre>';print_r($note);die;
+                $note = launch(GIT_PATH . ' show remotes/origin/HEAD:' . GIT_VERSION_PATH . "$name/note.txt");
             }
             if (false !== strpos($explorer, 'update.php'))
                 $status += VERSION_STATUS_SCRIPT;
