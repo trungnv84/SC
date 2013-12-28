@@ -96,19 +96,22 @@ if (isset($has_data)) {
 					if (isset($node['current']) && $node['current']) $cur = '▐█';
 					if (!$node['object']) continue;
 					if (true) {
-						if (isset($node['author']))
+						if (isset($node['author'])) {
 							$node_class = 'info';
-						elseif (false !== strpos($node['name'], '/')) {
+                            $menu_actions = '';
+                        } elseif (false !== strpos($node['name'], '/')) {
 							$node_class = 'primary';
 						} else {
 							$node_class = 'success';
+                            $menu_actions = $cur?
+                                "<li><a href=\"?_p=version&_a=pull&branch=$node[name]\">Git Pull</a></li>":
+                                "<li><a href=\"?_p=version&_a=checkout&branch=$node[name]\">Switch/Checkout</a></li>";
 						}
 
                         $node['name'] = str_replace('remotes/', '', $node['name'], $remote);
 
-
                         if ($remote) {
-                            $nodes .= "<span class='label label-$node_class'>$node[name]</span> ";
+                            $nodes .= "<span class=\"label label-$node_class\">$node[name]</span> ";
                         } else {
                             $nodes .= '
                                 <div class="btn-group">
@@ -117,11 +120,7 @@ if (isset($has_data)) {
                                         $node['name'] . ' &nbsp;<span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a></li>
+                                        ' . $menu_actions . '
                                     </ul>
                                 </div> ';
                         }
