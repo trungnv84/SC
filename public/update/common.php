@@ -178,12 +178,38 @@ function logTagToTag($name, $log)
     if (isset($log[1])) $comment = trim($log[1]);
     else $comment = '';
 
+    $status = 0;
+    $note = '';
+    if (isset($updated[$name])) {
+
+    } else {
+        $explorer = launch(GIT_PATH . " show $hash:" . GIT_VERSION_PATH . $name);
+        if (trim($explorer)) {
+            if (false !== strpos($explorer, 'note.txt')) {
+                $status += VERSION_STATUS_AVAILABLE;
+                $note = launch(GIT_PATH . ' show remotes/origin/' . GIT_MAIN_BRANCH . ':' . GIT_VERSION_PATH . "$name/note.txt");
+                echo '<pre>';print_r($note);die;
+            }
+            if (false !== strpos($explorer, 'update.php'))
+                $status += VERSION_STATUS_SCRIPT;
+            if (false !== (strpos($explorer, 'update.sql') || strpos($explorer, 'update.sql.zip')))
+                $status += VERSION_STATUS_DATABASE;
+            if (false !== strpos($explorer, 'revert.php'))
+                $status += VERSION_STATUS_UN_SCRIPT;
+            if (false !== (strpos($explorer, 'revert.sql') || strpos($explorer, 'revert.sql.zip')))
+                $status += VERSION_STATUS_UN_DATABASE;
+            if ($status) $status |= VERSION_STATUS_AVAILABLE;
+        }
+    }
+
     return array(
         'object' => true,
         'hash' => $hash,
         'name' => $name,
         'author' => $author,
         'date' => $date, //date('Y-m-d H:i:s', strtotime($date))
+        'status' => $status,
+        'note' => $note,
         'comment' => htmlentities($comment)
     );
 }

@@ -18,7 +18,7 @@ $_users = users();
 <body>
 <?php require 'pages/common/navbar.php'; ?>
 <div class="container">
-	<div class="panel panel-info">
+	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">User Management</h3>
 		</div>
@@ -63,6 +63,8 @@ $_users = users();
 		<?php /*print_r($_versions); */?>
 	</pre>-->
 </div>
+
+<?php require 'pages/common/footer.php'; ?>
 
 <!--<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->

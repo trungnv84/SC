@@ -22,3 +22,7 @@ td.nodes span.label {
 .bold {
 	font-weight: bold;
 }
+
+.table .label {
+    font-weight: normal;
+}

@@ -30,6 +30,8 @@ if (isset($has_data)) {
 		}
 	} else $tags = array();
 
+    echo '<pre>';print_r($tags);die;
+
 	$branch = launch(GIT_PATH . ' branch -av --no-abbrev');
 	if (preg_match_all('/(\*\s+)?(([\w\/\-\_]+)|(\([^\)]+\)))\s+(\w{40})\s+([^\n]+)/i', $branch, $matches)) {
 		$branch = array();
@@ -67,12 +69,12 @@ if (isset($has_data)) {
 <body>
 <?php require 'pages/common/navbar.php'; ?>
 <div class="container">
-	<div class="panel panel-info">
+	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">Version list</h3>
 		</div>
 		<div class="panel-body">
-			List version and branch of current source code.
+			Version and branch list of current source code.
 			<div class="btn-group pull-right">
 				<a class="btn btn-sm btn-primary" href="?_p=versions&fetch_all=1">Fetch all</a>
 			</div>
@@ -103,21 +105,28 @@ if (isset($has_data)) {
 						} else {
 							$node_class = 'success';
 						}
-						$nodes .= '
-							<div class="btn-group">
-								<button type="button" class="btn btn-xs dropdown-toggle btn-' . $node_class . '" data-toggle="dropdown" data-hover="dropdown" data-delay="500" data-close-others="true">
-									' . (isset($node['current']) && $node['current'] ? '► ' : '') .
-							str_replace('remotes/', '', $node['name']) .
-							' &nbsp;<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-						</ul>
-					</div> ';
+
+                        $node['name'] = str_replace('remotes/', '', $node['name'], $remote);
+
+
+                        if ($remote) {
+                            $nodes .= "<span class='label label-$node_class'>$node[name]</span> ";
+                        } else {
+                            $nodes .= '
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-xs dropdown-toggle btn-' . $node_class . '" data-toggle="dropdown" data-hover="dropdown" data-delay="500" data-close-others="true">' .
+                                        (isset($node['current']) && $node['current'] ? '► ' : '') .
+                                        $node['name'] . ' &nbsp;<span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </div> ';
+                        }
 					} else {
 						if (isset($node['author']))
 							$nodes .= '<span class="label label-info">';
@@ -153,6 +162,8 @@ if (isset($has_data)) {
 		<?php /*print_r($_versions); */?>
 	</pre>-->
 </div>
+
+<?php require 'pages/common/footer.php'; ?>
 
 <!--<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->

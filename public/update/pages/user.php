@@ -91,6 +91,8 @@ $title = $editing ? 'Change password' : 'Create user';
 	</div>
 </div>
 
+<?php require 'pages/common/footer.php'; ?>
+
 <!--<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>-->
 <script src="assets/js/jquery-1.10.2.min.js"></script>
