@@ -1,3 +1,15 @@
+commit b8c1dc5a3cc388d2fb52740b62c20e000bac2992
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Sat Dec 28 21:32:21 2013 +0700
+
+    Core
+
+commit ca8092a3ced6bac82fbb43b4a205d9ac90bac725
+Author: trungnv84 <trungnv84@ymail.com>
+Date:   Sat Dec 28 14:17:37 2013 +0700
+
+    Core
+
 commit e5c90a54fd6cdc9d213dc13bbbcb54f9851bcbf8
 Author: trungnv84 <trungnv84@ymail.com>
 Date:   Sat Dec 28 14:13:42 2013 +0700

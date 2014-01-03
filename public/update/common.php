@@ -35,6 +35,17 @@ function users($users = null)
     return $users;
 }
 
+function branch($branch = null)
+{
+    if (!is_null($branch)) {
+        if (isDir('data'))
+            file_put_contents('data/branch.php', '<?php return ' . var_export($branch, true) . ';');
+    } elseif (file_exists('data/branch.php')) {
+        $branch = require 'data/branch.php';
+    }
+    return $branch;
+}
+
 function versions($versions = null)
 {
     if (!is_null($versions)) {
