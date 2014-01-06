@@ -1,3 +1,0 @@
-app\lib\Log.php
-app\lib\File.php
-app\lib\Format.php

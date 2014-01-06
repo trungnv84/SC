@@ -1,2 +1,0 @@
-/sc/_tools
-/sc/_tools/
