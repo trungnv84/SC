@@ -26,3 +26,7 @@ td.nodes span.label {
 .table .label {
     font-weight: normal;
 }
+
+.nodes .label {
+    vertical-align: middle;
+}
