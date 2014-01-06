@@ -37,21 +37,21 @@ class MySql extends DBDriver
 					self::$connections[$key] = mysql_connect($config['hostname'], $config['username'], $config['password'], true);
 				}
 				if (false === self::$connections[$key]) {
-					App::end("Could not connect: " . mysql_error() . " -> ???//zzz");
+					App::end(500, 'Could not connect: ' . mysql_error());
 				} else {
 					App::addEndEvents(array(
 						'function' => array(MYSQL_DRIVER_NAME, 'closeAll')
 					));
 				}
 				if (!self::db_set_charset($key, $config['char_set'], $config['dbcollat'])) {
-					App::end("DB Set charset error: " . mysql_error() . " -> ???//zzz");
+					App::end(500, 'DB Set charset error: ' . mysql_error());
 				}
 			}
 			self::$connections[$instance] =& self::$connections[$key];
 		}
 		if (!isset(self::$currentDatabase[$instance]) || self::$currentDatabase[$instance] != $config['database']) {
 			if (!mysql_select_db($config['database'], self::$connections[$instance])) {
-				App::end("Database [$config[database]] not exists -> ???//zzz");
+				App::end(500, "Database [$config[database]] not exists");
 			}
 			self::$currentDatabase[$instance] = $config['database'];
 		}
@@ -63,7 +63,7 @@ class MySql extends DBDriver
 		if (!$instance) $instance = 'default';
 		if (self::$currentDatabase[$instance] != $database) {
 			if (!mysql_select_db($database, self::$connections[$instance])) {
-				App::end("Database [$database] not exists -> ???//zzz");
+				App::end(500, "Database [$database] not exists");
 			}
 			self::$currentDatabase[$instance] = $database;
 		}

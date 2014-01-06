@@ -6,6 +6,7 @@ class App
 	public static $config;
 	public static $module = DEFAULT_MODULE;
 	public static $controllerRunning;
+	public static $notFound = false;
 	public static $actionRunning;
 	public static $phpCacheFile;
 
@@ -22,15 +23,16 @@ class App
 	 * @param string $controller
 	 * @param string $action
 	 * @param string $module
+	 * @param string $template
 	 *
 	 * @since   1.0
 	 */
-	public static function run($controller = null, $action = null, $module = null)
+	public static function run($controller = null, $action = null, $module = null, $template = null)
 	{
 		if (self::showError((int)self::GET('_show_error', 0))) self::end();
 
 		if (isset($_GET['_url'])) {
-			if (404 == substr($_GET['_url'], 1, 3)) self::end(404);
+			if (strpos($_GET['_url'], '/404' . REWRITE_SUFFIX) !== false) self::end(404);
 			self::parseUrl($_GET['_url']);
 		}
 
@@ -42,19 +44,17 @@ class App
 		self::$controllerRunning = $controller;
 		self::$actionRunning = $action;
 
-		if (is_null($module))
-			self::autoSetTemplate();
-		else
+		if (!is_null($module))
 			self::$module = $module;
+
+		if ($template)
+			self::$template = $template;
+		elseif (is_null($template))
+			self::autoSetTemplate();
 
 		if (PHP_CACHE) {
 			self::$phpCacheFile = PHP_CACHE_DIR . self::$module . ".$controller.$action.php";
 			if (file_exists(self::$phpCacheFile)) require_once self::$phpCacheFile;
-		}
-
-		if (ACTION_URL_LOG) {
-			File::mkDir(ACTION_LOG_DIR);
-			Log::updateLog(ACTION_LOG_DIR . self::$module . ".$controller.$action.urls.txt", CURRENT_URI ? CURRENT_URI : '/');
 		}
 
 		$ctrl = ucfirst($controller) . 'Controller';
@@ -65,12 +65,27 @@ class App
 				call_user_func_array(array($ctrl, $act), self::$params);
 			}
 			unset($ctrl, $act);
-			self::view($action, $controller);
-		} elseif (self::view_exists($action, $controller)) {
+			if (false !== $template) self::view($action, $controller);
+		} elseif (self::view_exists($action, $controller) && false !== $template) {
 			self::view($action, $controller);
 		} else {
-			self::end('none controller -> 404//zzz');
+			self::$notFound = true;
+			self::end(404, "$controller controller not found.");
 		}
+	}
+
+	/**
+	 * App::exec //ccc
+	 *
+	 * @param string $controller
+	 * @param string $action
+	 * @param string $module
+	 *
+	 * @since   1.0
+	 */
+	public static function exec($controller = null, $action = null, $module = null)
+	{
+		self::run($controller, $action, $module);
 	}
 
 	public static function parseUrl($url)
@@ -502,7 +517,7 @@ class App
 					if (method_exists($_class_name, '__init')) $_class_name::__init();
 					if (PHP_CACHE) self::phpCache($file, (!$slat ? $_class_name : false));
 					unset($_class_name);
-					if (ACTION_LIB_LOG && self::$controllerRunning) Log::lib(array(
+					if (!self::$notFound && ACTION_LIB_LOG) Log::lib(array(
 						self::$module,
 						self::$controllerRunning,
 						self::$actionRunning
@@ -647,6 +662,9 @@ class App
 				http_response_code($status);
 				echo $__error_header;
 			}
+		} elseif (ACTION_URL_LOG) {
+			File::mkDir(ACTION_LOG_DIR);
+			Log::updateLog(ACTION_LOG_DIR . self::$module . '.' . self::$controllerRunning . '.' . self::$actionRunning . '.urls.txt', CURRENT_URI ? CURRENT_URI : '/');
 		}
 
 		if (ENVIRONMENT != 'Production' && !self::is_ajax_request() && self::contentType('text/html') == 'text/html') {
@@ -655,7 +673,7 @@ class App
 
 			$time[] = explode(' ', microtime());
 			$time[] = explode(' ', MICRO_TIME_NOW);
-			$time = ($time[0][0] - $time[1][0]) + (@$time[0][1] - @$time[1][1]);
+			$time = ($time[0][0] - $time[1][0]) + ($time[0][1] - $time[1][1]);
 			echo '<hr/><div>Run time: ', $time, '</div>';
 			echo '<div>Memory Usage: ', Format::byte(memory_get_usage()), ' | ', Format::byte(memory_get_usage(true)), '</div>';
 			echo '<div>Memory Peak Usage: ', Format::byte(memory_get_peak_usage()), ' | ', Format::byte(memory_get_peak_usage(true)), '</div>';
@@ -683,7 +701,7 @@ class App
 				</script></div>';
 		}
 
-		exit($status);
+		exit;
 	}
 }
 

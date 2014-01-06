@@ -14,7 +14,7 @@ abstract class Controller
     {
         if (method_exists($this, 'defaultAction'))
             $this->defaultAction();
-        else App::end('none action -> 404//zzz');
+        else App::end(404, 'default action not found.');
     }
 
     protected function assign($key, $value = NULL)
@@ -37,6 +37,6 @@ abstract class Controller
         if (App::view_exists($view, $controller, $template))
             App::view($view, $controller, $template, $layout, $type);
         else
-            App::end('none view -> 404//zzz');
+            App::end(404, "$view view not found");
     }
 }
