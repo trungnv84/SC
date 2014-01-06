@@ -1,1 +1,3 @@
 site.home.default
+admin.home.default
+_tools.home.default

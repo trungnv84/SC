@@ -1,2 +1,4 @@
 site.home.default
 site.update.ernameaaa
+admin.home.default
+_tools.home.default

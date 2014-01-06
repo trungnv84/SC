@@ -25,16 +25,16 @@ define('BASE_URL', $_base_url);
 define('CURRENT_URI', $_current_uri);
 define('CURRENT_URL', $_base_url . $_current_uri);
 
-define('PUBLIC_DIR', ROOT_DIR . 'public' . DS);
 define('CORE_DIR', APP_DIR . 'core' . DS);
 define('LIBRARY_DIR', APP_DIR . 'lib' . DS);
-define('CONTROLLER_DIR', APP_DIR . 'controller' . DS);
 define('MODEL_DIR', APP_DIR . 'model' . DS);
+define('PUBLIC_DIR', ROOT_DIR . 'public' . DS);
 define('TEMPLATE_DIR', APP_DIR . 'template' . DS);
+define('CONTROLLER_DIR', APP_DIR . 'controller' . DS);
 
 define('CACHE_DIR', APP_DIR . 'cache' . DS);
-define('PHP_CACHE_DIR', CACHE_DIR . 'php' . DS); //need write permission
 define('DB_CACHE_DIR', CACHE_DIR . 'db' . DS); //need write permission
+define('PHP_CACHE_DIR', CACHE_DIR . 'php' . DS); //need write permission
 
 define('DEFAULT_CSS_DIR', PUBLIC_DIR . 'css' . DS); //need write permission
 define('CSS_CACHE_DIR', DEFAULT_CSS_DIR . 'cache' . DS); //need write permission
@@ -56,8 +56,8 @@ define('ENVIRONMENT', 'Development');
 
 define('PHP_CACHE', false);
 
-define('ACTION_LIB_LOG', true);
-define('ACTION_URL_LOG', true);
+define('ACTION_LIB_LOG', false);
+define('ACTION_URL_LOG', false);
 
 define('APP_LOG_DIR', APP_DIR . 'logs' . DS); //need write permission
 define('ERROR_LOG_DIR', APP_LOG_DIR . 'errors' . DS); //need write permission
