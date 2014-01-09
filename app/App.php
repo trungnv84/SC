@@ -64,6 +64,7 @@ class App
 			if (method_exists($ctrl, $act)) {
 				call_user_func_array(array($ctrl, $act), self::$params);
 			}
+			self::assign(get_object_vars($ctrl));
 			unset($ctrl, $act);
 			if (false !== $template) self::view($action, $controller);
 		} elseif (self::view_exists($action, $controller) && false !== $template) {
@@ -230,7 +231,7 @@ class App
 
 	public static function getVarString($name, $default = null, $hash = null)
 	{
-		$var = self::getVar($name, $default, 'string', $hash);
+		$var = self::getVar($name, $default, 'STRING', $hash);
 		return $var;
 	}
 
