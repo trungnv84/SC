@@ -34,22 +34,22 @@ class HomeController extends Controller
 		/*$user = UserModel::load(array(
 			'condition' => 'id = ?0 AND username LIKE :username:',
 			'bind' => array(1, 'username' => 'ad%')
-		));
+		));*/
+		UserModel::query('SELECT * FROM #__users');
 		UserModel::setFetchMode(DBDriver::FETCH_ARR_OBJ);
-		$user = UserModel::fetchAll();
-		var_dump($user);*/
+		$user = UserModel::fetchAll('SELECT * FROM #__users');
+		var_dump($user);
 
-		//UserModel::query('SELECT * FROM #__users');
 
 		//UserModel::setFetchMode(DBDriver::FETCH_ACT_OBJ);
-		for($i=0; $i<1000; $i++) {
+		/*for($i=0; $i<1000; $i++) {
 			$db =& App::db('Users');
 			$db->setFetchMode(DBDriver::FETCH_ACT_OBJ);
 			$query = $db->getQuery(true);
 			$query->select('username')->from('users')->where('id=1');
 			$user = $db->fetchAll($query, 'username');
 		}
-		var_dump($user);
+		var_dump($user);*/
 
 		/*
 		$filterInput = Joomla\JFilterInput::getInstance();

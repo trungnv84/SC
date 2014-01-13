@@ -21,6 +21,6 @@ class UserModel extends Model
 
 	public static function getSource()
 	{
-		return 'users';
+		return 'Users';
 	}
 }

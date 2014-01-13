@@ -120,7 +120,7 @@ abstract class Model
 
 	public static function getSource()
 	{
-		return strtolower(substr(get_called_class(), 0, -5));
+		return substr(get_called_class(), 0, -5);
 
 	}
 

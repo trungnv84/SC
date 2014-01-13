@@ -214,17 +214,25 @@ class MySql extends DBDriver
 
 	public function fetchAll($query = null, $k = false)
 	{
-		$params = $this->getModelParams();
+		if (is_object($query) && !($query instanceof Joomla\JDatabaseQuery))
+			$query = get_object_vars($query);
 
-		if ($query instanceof Joomla\JDatabaseQuery) {
+		if (is_array($query)) {
+			$qr = $this->getQuery(true);
+			foreach ($query as $key => $v) {
+				call_user_func_array(array($qr, $key), $v);
+			}
+			$query =& $qr;
+		}
+
+		$params = $this->getModelParams();
+		if (is_object($query) && $query instanceof Joomla\JDatabaseQuery) {
 			if (is_null($query->from) && !is_null($params)) {
 				$config =& self::getDbConfig($this->instance, MYSQL_DRIVER_NAME);
 				$query->from($config['dbprefix'] . $params[0]);
 			}
 			$query = $query->__toString();
 		}
-		//zzz elseif(get_object_vars)
-
 
 		if (is_string($query)) $this->query($query);
 
