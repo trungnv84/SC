@@ -5,15 +5,15 @@ class App
 {
 	public static $config;
 	public static $module = DEFAULT_MODULE;
-	public static $controllerRunning;
-	public static $notFound = false;
-	public static $actionRunning;
+	public static $controller;
+	public static $action;
 	public static $phpCacheFile;
+	public static $E404 = false;
 
 	private static $vars = array();
 	private static $params = array();
 	private static $template = DEFAULT_TEMPLATE;
-	private static $view_type = DEFAULT_VIEW_TYPE;
+	private static $viewType = DEFAULT_VIEW_TYPE;
 	private static $layout = DEFAULT_LAYOUT;
 	private static $endEvents = array();
 
@@ -41,8 +41,8 @@ class App
 		if (is_null($action))
 			$action = strtolower(self::getVarName('action', self::$config->defaultAction));
 
-		self::$controllerRunning = $controller;
-		self::$actionRunning = $action;
+		self::$controller = $controller;
+		self::$action = $action;
 
 		if (!is_null($module))
 			self::$module = $module;
@@ -64,13 +64,12 @@ class App
 			if (method_exists($ctrl, $act)) {
 				call_user_func_array(array($ctrl, $act), self::$params);
 			}
-			self::assign(get_object_vars($ctrl));
-			unset($ctrl, $act);
-			if (false !== $template) self::view($action, $controller);
+			if (false !== $template) $ctrl->view($action, $controller);
 		} elseif (self::view_exists($action, $controller) && false !== $template) {
-			self::view($action, $controller);
+			$ctrl = new Controller;
+			$ctrl->view($action, $controller);
 		} else {
-			self::$notFound = true;
+			self::$E404 = true;
 			self::end(404, "$controller controller not found.");
 		}
 	}
@@ -401,18 +400,17 @@ class App
 		return $results[$key];
 	}
 
-	public static function view($__action, $__controller, $__template = null, $__layout = null, $__type = null)
+	public static function view($__action, $__controller, $__template = null, $__layout = null, $__type = null, &$this = null)
 	{
 		if (is_null($__template)) $__template =& self::$template;
 		if (is_null($__layout)) $__layout =& self::$layout;
-		if (is_null($__type)) $__type =& self::$view_type;
+		if (is_null($__type)) $__type =& self::$viewType;
 
-		if (self::view_exists($__action, $__controller, $__template)) {
-			if (isset(self::$vars) && is_array(self::$vars))
-				foreach (self::$vars as $__key => &$__val) $$__key =& $__val;
+		if (isset(self::$vars) && is_array(self::$vars))
+			foreach (self::$vars as $__key => &$__val) $$__key =& $__val;
 
+		if (self::view_exists($__action, $__controller, $__template))
 			require TEMPLATE_DIR . $__template . DS . $__controller . DS . $__action . '.php';
-		}
 
 		if (self::layout_exists($__layout, $__template)) {
 			$__main_html = ob_get_contents();
@@ -432,17 +430,14 @@ class App
 	public static function &db($instance = DB_INSTANCE, $driver = DB_DRIVER_NAME)
 	{
 		static $dbs;
-		if (!$instance) $instance = 'default';
 		if (!isset($dbs[$instance][$driver])) {
 			if (!isset($dbs[$instance])) $dbs[$instance] = array();
-			$key = call_user_func(array($driver, 'getDbKey'), $instance, $driver);
+			$key = call_user_func(array($driver, 'getDriverKey'), $instance, $driver);
 			if (!isset($dbs[$key])) {
 				$dbs[$key] = new $driver($instance);
 			}
 			$dbs[$instance][$driver] =& $dbs[$key];
 		}
-		//zzz xem lai ham nay co cach nao tot hon khong???
-		$dbs[$instance][$driver]->init();
 		return $dbs[$instance][$driver];
 	}
 
@@ -518,10 +513,10 @@ class App
 					if (method_exists($_class_name, '__init')) $_class_name::__init();
 					if (PHP_CACHE) self::phpCache($file, (!$slat ? $_class_name : false));
 					unset($_class_name);
-					if (!self::$notFound && ACTION_LIB_LOG) Log::lib(array(
+					if (!self::$E404 && ACTION_LIB_LOG) Log::lib(array(
 						self::$module,
-						self::$controllerRunning,
-						self::$actionRunning
+						self::$controller,
+						self::$action
 					), $file);
 					break;
 				}
@@ -665,7 +660,7 @@ class App
 			}
 		} elseif (ACTION_URL_LOG) {
 			File::mkDir(ACTION_LOG_DIR);
-			Log::updateLog(ACTION_LOG_DIR . self::$module . '.' . self::$controllerRunning . '.' . self::$actionRunning . '.urls.txt', CURRENT_URI ? CURRENT_URI : '/');
+			Log::updateLog(ACTION_LOG_DIR . self::$module . '.' . self::$controller . '.' . self::$action . '.urls.txt', CURRENT_URI ? CURRENT_URI : '/');
 		}
 
 		if (ENVIRONMENT != 'Production' && !self::is_ajax_request() && self::contentType('text/html') == 'text/html') {

@@ -9,7 +9,7 @@ class UserModel extends Model
 	public $status = 1;
 	public $role;
 
-	public function __construct($target = 'users', $driver = DB_DRIVER_NAME, $pk = DB_OBJECT_KEY)
+	/*public function __construct($target = 'users', $driver = DB_DRIVER_NAME, $pk = DB_OBJECT_KEY)
 	{
 		parent::__construct($target, $driver, $pk);
 	}
@@ -17,9 +17,9 @@ class UserModel extends Model
 	public static function __init($target = 'users', $driver = DB_DRIVER_NAME, $pk = DB_OBJECT_KEY)
 	{
 		parent::init($target, $driver, $pk);
-	}
+	}*/
 
-	public function getSource()
+	public static function getSource()
 	{
 		return 'users';
 	}

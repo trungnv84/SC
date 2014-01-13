@@ -1,7 +1,7 @@
 <?php
 defined('ROOT_DIR') || exit;
-//var_dump($this);
-echo "<div>site:home:default</div>";
+var_dump($this);
+echo "<div>site:home:test</div>";
 ?>
 <ul class="the-icons clearfix">
 	<li><i class="icon-glass"></i> icon-glass</li>

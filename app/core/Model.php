@@ -16,7 +16,7 @@ abstract class Model
 	/*###################################################*/
 	public function __construct($target = null, $driver = DB_DRIVER_NAME, $pk = DB_OBJECT_KEY)
 	{
-		//var_dump($this); kiểm tra việc update các field mới...
+		//var_dump($this); //kiểm tra việc update các field mới...
 		$this->_driver = $driver;
 		$this->_target = (is_null($target) ? static::getSource() : $target);
 		$this->_pk = $pk;
@@ -111,18 +111,22 @@ abstract class Model
 	}
 
 	/*###################################################*/
-	protected static function init($target = null, $driver = DB_DRIVER_NAME, $pk = DB_OBJECT_KEY)
+	public static function __init($target = null, $driver = DB_DRIVER_NAME, $pk = DB_OBJECT_KEY)
 	{
-		self::$_driver = $driver;
-		self::$_target = (is_null($target) ? self::getSource() : $target);
-		self::$_pk = $pk;
+		static::$_driver = $driver;
+		static::$_target = (is_null($target) ? static::getSource() : $target);
+		static::$_pk = $pk;
 	}
 
-	public abstract function getSource();
+	public static function getSource()
+	{
+		return strtolower(substr(get_called_class(), 0, -5));
+
+	}
 
 	public static function getParamsOfInit()
 	{
-		return array(self::$_target, self::$_driver, self::$_pk);
+		return array(static::$_target, static::$_driver, static::$_pk);
 	}
 
 	public static function attributes($name, $value = null)
@@ -139,7 +143,7 @@ abstract class Model
 
 	public static function __callStatic($name, $arguments = array())
 	{
-		$db =& App::db(self::$_target, self::$_driver);
+		$db =& App::db(static::$_target, static::$_driver);
 		$db->active_class(get_called_class());
 		return call_user_func_array(array($db, $name), $arguments);
 	}

@@ -8,7 +8,7 @@ function getFileNameAutoLoad($class_name)
 	if (strpos($class_name, '\\') === 0) $class_name = substr($class_name, 1);
 	$class_name = preg_replace('/(([A-Z][a-zA-Z0-9]+)\\\)|(J?([A-Z][a-z0-9]+))/', '$2$4' . DS, $class_name);
 	$class_name = strtolower(substr($class_name, 0, -1));
-	$class_file = __DIR__ . DS . '..' . DS . $class_name;
+	$class_file = dirname(__FILE__) . DS . '..' . DS . $class_name; //dirname(__FILE__) || __DIR__
 	$adapter_file = $class_file . ADAPTER_FILE_EXT . '.php';
 	if (file_exists($adapter_file)) $class_name .= ADAPTER_FILE_EXT;
 	else {

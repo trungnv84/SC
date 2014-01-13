@@ -1,7 +1,7 @@
 <?php
 defined('ROOT_DIR') || exit;
 
-abstract class Controller
+class Controller
 {
     protected $_name;
 
@@ -31,11 +31,11 @@ abstract class Controller
      * @param string $layout
      * @param string $type
      */
-    protected function view($view, $controller = null, $template = null, $layout = null, $type = null)
+    public function view($view, $controller = null, $template = null, $layout = null, $type = null)
     {
         if (is_null($controller)) $controller = $this->_name;
         if (App::view_exists($view, $controller, $template))
-            App::view($view, $controller, $template, $layout, $type);
+            App::view($view, $controller, $template, $layout, $type, $this);
         else
             App::end(404, "$view view not found");
     }

@@ -1,0 +1,1242 @@
+
+[[2014-01-13 08:35:15 22487217475]]
+
+<pre>object(UserModel)#4 (10) {
+  ["id"]=>
+  string(1) "1"
+  ["username"]=>
+  string(5) "admin"
+  ["password"]=>
+  string(32) "fcea920f7412b5da7be0cf42b8c93759"
+  ["status"]=>
+  int(1)
+  ["role"]=>
+  NULL
+  ["_reflect":protected]=>
+  object(ReflectionClass)#5 (1) {
+    ["name"]=>
+    string(9) "UserModel"
+  }
+  ["_props":protected]=>
+  array(0) {
+  }
+  ["_options":protected]=>
+  array(3) {
+    ["_driver"]=>
+    string(5) "MySql"
+    ["_target"]=>
+    string(5) "users"
+    ["_pk"]=>
+    string(2) "id"
+  }
+  ["group_id"]=>
+  string(1) "0"
+  ["zone"]=>
+  string(1) "0"
+}
+</pre><br />
+<b>Fatal error</b>:  Call to protected method Controller::view() from context 'App' in <b>D:\xampp\htdocs\sc\app\App.php</b> on line <b>68</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to protected method Controller::view() from context 'App'
+    [file] => D:\xampp\htdocs\sc\app\App.php
+    [line] => 68
+)
+</pre>
+[[2014-01-13 08:35:15 22487217475]]
+
+[[2014-01-13 08:41:51 57989510944]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389577311579.9;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre>object(UserModel)#4 (10) {
+  ["id"]=>
+  string(1) "1"
+  ["username"]=>
+  string(5) "admin"
+  ["password"]=>
+  string(32) "fcea920f7412b5da7be0cf42b8c93759"
+  ["status"]=>
+  int(1)
+  ["role"]=>
+  NULL
+  ["_reflect":protected]=>
+  object(ReflectionClass)#5 (1) {
+    ["name"]=>
+    string(9) "UserModel"
+  }
+  ["_props":protected]=>
+  array(0) {
+  }
+  ["_options":protected]=>
+  array(3) {
+    ["_driver"]=>
+    string(5) "MySql"
+    ["_target"]=>
+    string(5) "users"
+    ["_pk"]=>
+    string(2) "id"
+  }
+  ["group_id"]=>
+  string(1) "0"
+  ["zone"]=>
+  string(1) "0"
+}
+</pre><br />
+<b>Notice</b>:  Undefined variable: this in <b>D:\xampp\htdocs\sc\app\template\site\home\default.php</b> on line <b>3</b><br />
+NULL
+<div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Undefined variable: this
+    [file] => D:\xampp\htdocs\sc\app\template\site\home\default.php
+    [line] => 3
+)
+</pre>
+[[2014-01-13 08:41:51 57989510944]]
+
+[[2014-01-13 08:46:34 61069632687]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389577594610.7;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre>object(UserModel)#4 (10) {
+  ["id"]=>
+  string(1) "1"
+  ["username"]=>
+  string(5) "admin"
+  ["password"]=>
+  string(32) "fcea920f7412b5da7be0cf42b8c93759"
+  ["status"]=>
+  int(1)
+  ["role"]=>
+  NULL
+  ["_reflect":protected]=>
+  object(ReflectionClass)#5 (1) {
+    ["name"]=>
+    string(9) "UserModel"
+  }
+  ["_props":protected]=>
+  array(0) {
+  }
+  ["_options":protected]=>
+  array(3) {
+    ["_driver"]=>
+    string(5) "MySql"
+    ["_target"]=>
+    string(5) "users"
+    ["_pk"]=>
+    string(2) "id"
+  }
+  ["group_id"]=>
+  string(1) "0"
+  ["zone"]=>
+  string(1) "0"
+}
+</pre><br />
+<b>Notice</b>:  Undefined variable: this in <b>D:\xampp\htdocs\sc\app\template\site\home\default.php</b> on line <b>3</b><br />
+NULL
+<div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Undefined variable: this
+    [file] => D:\xampp\htdocs\sc\app\template\site\home\default.php
+    [line] => 3
+)
+</pre>
+[[2014-01-13 08:46:34 61069632687]]
+
+[[2014-01-13 09:09:26 28081725593]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389578966280.8;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Warning</b>:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>226</b><br />
+bool(false)
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object(): supplied argument is not a valid MySQL result resource
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 226
+)
+</pre>
+[[2014-01-13 09:09:26 28081725593]]
+
+[[2014-01-13 09:42:10 9623197998]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389580930962.3;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+<br />
+<b>Warning</b>:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>226</b><br />
+bool(false)
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object(): supplied argument is not a valid MySQL result resource
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 226
+)
+</pre>
+[[2014-01-13 09:42:10 9623197998]]
+
+[[2014-01-13 09:43:13 45789424508]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389580993457.9;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+<br />
+<b>Warning</b>:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>226</b><br />
+bool(false)
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object(): supplied argument is not a valid MySQL result resource
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 226
+)
+</pre>
+[[2014-01-13 09:43:13 45789424508]]
+
+[[2014-01-13 09:43:42 62456224991]]
+
+<pre><br />
+<b>Fatal error</b>:  Cannot make non static method Model::getSource() static in class UserModel in <b>D:\xampp\htdocs\sc\app\model\user.model.php</b> on line <b>5</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 64 ()
+    [message] => Cannot make non static method Model::getSource() static in class UserModel
+    [file] => D:\xampp\htdocs\sc\app\model\user.model.php
+    [line] => 5
+)
+</pre>
+[[2014-01-13 09:43:42 62456224991]]
+
+[[2014-01-13 09:44:00 90960813036]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389581040909.6;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Warning</b>:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>226</b><br />
+bool(false)
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object(): supplied argument is not a valid MySQL result resource
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 226
+)
+</pre>
+[[2014-01-13 09:44:00 90960813036]]
+
+[[2014-01-13 09:44:47 85129315173]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389581087851.3;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+<br />
+<b>Warning</b>:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>226</b><br />
+bool(false)
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object(): supplied argument is not a valid MySQL result resource
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 226
+)
+</pre>
+[[2014-01-13 09:44:47 85129315173]]
+
+[[2014-01-13 09:45:39 96827329338]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389581139968.3;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+<br />
+<b>Warning</b>:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>226</b><br />
+bool(false)
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object(): supplied argument is not a valid MySQL result resource
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 226
+)
+</pre>
+[[2014-01-13 09:45:39 96827329338]]
+
+[[2014-01-13 09:47:08 66034626571]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389581228660.3;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+<br />
+<b>Warning</b>:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>226</b><br />
+bool(false)
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object(): supplied argument is not a valid MySQL result resource
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 226
+)
+</pre>
+[[2014-01-13 09:47:08 66034626571]]
+
+[[2014-01-13 09:48:00 10328915272]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389581280103.3;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+<br />
+<b>Warning</b>:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>226</b><br />
+bool(false)
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object(): supplied argument is not a valid MySQL result resource
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 226
+)
+</pre>
+[[2014-01-13 09:48:00 10328915272]]
+
+[[2014-01-13 09:48:00 46631018113]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389581280466.3;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+<br />
+<b>Warning</b>:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>226</b><br />
+bool(false)
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object(): supplied argument is not a valid MySQL result resource
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 226
+)
+</pre>
+[[2014-01-13 09:48:00 46631018113]]
+
+[[2014-01-13 09:48:23 0756037782]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389581303075.6;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+<br />
+<b>Warning</b>:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>226</b><br />
+bool(false)
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object(): supplied argument is not a valid MySQL result resource
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 226
+)
+</pre>
+[[2014-01-13 09:48:23 0756037782]]
+
+[[2014-01-13 09:48:48 31104613735]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389581328311;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+<br />
+<b>Warning</b>:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>226</b><br />
+bool(false)
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object(): supplied argument is not a valid MySQL result resource
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 226
+)
+</pre>
+[[2014-01-13 09:48:48 31104613735]]
+
+[[2014-01-13 09:49:28 97737227220]]
+
+<pre><br />
+<b>Fatal error</b>:  Cannot make non static method Model::getSource() static in class UserModel in <b>D:\xampp\htdocs\sc\app\model\user.model.php</b> on line <b>5</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 64 ()
+    [message] => Cannot make non static method Model::getSource() static in class UserModel
+    [file] => D:\xampp\htdocs\sc\app\model\user.model.php
+    [line] => 5
+)
+</pre>
+[[2014-01-13 09:49:28 97737227220]]
+
+[[2014-01-13 09:54:21 9221283581]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389581661922.1;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+<br />
+<b>Warning</b>:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>226</b><br />
+bool(false)
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object(): supplied argument is not a valid MySQL result resource
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 226
+)
+</pre>
+[[2014-01-13 09:54:21 9221283581]]
+
+[[2014-01-13 09:56:55 07588718101]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389581815075.9;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2048 (E_STRICT)
+    [message] => Static function Model::getSource() should not be abstract
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 121
+)
+</pre>
+[[2014-01-13 09:56:55 07588718101]]
+
+[[2014-01-13 09:58:28 83925029002]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389581908839.2;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>122</b><br />
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2048 (E_STRICT)
+    [message] => Static function Model::getSource() should not be abstract
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 122
+)
+</pre>
+[[2014-01-13 09:58:28 83925029002]]
+
+[[2014-01-13 10:18:10 95886415090]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389583090958.9;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>122</b><br />
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2048 (E_STRICT)
+    [message] => Static function Model::getSource() should not be abstract
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 122
+)
+</pre>
+[[2014-01-13 10:18:10 95886415090]]
+
+[[2014-01-13 10:18:34 6052161347]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389583114605.2;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>122</b><br />
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2048 (E_STRICT)
+    [message] => Static function Model::getSource() should not be abstract
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 122
+)
+</pre>
+[[2014-01-13 10:18:34 6052161347]]
+
+[[2014-01-13 10:20:17 45209922464]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389583217452.1;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2048 (E_STRICT)
+    [message] => Static function Model::getSource() should not be abstract
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 121
+)
+</pre>
+[[2014-01-13 10:20:17 45209922464]]
+
+[[2014-01-13 10:21:31 54333730907]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389583291543.3;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2048 (E_STRICT)
+    [message] => Static function Model::getSource() should not be abstract
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 121
+)
+</pre>
+[[2014-01-13 10:21:31 54333730907]]
+
+[[2014-01-13 10:22:07 7074053321]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389583327707.4;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>123</b><br />
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2048 (E_STRICT)
+    [message] => Static function Model::getSource() should not be abstract
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 123
+)
+</pre>
+[[2014-01-13 10:22:07 7074053321]]
+
+[[2014-01-13 10:23:42 9708544568]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389583422970.9;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2048 (E_STRICT)
+    [message] => Static function Model::getSource() should not be abstract
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 121
+)
+</pre>
+[[2014-01-13 10:23:42 9708544568]]
+
+[[2014-01-13 10:25:10 2598465182]]
+
+<pre><br />
+<b>Fatal error</b>:  Cannot make non static method Model::getSource() static in class UserModel in <b>D:\xampp\htdocs\sc\app\model\user.model.php</b> on line <b>5</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 64 ()
+    [message] => Cannot make non static method Model::getSource() static in class UserModel
+    [file] => D:\xampp\htdocs\sc\app\model\user.model.php
+    [line] => 5
+)
+</pre>
+[[2014-01-13 10:25:10 2598465182]]
+
+[[2014-01-13 10:32:27 76887012959]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389583947768.9;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2048 (E_STRICT)
+    [message] => Static function Model::getSource() should not be abstract
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 121
+)
+</pre>
+[[2014-01-13 10:32:27 76887012959]]
+
+[[2014-01-13 10:35:37 81274012268]]
+
+<pre><br />
+<b>Fatal error</b>:  Cannot call abstract method Model::getSource() in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>122</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Cannot call abstract method Model::getSource()
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 122
+)
+</pre>
+[[2014-01-13 10:35:37 81274012268]]
+
+[[2014-01-13 10:36:06 39637532693]]
+
+<pre><br />
+<b>Fatal error</b>:  Cannot call abstract method Model::getSource() in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>122</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Cannot call abstract method Model::getSource()
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 122
+)
+</pre>
+[[2014-01-13 10:36:06 39637532693]]
+
+[[2014-01-13 10:36:25 11944613898]]
+
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>126</b><br />
+<br />
+<b>Fatal error</b>:  Cannot call abstract method Model::getSource() in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>122</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Cannot call abstract method Model::getSource()
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 122
+)
+</pre>
+[[2014-01-13 10:36:25 11944613898]]
+
+[[2014-01-13 10:37:22 26971522971]]
+
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+<br />
+<b>Fatal error</b>:  Cannot call abstract method Model::getSource() in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>117</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Cannot call abstract method Model::getSource()
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 117
+)
+</pre>
+[[2014-01-13 10:37:22 26971522971]]
+
+[[2014-01-13 10:37:46 74411524280]]
+
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+<br />
+<b>Fatal error</b>:  Cannot call abstract method Model::getSource() in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>117</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Cannot call abstract method Model::getSource()
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 117
+)
+</pre>
+[[2014-01-13 10:37:46 74411524280]]
+
+[[2014-01-13 10:39:13 20306025137]]
+
+<pre><br />
+<b>Strict Standards</b>:  Static function Model::getSource() should not be abstract in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>121</b><br />
+<br />
+<b>Fatal error</b>:  Cannot call abstract method Model::getSource() in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>117</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Cannot call abstract method Model::getSource()
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 117
+)
+</pre>
+[[2014-01-13 10:39:13 20306025137]]
+
+[[2014-01-13 11:33:53 5216836449]]
+
+<pre><br />
+<b>Notice</b>:  Undefined property: MySql::$instance in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>146</b><br />
+<br />
+<b>Notice</b>:  Undefined property: MySql::$instance in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>149</b><br />
+<br />
+<b>Fatal error</b>:  Call to undefined method MySql::getDbKey() in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>31</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to undefined method MySql::getDbKey()
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 31
+)
+</pre>
+[[2014-01-13 11:33:53 5216836449]]
+
+[[2014-01-13 11:35:46 80816322550]]
+
+<pre><br />
+<b>Fatal error</b>:  Call to undefined method MySql::getDbKey() in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>31</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Call to undefined method MySql::getDbKey()
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 31
+)
+</pre>
+[[2014-01-13 11:35:46 80816322550]]
+
+[[2014-01-13 11:48:59 00647427926]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1389588539006.5;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main">
+<pre><br />
+<b>Warning</b>:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>221</b><br />
+bool(false)
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object(): supplied argument is not a valid MySQL result resource
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 221
+)
+</pre>
+[[2014-01-13 11:48:59 00647427926]]
+
+[[2014-01-13 12:06:55 84706626007]]
+
+<pre><br />
+<b>Fatal error</b>:  Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in D:\xampp\htdocs\sc\app\core\MySql.php:174
+Stack trace:
+#0 D:\xampp\htdocs\sc\app\core\MySql.php(174): ArrayObject-&gt;__construct(false, 2)
+#1 D:\xampp\htdocs\sc\app\core\MySql.php(195): MySql-&gt;fetch()
+#2 [internal function]: MySql-&gt;fetchAll()
+#3 D:\xampp\htdocs\sc\app\core\Model.php(148): call_user_func_array(Array, Array)
+#4 D:\xampp\htdocs\sc\app\controller\site\home.controller.php(39): Model::__callStatic('fetchAll', Array)
+#5 D:\xampp\htdocs\sc\app\controller\site\home.controller.php(39): UserModel::fetchAll()
+#6 [internal function]: HomeController-&gt;defaultAction()
+#7 D:\xampp\htdocs\sc\app\App.php(65): call_user_func_array(Array, Array)
+#8 D:\xampp\htdocs\sc\public\index.php(6): App::run()
+#9 {main}
+  thrown in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>174</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 1 (E_ERROR)
+    [message] => Uncaught exception 'InvalidArgumentException' with message 'Passed variable is not an array or object, using empty array instead' in D:\xampp\htdocs\sc\app\core\MySql.php:174
+Stack trace:
+#0 D:\xampp\htdocs\sc\app\core\MySql.php(174): ArrayObject->__construct(false, 2)
+#1 D:\xampp\htdocs\sc\app\core\MySql.php(195): MySql->fetch()
+#2 [internal function]: MySql->fetchAll()
+#3 D:\xampp\htdocs\sc\app\core\Model.php(148): call_user_func_array(Array, Array)
+#4 D:\xampp\htdocs\sc\app\controller\site\home.controller.php(39): Model::__callStatic('fetchAll', Array)
+#5 D:\xampp\htdocs\sc\app\controller\site\home.controller.php(39): UserModel::fetchAll()
+#6 [internal function]: HomeController->defaultAction()
+#7 D:\xampp\htdocs\sc\app\App.php(65): call_user_func_array(Array, Array)
+#8 D:\xampp\htdocs\sc\public\index.php(6): App::run()
+#9 {main}
+  thrown
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 174
+)
+</pre>
+[[2014-01-13 12:06:55 84706626007]]

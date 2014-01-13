@@ -4,11 +4,10 @@ defined('ROOT_DIR') || exit;
 class MySql extends DBDriver
 {
 	private static $connections = array();
-	private static $currentDatabase = array();
+	private static $databases = array();
 
 	private $resource = null;
 	private $last_query = null;
-	private $current_query = null;
 
 	public $bind_marker = '?';
 	public $bind_prefix_marker = ':';
@@ -29,7 +28,7 @@ class MySql extends DBDriver
 		if (!$instance) $instance = 'default';
 		$config =& self::getDbConfig($instance, MYSQL_DRIVER_NAME);
 		if (!isset(self::$connections[$instance])) {
-			$key = self::getDbKey($instance, MYSQL_DRIVER_NAME);
+			$key = self::getDriverKey($instance, MYSQL_DRIVER_NAME);
 			if (!isset(self::$connections[$key])) {
 				if ($config['pconnect']) {
 					self::$connections[$key] = mysql_pconnect($config['hostname'], $config['username'], $config['password']);
@@ -49,11 +48,11 @@ class MySql extends DBDriver
 			}
 			self::$connections[$instance] =& self::$connections[$key];
 		}
-		if (!isset(self::$currentDatabase[$instance]) || self::$currentDatabase[$instance] != $config['database']) {
+		if (!isset(self::$databases[$instance]) || self::$databases[$instance] != $config['database']) {
 			if (!mysql_select_db($config['database'], self::$connections[$instance])) {
 				App::end(500, "Database [$config[database]] not exists");
 			}
-			self::$currentDatabase[$instance] = $config['database'];
+			self::$databases[$instance] = $config['database'];
 		}
 		return self::$connections[$instance];
 	}
@@ -61,11 +60,11 @@ class MySql extends DBDriver
 	public static function select_db($database, $instance = DB_INSTANCE)
 	{
 		if (!$instance) $instance = 'default';
-		if (self::$currentDatabase[$instance] != $database) {
+		if (self::$databases[$instance] != $database) {
 			if (!mysql_select_db($database, self::$connections[$instance])) {
 				App::end(500, "Database [$database] not exists");
 			}
-			self::$currentDatabase[$instance] = $database;
+			self::$databases[$instance] = $database;
 		}
 	}
 
@@ -111,7 +110,7 @@ class MySql extends DBDriver
 			if (function_exists('mysql_real_escape_string') AND is_resource($connection)) {
 				$text = mysql_real_escape_string($text, $connection);
 			} elseif (function_exists('mysql_escape_string')) {
-				$text = mysql_escape_string($text);
+				$text = mysql_real_escape_string($text);
 			} else {
 				$text = addslashes($text);
 			}
@@ -145,12 +144,8 @@ class MySql extends DBDriver
 	public function query($sql)
 	{
 		$config =& self::getDbConfig($this->instance, MYSQL_DRIVER_NAME);
-		if ($config['swap_pre']) {
-			$sql = str_replace($config['swap_pre'], $config['dbprefix'], $sql);
-		}
-
+		if ($config['swap_pre']) $sql = str_replace($config['swap_pre'], $config['dbprefix'], $sql);
 		$this->last_query = $sql;
-
 		$connection =& self::collect($this->instance);
 		$this->resource = mysql_query($sql, $connection);
 		return ($this->resource ? true : false);
@@ -176,7 +171,7 @@ class MySql extends DBDriver
 				break;
 			case self::FETCH_ARR_OBJ:
 				$result = mysql_fetch_assoc($this->resource);
-				$result = new ArrayObject($result, ArrayObject::ARRAY_AS_PROPS);
+				if (is_array($result)) $result = new ArrayObject($result, ArrayObject::ARRAY_AS_PROPS);
 				break;
 			case self::FETCH_ACT_OBJ:
 				if (is_null($this->active_class))
@@ -192,6 +187,13 @@ class MySql extends DBDriver
 				break;
 		}
 		return $result;
+	}
+
+	public function fetchAll($query = null)
+	{
+		$results = array();
+		while ($result = $this->fetch()) $results[] = $result;
+		return $results;
 	}
 
 	public function load($key)

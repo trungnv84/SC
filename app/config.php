@@ -135,7 +135,7 @@ if (DB_INSTANCE) {
 
 /*##########################################################*/
 
-$config->dbKeyIgnores = array(
+$config->driverKeyIgnores = array(
 	MYSQL_DRIVER_NAME => array('database', 'dbprefix', 'swap_pre')
 );
 

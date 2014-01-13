@@ -16,12 +16,11 @@ abstract class DBDriver
 	protected $active_class = null;
 	protected $active_object = null;
 
-	public function __construct($instance = DB_INSTANCE)
-	{
+	public function __construct($instance) {
 		$this->instance = $instance;
 	}
 
-	public static function getDbKey($instance = DB_INSTANCE, $driver = DB_DRIVER_NAME)
+	public static function getDriverKey($instance = DB_INSTANCE, $driver = DB_DRIVER_NAME)
 	{
 		static $keys;
 		if (!$instance) $instance = 'default';
@@ -44,7 +43,7 @@ abstract class DBDriver
 				$config = App::$config->db[$driver];
 			}
 			if (isset(App::$config->dbKeyIgnores[$driver])) {
-				$config = array_diff_key($config, array_flip(App::$config->dbKeyIgnores[$driver]));
+				$config = array_diff_key($config, array_flip(App::$config->driverKeyIgnores[$driver]));
 			}
 			$keys[$instance] = implode('.', $config);
 		}
@@ -82,12 +81,6 @@ abstract class DBDriver
 
 		if ($name) return $configs[$instance][$driver][$name];
 		else return $configs[$instance][$driver];
-	}
-
-	public function init()
-	{
-		$this->active_class = null;
-		$this->active_object = null;
 	}
 
 	public function setFetchMode($mode)
