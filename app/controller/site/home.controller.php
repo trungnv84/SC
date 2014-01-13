@@ -1,4 +1,3 @@
-
 <?php
 defined('ROOT_DIR') || exit;
 
@@ -35,21 +34,19 @@ class HomeController extends Controller
 			'condition' => 'id = ?0 AND username LIKE :username:',
 			'bind' => array(1, 'username' => 'ad%')
 		));*/
-		UserModel::query('SELECT * FROM #__users');
+		//UserModel::query('SELECT * FROM #__users');
 		UserModel::setFetchMode(DBDriver::FETCH_ARR_OBJ);
-		$user = UserModel::fetchAll('SELECT * FROM #__users');
+		$user = UserModel::fetchAll(array('select' => '*', 'from' => '#__users'), true);
 		var_dump($user);
 
 
 		//UserModel::setFetchMode(DBDriver::FETCH_ACT_OBJ);
-		/*for($i=0; $i<1000; $i++) {
-			$db =& App::db('Users');
-			$db->setFetchMode(DBDriver::FETCH_ACT_OBJ);
-			$query = $db->getQuery(true);
-			$query->select('username')->from('users')->where('id=1');
-			$user = $db->fetchAll($query, 'username');
-		}
-		var_dump($user);*/
+		$db =& App::db('Users');
+		$db->setFetchMode(DBDriver::FETCH_ACT_OBJ);
+		$query = $db->getQuery(true);
+		$query->select('username')->from('#__users')->where('id=1');
+		$user = $db->fetchAll($query, 'username');
+		var_dump($user);
 
 		/*
 		$filterInput = Joomla\JFilterInput::getInstance();

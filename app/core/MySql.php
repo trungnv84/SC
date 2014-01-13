@@ -220,7 +220,7 @@ class MySql extends DBDriver
 		if (is_array($query)) {
 			$qr = $this->getQuery(true);
 			foreach ($query as $key => $v) {
-				call_user_func_array(array($qr, $key), $v);
+				call_user_func_array(array($qr, $key), is_array($v) ? $v : array($v));
 			}
 			$query =& $qr;
 		}
