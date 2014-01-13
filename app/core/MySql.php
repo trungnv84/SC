@@ -9,6 +9,8 @@ class MySql extends DBDriver
 	private $resource = null;
 	private $last_query = null;
 
+	protected $nameQuote = '`';
+
 	public $bind_marker = '?';
 	public $bind_prefix_marker = ':';
 	public $bind_suffix_marker = ':';
@@ -92,6 +94,11 @@ class MySql extends DBDriver
 		self::$connections = array();
 	}
 
+	public function getQuery($new = false, $driver = MYSQL_DRIVER_NAME)
+	{
+		return parent::getQuery($new, $driver);
+	}
+
 	/**
 	 * Method to escape a string for usage in an SQL statement.
 	 *
@@ -127,6 +134,20 @@ class MySql extends DBDriver
 		return $text;
 	}
 
+	/**
+	 * Get the common table prefix for the database driver.
+	 *
+	 * @param   string $driver ccc
+	 *
+	 * @return  string  The common database table prefix.
+	 *
+	 * @since   11.1
+	 */
+	public function getPrefix($driver = MYSQL_DRIVER_NAME)
+	{
+		return parent::getPrefix($driver);
+	}
+
 	protected function compile_bind($sql, $bind)
 	{
 		krsort($bind);
@@ -144,18 +165,20 @@ class MySql extends DBDriver
 	public function query($sql)
 	{
 		$config =& self::getDbConfig($this->instance, MYSQL_DRIVER_NAME);
-		if ($config['swap_pre']) $sql = str_replace($config['swap_pre'], $config['dbprefix'], $sql);
+		if ($config['swap_pre']) $sql = $this->replacePrefix($sql, $config['swap_pre'], $config['dbprefix']);
 		$this->last_query = $sql;
 		$connection =& self::collect($this->instance);
 		$this->resource = mysql_query($sql, $connection);
 		return ($this->resource ? true : false);
 	}
 
-	public function fetch($cursor = null)
+	public function fetch($mode = false)
 	{
 		if (is_null($this->resource) || $this->resource === false) return false;
 
-		switch ($this->fetch_mode) {
+		if (!$mode) $mode =& $this->fetch_mode;
+
+		switch ($mode) {
 			case self::FETCH_ASSOC:
 			default:
 				$result = mysql_fetch_assoc($this->resource);
@@ -189,33 +212,51 @@ class MySql extends DBDriver
 		return $result;
 	}
 
-	public function fetchAll($query = null)
+	public function fetchAll($query = null, $k = false)
 	{
+		$params = $this->getModelParams();
+
+		if ($query instanceof Joomla\JDatabaseQuery) {
+			if (is_null($query->from) && !is_null($params)) {
+				$config =& self::getDbConfig($this->instance, MYSQL_DRIVER_NAME);
+				$query->from($config['dbprefix'] . $params[0]);
+			}
+			$query = $query->__toString();
+		}
+		//zzz elseif(get_object_vars)
+
+
+		if (is_string($query)) $this->query($query);
+
+		if ($k === true && isset($params)) $k = $params[2];
+
 		$results = array();
-		while ($result = $this->fetch()) $results[] = $result;
+		while ($result = $this->fetch()) {
+			$key = $k ? (is_array($result) && isset($result[$k]) ? $result[$k] :
+				(is_object($result) && isset($result->$k) ? $result->$k : null)) : null;
+			if (is_null($key)) $results[] = $result; else $results[$key] = $result;
+		}
 		return $results;
 	}
 
 	public function load($key)
 	{
 		if (is_null($this->active_class)) return false;
-		if (!is_null($this->active_object)) {
-			$params = array(@$this->active_object->_target, @$this->active_object->_driver, @$this->active_object->_pk);
-		} else {
-			$params = call_user_func(array($this->active_class, 'getParamsOfInit'));
-		}
+
+		$params = $this->getModelParams();
 
 		$config =& self::getDbConfig($this->instance, MYSQL_DRIVER_NAME);
 		if (is_scalar($key)) {
-			$sql = 'SELECT * FROM ' . $config['dbprefix'] . $params[0] . ' WHERE ' . $params[2] . ' = ' . $this->quote($key) . ' LIMIT 1';
+			$sql = 'SELECT * FROM ' . $config['dbprefix'] . $params[0] . ' WHERE ' . $this->quoteName($params[2]) . ' = ' . $this->quote($key) . ' LIMIT 1';
 			unset($key);
 			$this->query($sql);
 		} else {
-			if (is_resource($key)) return false;
-			if (is_object($key)) $key = get_object_vars($key);
-			if (!isset($key['condition']) || !is_string($key['condition'])) return false;
-
-			$sql = 'SELECT * FROM ' . $config['dbprefix'] . $params[0] . ' WHERE ' . $key['condition'];
+			$sql = 'SELECT * FROM ' . $config['dbprefix'] . $params[0];
+			if (isset($key['condition'])) {
+				if (is_object($key['condition'])) $key['condition'] = get_object_vars($key['condition']);
+				if (is_array($key['condition'])) $key['condition'] = implode(' AND ', $key['condition']);
+				if (is_string($key['condition'])) $sql .= ' WHERE ' . $key['condition'];
+			}
 			if (isset($key['order'])) $sql .= ' ORDER BY ' . $key['order'];
 			if (isset($key['bind'])) $sql = $this->compile_bind($sql, $key['bind']);
 

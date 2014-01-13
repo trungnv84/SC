@@ -1,7 +1,7 @@
 <?php
 defined('ROOT_DIR') || exit;
 
-abstract class DBDriver
+abstract class DBDriver extends Joomla\JDatabaseDriver
 {
 	const FETCH_ASSOC = MYSQL_ASSOC;
 	const FETCH_NUM = MYSQL_NUM;
@@ -12,11 +12,14 @@ abstract class DBDriver
 
 	protected $instance;
 
+	protected $nameQuote;
+
 	protected $fetch_mode = null;
 	protected $active_class = null;
 	protected $active_object = null;
 
-	public function __construct($instance) {
+	public function __construct($instance)
+	{
 		$this->instance = $instance;
 	}
 
@@ -91,13 +94,166 @@ abstract class DBDriver
 	public function active_class($class)
 	{
 		$this->active_object = null;
-		$this->active_class = $class;
+		if (class_exists($class)) $this->active_class = $class;
+		else $this->active_class = null;
 	}
 
 	public function active_object(&$object)
 	{
 		$this->active_object = $object;
 		$this->active_class = get_class($object);
+	}
+
+	protected function getModelParams()
+	{
+		if (!is_null($this->active_object)) {
+			$params = array(@$this->active_object->_target, @$this->active_object->_driver, @$this->active_object->_pk);
+		} elseif (!is_null($this->active_class)) {
+			$params = call_user_func(array($this->active_class, 'getParamsOfInit'));
+		} else $params = null;
+		return $params;
+	}
+
+	/**
+	 * Get the current query object or a new JDatabaseQuery object.
+	 *
+	 * @param   boolean $new    False to return the current query object, True to return a new JDatabaseQuery object.
+	 * @param   string  $driver ccc
+	 *
+	 * @return  JDatabaseQuery  The current query object or a new object extending the JDatabaseQuery class.
+	 *
+	 * @since   11.1
+	 * @throws  RuntimeException
+	 */
+	public function getQuery($new = false, $driver = DB_DRIVER_NAME)
+	{
+		if ($new) {
+			// Derive the class name from the driver.
+			$class = 'Joomla\JDatabaseQuery' . ucfirst(strtolower($driver));
+
+			// Make sure we have a query class for this driver.
+			if (!class_exists($class)) {
+				// If it doesn't exist we are at an impasse so throw an exception.
+				App::end(500, 'Database Query Class not found.');
+			}
+
+			return new $class($this);
+		} else {
+			return $this->sql;
+		}
+	}
+
+	/**
+	 * Returns a PHP date() function compliant date format for the database driver.
+	 *
+	 * @return  string  The format string.
+	 *
+	 * @since   11.1
+	 */
+	public function getDateFormat()
+	{
+		return 'Y-m-d H:i:s';
+	}
+
+	/**
+	 * Get the common table prefix for the database driver.
+	 *
+	 * @param   string $driver ccc
+	 *
+	 * @return  string The common database table prefix.
+	 *
+	 * @since   11.1
+	 */
+	public function getPrefix($driver = DB_DRIVER_NAME)
+	{
+		$config =& self::getDbConfig($this->instance, $driver);
+		return $config['dbprefix'];
+	}
+
+	/**
+	 * Get the null or zero representation of a timestamp for the database driver.
+	 *
+	 * @return  string  Null or zero representation of a timestamp.
+	 *
+	 * @since   11.1
+	 */
+	public function getNullDate()
+	{
+		return $this->nullDate;
+	}
+
+	/**
+	 * Wrap an SQL statement identifier name such as column, table or database names in quotes to prevent injection
+	 * risks and reserved word conflicts.
+	 *
+	 * @param   mixed $name   The identifier name to wrap in quotes, or an array of identifier names to wrap in quotes.
+	 *                        Each type supports dot-notation name.
+	 * @param   mixed $as     The AS query part associated to $name. It can be string or array, in latter case it has to be
+	 *                        same length of $name; if is null there will not be any AS part for string or array element.
+	 *
+	 * @return  mixed  The quote wrapped name, same type of $name.
+	 *
+	 * @since   11.1
+	 */
+	public function quoteName($name, $as = null)
+	{
+		if (is_string($name)) {
+			$quotedName = $this->quoteNameStr(explode('.', $name));
+
+			$quotedAs = '';
+
+			if (!is_null($as)) {
+				settype($as, 'array');
+				$quotedAs .= ' AS ' . $this->quoteNameStr($as);
+			}
+
+			return $quotedName . $quotedAs;
+		} else {
+			$fin = array();
+
+			if (is_null($as)) {
+				foreach ($name as $str) {
+					$fin[] = $this->quoteName($str);
+				}
+			} elseif (is_array($name) && (count($name) == count($as))) {
+				$count = count($name);
+
+				for ($i = 0; $i < $count; $i++) {
+					$fin[] = $this->quoteName($name[$i], $as[$i]);
+				}
+			}
+
+			return $fin;
+		}
+	}
+
+	/**
+	 * Quote strings coming from quoteName call.
+	 *
+	 * @param   array $strArr Array of strings coming from quoteName dot-explosion.
+	 *
+	 * @return  string  Dot-imploded string of quoted parts.
+	 *
+	 * @since 11.3
+	 */
+	protected function quoteNameStr($strArr)
+	{
+		$parts = array();
+		$q = $this->nameQuote;
+
+		foreach ($strArr as $part) {
+			if (is_null($part)) {
+				continue;
+			}
+
+			if (strlen($q) == 1) {
+				$parts[] = $q . $part . $q;
+			} else {
+				$parts[] = $q{0} . $part . $q{1};
+			}
+		}
+
+		return implode('.', $parts);
 	}
 
 	/**
@@ -139,15 +295,104 @@ abstract class DBDriver
 	public abstract function escape($text, $extra = false);
 
 	/**
-	 * Method to fetch a row from the result set cursor
+	 * This function replaces a string identifier <var>$prefix</var> with the string held is the
+	 * <var>tablePrefix</var> class variable.
 	 *
-	 * @param   mixed $cursor The optional result set cursor from which to fetch the row.
+	 * @param   string $sql         The SQL statement to prepare.
+	 * @param   string $prefix      The common table prefix.
+	 * @param   string $tablePrefix The table prefix.
+	 *
+	 * @return  string  The processed SQL statement.
+	 *
+	 * @since   11.1
+	 */
+	public function replacePrefix($sql, $prefix = '#__', $tablePrefix = '')
+	{
+		$startPos = 0;
+		$literal = '';
+
+		$sql = trim($sql);
+		$n = strlen($sql);
+
+		while ($startPos < $n) {
+			$ip = strpos($sql, $prefix, $startPos);
+
+			if ($ip === false) {
+				break;
+			}
+
+			$j = strpos($sql, "'", $startPos);
+			$k = strpos($sql, '"', $startPos);
+
+			if (($k !== false) && (($k < $j) || ($j === false))) {
+				$quoteChar = '"';
+				$j = $k;
+			} else {
+				$quoteChar = "'";
+			}
+
+			if ($j === false) {
+				$j = $n;
+			}
+
+			$literal .= str_replace($prefix, $tablePrefix, substr($sql, $startPos, $j - $startPos));
+			$startPos = $j;
+
+			$j = $startPos + 1;
+
+			if ($j >= $n) {
+				break;
+			}
+
+			// Quote comes first, find end of quote
+			while (true) {
+				$k = strpos($sql, $quoteChar, $j);
+				$escaped = false;
+
+				if ($k === false) {
+					break;
+				}
+				$l = $k - 1;
+
+				while ($l >= 0 && $sql{$l} == '\\') {
+					$l--;
+					$escaped = !$escaped;
+				}
+
+				if ($escaped) {
+					$j = $k + 1;
+					continue;
+				}
+
+				break;
+			}
+
+			if ($k === false) {
+				// Error in the query - no end quote; ignore it
+				break;
+			}
+
+			$literal .= substr($sql, $startPos, $k - $startPos + 1);
+			$startPos = $k + 1;
+		}
+
+		if ($startPos < $n) {
+			$literal .= substr($sql, $startPos, $n - $startPos);
+		}
+
+		return $literal;
+	}
+
+	/**
+	 * Method to fetch a row from the result type
+	 *
+	 * @param   mixed $mode The optional result type from which to fetch the row.
 	 *
 	 * @return mixed
 	 *
 	 * @since 1.0
 	 */
-	public abstract function fetch($cursor = null);
+	public abstract function fetch($mode = false);
 
 	public abstract function load($key);
 }

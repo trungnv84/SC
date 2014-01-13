@@ -438,6 +438,7 @@ class App
 			}
 			$dbs[$instance][$driver] =& $dbs[$key];
 		}
+		$dbs[$instance][$driver]->active_class($instance . 'Model');
 		return $dbs[$instance][$driver];
 	}
 
@@ -470,7 +471,7 @@ class App
 		foreach (self::$config->autoLoadPath as $type => $path) {
 			if ($slat > 0) {
 				$adapter_path = $path . $adapter;
-				if (!isset($_file) && file_exists($adapter_path)) {
+				if (file_exists($adapter_path)) {
 					require_once $adapter_path;
 					$adapter_namespace = $adapter_name . '\\';
 					$_file = $adapter_namespace . 'getFileNameAutoLoad';
@@ -507,7 +508,9 @@ class App
 					$adapter_namespace = $adapter_namespace . 'getClassNameAutoLoad';
 					if (function_exists($adapter_namespace))
 						$_class_name = $adapter_namespace($class_name);
-				} else $_class_name =& $class_name;
+				}
+
+				if (!isset($_class_name)) $_class_name =& $class_name;
 
 				if (class_exists($_class_name)) {
 					if (method_exists($_class_name, '__init')) $_class_name::__init();

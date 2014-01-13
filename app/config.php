@@ -114,7 +114,7 @@ if (DB_INSTANCE) {
 		DB_INSTANCE => $config->db
 	);
 
-	$config->db['users'] = array(
+	$config->db['Users'] = array(
 		MYSQL_DRIVER_NAME => array(
             'hostname' => 'localhost',
             'username' => 'root',
