@@ -174,7 +174,7 @@ class MySql extends DBDriver
 	{
 		if (is_null($this->resource) || $this->resource === false) return false;
 
-		if (!$mode) $mode =& $this->fetch_mode;
+		if (false === $mode) $mode =& $this->fetch_mode;
 
 		switch ($mode) {
 			case self::FETCH_ASSOC:
@@ -210,7 +210,7 @@ class MySql extends DBDriver
 		return $result;
 	}
 
-	public function fetchAll($query = null, $k = false)
+	public function fetchAll($query = null, $mode = false, $k = false)
 	{
 		if (is_object($query) && !($query instanceof Joomla\JDatabaseQuery))
 			$query = get_object_vars($query);
@@ -247,7 +247,7 @@ class MySql extends DBDriver
 		if ($k === true && isset($params)) $k = $params[2];
 
 		$results = array();
-		while ($result = $this->fetch()) {
+		while ($result = $this->fetch($mode)) {
 			$key = $k ? (is_array($result) && isset($result[$k]) ? $result[$k] :
 				(is_object($result) && isset($result->$k) ? $result->$k : null)) : null;
 			if (is_null($key)) $results[] = $result; else $results[$key] = $result;

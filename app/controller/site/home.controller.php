@@ -31,18 +31,18 @@ class HomeController extends Controller
 		));*/
 
 		//UserModel::query('SELECT * FROM #__users');
-		/*UserModel::setFetchMode(DBDriver::FETCH_ARR_OBJ);
-		$user = UserModel::fetchAll(array('select' => '*', 'from' => 'users'), true);
-		var_dump($user);*/
+		//UserModel::setFetchMode(DBDriver::FETCH_ACT_OBJ);
+		$user = UserModel::fetchAll(array('select' => '*', 'from' => 'users'), null, true);
+		var_dump($user);
 
 
 		//UserModel::setFetchMode(DBDriver::FETCH_ACT_OBJ);
-		$db =& App::db('Users');
+		/*$db =& App::db('Users');
 		$db->setFetchMode(DBDriver::FETCH_ACT_OBJ);
 		$query = $db->getQuery();
 		$query->select('username')->from($db->getConfig('dbprefix') . 'users')->where('id=1');
-		$user = $db->fetchAll($query, 'username');
-		var_dump($user);
+		$user = $db->fetchAll($query, null, 'username');
+		var_dump($user);*/
 
 
 		/*
