@@ -1,7 +1,7 @@
 <?php
 defined('ROOT_DIR') || exit;
 
-abstract class DBDriver extends Joomla\JDatabaseDriver
+abstract class DBDriver
 {
 	const FETCH_ASSOC = MYSQL_ASSOC;
 	const FETCH_NUM = MYSQL_NUM;
@@ -86,6 +86,12 @@ abstract class DBDriver extends Joomla\JDatabaseDriver
 		else return $configs[$instance][$driver];
 	}
 
+	public function &getConfig($name = false)
+	{
+		$driver = get_class($this);
+		return self::getDbConfig($this->instance, $driver, $name);
+	}
+
 	public function setFetchMode($mode)
 	{
 		$this->fetch_mode = $mode;
@@ -117,69 +123,31 @@ abstract class DBDriver extends Joomla\JDatabaseDriver
 	/**
 	 * Get the current query object or a new JDatabaseQuery object.
 	 *
-	 * @param   boolean $new    False to return the current query object, True to return a new JDatabaseQuery object.
-	 * @param   string  $driver ccc
-	 *
 	 * @return  JDatabaseQuery  The current query object or a new object extending the JDatabaseQuery class.
 	 *
 	 * @since   11.1
 	 * @throws  RuntimeException
 	 */
-	public function getQuery($new = false, $driver = DB_DRIVER_NAME)
+	public function getQuery()
 	{
-		if ($new) {
-			// Derive the class name from the driver.
-			$class = 'Joomla\JDatabaseQuery' . ucfirst(strtolower($driver));
+		$driver = get_class($this);
 
-			// Make sure we have a query class for this driver.
-			if (!class_exists($class)) {
-				// If it doesn't exist we are at an impasse so throw an exception.
-				App::end(500, 'Database Query Class not found.');
-			}
+		// Derive the class name from the driver.
+		$class = 'Joomla\JDatabaseQuery' . ucfirst(strtolower($driver));
 
-			return new $class($this);
-		} else {
-			return $this->sql;
+		// Make sure we have a query class for this driver.
+		if (!class_exists($class)) {
+			// If it doesn't exist we are at an impasse so throw an exception.
+			App::end(500, 'Database Query Class not found.');
 		}
-	}
 
-	/**
-	 * Returns a PHP date() function compliant date format for the database driver.
-	 *
-	 * @return  string  The format string.
-	 *
-	 * @since   11.1
-	 */
-	public function getDateFormat()
-	{
-		return 'Y-m-d H:i:s';
-	}
+		$driver = 'Joomla\JDatabaseDriver';
 
-	/**
-	 * Get the common table prefix for the database driver.
-	 *
-	 * @param   string $driver ccc
-	 *
-	 * @return  string The common database table prefix.
-	 *
-	 * @since   11.1
-	 */
-	public function getPrefix($driver = DB_DRIVER_NAME)
-	{
+		Fake::import($driver);
+
 		$config =& self::getDbConfig($this->instance, $driver);
-		return $config['dbprefix'];
-	}
 
-	/**
-	 * Get the null or zero representation of a timestamp for the database driver.
-	 *
-	 * @return  string  Null or zero representation of a timestamp.
-	 *
-	 * @since   11.1
-	 */
-	public function getNullDate()
-	{
-		return $this->nullDate;
+		return new $class(new $driver($config, $this->nameQuote));
 	}
 
 	/**

@@ -94,9 +94,9 @@ class MySql extends DBDriver
 		self::$connections = array();
 	}
 
-	public function getQuery($new = false, $driver = MYSQL_DRIVER_NAME)
+	public function getQuery($driver = MYSQL_DRIVER_NAME)
 	{
-		return parent::getQuery($new, $driver);
+		return parent::getQuery($driver);
 	}
 
 	/**
@@ -114,10 +114,8 @@ class MySql extends DBDriver
 		if (is_string($text)) {
 			//$text = mysql_real_escape_string($text, self::collect($this->instance));
 			$connection =& self::collect($this->instance);
-			if (function_exists('mysql_real_escape_string') AND is_resource($connection)) {
-				$text = mysql_real_escape_string($text, $connection);
-			} elseif (function_exists('mysql_escape_string')) {
-				$text = mysql_real_escape_string($text);
+			if (function_exists('mysql_real_escape_string')) {
+				$text = mysql_real_escape_string($text, is_resource($connection) ? $connection : null);
 			} else {
 				$text = addslashes($text);
 			}
@@ -217,9 +215,20 @@ class MySql extends DBDriver
 		if (is_object($query) && !($query instanceof Joomla\JDatabaseQuery))
 			$query = get_object_vars($query);
 
+		$config =& self::getDbConfig($this->instance, MYSQL_DRIVER_NAME);
+
 		if (is_array($query)) {
-			$qr = $this->getQuery(true);
+			$qr = $this->getQuery();
 			foreach ($query as $key => $v) {
+				switch ($key) {
+					case 'insert':
+					case 'update':
+					case 'delete':
+					case 'from':
+						if (false === strpos($v, $config['swap_pre'])) {
+							$v = $config['dbprefix'] . $v;
+						} else $v = str_replace($config['swap_pre'], $config['dbprefix'], $v);
+				}
 				call_user_func_array(array($qr, $key), is_array($v) ? $v : array($v));
 			}
 			$query =& $qr;
@@ -228,7 +237,6 @@ class MySql extends DBDriver
 		$params = $this->getModelParams();
 		if (is_object($query) && $query instanceof Joomla\JDatabaseQuery) {
 			if (is_null($query->from) && !is_null($params)) {
-				$config =& self::getDbConfig($this->instance, MYSQL_DRIVER_NAME);
 				$query->from($config['dbprefix'] . $params[0]);
 			}
 			$query = $query->__toString();

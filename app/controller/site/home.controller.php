@@ -17,9 +17,6 @@ class HomeController extends Controller
 		$data = $user->getData('both');
 		var_dump($data->id, $data['id'], json_encode($data));*/
 
-		/*$rs = UserModel::query('SELECT * FROM users');
-		var_dump(mysql_fetch_row ( $rs ));*/
-
 		//8/0;a
 
 		/*$user =& App::getModel('User');
@@ -28,25 +25,25 @@ class HomeController extends Controller
 		$user = $user->fetch();
 		var_dump($user);*/
 
-		//UserModel::setFetchMode(DBDriver::FETCH_ACT_OBJ);
-		//for($i=0; $i<10; $i++)
 		/*$user = UserModel::load(array(
 			'condition' => 'id = ?0 AND username LIKE :username:',
 			'bind' => array(1, 'username' => 'ad%')
 		));*/
+
 		//UserModel::query('SELECT * FROM #__users');
-		UserModel::setFetchMode(DBDriver::FETCH_ARR_OBJ);
-		$user = UserModel::fetchAll(array('select' => '*', 'from' => '#__users'), true);
-		var_dump($user);
+		/*UserModel::setFetchMode(DBDriver::FETCH_ARR_OBJ);
+		$user = UserModel::fetchAll(array('select' => '*', 'from' => 'users'), true);
+		var_dump($user);*/
 
 
 		//UserModel::setFetchMode(DBDriver::FETCH_ACT_OBJ);
 		$db =& App::db('Users');
 		$db->setFetchMode(DBDriver::FETCH_ACT_OBJ);
-		$query = $db->getQuery(true);
-		$query->select('username')->from('#__users')->where('id=1');
+		$query = $db->getQuery();
+		$query->select('username')->from($db->getConfig('dbprefix') . 'users')->where('id=1');
 		$user = $db->fetchAll($query, 'username');
 		var_dump($user);
+
 
 		/*
 		$filterInput = Joomla\JFilterInput::getInstance();
