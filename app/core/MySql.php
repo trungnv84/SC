@@ -228,6 +228,9 @@ class MySql extends DBDriver
 						if (false === strpos($v, $config['swap_pre'])) {
 							$v = $config['dbprefix'] . $v;
 						} else $v = str_replace($config['swap_pre'], $config['dbprefix'], $v);
+						break;
+					case 'limit':
+						$key = 'setLimit';
 				}
 				call_user_func_array(array($qr, $key), is_array($v) ? $v : array($v));
 			}
@@ -283,6 +286,11 @@ class MySql extends DBDriver
 		}
 
 		return mysql_fetch_object($this->resource, $this->active_class, $params);
+	}
+
+	public function insert($data)
+	{
+		
 	}
 
 	/*public function find()
