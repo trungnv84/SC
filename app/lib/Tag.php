@@ -16,7 +16,7 @@ class Tag
 	private static $html_css = array();
 	private static $html_js = array();
 	private static $html_footer_js = array();
-	private static $html_dynamic_js = array(4 => '', 8 => '', 16 => '', 32 => '');
+	private static $html_dynamic_assets = array(1 => '', 2 => '', 4 => '', 8 => '', 16 => '', 32 => '');
 
 	public static function setHtmlTitle($title)
 	{
@@ -69,9 +69,20 @@ class Tag
 		self::addAsset($js, 'footer_js', $key, $overwrite);
 	}
 
+	public static function addDynamicAsset($asset, $pos)
+	{
+		if (isset(self::$html_dynamic_assets[$pos]))
+			self::$html_dynamic_assets[$pos] .= $asset;
+	}
+
+	public static function addDynamicCSS($css, $pos)
+	{
+		self::addDynamicAsset($css, $pos);
+	}
+
 	public static function addDynamicJS($js, $pos)
 	{
-		self::$html_dynamic_js[$pos] .= $js;
+		self::addDynamicAsset($js, $pos);
 	}
 
 	public static function unShiftCSS($css, $key = false, $overwrite = false)
@@ -121,6 +132,12 @@ class Tag
 				$html .= $metaTag . "\n";
 			unset($metaTag);
 		}
+
+		if (self::$html_dynamic_assets[self::BEFORE_HEADER_CSS]) {
+			$html .= "<style type=\"text/css\">\n" .
+				self::$html_dynamic_assets[self::BEFORE_HEADER_CSS] . "\n</style>\n";
+		}
+
 		if (sizeof(self::$html_css)) {
 			if (ASSETS_OPTIMIZATION & 1) {
 				$maxTime = 0;
@@ -216,18 +233,23 @@ class Tag
 			}
 		}
 
-		if (self::$html_dynamic_js[self::BEFORE_HEADER_JS]) {
+		if (self::$html_dynamic_assets[self::AFTER_HEADER_CSS]) {
+			$html .= "<style type=\"text/css\">\n" .
+				self::$html_dynamic_assets[self::AFTER_HEADER_CSS] . "\n</style>\n";
+		}
+
+		if (self::$html_dynamic_assets[self::BEFORE_HEADER_JS]) {
 			$html .= "<script type=\"text/javascript\" language=\"javascript\">\n"
-				. self::$html_dynamic_js[self::BEFORE_HEADER_JS] . "\n</script>\n";
+				. self::$html_dynamic_assets[self::BEFORE_HEADER_JS] . "\n</script>\n";
 		}
 
 		if (sizeof(self::$html_js)) {
 			$html .= self::getJSHtml(self::$html_js);
 		}
 
-		if (self::$html_dynamic_js[self::AFTER_HEADER_JS]) {
+		if (self::$html_dynamic_assets[self::AFTER_HEADER_JS]) {
 			$html .= "<script type=\"text/javascript\" language=\"javascript\">\n"
-				. self::$html_dynamic_js[self::AFTER_HEADER_JS] . "\n</script>\n";
+				. self::$html_dynamic_assets[self::AFTER_HEADER_JS] . "\n</script>\n";
 		}
 
 		return $html;
@@ -235,16 +257,16 @@ class Tag
 
 	public static function getHtmlFooter()
 	{
-		if (self::$html_dynamic_js[self::BEFORE_FOOTER_JS]) {
+		if (self::$html_dynamic_assets[self::BEFORE_FOOTER_JS]) {
 			$html = "<script type=\"text/javascript\" language=\"javascript\">\n"
-				. self::$html_dynamic_js[self::BEFORE_FOOTER_JS] . "\n</script>\n";
+				. self::$html_dynamic_assets[self::BEFORE_FOOTER_JS] . "\n</script>\n";
 		} else $html = '';
 
 		$html .= self::getJSHtml(self::$html_footer_js);
 
-		if (self::$html_dynamic_js[self::AFTER_FOOTER_JS]) {
+		if (self::$html_dynamic_assets[self::AFTER_FOOTER_JS]) {
 			$html .= "<script type=\"text/javascript\" language=\"javascript\">\n"
-				. self::$html_dynamic_js[self::AFTER_FOOTER_JS] . "\n</script>\n";
+				. self::$html_dynamic_assets[self::AFTER_FOOTER_JS] . "\n</script>\n";
 		}
 
 		return $html;

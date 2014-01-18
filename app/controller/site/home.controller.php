@@ -25,19 +25,23 @@ class HomeController extends Controller
 		$user = $user->fetch();
 		var_dump($user);*/
 
+		/*$user = new UserModel;
+		var_dump($user);*/
+
 		/*$user = UserModel::load(array(
 			'condition' => 'id = ?0 AND username LIKE :username:',
-			'bind' => array(1, 'username' => 'ad%')
-		));*/
+			'bind' => array(2, 'username' => 'ad%')
+		));
+		$user->load(10);
+		var_dump($user);*/
 
 		//UserModel::query('SELECT * FROM #__users');
 		//UserModel::setFetchMode(DBDriver::FETCH_ACT_OBJ);
 		/*$user = UserModel::fetchAll(array('select' => '*', 'from' => 'users'), null, true);
 		var_dump($user);*/
 
-
 		//UserModel::setFetchMode(DBDriver::FETCH_ACT_OBJ);
-		$db =& App::db('Users');
+		/*$db =& App::db('Users');
 		$db->setFetchMode(DBDriver::FETCH_ACT_OBJ);
 		$query = $db->getQuery();
 		$query->select(array('id', 'username'))
@@ -45,6 +49,11 @@ class HomeController extends Controller
 			->where(array('username = ' . $db->quote('admin')))
 			->setLimit(1, 1);
 		$user = $db->fetchAll($query, null, true);
+		var_dump($user);*/
+
+		$db =& App::db('Users');
+		$db->setFetchMode(DBDriver::FETCH_ACT_OBJ);
+		$user = $db->fetchAll(array('select' => '*', 'from' => 'users'), null, 'id');
 		var_dump($user);
 
 
@@ -64,5 +73,8 @@ class HomeController extends Controller
 		print_r(headers_list());*/
 
 		echo '</pre>';
+
+		Tag::addDynamicJS('console.log(new Date(SERVER_TIME_NOW));', Tag::AFTER_FOOTER_JS);
+
 	}
 }

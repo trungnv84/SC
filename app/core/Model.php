@@ -17,6 +17,15 @@ abstract class Model
 	public function __construct($target = null, $driver = DB_DRIVER_NAME, $pk = DB_OBJECT_KEY)
 	{
 		//var_dump($this); //kiểm tra việc update các field mới...
+		$fields = $this->_reflect()->getProperties(ReflectionProperty::IS_PUBLIC);
+		$defaultValues = array();
+		foreach ($fields as $field) {
+			$name = $field->getName();
+			$defaultValues[$name] = $this->$name;
+		}
+		unset($fields);
+		$this->properties('defaultValues', $defaultValues);
+
 		$this->_driver = $driver;
 		$this->_target = (is_null($target) ? static::getSource() : $target);
 		$this->_pk = $pk;
@@ -83,6 +92,18 @@ abstract class Model
 				return isset($this->_options[$name]);
 			}
 		return isset($this->$name);
+	}
+
+	public function renewData()
+	{
+		$fields = $this->_reflect()->getProperties(ReflectionProperty::IS_PUBLIC);
+		$defaultValues = get_class_vars(get_class($this));
+		foreach ($fields as $field) {
+			$name = $field->getName();
+			if (array_key_exists($name, $defaultValues))
+				$this->$name = $defaultValues[$name];
+			else unset($this->$name);
+		}
 	}
 
 	// them get all public properties of object

@@ -1,0 +1,678 @@
+
+[[2014-01-18 09:17:12 33319514245]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1390011432333.2;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main"><pre><br />
+<b>Notice</b>:  Undefined offset: 1 in <b>D:\xampp\htdocs\sc\app\lib\Tag.php</b> on line <b>74</b><br />
+array(1) {
+  [0]=>
+  array(2) {
+    ["id"]=>
+    string(1) "2"
+    ["username"]=>
+    string(5) "admin"
+  }
+}
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div></body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Undefined offset: 1
+    [file] => D:\xampp\htdocs\sc\app\lib\Tag.php
+    [line] => 74
+)
+</pre>
+[[2014-01-18 09:17:12 33319514245]]
+
+[[2014-01-18 09:56:43 92384326630]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1390013803923.8;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main"><pre><br />
+<b>Warning</b>:  mysql_fetch_object() expects parameter 2 to be string, object given in <b>D:\xampp\htdocs\sc\app\core\MySql.php</b> on line <b>296</b><br />
+object(UserModel)#4 (11) {
+  ["id"]=>
+  string(1) "2"
+  ["username"]=>
+  string(5) "admin"
+  ["password"]=>
+  string(32) "fcea920f7412b5da7be0cf42b8c93759"
+  ["status"]=>
+  int(1)
+  ["role"]=>
+  NULL
+  ["_reflect":protected]=>
+  object(ReflectionClass)#5 (1) {
+    ["name"]=>
+    string(9) "UserModel"
+  }
+  ["_props":protected]=>
+  array(0) {
+  }
+  ["_options":protected]=>
+  array(3) {
+    ["_driver"]=>
+    string(5) "MySql"
+    ["_target"]=>
+    string(5) "Users"
+    ["_pk"]=>
+    string(2) "id"
+  }
+  ["group_id"]=>
+  string(1) "0"
+  ["zone"]=>
+  string(1) "0"
+  ["name"]=>
+  string(15) "Thu Thay Đổi"
+}
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div><script type="text/javascript" language="javascript">
+console.log(new Date(SERVER_TIME_NOW));
+</script>
+</body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => mysql_fetch_object() expects parameter 2 to be string, object given
+    [file] => D:\xampp\htdocs\sc\app\core\MySql.php
+    [line] => 296
+)
+</pre>
+[[2014-01-18 09:56:43 92384326630]]
+
+[[2014-01-18 10:07:22 52336820167]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1390014442523.4;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main"><pre>array(5) {
+  [0]=>
+  &object(ReflectionProperty)#8 (2) {
+    ["name"]=>
+    string(2) "id"
+    ["class"]=>
+    string(9) "UserModel"
+  }
+  [1]=>
+  &object(ReflectionProperty)#7 (2) {
+    ["name"]=>
+    string(8) "username"
+    ["class"]=>
+    string(9) "UserModel"
+  }
+  [2]=>
+  &object(ReflectionProperty)#6 (2) {
+    ["name"]=>
+    string(8) "password"
+    ["class"]=>
+    string(9) "UserModel"
+  }
+  [3]=>
+  &object(ReflectionProperty)#9 (2) {
+    ["name"]=>
+    string(6) "status"
+    ["class"]=>
+    string(9) "UserModel"
+  }
+  [4]=>
+  &object(ReflectionProperty)#10 (2) {
+    ["name"]=>
+    string(4) "role"
+    ["class"]=>
+    string(9) "UserModel"
+  }
+}
+<br />
+<b>Warning</b>:  ReflectionProperty::setValue() expects exactly 2 parameters, 1 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>93</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::setValue() expects exactly 2 parameters, 1 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>93</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::setValue() expects exactly 2 parameters, 1 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>93</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::setValue() expects exactly 2 parameters, 1 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>93</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::setValue() expects exactly 2 parameters, 1 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>93</b><br />
+object(UserModel)#4 (10) {
+  ["id"]=>
+  string(1) "2"
+  ["username"]=>
+  string(5) "admin"
+  ["password"]=>
+  string(32) "fcea920f7412b5da7be0cf42b8c93759"
+  ["status"]=>
+  int(1)
+  ["role"]=>
+  NULL
+  ["_reflect":protected]=>
+  object(ReflectionClass)#5 (1) {
+    ["name"]=>
+    string(9) "UserModel"
+  }
+  ["_props":protected]=>
+  array(0) {
+  }
+  ["_options":protected]=>
+  array(3) {
+    ["_driver"]=>
+    string(5) "MySql"
+    ["_target"]=>
+    string(5) "Users"
+    ["_pk"]=>
+    string(2) "id"
+  }
+  ["group_id"]=>
+  string(1) "0"
+  ["zone"]=>
+  string(1) "0"
+}
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div><script type="text/javascript" language="javascript">
+console.log(new Date(SERVER_TIME_NOW));
+</script>
+</body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => ReflectionProperty::setValue() expects exactly 2 parameters, 1 given
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 93
+)
+</pre>
+[[2014-01-18 10:07:22 52336820167]]
+
+[[2014-01-18 10:07:24 38547523796]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1390014444385.5;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main"><pre>array(5) {
+  [0]=>
+  &object(ReflectionProperty)#8 (2) {
+    ["name"]=>
+    string(2) "id"
+    ["class"]=>
+    string(9) "UserModel"
+  }
+  [1]=>
+  &object(ReflectionProperty)#7 (2) {
+    ["name"]=>
+    string(8) "username"
+    ["class"]=>
+    string(9) "UserModel"
+  }
+  [2]=>
+  &object(ReflectionProperty)#6 (2) {
+    ["name"]=>
+    string(8) "password"
+    ["class"]=>
+    string(9) "UserModel"
+  }
+  [3]=>
+  &object(ReflectionProperty)#9 (2) {
+    ["name"]=>
+    string(6) "status"
+    ["class"]=>
+    string(9) "UserModel"
+  }
+  [4]=>
+  &object(ReflectionProperty)#10 (2) {
+    ["name"]=>
+    string(4) "role"
+    ["class"]=>
+    string(9) "UserModel"
+  }
+}
+<br />
+<b>Warning</b>:  ReflectionProperty::setValue() expects exactly 2 parameters, 1 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>93</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::setValue() expects exactly 2 parameters, 1 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>93</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::setValue() expects exactly 2 parameters, 1 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>93</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::setValue() expects exactly 2 parameters, 1 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>93</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::setValue() expects exactly 2 parameters, 1 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>93</b><br />
+object(UserModel)#4 (10) {
+  ["id"]=>
+  string(1) "2"
+  ["username"]=>
+  string(5) "admin"
+  ["password"]=>
+  string(32) "fcea920f7412b5da7be0cf42b8c93759"
+  ["status"]=>
+  int(1)
+  ["role"]=>
+  NULL
+  ["_reflect":protected]=>
+  object(ReflectionClass)#5 (1) {
+    ["name"]=>
+    string(9) "UserModel"
+  }
+  ["_props":protected]=>
+  array(0) {
+  }
+  ["_options":protected]=>
+  array(3) {
+    ["_driver"]=>
+    string(5) "MySql"
+    ["_target"]=>
+    string(5) "Users"
+    ["_pk"]=>
+    string(2) "id"
+  }
+  ["group_id"]=>
+  string(1) "0"
+  ["zone"]=>
+  string(1) "0"
+}
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div><script type="text/javascript" language="javascript">
+console.log(new Date(SERVER_TIME_NOW));
+</script>
+</body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => ReflectionProperty::setValue() expects exactly 2 parameters, 1 given
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 93
+)
+</pre>
+[[2014-01-18 10:07:24 38547523796]]
+
+[[2014-01-18 10:17:03 76961410106]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1390015023769.6;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main"><pre><br />
+<b>Warning</b>:  ReflectionProperty::getValue() expects exactly 1 parameter, 0 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>22</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::getValue() expects exactly 1 parameter, 0 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>22</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::getValue() expects exactly 1 parameter, 0 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>22</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::getValue() expects exactly 1 parameter, 0 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>22</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::getValue() expects exactly 1 parameter, 0 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>22</b><br />
+object(UserModel)#3 (8) {
+  ["id"]=>
+  NULL
+  ["username"]=>
+  NULL
+  ["password"]=>
+  NULL
+  ["status"]=>
+  int(1)
+  ["role"]=>
+  NULL
+  ["_reflect":protected]=>
+  object(ReflectionClass)#4 (1) {
+    ["name"]=>
+    string(9) "UserModel"
+  }
+  ["_props":protected]=>
+  array(1) {
+    ["defaultValues"]=>
+    array(0) {
+    }
+  }
+  ["_options":protected]=>
+  array(3) {
+    ["_driver"]=>
+    string(5) "MySql"
+    ["_target"]=>
+    string(5) "Users"
+    ["_pk"]=>
+    string(2) "id"
+  }
+}
+<br />
+<b>Warning</b>:  ReflectionProperty::getValue() expects exactly 1 parameter, 0 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>22</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::getValue() expects exactly 1 parameter, 0 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>22</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::getValue() expects exactly 1 parameter, 0 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>22</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::getValue() expects exactly 1 parameter, 0 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>22</b><br />
+<br />
+<b>Warning</b>:  ReflectionProperty::getValue() expects exactly 1 parameter, 0 given in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>22</b><br />
+object(UserModel)#8 (10) {
+  ["id"]=>
+  NULL
+  ["username"]=>
+  NULL
+  ["password"]=>
+  NULL
+  ["status"]=>
+  NULL
+  ["role"]=>
+  NULL
+  ["_reflect":protected]=>
+  object(ReflectionClass)#7 (1) {
+    ["name"]=>
+    string(9) "UserModel"
+  }
+  ["_props":protected]=>
+  array(1) {
+    ["defaultValues"]=>
+    array(0) {
+    }
+  }
+  ["_options":protected]=>
+  array(3) {
+    ["_driver"]=>
+    string(5) "MySql"
+    ["_target"]=>
+    string(5) "Users"
+    ["_pk"]=>
+    string(2) "id"
+  }
+  ["group_id"]=>
+  string(1) "0"
+  ["zone"]=>
+  string(1) "0"
+}
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div><script type="text/javascript" language="javascript">
+console.log(new Date(SERVER_TIME_NOW));
+</script>
+</body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 2 (E_WARNING)
+    [message] => ReflectionProperty::getValue() expects exactly 1 parameter, 0 given
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 22
+)
+</pre>
+[[2014-01-18 10:17:03 76961410106]]
+
+[[2014-01-18 10:21:24 4705257197]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1390015284470.5;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main"><pre><br />
+<b>Notice</b>:  Only variable references should be returned by reference in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>55</b><br />
+object(UserModel)#3 (8) {
+  ["id"]=>
+  NULL
+  ["username"]=>
+  NULL
+  ["password"]=>
+  NULL
+  ["status"]=>
+  int(1)
+  ["role"]=>
+  NULL
+  ["_reflect":protected]=>
+  object(ReflectionClass)#4 (1) {
+    ["name"]=>
+    string(9) "UserModel"
+  }
+  ["_props":protected]=>
+  array(1) {
+    ["defaultValues"]=>
+    array(0) {
+    }
+  }
+  ["_options":protected]=>
+  array(3) {
+    ["_driver"]=>
+    string(5) "MySql"
+    ["_target"]=>
+    string(5) "Users"
+    ["_pk"]=>
+    string(2) "id"
+  }
+}
+<br />
+<b>Notice</b>:  Only variable references should be returned by reference in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>55</b><br />
+object(UserModel)#8 (5) {
+  ["_reflect":protected]=>
+  object(ReflectionClass)#7 (1) {
+    ["name"]=>
+    string(9) "UserModel"
+  }
+  ["_props":protected]=>
+  array(1) {
+    ["defaultValues"]=>
+    array(0) {
+    }
+  }
+  ["_options":protected]=>
+  array(3) {
+    ["_driver"]=>
+    string(5) "MySql"
+    ["_target"]=>
+    string(5) "Users"
+    ["_pk"]=>
+    string(2) "id"
+  }
+  ["group_id"]=>
+  string(1) "0"
+  ["zone"]=>
+  string(1) "0"
+}
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div><script type="text/javascript" language="javascript">
+console.log(new Date(SERVER_TIME_NOW));
+</script>
+</body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Only variable references should be returned by reference
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 55
+)
+</pre>
+[[2014-01-18 10:21:24 4705257197]]
+
+[[2014-01-18 10:24:31 70323411051]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1390015471703.2;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main"><pre><br />
+<b>Notice</b>:  Undefined index: id in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>103</b><br />
+<br />
+<b>Notice</b>:  Undefined index: id in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>104</b><br />
+<br />
+<b>Notice</b>:  Undefined index: username in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>103</b><br />
+<br />
+<b>Notice</b>:  Undefined index: username in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>104</b><br />
+<br />
+<b>Notice</b>:  Undefined index: password in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>103</b><br />
+<br />
+<b>Notice</b>:  Undefined index: password in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>104</b><br />
+<br />
+<b>Notice</b>:  Undefined index: status in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>103</b><br />
+<br />
+<b>Notice</b>:  Undefined index: status in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>104</b><br />
+<br />
+<b>Notice</b>:  Undefined index: role in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>103</b><br />
+<br />
+<b>Notice</b>:  Undefined index: role in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>104</b><br />
+object(UserModel)#4 (10) {
+  ["id"]=>
+  NULL
+  ["username"]=>
+  NULL
+  ["password"]=>
+  NULL
+  ["status"]=>
+  NULL
+  ["role"]=>
+  NULL
+  ["_reflect":protected]=>
+  object(ReflectionClass)#5 (1) {
+    ["name"]=>
+    string(9) "UserModel"
+  }
+  ["_props":protected]=>
+  array(1) {
+    ["defaultValues"]=>
+    array(0) {
+    }
+  }
+  ["_options":protected]=>
+  array(3) {
+    ["_driver"]=>
+    string(5) "MySql"
+    ["_target"]=>
+    string(5) "Users"
+    ["_pk"]=>
+    string(2) "id"
+  }
+  ["group_id"]=>
+  string(1) "0"
+  ["zone"]=>
+  string(1) "0"
+}
+</pre><div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div><script type="text/javascript" language="javascript">
+console.log(new Date(SERVER_TIME_NOW));
+</script>
+</body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Undefined index: role
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 104
+)
+</pre>
+[[2014-01-18 10:24:31 70323411051]]
+
+[[2014-01-18 10:26:07 36370632402]]
+<pre><br />
+<b>Parse error</b>:  syntax error, unexpected '$this' (T_VARIABLE) in <b>D:\xampp\htdocs\sc\app\core\Model.php</b> on line <b>30</b><br />
+
+<pre><hr/>Last error:
+Array
+(
+    [type] => 4 (E_PARSE)
+    [message] => syntax error, unexpected '$this' (T_VARIABLE)
+    [file] => D:\xampp\htdocs\sc\app\core\Model.php
+    [line] => 30
+)
+</pre>
+[[2014-01-18 10:26:07 36370632402]]

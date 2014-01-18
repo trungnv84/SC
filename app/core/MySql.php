@@ -7,7 +7,7 @@ class MySql extends DBDriver
 	private static $databases = array();
 
 	private $resource = null;
-	private $last_query = null;
+	private $queries = array();
 
 	protected $nameQuote = '`';
 
@@ -164,17 +164,17 @@ class MySql extends DBDriver
 	{
 		$config =& self::getDbConfig($this->instance, MYSQL_DRIVER_NAME);
 		if ($config['swap_pre']) $sql = $this->replacePrefix($sql, $config['swap_pre'], $config['dbprefix']);
-		$this->last_query = $sql;
+		$this->queries[] = $sql;
 		$connection =& self::collect($this->instance);
 		$this->resource = mysql_query($sql, $connection);
 		return ($this->resource ? true : false);
 	}
 
-	public function fetch($mode = false)
+	public function fetch($mode = null)
 	{
 		if (is_null($this->resource) || $this->resource === false) return false;
 
-		if (false === $mode) $mode =& $this->fetch_mode;
+		if (is_null($mode)) $mode =& $this->fetch_mode;
 
 		switch ($mode) {
 			case self::FETCH_ASSOC:
@@ -210,7 +210,7 @@ class MySql extends DBDriver
 		return $result;
 	}
 
-	public function fetchAll($query = null, $mode = false, $k = false)
+	public function fetchAll($query = null, $mode = null, $k = false)
 	{
 		if (is_object($query) && !($query instanceof Joomla\JDatabaseQuery))
 			$query = get_object_vars($query);
@@ -258,6 +258,11 @@ class MySql extends DBDriver
 		return $results;
 	}
 
+	public function getList($query, $mode = null, $k = false)
+	{
+		return $this->fetchAll($query, $mode, $k);
+	}
+
 	public function load($key)
 	{
 		if (is_null($this->active_class)) return false;
@@ -281,16 +286,24 @@ class MySql extends DBDriver
 
 			$sql .= ' LIMIT 1';
 
-			unset($key);
 			$this->query($sql);
 		}
 
-		return mysql_fetch_object($this->resource, $this->active_class, $params);
+		if (is_null($this->active_object)) {
+			return mysql_fetch_object($this->resource, $this->active_class, $params);
+		} else {
+			$item = mysql_fetch_assoc($this->resource);
+			if ($item) {
+				foreach ($item as $key => $params)
+					$this->active_object->$key = $params;
+			} else $this->active_object->renewData();
+			return $this->active_object;
+		}
 	}
 
 	public function insert($data)
 	{
-
+		
 	}
 
 	/*public function find()

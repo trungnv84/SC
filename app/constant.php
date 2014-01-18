@@ -5,7 +5,7 @@ define('MICRO_TIME_NOW', microtime());
 define('TIME_NOW', time());
 
 define('DS', DIRECTORY_SEPARATOR);
-define('APP_DIR', dirname(__FILE__) . DS); //dirname(__FILE__) || __DIR__
+define('APP_DIR', __DIR__ . DS); //dirname(__FILE__) || __DIR__
 define('ROOT_DIR', substr(APP_DIR, 0, 1 + strrpos(APP_DIR, DS, -2)));
 
 if (isset($_SERVER['HTTP_HOST'])) {
