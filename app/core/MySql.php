@@ -290,7 +290,7 @@ class MySql extends DBDriver
 
 	public function insert($data)
 	{
-		
+
 	}
 
 	/*public function find()
