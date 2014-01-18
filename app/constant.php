@@ -56,9 +56,6 @@ define('ENVIRONMENT', 'Development');
 
 define('PHP_CACHE', false);
 
-define('ACTION_LIB_LOG', false);
-define('ACTION_URL_LOG', false);
-
 define('APP_LOG_DIR', APP_DIR . 'logs' . DS); //need write permission
 define('ERROR_LOG_DIR', APP_LOG_DIR . 'errors' . DS); //need write permission
 define('ACTION_LOG_DIR', APP_LOG_DIR . 'actions' . DS); //need write permission

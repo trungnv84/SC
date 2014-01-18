@@ -515,12 +515,6 @@ class App
 				if (class_exists($_class_name)) {
 					if (method_exists($_class_name, '__init')) $_class_name::__init();
 					if (PHP_CACHE) self::phpCache($file, (!$slat ? $_class_name : false));
-					unset($_class_name);
-					if (!self::$E404 && ACTION_LIB_LOG) Log::lib(array(
-						self::$module,
-						self::$controller,
-						self::$action
-					), $file);
 					break;
 				}
 			}
@@ -661,9 +655,6 @@ class App
 				http_response_code($status);
 				echo $__error_header;
 			}
-		} elseif (ACTION_URL_LOG) {
-			File::mkDir(ACTION_LOG_DIR);
-			Log::updateLog(ACTION_LOG_DIR . self::$module . '.' . self::$controller . '.' . self::$action . '.urls.txt', CURRENT_URI ? CURRENT_URI : '/');
 		}
 
 		if (ENVIRONMENT != 'Production' && !self::is_ajax_request() && self::contentType('text/html') == 'text/html') {
