@@ -1,6 +1,6 @@
 <?php
 defined('ROOT_DIR') || exit;
-//var_dump($this);
+var_dump($this);
 echo "<div>site:home:default</div>";
 ?>
 <ul class="the-icons clearfix">

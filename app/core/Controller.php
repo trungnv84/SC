@@ -17,11 +17,6 @@ class Controller
         else App::end(404, 'default action not found.');
     }
 
-    protected function assign($key, $value = NULL)
-    {
-        App::assign($key, $value);
-    }
-
     /**
      * Controller::view //ccc
      *

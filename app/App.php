@@ -10,7 +10,6 @@ class App
 	public static $phpCacheFile;
 	public static $E404 = false;
 
-	private static $vars = array();
 	private static $params = array();
 	private static $template = DEFAULT_TEMPLATE;
 	private static $viewType = DEFAULT_VIEW_TYPE;
@@ -364,14 +363,6 @@ class App
 	}
 
 	/*################################################*/
-	public static function assign($key, $value = null)
-	{
-		if (is_array($key)) {
-			foreach ($key as $k => $v)
-				self::$vars[$k] = $v;
-		} else self::$vars[$key] = $value;
-	}
-
 	public static function view_exists($action, $controller, $template = null)
 	{
 		if (is_null($template)) $template =& self::$template;
@@ -405,9 +396,6 @@ class App
 		if (is_null($__template)) $__template =& self::$template;
 		if (is_null($__layout)) $__layout =& self::$layout;
 		if (is_null($__type)) $__type =& self::$viewType;
-
-		if (isset(self::$vars) && is_array(self::$vars))
-			foreach (self::$vars as $__key => &$__val) $$__key =& $__val;
 
 		if (self::view_exists($__action, $__controller, $__template))
 			require TEMPLATE_DIR . $__template . DS . $__controller . DS . $__action . '.php';
