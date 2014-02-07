@@ -163,7 +163,9 @@ class MySql extends DBDriver
 	public function query($sql)
 	{
 		$config =& self::getDbConfig($this->instance, MYSQL_DRIVER_NAME);
-		if ($config['swap_pre']) $sql = $this->replacePrefix($sql, $config['swap_pre'], $config['dbprefix']);
+		if ($config['swap_pre']) {
+			$sql = $this->replacePrefix($sql, $config['swap_pre'], $config['dbprefix']);
+		}
 		$this->queries[] = $sql;
 		$connection =& self::collect($this->instance);
 		$this->resource = mysql_query($sql, $connection);

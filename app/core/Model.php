@@ -46,7 +46,6 @@ abstract class Model
 
 	public function properties($name, $value = null)
 	{
-		//static $props = array();
 		if (is_null($value)) {
 			if (isset($this->_props[$name])) {
 				return $this->_props[$name];
