@@ -51,10 +51,10 @@ class HomeController extends Controller
 		$user = $db->fetchAll($query, null, true);
 		var_dump($user);*/
 
-		$db =& App::db('Users');
+		/*$db =& App::db('Users');
 		$db->setFetchMode(DBDriver::FETCH_ACT_OBJ);
 		$user = $db->fetchAll(array('select' => '*', 'from' => 'users'), null, 'id');
-		var_dump($user);
+		var_dump($user);*/
 
 
 		/*

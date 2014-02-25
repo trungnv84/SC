@@ -1,0 +1,80 @@
+
+[[2014-02-07 08:45:25 43546214330]]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <base href="http://localhost/sc/">
+<link href="css/cache/85cac8738851fde69b1ce6e45a7faf7d.css?__av=1.0" rel="stylesheet" type="text/css" />
+<script type="text/javascript" language="javascript">
+const SERVER_TIME_NOW = 1391737525435.5;
+</script>
+<script src="js/cache/16c0577ae81daf4687dca50287645979.js?__av=1.0" type="text/javascript" language="javascript"></script>
+</head>
+
+<body>
+<div class="main"><pre>array(3) {
+  [1]=>
+  object(stdClass)#4 (5) {
+    ["id"]=>
+    string(1) "1"
+    ["username"]=>
+    string(5) "admin"
+    ["password"]=>
+    string(32) "fcea920f7412b5da7be0cf42b8c93759"
+    ["group_id"]=>
+    string(1) "0"
+    ["zone"]=>
+    string(1) "0"
+  }
+  [2]=>
+  object(stdClass)#7 (5) {
+    ["id"]=>
+    string(1) "2"
+    ["username"]=>
+    string(5) "admin"
+    ["password"]=>
+    string(32) "fcea920f7412b5da7be0cf42b8c93759"
+    ["group_id"]=>
+    string(1) "0"
+    ["zone"]=>
+    string(1) "0"
+  }
+  [3]=>
+  object(stdClass)#6 (5) {
+    ["id"]=>
+    string(1) "3"
+    ["username"]=>
+    string(5) "admin"
+    ["password"]=>
+    string(32) "fcea920f7412b5da7be0cf42b8c93759"
+    ["group_id"]=>
+    string(1) "0"
+    ["zone"]=>
+    string(1) "0"
+  }
+}
+</pre><br />
+<b>Notice</b>:  Undefined variable: thi in <b>D:\xampp\htdocs\sc\app\template\site\home\default.php</b> on line <b>3</b><br />
+NULL
+<div>site:home:default</div><ul class="the-icons clearfix">
+	<li><i class="icon-glass"></i> icon-glass</li>
+	<li><i class="icon-music"></i> icon-music</li>
+	<li><i class="icon-search"></i> icon-search</li>
+	<li><i class="icon-envelope"></i> icon-envelope</li>
+</ul></div><script type="text/javascript" language="javascript">
+console.log(new Date(SERVER_TIME_NOW));
+</script>
+</body>
+</html>
+<pre><hr/>Last error:
+Array
+(
+    [type] => 8 (E_NOTICE)
+    [message] => Undefined variable: thi
+    [file] => D:\xampp\htdocs\sc\app\template\site\home\default.php
+    [line] => 3
+)
+</pre>
+[[2014-02-07 08:45:25 43546214330]]

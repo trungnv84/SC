@@ -8,7 +8,6 @@ class App
 	public static $controller;
 	public static $action;
 	public static $phpCacheFile;
-	public static $E404 = false;
 
 	private static $params = array();
 	private static $template = DEFAULT_TEMPLATE;
@@ -48,8 +47,8 @@ class App
 
 		if ($template)
 			self::$template = $template;
-		elseif (is_null($template))
-			self::autoSetTemplate();
+		elseif (is_null($template) && isset(self::$config->moduleTemplates[self::$module]))
+			self::$template = self::$config->moduleTemplates[self::$module];
 
 		if (PHP_CACHE) {
 			self::$phpCacheFile = PHP_CACHE_DIR . self::$module . ".$controller.$action.php";
@@ -68,7 +67,6 @@ class App
 			$ctrl = new Controller;
 			$ctrl->view($action, $controller);
 		} else {
-			self::$E404 = true;
 			self::end(404, "$controller controller not found.");
 		}
 	}
@@ -134,13 +132,6 @@ class App
 			if (!$routed) {
 				self::end('none controller -> 404//zzz');
 			}
-		}
-	}
-
-	public static function autoSetTemplate()
-	{
-		if (isset(self::$config->moduleTemplates[self::$module])) {
-			self::$template = self::$config->moduleTemplates[self::$module];
 		}
 	}
 
