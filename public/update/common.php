@@ -35,6 +35,17 @@ function users($users = null)
     return $users;
 }
 
+function tags($tags = null)
+{
+	if (!is_null($tags)) {
+		if (isDir('data'))
+			file_put_contents('data/tags.php', '<?php return ' . var_export($tags, true) . ';');
+	} elseif (file_exists('data/tags.php')) {
+		$tags = require 'data/tags.php';
+	}
+	return $tags;
+}
+
 function branch($branch = null)
 {
     if (!is_null($branch)) {
@@ -55,6 +66,35 @@ function versions($versions = null)
         $versions = require 'data/versions.php';
     }
     return $versions;
+}
+
+function getTagData($name, $data)
+{
+	preg_match('/commit\s+(\w{40})\n/i', $data, $hash);
+	if (isset($hash[1])) $hash = $hash[1];
+	else $hash = '';
+
+	preg_match('/Tagger:\s+([^\n]+)\n/i', $data, $author);
+	if (isset($author[1])) $author = htmlentities($author[1]);
+	else $author = '';
+
+	preg_match('/Date:\s+([^\n]+)\n/i', $data, $date);
+	if (isset($date[1])) $date = $date[1];
+	else $date = '';
+
+	$data = preg_split('/Date:\s+([^\n]+)\n|commit\s+(\w{40})\n/i', $data);
+	if (isset($data[1])) $comment = trim($data[1]);
+	else $comment = '';
+
+	return array(
+		'current' => false,
+		'object' => false,
+		'hash' => $hash,
+		'name' => $name,
+		'author' => $author,
+		'date' => $date, //date('Y-m-d H:i:s', strtotime($date))
+		'comment' => htmlentities($comment)
+	);
 }
 
 function updated($updated = null)
@@ -106,6 +146,8 @@ function launch($command, $background = false)
     return true;
     */
 }
+
+/*####################################################*/
 
 function start_revision($current_revision)
 {

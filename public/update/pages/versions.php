@@ -6,14 +6,56 @@ if (isset($_versions) && is_array($_versions)) {
 	$has_data = true;
 }
 
-if (isset($has_data)) {
+if (false && isset($has_data)) {
 	if (get('fetch_all')) {
 		versions(false);
 		header('Location: ' . BASE_URL, false, 302);
 	}
-    $branch = branch();
+    //$branch = branch();
 } else {
 	launch(GIT_PATH . ' fetch --all');
+
+	$tags = array();
+	$_versions = array();
+	$launch = launch(GIT_PATH . ' tag');
+	if (trim($launch)) {
+		$launch = explode("\n", $launch);
+		$_versions = array();
+		foreach ($launch as $name) {
+			$tags[$name] = getTagData($name, launch(GIT_PATH . ' show --pretty=medium ' . $name));
+			$_versions[] = $tags[$name];
+		}
+	}
+
+	tags($tags);
+
+	$launch = launch(GIT_PATH . ' branch -av --no-abbrev');
+	$branch = array();
+	if (preg_match_all('/(\*\s+)?(([\w\/\-\_]+)|(\([^\)]+\)))\s+(\w{40})\s+([^\n]+)/i', $launch, $matches)) {
+		foreach ($matches[2] as $k => $name) {
+			if ((bool)$matches[1][$k]) {
+				$_start_revision = start_revision($matches[5][$k]);
+				if ((bool)$matches[3][$k]) $_almost_branch = almost_branch($matches[3][$k]);
+				else $_almost_branch = almost_branch(GIT_MAIN_BRANCH);
+			}
+			$branch[$name] = array(
+				'current' => (bool)$matches[1][$k],
+				'object' => (bool)$matches[3][$k],
+				'hash' => $matches[5][$k],
+				'name' => $name,
+				'comment' => htmlentities($matches[6][$k])
+			);
+			$_versions[] = $branch[$name];
+		}
+	}
+
+	branch($branch);
+
+	versions($_versions);
+
+
+	/*
+
 	launch(GIT_PATH . ' log --all > data/git_log.txt');
 	//file_put_contents('data/git_log.txt', $git_log, LOCK_EX);
 	//$_version = logAllToRevision($git_log);
@@ -54,7 +96,7 @@ if (isset($has_data)) {
     branch($branch);
 
 	$_versions = versions(loadRevisionFromFile($_nodes, $_start_revision));
-
+*/
 }
 ?>
 <!DOCTYPE html>
@@ -93,10 +135,10 @@ if (isset($has_data)) {
 			<tbody>
 			<?php foreach ($_versions as $version): ?>
 				<?php
-				$cur = '';
-				$nodes = '';
+				$cur = '▐█';
+				/*$nodes = '';
 				foreach ($version['nodes'] as $node) {
-					if (isset($node['current']) && $node['current']) $cur = '▐█';
+					if (isset($node['current']) && $node['current'])
 					if (!$node['object']) continue;
 					if (true) {
 						if (isset($node['author'])) {
@@ -155,7 +197,7 @@ if (isset($has_data)) {
 							str_replace('remotes/', '', $node['name']) . '</span> ';
 					}
 				}
-				$nodes .= explode("\n", $version['comment'])[0];
+				$nodes .= explode("\n", $version['comment'])[0];*/
 				?>
 				<tr<?php if ($cur) echo ' class="success"'; ?>>
 					<td class="cur"><?php echo $cur; ?></td>

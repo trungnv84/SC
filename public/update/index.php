@@ -9,9 +9,6 @@ if ($_user = session('user')) {
 		case '':
 			require 'pages/versions.php';
 			break;
-		case 'revision':
-			require 'pages/revision.php';
-			break;
 		case 'note':
 			require 'pages/note.php';
 			break;

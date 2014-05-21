@@ -40,7 +40,7 @@ define('VERSION_STATUS_SCRIPT_COMPLETE', 1024);
 define('VERSION_STATUS_DATABASE_DOING', 2048);
 define('VERSION_STATUS_DATABASE_COMPLETE', 4096);
 
-$_config = array(
+/*$_config = array(
 	'db' => array(
 		'hostname' => 'localhost',
 		'username' => 'root',
@@ -51,4 +51,4 @@ $_config = array(
 		'dbcollat' => 'utf8_general_ci',
 		'back_dir' => 'dbs/'
 	)
-);
+);*/
