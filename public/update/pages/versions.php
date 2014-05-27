@@ -29,15 +29,18 @@ if (false && isset($has_data)) {
 
 	tags($tags);
 
-	$launch = launch(GIT_PATH . ' branch -av --no-abbrev');
+	echo '<pre>', $launch = launch(GIT_PATH . ' branch -av --no-abbrev');
 	$branch = array();
 	if (preg_match_all('/(\*\s+)?(([\w\/\-\_]+)|(\([^\)]+\)))\s+(\w{40})\s+([^\n]+)/i', $launch, $matches)) {
+		//var_dump($matches);
 		foreach ($matches[2] as $k => $name) {
-			if ((bool)$matches[1][$k]) {
-				$_start_revision = start_revision($matches[5][$k]);
+			/*if ((bool)$matches[1][$k]) {
+				//$_start_revision = start_revision($matches[5][$k]);
 				if ((bool)$matches[3][$k]) $_almost_branch = almost_branch($matches[3][$k]);
 				else $_almost_branch = almost_branch(GIT_MAIN_BRANCH);
-			}
+			}*/
+			$launch =  launch(GIT_PATH . ' show --pretty=small ' . $name);//zzz
+			echo '<pre>';print_r($launch);
 			$branch[$name] = array(
 				'current' => (bool)$matches[1][$k],
 				'object' => (bool)$matches[3][$k],
@@ -98,6 +101,8 @@ if (false && isset($has_data)) {
 	$_versions = versions(loadRevisionFromFile($_nodes, $_start_revision));
 */
 }
+
+die;
 ?>
 <!DOCTYPE html>
 <html>
